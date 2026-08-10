@@ -15,7 +15,6 @@
         .wave-bar:nth-child(4) { animation-delay: 0.3s; }
         .wave-bar:nth-child(5) { animation-delay: 0.4s; }
 
-        /* Authentic WhatsApp Dark Mode Medical/Emergency Wallpaper Overlay */
         .whatsapp-bg {
             background-color: #0b141a;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M10 5h6v2h-6zm0 4h6v1h-6zm15-4h4v5h-4zm20 1h5v2h-5zm0 4h5v1h-5zM12 25h4v2h-4zm25 5h3v2h-3zm20-5h4v4h-4zM15 50h2v6h-2zm0 8h2v1h-2zm25-5h5v2h-5zm0 4h5v1h-5zM10 70h4v2h-4zm25 0h6v3h-6z'/%3E%3Ccircle cx='50' cy='20' r='2'/%3E%3Crect x='65' y='45' width='4' height='6' rx='1'/%3E%3Cpath d='M67 43h2v2h-2z'/%3E%3Cpath d='M30 65h4v4h-4zm1 1h2v2h-2z'/%3E%3Ccircle cx='70' cy='15' r='3'/%3E%3C/g%3E%3C/svg%3E");
@@ -64,7 +63,6 @@
                 </div>
             </div>
             
-            <!-- Replace profile with Call icon -->
             <button id="callBtn" class="p-2 bg-[#111B21] rounded-full hover:bg-[#182229] transition border border-gray-700 active:scale-95 text-[#00A884]">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.37 2.33.57 3.58.57 1.1 0 2 .9 2 2v3.5a2 2 0 01-2 2C9.39 23 2 15.61 2 6.5 2 5.4 2.9 4.5 4 4.5h3.5c1.1 0 2 .9 2 2 0 1.25.2 2.46.57 3.58.1.35 0 .74-.27 1.11l-2.2 2.2z"/>
@@ -95,11 +93,9 @@
 
         <!-- Footer Input Area -->
         <footer class="bg-[#202C33] px-2 py-3 flex items-end space-x-2 border-t border-[#2A3942] flex-shrink-0 z-10">
-            <!-- Text Input Container -->
             <div class="flex-1 bg-[#2A3942] rounded-3xl flex items-center px-3 py-1.5 shadow-sm min-h-[45px]">
                 <textarea id="textInput" rows="1" placeholder="Type a message" class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none resize-none py-2 text-sm no-scrollbar max-h-24 overflow-y-auto"></textarea>
                 
-                <!-- Send Button (hidden initially) -->
                 <button id="sendTextBtn" class="hidden text-[#00A884] p-2 hover:bg-[#182229] rounded-full transition ml-1 active:scale-95">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -107,7 +103,6 @@
                 </button>
             </div>
 
-            <!-- Upload Button -->
             <label class="bg-[#111B21] hover:bg-[#182229] active:scale-95 transition-all p-3 rounded-full cursor-pointer shadow-md border border-[#2A3942] flex items-center justify-center flex-shrink-0">
                 <svg class="w-5 h-5 text-[#8696A0]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
@@ -115,7 +110,6 @@
                 <input type="file" id="fileInlet" accept="image/*,application/pdf" class="hidden">
             </label>
 
-            <!-- Camera Button -->
             <button id="openCameraBtn" class="bg-[#00A884] hover:bg-[#005C4B] active:scale-95 transition-all p-3 rounded-full shadow-md flex items-center justify-center flex-shrink-0">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
@@ -125,7 +119,7 @@
         </footer>
     </div>
 
-    <!-- Modals (Camera & Lightbox) -->
+    <!-- Modals -->
     <div id="cameraOverlay" class="hidden fixed inset-0 bg-black z-50 flex flex-col justify-between p-4">
         <div class="flex justify-end"><button id="closeCameraBtn" class="bg-gray-800 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center font-bold">X</button></div>
         <video id="videoFeed" autoplay playsinline class="w-full max-h-[70vh] rounded-xl object-cover bg-gray-900 shadow-2xl"></video>
@@ -148,7 +142,6 @@
         let cameraStream = null;
         let selectedLanguage = "Af-Soomaali";
 
-        // DOM Elements
         const welcomeScreen = document.getElementById('welcomeScreen');
         const chatScreen = document.getElementById('chatScreen');
         const languageSelect = document.getElementById('languageSelect');
@@ -187,13 +180,11 @@
                 if (playbackContext.state === 'suspended') {
                     playbackContext.resume();
                 }
-                console.log("🔊 [AUDIO GESTURE] Contexts pre-initialized/resumed. States - Audio:", audioContext.state, "Playback:", playbackContext.state);
             } catch (e) {
                 console.warn("Could not pre-initialize audio contexts:", e);
             }
         }
 
-        // --- Screen Transition ---
         getStartedBtn.addEventListener('click', () => {
             initializeAudioContexts();
             selectedLanguage = languageSelect.value;
@@ -202,7 +193,6 @@
             connectWebSocket();
         });
 
-        // --- Auto-resize textarea and show/hide send button ---
         textInput.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
@@ -273,7 +263,6 @@
         }
 
         function parseMarkdownAndCards(text) {
-            // Regex for markdown links: [Link Title](URL)
             const markdownLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
             
             let lastIndex = 0;
@@ -283,13 +272,10 @@
             markdownLinkRegex.lastIndex = 0;
             
             while ((match = markdownLinkRegex.exec(text)) !== null) {
-                // Append text before the match
                 html += escapeHtml(text.substring(lastIndex, match.index));
                 
                 const title = match[1];
                 const url = match[2];
-                
-                // Check if it's a YouTube link
                 const isYouTube = url.includes("youtube.com") || url.includes("youtu.be");
                 
                 if (isYouTube) {
@@ -306,9 +292,8 @@
         }
 
         function finalizeAiTextResponse(element) {
-            const rawText = element.rawText || element.textContent;
-            const parsedHtml = parseMarkdownAndCards(rawText);
-            element.innerHTML = parsedHtml;
+            const rawText = element.cleanText || element.textContent;
+            element.innerHTML = parseMarkdownAndCards(rawText);
             scrollChatToBottom();
         }
 
@@ -349,7 +334,6 @@
             scrollChatToBottom();
             
             if (finished) {
-                // Finalize styles for a completed user transcript bubble
                 liveUserTranscriptBlock.className = "bg-[#005C4B] text-white rounded-lg px-3 py-2 max-w-[80%] shadow border border-[#02735E] text-sm break-words";
                 liveUserTranscriptBlock = null;
             }
@@ -405,13 +389,11 @@
             };
             
             ws.onclose = () => { 
-                // Reconnect if chat is active
                 if (!welcomeScreen.classList.contains('hidden')) return;
                 setTimeout(connectWebSocket, 2000); 
             };
         }
 
-        // --- Sending Text ---
         function sendTextMessage() {
             initializeAudioContexts();
             const msg = textInput.value.trim();
@@ -423,7 +405,7 @@
             textInput.value = '';
             textInput.style.height = 'auto';
             sendTextBtn.classList.add('hidden');
-            currentAiTextResponseBlock = null; // reset AI block
+            currentAiTextResponseBlock = null;
         }
 
         sendTextBtn.addEventListener('click', sendTextMessage);
@@ -452,7 +434,6 @@
                 const block = document.createElement('div');
                 block.className = "bg-[#202C33] text-[#E9EDEF] rounded-lg px-3 py-2 max-w-[85%] shadow border border-[#2A3942] text-sm break-words";
                 
-                // Add header for OpenCareAI
                 const header = document.createElement('div');
                 header.className = "font-bold text-[#00A884] text-xs mb-1";
                 header.textContent = "OpenCareAI";
@@ -460,7 +441,7 @@
 
                 const content = document.createElement('span');
                 content.className = "whitespace-pre-wrap";
-                content.rawText = text;
+                content.cleanText = text;
                 content.innerHTML = parseMarkdownAndCards(text);
                 block.appendChild(content);
 
@@ -468,13 +449,12 @@
                 logContainer.appendChild(row);
                 currentAiTextResponseBlock = content;
             } else {
-                currentAiTextResponseBlock.rawText += text;
-                currentAiTextResponseBlock.innerHTML = parseMarkdownAndCards(currentAiTextResponseBlock.rawText);
+                currentAiTextResponseBlock.cleanText += text;
+                currentAiTextResponseBlock.innerHTML = parseMarkdownAndCards(currentAiTextResponseBlock.cleanText);
             }
             scrollChatToBottom();
         }
 
-        // --- ASYNCHRONOUS DATA CHANNELS ---
         fileInlet.addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
@@ -543,18 +523,13 @@
         function openLightbox(src) { lightboxImage.src = src; lightboxModal.classList.remove('hidden'); }
         function closeLightbox() { lightboxModal.classList.add('hidden'); }
 
-        // --- FULL-DUPLEX DYNAMIC TOGGLE STREAM ENGINE ---
         async function startStreaming() {
             isRecording = true;
             nextPlayTime = 0;
             createVoiceLogBlock();
 
             try {
-                if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
-                
-                if (audioContext.state === 'suspended') await audioContext.resume();
-                if (playbackContext.state === 'suspended') await playbackContext.resume();
+                initializeAudioContexts();
 
                 liveStreamTrack = await navigator.mediaDevices.getUserMedia({ audio: true });
                 mediaStreamSource = audioContext.createMediaStreamSource(liveStreamTrack);
@@ -563,7 +538,6 @@
                 processorNode = new AudioWorkletNode(audioContext, 'audio-processor');
                 
                 mediaStreamSource.connect(processorNode);
-                processorNode.connect(audioContext.destination);
                 
                 processorNode.port.onmessage = (event) => {
                     if (ws && ws.readyState === WebSocket.OPEN && isRecording) {
@@ -604,7 +578,6 @@
             waveContainer.classList.add('hidden');
         }
 
-        // CONTROL ROUTER CLICK LEVER: Bypasses erratic pointer release events entirely
         callBtn.addEventListener('click', (e) => {
             e.preventDefault();
             initializeAudioContexts();
@@ -635,8 +608,13 @@
                 } else {
                     arrayBuffer = data;
                 }
-                if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
-                if (playbackContext.state === 'suspended') await playbackContext.resume();
+                
+                if (!playbackContext) {
+                    playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                }
+                if (playbackContext.state === 'suspended') {
+                    await playbackContext.resume();
+                }
                 
                 const dataView = new DataView(arrayBuffer);
                 const sampleCount = Math.floor(arrayBuffer.byteLength / 2);
@@ -667,7 +645,6 @@
                 chatViewport.scrollTop = chatViewport.scrollHeight; 
             }, 50);
         }
-
     </script>
 </body>
 </html>

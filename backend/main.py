@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from google import genai
 from google.genai import types
+types.LiveModality = types.Modality
 
 # Force standard UTF-8 terminal mapping for Windows systems
 sys.stdout.reconfigure(encoding='utf-8')
@@ -1186,7 +1187,14 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
 
     # Setup the Live Connect Config to keep AUDIO modality with transcription enabled
     config = types.LiveConnectConfig(
-        response_modalities=[types.Modality.AUDIO],
+        response_modalities=[types.LiveModality.AUDIO],
+        speech_config=types.SpeechConfig(
+            voice_config=types.VoiceConfig(
+                prebuilt_voice_config=types.PrebuiltVoiceConfig(
+                    voice_name="Aoede"
+                )
+            )
+        ),
         input_audio_transcription=types.AudioTranscriptionConfig(),
         output_audio_transcription=types.AudioTranscriptionConfig(),
         system_instruction=types.Content(parts=[types.Part.from_text(text=combined_instruction)]),
@@ -1380,11 +1388,13 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                                 "content": part.text
                                             })
                                         if part.inline_data and part.inline_data.data:
-                                            print("🔊", end="", flush=True)
-                                            raw_ai_bytes = part.inline_data.data
-                                            ai_audio_buffer.extend(raw_ai_bytes)
-                                            session_audio_timeline.append((asyncio.get_event_loop().time(), "OpenCareAI", raw_ai_bytes))
-                                            await websocket.send_bytes(raw_ai_bytes)
+                                            mime_type = part.inline_data.mime_type or ""
+                                            if mime_type.startswith("audio/pcm") or not mime_type:
+                                                print("🔊", end="", flush=True)
+                                                raw_ai_bytes = part.inline_data.data
+                                                ai_audio_buffer.extend(raw_ai_bytes)
+                                                session_audio_timeline.append((asyncio.get_event_loop().time(), "OpenCareAI", raw_ai_bytes))
+                                                await websocket.send_bytes(raw_ai_bytes)
                                         if part.function_call:
                                             fc = part.function_call
                                             print(f"\n🔧 [TOOL CALL] {fc.name}")
