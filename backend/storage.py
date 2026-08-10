@@ -20,8 +20,21 @@ def upload_session_audio(file_path: str, destination_blob_name: str) -> str:
         # Load service account key if available locally
         base_dir = os.path.dirname(os.path.abspath(__file__))
         key_path = os.path.join(base_dir, "service-account.json")
+        gcp_key_path = os.path.join(base_dir, "gcp-key.json")
+        
+        has_credentials = False
         if os.path.exists(key_path):
             os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
+            has_credentials = True
+        elif os.path.exists(gcp_key_path):
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = gcp_key_path
+            has_credentials = True
+        elif os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
+            has_credentials = True
+            
+        if not has_credentials:
+            print("[CLOUD UPLOAD] No GCS credentials found on disk or environment. Skipping GCS upload fallback.")
+            return file_path
             
         storage_client = storage.Client()
         bucket = storage_client.bucket(BUCKET_NAME)

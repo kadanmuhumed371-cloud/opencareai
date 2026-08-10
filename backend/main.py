@@ -1114,13 +1114,18 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     # Receive loop from WebSocket
     async def ws_receiver():
         nonlocal connection_alive
-        try:
-            while connection_alive:
+        while connection_alive:
+            try:
                 msg = await websocket.receive()
                 await message_queue.put(msg)
-        except WebSocketDisconnect:
-            connection_alive = False
-            await message_queue.put(None)
+            except WebSocketDisconnect:
+                connection_alive = False
+                await message_queue.put(None)
+                break
+            except Exception as e:
+                import traceback
+                print(f"⚠️ Exception in ws_receiver loop (continuing): {e}")
+                traceback.print_exc()
             
     receiver_task = asyncio.create_task(ws_receiver())
     
@@ -1253,12 +1258,17 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             async def upstream():
                 nonlocal session_alive, connection_alive
                 while session_alive and connection_alive:
-                    m = await message_queue.get()
-                    if m is None:
-                        session_alive = False
-                        connection_alive = False
-                        break
-                    await handle_msg(m)
+                    try:
+                        m = await message_queue.get()
+                        if m is None:
+                            session_alive = False
+                            connection_alive = False
+                            break
+                        await handle_msg(m)
+                    except Exception as e:
+                        import traceback
+                        print(f"⚠️ Exception in upstream loop (continuing): {e}")
+                        traceback.print_exc()
 
             async def downstream():
                 nonlocal session_alive, connection_alive, ai_audio_buffer, conversation_history, session_metadata, session_audio_timeline, last_sent_ai_text, current_turn_input_type
@@ -1298,9 +1308,10 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                             pass
                 try:
                     while session_alive and connection_alive:
-                        async for response in google_session.receive():
-                            if not session_alive or not connection_alive:
-                                break
+                        try:
+                            async for response in google_session.receive():
+                                if not session_alive or not connection_alive:
+                                    break
                             server_content = response.server_content
                             if server_content is not None:
                                 # 1. Handle user's real-time input transcription
@@ -1449,6 +1460,12 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                         await websocket.send_text("__TURN_COMPLETE__")
                                     last_sent_ai_text = ""
                                     accumulated_ai_text = ""
+                                    sent_youtube_urls.clear()
+                        except Exception as loop_err:
+                            import traceback
+                            print(f"⚠️ Exception inside downstream loop (continuing): {loop_err}")
+                            traceback.print_exc()
+                            await asyncio.sleep(1)
                 except Exception as e:
                     if "1008" not in str(e) and "GoAway" not in str(e):
                         print(f"\n⚠️ Downstream streaming exception: {str(e)}")
