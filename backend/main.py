@@ -1118,15 +1118,40 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         while connection_alive:
             try:
                 msg = await websocket.receive()
+                # Check for low-level disconnect frame type
+                if isinstance(msg, dict) and msg.get("type") == "websocket.disconnect":
+                    print("🔌 [WEBSOCKET DISCONNECTED] Received low-level disconnect frame.")
+                    connection_alive = False
+                    await message_queue.put(None)
+                    break
                 await message_queue.put(msg)
             except WebSocketDisconnect:
+                print("🔌 [WEBSOCKET DISCONNECTED] WebSocketDisconnect exception caught.")
                 connection_alive = False
                 await message_queue.put(None)
                 break
+            except RuntimeError as run_err:
+                err_str = str(run_err).lower()
+                if "disconnect" in err_str or "cannot call" in err_str:
+                    print(f"🔌 [WEBSOCKET DISCONNECTED] RuntimeError disconnect caught: {run_err}")
+                    connection_alive = False
+                    await message_queue.put(None)
+                    break
+                else:
+                    import traceback
+                    print(f"⚠️ RuntimeError in ws_receiver loop: {run_err}")
+                    traceback.print_exc()
             except Exception as e:
-                import traceback
-                print(f"⚠️ Exception in ws_receiver loop (continuing): {e}")
-                traceback.print_exc()
+                err_str = str(e).lower()
+                if "disconnect" in err_str or "cannot call" in err_str:
+                    print(f"🔌 [WEBSOCKET DISCONNECTED] Disconnect exception caught: {e}")
+                    connection_alive = False
+                    await message_queue.put(None)
+                    break
+                else:
+                    import traceback
+                    print(f"⚠️ Exception in ws_receiver loop (continuing): {e}")
+                    traceback.print_exc()
             
     receiver_task = asyncio.create_task(ws_receiver())
     
