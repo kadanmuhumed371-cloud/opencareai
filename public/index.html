@@ -141,6 +141,7 @@
         let nextPlayTime = 0;
         let cameraStream = null;
         let selectedLanguage = "Af-Soomaali";
+        let audioSendBuffer = [];
 
         const welcomeScreen = document.getElementById('welcomeScreen');
         const chatScreen = document.getElementById('chatScreen');
@@ -539,20 +540,27 @@
                 
                 mediaStreamSource.connect(processorNode);
                 
+                audioSendBuffer = [];
                 processorNode.port.onmessage = (event) => {
                     if (ws && ws.readyState === WebSocket.OPEN && isRecording) {
                         const inputData = event.data;
                         const ratio = audioContext.sampleRate / 16000;
                         const targetLength = Math.round(inputData.length / ratio);
-                        const pcmBuffer = new Int16Array(targetLength);
                         
                         for (let i = 0; i < targetLength; i++) {
                             const srcIndex = Math.round(i * ratio);
                             if (srcIndex < inputData.length) {
-                                pcmBuffer[i] = Math.max(-1, Math.min(1, inputData[srcIndex])) * 0x7FFF;
+                                const sample = Math.max(-1, Math.min(1, inputData[srcIndex])) * 0x7FFF;
+                                audioSendBuffer.push(sample);
                             }
                         }
-                        ws.send(pcmBuffer.buffer);
+                        
+                        // Buffer PCM output: Send only when buffer reaches 2048 samples (4096 bytes)
+                        while (audioSendBuffer.length >= 2048) {
+                            const chunk = new Int16Array(audioSendBuffer.slice(0, 2048));
+                            audioSendBuffer = audioSendBuffer.slice(2048);
+                            ws.send(chunk.buffer);
+                        }
                     }
                 };
 
@@ -570,6 +578,12 @@
             if (liveStreamTrack) { liveStreamTrack.getTracks().forEach(t => t.stop()); }
             
             if (ws && ws.readyState === WebSocket.OPEN) {
+                // Flush remaining samples in buffer
+                if (audioSendBuffer.length > 0) {
+                    const chunk = new Int16Array(audioSendBuffer);
+                    ws.send(chunk.buffer);
+                    audioSendBuffer = [];
+                }
                 ws.send(new TextEncoder().encode("END_"));
             }
             
