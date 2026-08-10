@@ -173,8 +173,29 @@
 
         let currentAiTextResponseBlock = null;
 
+        function initializeAudioContexts() {
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (!playbackContext) {
+                    playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                }
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                if (playbackContext.state === 'suspended') {
+                    playbackContext.resume();
+                }
+                console.log("🔊 [AUDIO GESTURE] Contexts pre-initialized/resumed. States - Audio:", audioContext.state, "Playback:", playbackContext.state);
+            } catch (e) {
+                console.warn("Could not pre-initialize audio contexts:", e);
+            }
+        }
+
         // --- Screen Transition ---
         getStartedBtn.addEventListener('click', () => {
+            initializeAudioContexts();
             selectedLanguage = languageSelect.value;
             welcomeScreen.classList.add('hidden');
             chatScreen.classList.remove('hidden');
@@ -285,7 +306,7 @@
         }
 
         function finalizeAiTextResponse(element) {
-            const rawText = element.textContent;
+            const rawText = element.rawText || element.textContent;
             const parsedHtml = parseMarkdownAndCards(rawText);
             element.innerHTML = parsedHtml;
             scrollChatToBottom();
@@ -349,6 +370,18 @@
                                 appendTextAiResponse(payload.text);
                             } else if (payload.type === "youtube_card") {
                                 renderYouTubeCard(payload.title, payload.url);
+                            } else if (payload.type === "audio") {
+                                try {
+                                    const binaryString = window.atob(payload.data);
+                                    const len = binaryString.length;
+                                    const bytes = new Uint8Array(len);
+                                    for (let i = 0; i < len; i++) {
+                                        bytes[i] = binaryString.charCodeAt(i);
+                                    }
+                                    schedulePlaybackChunk(bytes.buffer);
+                                } catch (base64Err) {
+                                    console.error("Base64 audio decode error:", base64Err);
+                                }
                             } else if (payload.type === "turn_complete") {
                                 if (currentAiTextResponseBlock) {
                                     finalizeAiTextResponse(currentAiTextResponseBlock);
@@ -380,6 +413,7 @@
 
         // --- Sending Text ---
         function sendTextMessage() {
+            initializeAudioContexts();
             const msg = textInput.value.trim();
             if (!msg || !ws || ws.readyState !== WebSocket.OPEN) return;
 
@@ -426,14 +460,16 @@
 
                 const content = document.createElement('span');
                 content.className = "whitespace-pre-wrap";
-                content.textContent = text;
+                content.rawText = text;
+                content.innerHTML = parseMarkdownAndCards(text);
                 block.appendChild(content);
 
                 row.appendChild(block);
                 logContainer.appendChild(row);
                 currentAiTextResponseBlock = content;
             } else {
-                currentAiTextResponseBlock.textContent += text;
+                currentAiTextResponseBlock.rawText += text;
+                currentAiTextResponseBlock.innerHTML = parseMarkdownAndCards(currentAiTextResponseBlock.rawText);
             }
             scrollChatToBottom();
         }
@@ -571,6 +607,7 @@
         // CONTROL ROUTER CLICK LEVER: Bypasses erratic pointer release events entirely
         callBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            initializeAudioContexts();
             if (!isRecording) {
                 startStreaming();
             } else {
@@ -590,8 +627,14 @@
             scrollChatToBottom();
         }
 
-        async function schedulePlaybackChunk(arrayBuffer) {
+        async function schedulePlaybackChunk(data) {
             try {
+                let arrayBuffer;
+                if (data instanceof Blob) {
+                    arrayBuffer = await data.arrayBuffer();
+                } else {
+                    arrayBuffer = data;
+                }
                 if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
                 if (playbackContext.state === 'suspended') await playbackContext.resume();
                 

@@ -1263,6 +1263,39 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             async def downstream():
                 nonlocal session_alive, connection_alive, ai_audio_buffer, conversation_history, session_metadata, session_audio_timeline, last_sent_ai_text, current_turn_input_type
                 accumulated_ai_text = ""
+                sent_youtube_urls = set()
+
+                async def extract_and_send_realtime_links():
+                    import re
+                    # 1. Parse standard markdown YouTube links
+                    yt_regex = r'\[([^\]]+)\]\((https?://[^\s)]*(?:youtube\.cn|youtube\.com|youtu\.be)[^\s)]*)\)'
+                    matches = re.findall(yt_regex, accumulated_ai_text)
+                    for title, url in matches:
+                        if url not in sent_youtube_urls:
+                            sent_youtube_urls.add(url)
+                            print(f"\n📺 [REALTIME YOUTUBE LINK DETECTED] Title: {title}, URL: {url}")
+                            await websocket.send_text(json.dumps({
+                                "type": "youtube_card",
+                                "title": title,
+                                "url": url
+                            }))
+                    # 2. Parse explicit JSON YouTube links
+                    json_matches = re.findall(r'(\{[^}]*"type"\s*:\s*"youtube_card"[^}]*\})', accumulated_ai_text)
+                    for j_str in json_matches:
+                        try:
+                            data = json.loads(j_str)
+                            url = data.get("url")
+                            title = data.get("title", "▶️ Click here to watch the demonstration video on YouTube")
+                            if url and url not in sent_youtube_urls:
+                                sent_youtube_urls.add(url)
+                                print(f"\n📺 [REALTIME YOUTUBE JSON DETECTED] Title: {title}, URL: {url}")
+                                await websocket.send_text(json.dumps({
+                                    "type": "youtube_card",
+                                    "title": title,
+                                    "url": url
+                                }))
+                        except Exception:
+                            pass
                 try:
                     while session_alive and connection_alive:
                         async for response in google_session.receive():
@@ -1297,6 +1330,8 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                         if delta:
                                             print(delta, end="", flush=True)
                                             accumulated_ai_text += delta
+                                            await extract_and_send_realtime_links()
+                                            
                                             # ONLY forward transcript to client UI if current turn is text
                                             if current_turn_input_type == "text":
                                                 await websocket.send_text(json.dumps({
@@ -1319,6 +1354,8 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                             # Fallback if text parts are sent directly
                                             print(part.text, end="", flush=True)
                                             accumulated_ai_text += part.text
+                                            await extract_and_send_realtime_links()
+                                            
                                             if current_turn_input_type == "text":
                                                 await websocket.send_text(json.dumps({
                                                     "type": "output_transcription",
@@ -1365,12 +1402,11 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                                     except Exception as e:
                                                         print(f"⚠️ Emergency lookup failed: {e}")
                                                         result = {"error": "Emergency lookup failed. Advise the user to contact the nearest health facility or emergency services immediately."}
-                                                elif fc.name == "search_youtube":
-                                                    topic = fc.args.get("topic", "")
-                                                    lang_pref = fc.args.get("language", "")
+                                                elif fc.name == "search_youtube_tutorials":
+                                                    query = fc.args.get("query", "")
                                                     from services.youtube_search import get_youtube_service
                                                     try:
-                                                        res = await execute_tool(get_youtube_service().search_videos, topic, lang_pref)
+                                                        res = await execute_tool(get_youtube_service().search_youtube_tutorials, query)
                                                         result = {"results": res}
                                                     except Exception as e:
                                                         print(f"⚠️ YouTube search failed: {e}")
@@ -1407,38 +1443,10 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                             
                                 if server_content.turn_complete:
                                     print("\n🔄 [TURN COMPLETE] Model finished responding downstream.")
+                                    await extract_and_send_realtime_links()
                                     if current_turn_input_type == "text":
                                         await websocket.send_text(json.dumps({"type": "turn_complete"}))
                                         await websocket.send_text("__TURN_COMPLETE__")
-                                    else:
-                                        # Voice-First Link Card Parsing
-                                        import re
-                                        # 1. Parse standard markdown YouTube links
-                                        yt_regex = r'\[([^\]]+)\]\((https?://[^\s)]*(?:youtube\.cn|youtube\.com|youtu\.be)[^\s)]*)\)'
-                                        matches = re.findall(yt_regex, accumulated_ai_text)
-                                        for title, url in matches:
-                                            print(f"📺 [YOUTUBE LINK DETECTED IN VOICE RESPONSE] Title: {title}, URL: {url}")
-                                            await websocket.send_text(json.dumps({
-                                                "type": "youtube_card",
-                                                "title": title,
-                                                "url": url
-                                            }))
-                                        # 2. Parse explicit JSON YouTube links
-                                        json_matches = re.findall(r'(\{[^}]*"type"\s*:\s*"youtube_card"[^}]*\})', accumulated_ai_text)
-                                        for j_str in json_matches:
-                                            try:
-                                                data = json.loads(j_str)
-                                                title = data.get("title", "▶️ Click here to watch the demonstration video on YouTube")
-                                                url = data.get("url")
-                                                if url:
-                                                    print(f"📺 [YOUTUBE JSON DETECTED IN VOICE RESPONSE] Title: {title}, URL: {url}")
-                                                    await websocket.send_text(json.dumps({
-                                                        "type": "youtube_card",
-                                                        "title": title,
-                                                        "url": url
-                                                    }))
-                                            except Exception:
-                                                pass
                                     last_sent_ai_text = ""
                                     accumulated_ai_text = ""
                 except Exception as e:
