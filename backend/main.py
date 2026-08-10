@@ -1093,6 +1093,7 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
         return b""
 
 @app.websocket("/api/stream")
+@app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     global INGESTED_DOCUMENT_CONTEXT
     await websocket.accept()
@@ -1575,7 +1576,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         print("🛑 [CLEANUP COMPLETE] Audio paths disconnected.")
 
 # Mount the static site folder safely
-app.mount("/", StaticFiles(directory="../public", html=True), name="public")
+app.mount("/static", StaticFiles(directory="../public", html=True), name="public")
 
 if __name__ == "__main__":
     import uvicorn

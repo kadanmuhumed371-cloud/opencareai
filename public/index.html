@@ -335,8 +335,7 @@
         }
 
         function connectWebSocket() {
-            const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-            ws = new WebSocket(`${proto}://${window.location.host}/api/stream?lang=${encodeURIComponent(selectedLanguage)}`);
+            ws = new WebSocket(`wss://opencareai-backend.onrender.com/ws?lang=${encodeURIComponent(selectedLanguage)}`);
             ws.binaryType = "arraybuffer";
             
             ws.onmessage = async (event) => { 
@@ -448,7 +447,7 @@
             const formData = new FormData();
             formData.append('file', file);
             try {
-                await fetch('/api/upload', { method: 'POST', body: formData });
+                await fetch('https://opencareai-backend.onrender.com/api/upload', { method: 'POST', body: formData });
             } catch (err) { console.error("Upload fault:", err); }
         });
 
@@ -500,7 +499,7 @@
 
                     const formData = new FormData();
                     formData.append('file', file);
-                    await fetch('/api/upload', { method: 'POST', body: formData });
+                    await fetch('https://opencareai-backend.onrender.com/api/upload', { method: 'POST', body: formData });
                 }
             }, 'image/jpeg', 0.7);
         });
