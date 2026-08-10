@@ -1187,7 +1187,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
 
     # Setup the Live Connect Config to keep AUDIO modality with transcription enabled
     config = types.LiveConnectConfig(
-        response_modalities=[types.LiveModality.AUDIO],
+        response_modalities=["AUDIO"],
         speech_config=types.SpeechConfig(
             voice_config=types.VoiceConfig(
                 prebuilt_voice_config=types.PrebuiltVoiceConfig(
@@ -1243,6 +1243,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                 })
                                 print(f"🚀 [DEBUG] Sending text payload to Gemini via send_realtime_input: {client_text_data}")
                                 await google_session.send_realtime_input(text=client_text_data)
+                                await google_session.send(end_of_turn=True)
                             else:
                                 print(f"🚀 [DEBUG] Skipping empty text payload.")
                                 
@@ -1388,13 +1389,11 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                                 "content": part.text
                                             })
                                         if part.inline_data and part.inline_data.data:
-                                            mime_type = part.inline_data.mime_type or ""
-                                            if mime_type.startswith("audio/pcm") or not mime_type:
-                                                print("🔊", end="", flush=True)
-                                                raw_ai_bytes = part.inline_data.data
-                                                ai_audio_buffer.extend(raw_ai_bytes)
-                                                session_audio_timeline.append((asyncio.get_event_loop().time(), "OpenCareAI", raw_ai_bytes))
-                                                await websocket.send_bytes(raw_ai_bytes)
+                                            print("🔊", end="", flush=True)
+                                            raw_ai_bytes = part.inline_data.data
+                                            ai_audio_buffer.extend(raw_ai_bytes)
+                                            session_audio_timeline.append((asyncio.get_event_loop().time(), "OpenCareAI", raw_ai_bytes))
+                                            await websocket.send_bytes(raw_ai_bytes)
                                         if part.function_call:
                                             fc = part.function_call
                                             print(f"\n🔧 [TOOL CALL] {fc.name}")
