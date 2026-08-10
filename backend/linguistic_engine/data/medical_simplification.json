@@ -1,0 +1,27 @@
+[
+  {
+    "technical_term": "hypertension",
+    "simple_somali": "dhiig-kar",
+    "enabled": true
+  },
+  {
+    "technical_term": "fracture",
+    "simple_somali": "laf jab",
+    "enabled": true
+  },
+  {
+    "technical_term": "infection",
+    "simple_somali": "caabuq",
+    "enabled": true
+  },
+  {
+    "technical_term": "dehydration",
+    "simple_somali": "biyo-yaraan",
+    "enabled": true
+  },
+  {
+    "technical_term": "stroke",
+    "simple_somali": "maskax istaag",
+    "enabled": true
+  }
+]

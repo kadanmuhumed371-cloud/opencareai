@@ -1,0 +1,26 @@
+[
+  {
+    "rule": "Use short sentences",
+    "enabled": true
+  },
+  {
+    "rule": "Avoid Arabic words when Somali alternatives exist",
+    "enabled": true
+  },
+  {
+    "rule": "Use step-by-step instructions",
+    "enabled": true
+  },
+  {
+    "rule": "Use calm tone",
+    "enabled": true
+  },
+  {
+    "rule": "Repeat critical warnings",
+    "enabled": true
+  },
+  {
+    "rule": "Avoid robotic AI wording",
+    "enabled": true
+  }
+]

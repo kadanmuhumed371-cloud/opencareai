@@ -1,0 +1,51 @@
+[
+  {
+    "detected": "wahid",
+    "replace_with": "marka koowaad",
+    "type": "ordinal",
+    "priority": "high",
+    "enabled": true
+  },
+  {
+    "detected": "ithnin",
+    "replace_with": "marka labaad",
+    "type": "ordinal",
+    "priority": "high",
+    "enabled": true
+  },
+  {
+    "detected": "thalatha",
+    "replace_with": "marka saddexaad",
+    "type": "ordinal",
+    "priority": "high",
+    "enabled": true
+  },
+  {
+    "detected": "arbaa",
+    "replace_with": "marka afaraad",
+    "type": "ordinal",
+    "priority": "high",
+    "enabled": true
+  },
+  {
+    "detected": "khamsa",
+    "replace_with": "marka shanaad",
+    "type": "ordinal",
+    "priority": "high",
+    "enabled": true
+  },
+  {
+    "detected": "first",
+    "replace_with": "ugu horrayn",
+    "type": "ordinal",
+    "priority": "high",
+    "enabled": true
+  },
+  {
+    "detected": "second",
+    "replace_with": "marka labaad",
+    "type": "ordinal",
+    "priority": "high",
+    "enabled": true
+  }
+]

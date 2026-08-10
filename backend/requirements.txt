@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-multipart
+google-genai
+google-cloud-texttospeech
+google-cloud-firestore
+python-dotenv

@@ -1,0 +1,347 @@
+{
+    "session_id": "session_94840062",
+    "session_start_time": "1970-01-02 04:20:40.062000",
+    "language_preference": "Af-Soomaali",
+    "user_role": "User",
+    "recognized_user_transcript": "Assalamu alaikum",
+    "audio_conversation_file": "https://storage.googleapis.com/gcf-v2-uploads-592479264150.us-central1.cloudfunctions.appspot.com/recordings/session_94840062_full_conversation.wav?Expires=1786954933&GoogleAccessId=592479264150-compute%40developer.gserviceaccount.com&Signature=lAGzWu8SMrxq2pasiKHAzcxYG%2B08Sa4dVq7UEma2dD77a%2B2TjaXH4%2BKZWbl5cFD7nkTFGOj0J7go%2BAONe%2FOlIaVLdDvZD1lnDgK%2F14veruxLcDrBZE%2Bocx2poTKKUO7I1VrA7jYHF0YuEL5A5yO%2F5JTc9c6FiIuTU0is%2BZVKQHDmny04VzBdp0Ic5PpMs3166sd3rkpBU11ODfrsHmR5LPNKv%2BICeXkkLd8VXqCT8oKuOwqfNPq21tNKAxd6h4PV9VeVtHTUz0CJD9QlSCg0JfTKRo3gsEPdsOaAIKq7hU%2B8xUXVT00wWLgakSO4kJnpRnLYwcefOQB2pLoePPKtIQ%3D%3D",
+    "conversation_history": [
+        "OpenCareAI: Waaleykum assalaam.",
+        "OpenCareAI:  OpenCareAI",
+        "OpenCareAI:  ayaan",
+        "OpenCareAI:  ahay,",
+        "OpenCareAI:  caawiye",
+        "OpenCareAI:  caafimaad",
+        "OpenCareAI:  oo ku",
+        "OpenCareAI:  hadla",
+        "OpenCareAI:  codka",
+        "OpenCareAI:  oo loogu",
+        "OpenCareAI:  talagalay",
+        "OpenCareAI:  bulshooyinka",
+        "OpenCareAI:  aan wax",
+        "OpenCareAI:  akhrin,",
+        "OpenCareAI:  waxna",
+        "OpenCareAI:  qorin,",
+        "OpenCareAI:  ku hadla",
+        "OpenCareAI:  luqado",
+        "OpenCareAI:  badan,",
+        "OpenCareAI:  iyo kuwa",
+        "OpenCareAI:  aan helin",
+        "OpenCareAI:  adeegyo",
+        "OpenCareAI:  caafimaad",
+        "OpenCareAI:  oo ku",
+        "OpenCareAI:  filan.",
+        "OpenCareAI:  Waxaan",
+        "OpenCareAI:  inta",
+        "OpenCareAI:  badan",
+        "OpenCareAI:  ku xiriiraa",
+        "OpenCareAI:  cod,",
+        "OpenCareAI:  anigoo",
+        "OpenCareAI:  qoraal",
+        "OpenCareAI:  kooban",
+        "OpenCareAI:  ku bixiya",
+        "OpenCareAI:  marka",
+        "OpenCareAI:  ay dadka",
+        "OpenCareAI:  ka caawinayso",
+        "OpenCareAI:  inay kaydsadaan",
+        "OpenCareAI:  ama dib",
+        "OpenCareAI:  u eegaan",
+        "OpenCareAI:  macluumaadka",
+        "OpenCareAI:  muhiimka",
+        "OpenCareAI:  ah.",
+        "OpenCareAI:  Sideen",
+        "OpenCareAI:  kuu caawin",
+        "OpenCareAI:  karaa",
+        "OpenCareAI:  maanta?"
+    ],
+    "detailed_timeline": [
+        {
+            "timestamp": "2026-08-10 11:19:10.452562",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": "Waaleykum assalaam."
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.186979",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " OpenCareAI"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.365768",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ayaan"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.624934",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ahay,"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.638374",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " caawiye"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.793926",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " caafimaad"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.836044",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " oo ku"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.837067",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " hadla"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.930526",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " codka"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:11.942928",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " oo loogu"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.260839",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " talagalay"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.424962",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " bulshooyinka"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.429013",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " aan wax"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.506822",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " akhrin,"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.962908",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " waxna"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.965021",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " qorin,"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.967027",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ku hadla"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:12.970603",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " luqado"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:13.298671",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " badan,"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:13.643993",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " iyo kuwa"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:13.647006",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " aan helin"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:13.789060",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " adeegyo"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:13.878961",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " caafimaad"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:14.248106",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " oo ku"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:14.250210",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " filan."
+        },
+        {
+            "timestamp": "2026-08-10 11:19:14.341051",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " Waxaan"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:14.345052",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " inta"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:14.601902",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " badan"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:14.604506",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ku xiriiraa"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:14.832418",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " cod,"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:15.145237",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " anigoo"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:15.589821",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " qoraal"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:15.596829",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " kooban"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:15.673458",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ku bixiya"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:15.979786",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " marka"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:16.108146",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ay dadka"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:16.157449",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ka caawinayso"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:16.465509",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " inay kaydsadaan"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:16.702852",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ama dib"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:16.838079",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " u eegaan"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:17.149552",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " macluumaadka"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:17.476259",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " muhiimka"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:17.539036",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " ah."
+        },
+        {
+            "timestamp": "2026-08-10 11:19:18.013684",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " Sideen"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:18.017711",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " kuu caawin"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:18.028360",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " karaa"
+        },
+        {
+            "timestamp": "2026-08-10 11:19:18.251960",
+            "speaker": "OpenCareAI",
+            "modality": "text",
+            "content": " maanta?"
+        },
+        {
+            "timestamp": "2026-08-10 11:22:16.668278",
+            "speaker": "User",
+            "modality": "audio_transcript",
+            "content": "Assalamu alaikum"
+        }
+    ]
+}

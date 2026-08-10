@@ -1,0 +1,32 @@
+[
+  {
+    "pattern": "dh",
+    "tts_pronunciation": "d",
+    "description": "Somali DH uses English D sound",
+    "enabled": true
+  },
+  {
+    "pattern": "d",
+    "tts_pronunciation": "th",
+    "description": "Somali D sounds softer like TH",
+    "enabled": true
+  },
+  {
+    "pattern": "x",
+    "tts_pronunciation": "h",
+    "description": "Somali X sounds like deep H",
+    "enabled": true
+  },
+  {
+    "pattern": "c",
+    "tts_pronunciation": "ʕ",
+    "description": "Somali C sounds like Arabic ع",
+    "enabled": true
+  },
+  {
+    "pattern": "q",
+    "tts_pronunciation": "qaf",
+    "description": "Somali Q sounds like Arabic Qaf",
+    "enabled": true
+  }
+]

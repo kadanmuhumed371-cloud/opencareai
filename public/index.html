@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OpenCareAI Live</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes wave { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+        .wave-bar { animation: wave 1.2s ease-in-out infinite; }
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        /* Authentic WhatsApp Dark Mode Medical/Emergency Wallpaper Overlay */
+        .whatsapp-bg {
+            background-color: #0b141a;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M10 5h6v2h-6zm0 4h6v1h-6zm15-4h4v5h-4zm20 1h5v2h-5zm0 4h5v1h-5zM12 25h4v2h-4zm25 5h3v2h-3zm20-5h4v4h-4zM15 50h2v6h-2zm0 8h2v1h-2zm25-5h5v2h-5zm0 4h5v1h-5zM10 70h4v2h-4zm25 0h6v3h-6z'/%3E%3Ccircle cx='50' cy='20' r='2'/%3E%3Crect x='65' y='45' width='4' height='6' rx='1'/%3E%3Cpath d='M67 43h2v2h-2z'/%3E%3Cpath d='M30 65h4v4h-4zm1 1h2v2h-2z'/%3E%3Ccircle cx='70' cy='15' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+<body class="bg-[#0B141A] text-white font-sans h-screen flex flex-col justify-between overflow-hidden select-none">
+
+    <!-- SCREEN 1: Welcome Screen -->
+    <div id="welcomeScreen" class="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#0B141A] p-6 text-center">
+        <div class="mb-8">
+            <div class="w-24 h-24 rounded-full bg-[#00A884] flex items-center justify-center font-bold text-4xl mx-auto mb-4 tracking-wider shadow-lg">
+                OC
+            </div>
+            <h1 class="text-3xl font-bold tracking-wide">OpenCareAI</h1>
+            <p class="text-[#00A884] text-lg mt-2">Your AI Health Assistant</p>
+        </div>
+        
+        <div class="w-full max-w-xs mb-10">
+            <label for="languageSelect" class="block text-sm text-gray-300 mb-2">Select Language (Optional)</label>
+            <select id="languageSelect" class="w-full bg-[#202C33] text-white border border-[#2A3942] rounded-lg py-3 px-4 focus:outline-none focus:border-[#00A884] appearance-none shadow-sm">
+                <option value="Af-Soomaali">Af-Soomaali</option>
+                <option value="Afaan Oromo">Afaan Oromo</option>
+                <option value="Amharic">አማርኛ (Amharic)</option>
+            </select>
+        </div>
+
+        <button id="getStartedBtn" class="w-full max-w-xs bg-[#00A884] hover:bg-[#005C4B] text-white font-bold py-4 rounded-full shadow-lg transition-transform transform active:scale-95 text-lg">
+            Getting Started
+        </button>
+    </div>
+
+    <!-- SCREEN 2: Main Chat Screen -->
+    <div id="chatScreen" class="hidden flex flex-col h-full w-full">
+        <!-- Header -->
+        <header class="bg-[#202C33] px-4 py-3 flex items-center justify-between border-b border-[#2A3942] shadow-md z-10 flex-shrink-0">
+            <div class="flex items-center space-x-3">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-[#00A884] flex items-center justify-center font-bold text-lg tracking-wider">OC</div>
+                    <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#202C33] rounded-full"></span>
+                </div>
+                <div>
+                    <h2 class="text-sm font-semibold tracking-wide">OpenCareAI</h2>
+                    <p class="text-xs text-[#00A884]">Online</p>
+                </div>
+            </div>
+            
+            <!-- Replace profile with Call icon -->
+            <button id="callBtn" class="p-2 bg-[#111B21] rounded-full hover:bg-[#182229] transition border border-gray-700 active:scale-95 text-[#00A884]">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.37 2.33.57 3.58.57 1.1 0 2 .9 2 2v3.5a2 2 0 01-2 2C9.39 23 2 15.61 2 6.5 2 5.4 2.9 4.5 4 4.5h3.5c1.1 0 2 .9 2 2 0 1.25.2 2.46.57 3.58.1.35 0 .74-.27 1.11l-2.2 2.2z"/>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Chat Viewport -->
+        <main id="chatViewport" class="flex-1 overflow-y-auto px-4 py-4 space-y-4 no-scrollbar whatsapp-bg touch-pan-y overscroll-contain">
+            <div class="flex justify-center">
+                <span class="bg-[#182229] text-[#8696A0] text-xs px-3 py-1.5 rounded-md shadow border border-[#222E35] text-center max-w-[80%]">
+                    This is a secure space. Say "Hi" or press the call icon to start.
+                </span>
+            </div>
+            <div id="logContainer" class="space-y-4 flex flex-col"></div>
+
+            <div id="waveContainer" class="hidden fixed top-20 left-1/2 transform -translate-x-1/2 bg-[#202C33] border border-[#00A884] px-6 py-3 rounded-full shadow-2xl flex items-center space-x-3 z-20">
+                <span class="text-xs text-[#00A884] font-semibold tracking-wider uppercase">In Call...</span>
+                <div class="flex items-end space-x-1 h-5 w-10">
+                    <div class="w-1 bg-[#00A884] h-full rounded wave-bar"></div>
+                    <div class="w-1 bg-[#00A884] h-full rounded wave-bar"></div>
+                    <div class="w-1 bg-[#00A884] h-full rounded wave-bar"></div>
+                    <div class="w-1 bg-[#00A884] h-full rounded wave-bar"></div>
+                    <div class="w-1 bg-[#00A884] h-full rounded wave-bar"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Input Area -->
+        <footer class="bg-[#202C33] px-2 py-3 flex items-end space-x-2 border-t border-[#2A3942] flex-shrink-0 z-10">
+            <!-- Text Input Container -->
+            <div class="flex-1 bg-[#2A3942] rounded-3xl flex items-center px-3 py-1.5 shadow-sm min-h-[45px]">
+                <textarea id="textInput" rows="1" placeholder="Type a message" class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none resize-none py-2 text-sm no-scrollbar max-h-24 overflow-y-auto"></textarea>
+                
+                <!-- Send Button (hidden initially) -->
+                <button id="sendTextBtn" class="hidden text-[#00A884] p-2 hover:bg-[#182229] rounded-full transition ml-1 active:scale-95">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Upload Button -->
+            <label class="bg-[#111B21] hover:bg-[#182229] active:scale-95 transition-all p-3 rounded-full cursor-pointer shadow-md border border-[#2A3942] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[#8696A0]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                </svg>
+                <input type="file" id="fileInlet" accept="image/*,application/pdf" class="hidden">
+            </label>
+
+            <!-- Camera Button -->
+            <button id="openCameraBtn" class="bg-[#00A884] hover:bg-[#005C4B] active:scale-95 transition-all p-3 rounded-full shadow-md flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+            </button>
+        </footer>
+    </div>
+
+    <!-- Modals (Camera & Lightbox) -->
+    <div id="cameraOverlay" class="hidden fixed inset-0 bg-black z-50 flex flex-col justify-between p-4">
+        <div class="flex justify-end"><button id="closeCameraBtn" class="bg-gray-800 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center font-bold">X</button></div>
+        <video id="videoFeed" autoplay playsinline class="w-full max-h-[70vh] rounded-xl object-cover bg-gray-900 shadow-2xl"></video>
+        <div class="flex justify-center pb-6"><button id="capturePhotoBtn" class="w-16 h-16 bg-white border-4 border-gray-400 rounded-full active:scale-95 transition-transform"></button></div>
+    </div>
+
+    <div id="lightboxModal" class="hidden fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4" onclick="closeLightbox()">
+        <img id="lightboxImage" src="" alt="Expanded View" class="max-w-full max-h-full rounded-lg object-contain shadow-2xl">
+    </div>
+
+    <script>
+        let ws;
+        let audioContext;
+        let playbackContext;
+        let mediaStreamSource;
+        let processorNode;
+        let liveStreamTrack = null;
+        let isRecording = false;
+        let nextPlayTime = 0;
+        let cameraStream = null;
+        let selectedLanguage = "Af-Soomaali";
+
+        // DOM Elements
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const chatScreen = document.getElementById('chatScreen');
+        const languageSelect = document.getElementById('languageSelect');
+        const getStartedBtn = document.getElementById('getStartedBtn');
+        
+        const callBtn = document.getElementById('callBtn');
+        const waveContainer = document.getElementById('waveContainer');
+        const logContainer = document.getElementById('logContainer');
+        const chatViewport = document.getElementById('chatViewport');
+        const textInput = document.getElementById('textInput');
+        const sendTextBtn = document.getElementById('sendTextBtn');
+        
+        const fileInlet = document.getElementById('fileInlet');
+        const openCameraBtn = document.getElementById('openCameraBtn');
+        const closeCameraBtn = document.getElementById('closeCameraBtn');
+        const cameraOverlay = document.getElementById('cameraOverlay');
+        const videoFeed = document.getElementById('videoFeed');
+        const capturePhotoBtn = document.getElementById('capturePhotoBtn');
+        
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImage = document.getElementById('lightboxImage');
+
+        let currentAiTextResponseBlock = null;
+
+        // --- Screen Transition ---
+        getStartedBtn.addEventListener('click', () => {
+            selectedLanguage = languageSelect.value;
+            welcomeScreen.classList.add('hidden');
+            chatScreen.classList.remove('hidden');
+            connectWebSocket();
+        });
+
+        // --- Auto-resize textarea and show/hide send button ---
+        textInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            
+            if (this.value.trim().length > 0) {
+                sendTextBtn.classList.remove('hidden');
+            } else {
+                sendTextBtn.classList.add('hidden');
+            }
+        });
+
+        function getYouTubeId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        function createYouTubeCard(title, url) {
+            const videoId = getYouTubeId(url);
+            const thumbnailUrl = videoId 
+                ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` 
+                : 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=300&auto=format&fit=crop';
+                
+            return `
+            <div class="mt-3 mb-2 bg-[#111B21] rounded-xl overflow-hidden border border-[#2A3942] max-w-sm hover:border-[#00A884] transition duration-300 shadow-lg">
+                <div class="relative group cursor-pointer" onclick="window.open('${url}', '_blank', 'noopener,noreferrer')">
+                    <img src="${thumbnailUrl}" alt="${escapeHtml(title)}" class="w-full h-44 object-cover opacity-90 group-hover:opacity-100 transition duration-300">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/25 transition duration-300">
+                        <div class="w-14 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition duration-300">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3.5 space-y-3">
+                    <h4 class="font-semibold text-sm text-[#E9EDEF] line-clamp-2">${escapeHtml(title)}</h4>
+                    <div class="flex items-center justify-between pt-1">
+                        <span class="text-xs text-[#8696A0] flex items-center space-x-1.5">
+                            <svg class="w-4 h-4 fill-current text-red-500" viewBox="0 0 24 24">
+                                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.108C19.52 3.5 12 3.5 12 3.5s-7.52 0-9.388.555A3.002 3.002 0 0 0 .502 6.163C0 8.03 0 12 0 12s0 3.97.502 5.837a3.003 3.003 0 0 0 2.11 2.108C4.48 20.5 12 20.5 12 20.5s7.52 0 9.388-.555a3.002 3.002 0 0 0 2.11-2.108C24 15.97 24 12 24 12s0-3.97-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <span class="font-medium">YouTube Demo</span>
+                        </span>
+                        <a href="${url}" target="_blank" rel="noopener noreferrer" class="text-xs bg-[#00A884] hover:bg-[#005C4B] text-white font-medium py-1.5 px-3.5 rounded-full transition duration-300">
+                            Watch Video
+                        </a>
+                    </div>
+                    <div class="pt-2 border-t border-[#2A3942]">
+                        <a href="${url}" target="_blank" rel="noopener noreferrer" class="text-xs text-[#00A884] hover:underline font-semibold block whitespace-normal break-words">
+                            ${escapeHtml(title.includes("Click here") ? title : "▶️ Click here to watch the demonstration video on YouTube")}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        function parseMarkdownAndCards(text) {
+            // Regex for markdown links: [Link Title](URL)
+            const markdownLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+            
+            let lastIndex = 0;
+            let html = "";
+            let match;
+            
+            markdownLinkRegex.lastIndex = 0;
+            
+            while ((match = markdownLinkRegex.exec(text)) !== null) {
+                // Append text before the match
+                html += escapeHtml(text.substring(lastIndex, match.index));
+                
+                const title = match[1];
+                const url = match[2];
+                
+                // Check if it's a YouTube link
+                const isYouTube = url.includes("youtube.com") || url.includes("youtu.be");
+                
+                if (isYouTube) {
+                    html += createYouTubeCard(title, url);
+                } else {
+                    html += `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-[#00A884] hover:underline font-semibold">${escapeHtml(title)}</a>`;
+                }
+                
+                lastIndex = markdownLinkRegex.lastIndex;
+            }
+            
+            html += escapeHtml(text.substring(lastIndex));
+            return html;
+        }
+
+        function finalizeAiTextResponse(element) {
+            const rawText = element.textContent;
+            const parsedHtml = parseMarkdownAndCards(rawText);
+            element.innerHTML = parsedHtml;
+            scrollChatToBottom();
+        }
+
+        function renderYouTubeCard(title, url) {
+            const row = document.createElement('div');
+            row.className = "flex justify-start w-full mb-1 mt-2";
+            const block = document.createElement('div');
+            block.className = "bg-[#202C33] text-[#E9EDEF] rounded-lg px-3 py-2 max-w-[85%] shadow border border-[#2A3942] text-sm break-words";
+            
+            const header = document.createElement('div');
+            header.className = "font-bold text-[#00A884] text-xs mb-1";
+            header.textContent = "OpenCareAI";
+            block.appendChild(header);
+
+            const content = document.createElement('div');
+            content.innerHTML = createYouTubeCard(title, url);
+            block.appendChild(content);
+
+            row.appendChild(block);
+            logContainer.appendChild(row);
+            scrollChatToBottom();
+        }
+
+        let liveUserTranscriptBlock = null;
+
+        function updateLiveUserTranscript(text, finished) {
+            if (!text || !text.trim()) return;
+            if (!liveUserTranscriptBlock) {
+                const row = document.createElement('div');
+                row.className = "flex justify-end w-full mb-1";
+                liveUserTranscriptBlock = document.createElement('div');
+                liveUserTranscriptBlock.className = "bg-[#005C4B]/60 text-gray-300 rounded-lg px-3 py-2 max-w-[80%] shadow border border-[#02735E]/50 text-sm break-words italic";
+                row.appendChild(liveUserTranscriptBlock);
+                logContainer.appendChild(row);
+            }
+            
+            liveUserTranscriptBlock.textContent = text;
+            scrollChatToBottom();
+            
+            if (finished) {
+                // Finalize styles for a completed user transcript bubble
+                liveUserTranscriptBlock.className = "bg-[#005C4B] text-white rounded-lg px-3 py-2 max-w-[80%] shadow border border-[#02735E] text-sm break-words";
+                liveUserTranscriptBlock = null;
+            }
+        }
+
+        function connectWebSocket() {
+            const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+            ws = new WebSocket(`${proto}://${window.location.host}/api/stream?lang=${encodeURIComponent(selectedLanguage)}`);
+            ws.binaryType = "arraybuffer";
+            
+            ws.onmessage = async (event) => { 
+                if (typeof event.data === 'string') {
+                    if (event.data.startsWith('{')) {
+                        try {
+                            const payload = JSON.parse(event.data);
+                            if (payload.type === "input_transcription") {
+                                updateLiveUserTranscript(payload.text, payload.finished);
+                            } else if (payload.type === "output_transcription") {
+                                appendTextAiResponse(payload.text);
+                            } else if (payload.type === "youtube_card") {
+                                renderYouTubeCard(payload.title, payload.url);
+                            } else if (payload.type === "turn_complete") {
+                                if (currentAiTextResponseBlock) {
+                                    finalizeAiTextResponse(currentAiTextResponseBlock);
+                                }
+                                currentAiTextResponseBlock = null;
+                            }
+                        } catch (err) {
+                            console.error("JSON parse error:", err);
+                        }
+                    } else if (event.data === "__TURN_COMPLETE__") {
+                        if (currentAiTextResponseBlock) {
+                            finalizeAiTextResponse(currentAiTextResponseBlock);
+                        }
+                        currentAiTextResponseBlock = null;
+                    } else {
+                        appendTextAiResponse(event.data);
+                    }
+                } else {
+                    schedulePlaybackChunk(event.data); 
+                }
+            };
+            
+            ws.onclose = () => { 
+                // Reconnect if chat is active
+                if (!welcomeScreen.classList.contains('hidden')) return;
+                setTimeout(connectWebSocket, 2000); 
+            };
+        }
+
+        // --- Sending Text ---
+        function sendTextMessage() {
+            const msg = textInput.value.trim();
+            if (!msg || !ws || ws.readyState !== WebSocket.OPEN) return;
+
+            appendUserTextLog(msg);
+            ws.send(JSON.stringify({type: "text", content: msg}));
+            
+            textInput.value = '';
+            textInput.style.height = 'auto';
+            sendTextBtn.classList.add('hidden');
+            currentAiTextResponseBlock = null; // reset AI block
+        }
+
+        sendTextBtn.addEventListener('click', sendTextMessage);
+        textInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendTextMessage();
+            }
+        });
+
+        function appendUserTextLog(text) {
+            const row = document.createElement('div');
+            row.className = "flex justify-end w-full";
+            const card = document.createElement('div');
+            card.className = "bg-[#005C4B] text-white rounded-lg px-3 py-2 max-w-[80%] shadow border border-[#02735E] text-sm break-words";
+            card.textContent = text;
+            row.appendChild(card);
+            logContainer.appendChild(row);
+            scrollChatToBottom();
+        }
+
+        function appendTextAiResponse(text) {
+            if (!currentAiTextResponseBlock) {
+                const row = document.createElement('div');
+                row.className = "flex justify-start w-full mb-1 mt-2";
+                const block = document.createElement('div');
+                block.className = "bg-[#202C33] text-[#E9EDEF] rounded-lg px-3 py-2 max-w-[85%] shadow border border-[#2A3942] text-sm break-words";
+                
+                // Add header for OpenCareAI
+                const header = document.createElement('div');
+                header.className = "font-bold text-[#00A884] text-xs mb-1";
+                header.textContent = "OpenCareAI";
+                block.appendChild(header);
+
+                const content = document.createElement('span');
+                content.className = "whitespace-pre-wrap";
+                content.textContent = text;
+                block.appendChild(content);
+
+                row.appendChild(block);
+                logContainer.appendChild(row);
+                currentAiTextResponseBlock = content;
+            } else {
+                currentAiTextResponseBlock.textContent += text;
+            }
+            scrollChatToBottom();
+        }
+
+        // --- ASYNCHRONOUS DATA CHANNELS ---
+        fileInlet.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            appendUserDocumentLog(file);
+
+            const formData = new FormData();
+            formData.append('file', file);
+            try {
+                await fetch('/api/upload', { method: 'POST', body: formData });
+            } catch (err) { console.error("Upload fault:", err); }
+        });
+
+        function appendUserDocumentLog(file) {
+            const row = document.createElement('div');
+            row.className = "flex justify-end w-full";
+            const card = document.createElement('div');
+            card.className = "bg-[#005C4B] rounded-lg p-2 max-w-[70%] shadow border border-[#02735E] cursor-pointer text-xs";
+            
+            if (file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.className = "rounded max-h-32 object-cover";
+                img.onclick = () => openLightbox(img.src);
+                card.appendChild(img);
+            } else {
+                card.innerHTML = `<div class="flex items-center space-x-2 text-white font-medium p-1"><span>📄</span><span class="truncate">${file.name}</span></div>`;
+            }
+            row.appendChild(card);
+            logContainer.appendChild(row);
+            scrollChatToBottom();
+        }
+
+        openCameraBtn.addEventListener('click', async () => {
+            try {
+                cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+                videoFeed.srcObject = cameraStream;
+                cameraOverlay.classList.remove('hidden');
+            } catch (err) { console.error("Camera open error:", err); }
+        });
+
+        function closeCamera() {
+            if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; }
+            cameraOverlay.classList.add('hidden');
+        }
+        closeCameraBtn.addEventListener('click', closeCamera);
+
+        capturePhotoBtn.addEventListener('click', () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = videoFeed.videoWidth;
+            canvas.height = videoFeed.videoHeight;
+            canvas.getContext('2d').drawImage(videoFeed, 0, 0);
+            
+            canvas.toBlob(async (blob) => {
+                if (blob) {
+                    const file = new File([blob], `capture_${Date.now()}.jpg`, { type: "image/jpeg" });
+                    appendUserDocumentLog(file);
+                    closeCamera();
+
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    await fetch('/api/upload', { method: 'POST', body: formData });
+                }
+            }, 'image/jpeg', 0.7);
+        });
+
+        function openLightbox(src) { lightboxImage.src = src; lightboxModal.classList.remove('hidden'); }
+        function closeLightbox() { lightboxModal.classList.add('hidden'); }
+
+        // --- FULL-DUPLEX DYNAMIC TOGGLE STREAM ENGINE ---
+        async function startStreaming() {
+            isRecording = true;
+            nextPlayTime = 0;
+            createVoiceLogBlock();
+
+            try {
+                if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                
+                if (audioContext.state === 'suspended') await audioContext.resume();
+                if (playbackContext.state === 'suspended') await playbackContext.resume();
+
+                liveStreamTrack = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaStreamSource = audioContext.createMediaStreamSource(liveStreamTrack);
+                
+                await audioContext.audioWorklet.addModule('processor.js');
+                processorNode = new AudioWorkletNode(audioContext, 'audio-processor');
+                
+                mediaStreamSource.connect(processorNode);
+                processorNode.connect(audioContext.destination);
+                
+                processorNode.port.onmessage = (event) => {
+                    if (ws && ws.readyState === WebSocket.OPEN && isRecording) {
+                        const inputData = event.data;
+                        const ratio = audioContext.sampleRate / 16000;
+                        const targetLength = Math.round(inputData.length / ratio);
+                        const pcmBuffer = new Int16Array(targetLength);
+                        
+                        for (let i = 0; i < targetLength; i++) {
+                            const srcIndex = Math.round(i * ratio);
+                            if (srcIndex < inputData.length) {
+                                pcmBuffer[i] = Math.max(-1, Math.min(1, inputData[srcIndex])) * 0x7FFF;
+                            }
+                        }
+                        ws.send(pcmBuffer.buffer);
+                    }
+                };
+
+                callBtn.classList.add('bg-red-600', 'text-white', 'border-red-500');
+                callBtn.classList.remove('text-[#00A884]');
+                waveContainer.classList.remove('hidden');
+            } catch (err) { console.error("Worklet pipeline error:", err); isRecording = false; }
+        }
+
+        function stopStreaming() {
+            isRecording = false;
+
+            if (processorNode) processorNode.disconnect();
+            if (mediaStreamSource) mediaStreamSource.disconnect();
+            if (liveStreamTrack) { liveStreamTrack.getTracks().forEach(t => t.stop()); }
+            
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(new TextEncoder().encode("END_"));
+            }
+            
+            callBtn.classList.remove('bg-red-600', 'text-white', 'border-red-500');
+            callBtn.classList.add('text-[#00A884]');
+            waveContainer.classList.add('hidden');
+        }
+
+        // CONTROL ROUTER CLICK LEVER: Bypasses erratic pointer release events entirely
+        callBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (!isRecording) {
+                startStreaming();
+            } else {
+                stopStreaming();
+            }
+        });
+
+        function createVoiceLogBlock() {
+            const row = document.createElement('div');
+            row.className = "flex justify-end w-full mb-1 mt-2";
+            const block = document.createElement('div');
+            block.className = "bg-[#005C4B] rounded-lg px-3 py-1.5 shadow text-xs flex items-center space-x-2 text-gray-200";
+            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            block.innerHTML = `<span>📞 Voice Call</span> <span class="text-[10px] text-gray-300">(${timestamp})</span>`;
+            row.appendChild(block);
+            logContainer.appendChild(row);
+            scrollChatToBottom();
+        }
+
+        async function schedulePlaybackChunk(arrayBuffer) {
+            try {
+                if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                if (playbackContext.state === 'suspended') await playbackContext.resume();
+                
+                const dataView = new DataView(arrayBuffer);
+                const sampleCount = Math.floor(arrayBuffer.byteLength / 2);
+                if (sampleCount === 0) return;
+
+                const float32Array = new Float32Array(sampleCount);
+                for (let i = 0; i < sampleCount; i++) {
+                    float32Array[i] = dataView.getInt16(i * 2, true) / 32768.0;
+                }
+                
+                const buffer = playbackContext.createBuffer(1, float32Array.length, 24000);
+                buffer.getChannelData(0).set(float32Array);
+                
+                const source = playbackContext.createBufferSource();
+                source.buffer = buffer;
+                source.connect(playbackContext.destination);
+                
+                const currentTime = playbackContext.currentTime;
+                if (nextPlayTime < currentTime) { nextPlayTime = currentTime + 0.01; }
+                
+                source.start(nextPlayTime);
+                nextPlayTime += buffer.duration; 
+            } catch (err) { console.error("Playback error:", err); }
+        }
+
+        function scrollChatToBottom() { 
+            setTimeout(() => {
+                chatViewport.scrollTop = chatViewport.scrollHeight; 
+            }, 50);
+        }
+
+    </script>
+</body>
+</html>

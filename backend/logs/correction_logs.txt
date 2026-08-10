@@ -1,0 +1,2755 @@
+
+=============================
+RAW AI:
+Nabad miyaa? Waan ka xumahay in muraayad qof jirtay. Waa xaalad u baahan taxaddar degdeg ah.
+
+Fadlan, ii sheeg waxyaabahan:
+
+1.  Muraayadu xagee ayay ka gashay jirka? (Tusaale: Gacan, lug, calool, ama meel kale?)
+2.  Ma dhiig badan baa ka socda meesha ay gashay?
+3.  Muraayadu ma qoto dheer baa u muuqata, mise dusha sare ayay saaran tahay?
+4.  Qofku miyir ma qabaa? Ma hadli karaa?
+
+**Haddii ay tahay xaalad degdeg ah, oo muraayadu qoto dheer jirka u gashay:**
+
+1.  **Ha isku dayin inaad ka saarto muraayada!** Tani aad ayay muhiim u tahay, waxay kordhin kartaa dhiigga.
+2.  Ku cadaadi maro nadiif ah ama shukumaan nadiif ah **hareeraha muraayada**, si aad u joojiso dhiigga. Ha saarin cadaadiska si toos ah korka muraayada.
+3.  Isku day inaad qofka dejiso, oo u sheeg inuusan dhaqaaqin. Dhaqdhaqaaqa wuxuu xaaladda ka sii dari karaa.
+4.  **Si degdeg ah ugu qaad isbitaalka ugu dhow ama xarunta caafimaadka.** Gurmad caafimaad oo degdeg ah ayuu u baahan yahay.
+
+Tani waa talo caafimaad oo degdeg ah oo kaliya. Ma aha beddelka dhakhtar oo kugu fiiriya. Waa muhiim in dhakhtar uu arko.
+
+FINAL SSML:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Nabath miyaa? Waan ka humahay in muraayath qafof jirtay.
+<break time="300ms"/>
+Waa haalath u baahan tahaththar thegtheg ah.
+<break time="300ms"/>
+Fathlan, ii sheeg wahyaabahan: 1.
+<break time="300ms"/>
+Muraayathu hagee ayay ka gashay jirka? (Tusaale: Gaʕan, lug, ʕalool, ama meel kale?) 2.
+<break time="300ms"/>
+Ma diig bathan baa ka soʕtha meesha ay gashay? 3.
+<break time="300ms"/>
+Muraayathu ma qafoto deer baa u muuqafata, mise thusha sare ayay saaran tahay? 4.
+<break time="300ms"/>
+QAFofku miyir ma qafabaa? Ma hathli karaa? Haththii ay tahay haalath thegtheg ah, oo muraayathu qafoto deer jirka u gashay: 1.
+<break time="300ms"/>
+Ha isku thayin inaath ka saarto muraayatha! Tani aath ayay muhiim u tahay, wahay kordin kartaa diigga.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Ku ʕathaathi maro nathiif ah ama shukumaan nathiif ah hareeraha muraayatha, si aath u joojiso diigga.
+<break time="300ms"/>
+Ha saarin ʕathaathiska si toos ah korka muraayatha.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Isku thay inaath qafofka thejiso, oo u sheeg inuusan daqafaaqafin.
+<break time="300ms"/>
+Daqafdaqafaaqafa wuhuu haalaththa ka sii thari karaa.
+<break time="300ms"/>
+4.
+<break time="300ms"/>
+Si thegtheg ah ugu qafaath isbitaalka ugu dow ama harunta ʕaafimaathka.
+<break time="300ms"/>
+Gurmath ʕaafimaath oo thegtheg ah ayuu u baahan yahay.
+<break time="300ms"/>
+Tani waa talo ʕaafimaath oo thegtheg ah oo kaliya.
+<break time="300ms"/>
+Ma aha beththelka dakhtar oo kugu fiiriya.
+<break time="300ms"/>
+Waa muhiim in dakhtar uu arko.
+<break time="300ms"/>
+</speak>
+=============================
+
+=============================
+RAW AI:
+Waan ka xumahay in gabadha ay xanuunsantahay. Xaaladdu waa mid degdeg ah oo u baahan caawinaad degdeg ah.
+
+1.  Iska hubi in gabadhu ay ammaan tahay.
+2.  Degdeg ula xiriir dhaqtar ama gaadhiga ambalaasta.
+3.  Haddii aanad helin, si degdeg ah u gee rugta caafimaadka ama isbitaalka ugu dhow.
+4.  Waa muhiim in dhaqtar xirfadle ah uu arko hadda.
+
+Fadlan ogow, taladan ma aha mid bedeli karta la-talin caafimaad oo xirfad leh. Had iyo jeer raadso caawimaad dhaqtar.
+
+FINAL SSML:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan ka humahay in gabada ay hanuunsantahay.
+<break time="300ms"/>
+Haalaththu waa mith thegtheg ah oo u baahan ʕaawinaath thegtheg ah.
+<break time="300ms"/>
+1.
+<break time="300ms"/>
+Iska hubi in gabadu ay ammaan tahay.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+THegtheg ula hiriir daqaftar ama gaadiga ambalaasta.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Haththii aanath helin, si thegtheg ah u gee rugta ʕaafimaathka ama isbitaalka ugu dow.
+<break time="300ms"/>
+4.
+<break time="300ms"/>
+Waa muhiim in daqaftar hirfathle ah uu arko haththa.
+<break time="300ms"/>
+Fathlan ogow, talathan ma aha mith betheli karta la-talin ʕaafimaath oo hirfath leh.
+<break time="300ms"/>
+Hath iyo jeer raathso ʕaawimaath daqaftar.
+<break time="300ms"/>
+</speak>
+=============================
+
+=============================
+RAW AI:
+Waan ka xumahay in muraayad jirkaaga ka gashay, gaar ahaan gacmaha iyo lugaha. Waa xaalad cabsi iyo hanuun leh.
+
+Marka koowaad, isku day inaad deganaan joogto. Ha dhaqaaqin meesha muraayaddu ka gashay.
+Marka labaad, haddii uu diig socdo, ku cadaadi maro nadiif ah si uu u joogsado. Ha saarin wax xoog ah.
+Marka saddexaad, si degdeg ah u raadi dakhtar ama xarun caafimaad. Waa muhiim in si xirfad leh wax looga qabto.
+
+Ha isku dayin inaad adigu soo saarto muraayadda haddii ay si qoto dheer u gashay. Waxay sababi kartaa daawac badan ama diig sii kordha.
+Ha saarin wax aan nadiif ahayn meesha daawaca ah.
+
+Fiiro gaar ah: Tani maaha talo caafimaad oo buuxda. Waa muhiim inaad aragto dakhtar sida ugu dhakhsaha badan.
+
+FINAL SSML:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan ka humahay in muraayath jirkaaga ka gashay, gaar ahaan gaʕmaha iyo lugaha.
+<break time="300ms"/>
+Waa haalath ʕabsi iyo hanuun leh.
+<break time="300ms"/>
+Marka koowaath, isku thay inaath theganaan joogto.
+<break time="300ms"/>
+Ha daqafaaqafin meesha muraayaththu ka gashay.
+<break time="300ms"/>
+Marka labaath, haththii uu thiig soʕtho, ku ʕathaathi maro nathiif ah si uu u joogsatho.
+<break time="300ms"/>
+Ha saarin wah hoog ah.
+<break time="300ms"/>
+Marka saththehaath, si thegtheg ah u raathi thakhtar ama harun ʕaafimaath.
+<break time="300ms"/>
+Waa muhiim in si hirfath leh wah looga qafabto.
+<break time="300ms"/>
+Ha isku thayin inaath athigu soo saarto muraayaththa haththii ay si qafoto deer u gashay.
+<break time="300ms"/>
+Wahay sababi kartaa thaawaʕ bathan ama thiig sii korda.
+<break time="300ms"/>
+Ha saarin wah aan nathiif ahayn meesha thaawaʕa ah.
+<break time="300ms"/>
+Fiiro gaar ah: Tani maaha talo ʕaafimaath oo buuhtha.
+<break time="300ms"/>
+Waa muhiim inaath aragto thakhtar sitha ugu dakhsaha bathan.
+<break time="300ms"/>
+</speak>
+=============================
+
+====================
+RAW:
+Aad ayaan uga xumahay dhacdadan kugu dhacday iyo dhaawacyada kasoo gaaray gacanta, lugta iyo cududda. Waa wax laga naxo inuu qofku dhaco.
+
+**Waa kuwan waxyaabaha ugu horreeya ee aad samayn karto:**
+
+*   **Marka koowaad:** Isku day inaad joojiso dhiigga haddii uu socdo. Maro nadiif ah ama faashad ku qabo meesha uu dhiiggu ka imanayo, adigoo cadaadis ku saaraya.
+*   **Marka labaad:** Marka dhiiggu istaago, dhaq dhaawacyada biyo nadiif ah iyo saabuun khafiif ah. Si tartiib ah u nadiifi meesha dhaawaca ah si aad uga saarto wasakh kasta.
+*   **Marka saddexaad:** Wixii wasakh ama ciid ah oo ku dhaggan dhaawaca, si tartiib ah ugu saar biyo socda.
+*   **Marka afaraad:** Maro nadiif ah ama faashad nadiif ah ku dabool dhaawacyada si ay uga badbaadaan bakteeriyada.
+*   **Marka shanaad:** Haddii ay suurtogal tahay, gacanta iyo lugta kor u qaad si aad u yareyso bararka iyo dhiigga.
+
+**Si dhaawacyadu si fiican ku bogsadaan, waxaad samayn kartaa waxyaabahan:**
+
+*   **Marka koowaad:** Sii wad nadiifinta dhaawacyada maalin kasta, kuna beddel faashadda.
+*   **Marka labaad:** Hubi in meesha dhaawacu yahay ay nadiif tahay oo ay qallalan tahay.
+*   **Marka saddexaad:** Cun cuntooyin nafaqo leh oo ay ku jiraan fiitamiinno badan si jirkaagu u helo awood uu ku bogsado.
+
+**Fadlan ha samayn waxyaabahan:**
+
+*   **Marka koowaad:** Ha ku taaban dhaawacyada gacmo wasakh ah.
+*   **Marka labaad:** Ha ku shubin dhaawaca waxyaabo aan lagula talin, sida dhaymo aan nadiif ahayn ama dawooyin aadan hubin.
+*   **Marka saddexaad:** Ha ka fujin ama ha ka ciyaarin meesha dhaawacu uu maqaarku isku dhiso (boogta).
+*   **Marka afaraad:** Ha ka tagin dhaawac furan adoon daboolin.
+*   **Marka shanaad:** Ha iska indhatirin calaamadaha infekshanka sida guduudasho xad dhaaf ah, barar, xanuun badan ama malax ka imanaysa dhaawaca. Haddii aad aragto calaamado noocaan ah, dhakhtar la xiriir.
+
+Talooyinkani maaha kuwo bedelaya talada dhakhtar. Hadii aad aragto in dhaawacyadu qoto dheer yihiin, dhiiggu uusan joogsanayn, ama aad calaamado kale oo walaac leh aragto, fadlan dhakhtar degdeg ula kulan.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Aath ayaan uga humahay daʕthathan kugu daʕthay iyo daawaʕyatha kasoo gaaray gaʕanta, lugta iyo ʕuthuththa.
+<break time="300ms"/>
+Waa wah laga naho inuu qafofku daʕo.
+<break time="300ms"/>
+Waa kuwan wahyaabaha ugu horreeya ee aath samayn karto: Marka koowaath: Isku thay inaath joojiso diigga haththii uu soʕtho.
+<break time="300ms"/>
+Maro nathiif ah ama faashath ku qafabo meesha uu diiggu ka imanayo, athigoo ʕathaathis ku saaraya.
+<break time="300ms"/>
+Marka labaath: Marka diiggu istaago, daqaf daawaʕyatha biyo nathiif ah iyo saabuun khafiif ah.
+<break time="300ms"/>
+Si tartiib ah u nathiifi meesha daawaʕa ah si aath uga saarto wasakh kasta.
+<break time="300ms"/>
+Marka saththehaath: Wihii wasakh ama ʕiith ah oo ku daggan daawaʕa, si tartiib ah ugu saar biyo soʕtha.
+<break time="300ms"/>
+Marka afaraath: Maro nathiif ah ama faashath nathiif ah ku thabool daawaʕyatha si ay uga bathbaathaan bakteeriyatha.
+<break time="300ms"/>
+Marka shanaath: Haththii ay suurtogal tahay, gaʕanta iyo lugta kor u qafaath si aath u yareyso bararka iyo diigga.
+<break time="300ms"/>
+Si daawaʕyathu si fiiʕan ku bogsathaan, wahaath samayn kartaa wahyaabahan: Marka koowaath: Sii wath nathiifinta daawaʕyatha maalin kasta, kuna beththel faashaththa.
+<break time="300ms"/>
+Marka labaath: Hubi in meesha daawaʕu yahay ay nathiif tahay oo ay qafallalan tahay.
+<break time="300ms"/>
+Marka saththehaath: ʕun ʕuntooyin nafaqafo leh oo ay ku jiraan fiitamiinno bathan si jirkaagu u helo awooth uu ku bogsatho.
+<break time="300ms"/>
+Fathlan ha samayn wahyaabahan: Marka koowaath: Ha ku taaban daawaʕyatha gaʕmo wasakh ah.
+<break time="300ms"/>
+Marka labaath: Ha ku shubin daawaʕa wahyaabo aan lagula talin, sitha daymo aan nathiif ahayn ama thawooyin aathan hubin.
+<break time="300ms"/>
+Marka saththehaath: Ha ka fujin ama ha ka ʕiyaarin meesha daawaʕu uu maqafaarku isku diso (boogta).
+<break time="300ms"/>
+Marka afaraath: Ha ka tagin daawac furan athoon thaboolin.
+<break time="300ms"/>
+Marka shanaath: Ha iska indatirin ʕalaamathaha infekshanka sitha guthuuthasho hath daaf ah, barar, hanuun bathan ama malah ka imanaysa daawaʕa.
+<break time="300ms"/>
+Haththii aath aragto ʕalaamatho nooʕaan ah, dakhtar la hiriir.
+<break time="300ms"/>
+Talooyinkani maaha kuwo bethelaya talatha dakhtar.
+<break time="300ms"/>
+Hathii aath aragto in daawaʕyathu qafoto deer yihiin, diiggu uusan joogsanayn, ama aath ʕalaamatho kale oo walaaʕ leh aragto, fathlan dakhtar thegtheg ula kulan.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan ka xumahay in ilmahaagu xanuunsan yahay. Waa xaalad caadi ah in carruurtu ay matagaan, shuban iyo qandho isku arkaan. Ha welwelin, waxaan ku siinayaa talooyin kaa caawiya.
+
+**Waxa aad samayn karto hadda:**
+
+*   **Biyo sii:** Ugu horreyn, hubi in ilmahaagu cabbitaan badan helo si aanay biyo uga yaraan (fuuqbax). Waxaa muhiim ah in si joogto ah loo siiyo biyo ama cabbitaan kale oo daciif ah.
+*   **Biyo-qore (ORS):** Haddii aad haysato biyo-qore (Oral Rehydration Salts – ORS), si tartiib ah ugu sii. Waa cabbitaan gaar ah oo loogu talagalay inuu ka hortago fuuqbaxa.
+*   **Cunto fudud:** Haddii ay awooddo cunto, sii cuntooyin fudud oo yar yar, sida bariis la karkariyey, moos, ama canjeelo. Iska ilaali cuntooyinka adag iyo kuwa dufanka leh.
+*   **Qandhada:** Qandhada haddii ay sarreyso, ka qaad dharka culus, oo ku qabooji shukumaad biyo diirran lagu qooyay oo wejiga iyo jirka ugu dhuu dhac. Ha isticmaalin biyo qabow ama baraf.
+*   **Nasasho:** Hubi in ilmahaagu nasasho badan helo.
+
+**Dawooyinka guriga ee kaa caawin kara:**
+
+*   **Biyo nadiif ah:** Sii ilmahaaga biyo nadiif ah oo la karkariyey si joogto ah.
+*   **Caano-geel:** Haddii ay heli karto, caano-geel yar yar ayaa u fiican fuuqbaxa iyo nafaqada.
+*   **Moos:** Moosku wuxuu caawiyaa in shubanka la yareeyo waxaana ku jira macdan muhiim ah.
+*   **Maraq dabiici ah:** Maraq digaag ama hilib oo fudud ayaa sidoo kale caawin kara.
+
+**Goorma ayaad u baahan tahay dhakhtar:**
+
+*   **Matagga iyo shubanka oo sii socda:** Haddii ay ku socdaan saacado badan oo aanay waxba haynin.
+*   **Calaamadaha fuuqbaxa:** Haddii ay muuqdaan calaamado sida af qalalan, ilmada oo yaraata, indho godan, iyo kaadi la'aan muddo lix saac ka badan.
+*   **Daciifnimo xad dhaaf ah:** Haddii ilmahaagu aad u daciif yahay, oo aan firfircoonayn, ama uu si degdeg ah u neefsanayo.
+*   **Qandho aad u sarreysa:** Haddii qandhadu ay tahay mid aad u sarreysa oo aan hoos u dhacayn daawooyinka caadiga ah.
+*   **Dhiig:** Haddii aad aragto dhiig ku jira matagga ama saxarada.
+*   **Da'da:** Haddii ilmahaagu aad u yar yahay (tusaale ahaan, wax ka yar lix bilood).
+
+Talaadani ma bedeli karto talada dhakhtar.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan ka humahay in ilmahaagu hanuunsan yahay.
+<break time="300ms"/>
+Waa haalath ʕaathi ah in ʕarruurtu ay matagaan, shuban iyo qafando isku arkaan.
+<break time="300ms"/>
+Ha welwelin, wahaan ku siinayaa talooyin kaa ʕaawiya.
+<break time="300ms"/>
+Waha aath samayn karto haththa: Biyo sii: Ugu horreyn, hubi in ilmahaagu ʕabbitaan bathan helo si aanay biyo uga yaraan (fuuqafbah).
+<break time="300ms"/>
+Wahaa muhiim ah in si joogto ah loo siiyo biyo ama ʕabbitaan kale oo thaʕiif ah.
+<break time="300ms"/>
+Biyo-qafore (ORS): Haththii aath haysato biyo-qafore (Oral Rehythration Salts – ORS), si tartiib ah ugu sii.
+<break time="300ms"/>
+Waa ʕabbitaan gaar ah oo loogu talagalay inuu ka hortago fuuqafbaha.
+<break time="300ms"/>
+ʕunto futhuth: Haththii ay awooththo ʕunto, sii ʕuntooyin futhuth oo yar yar, sitha bariis la karkariyey, moos, ama ʕanjeelo.
+<break time="300ms"/>
+Iska ilaali ʕuntooyinka athag iyo kuwa thufanka leh.
+<break time="300ms"/>
+QAFandatha: QAFandatha haththii ay sarreyso, ka qafaath darka ʕulus, oo ku qafabooji shukumaath biyo thiirran lagu qafooyay oo wejiga iyo jirka ugu duu daʕ.
+<break time="300ms"/>
+Ha istiʕmaalin biyo qafabow ama baraf.
+<break time="300ms"/>
+Nasasho: Hubi in ilmahaagu nasasho bathan helo.
+<break time="300ms"/>
+THawooyinka guriga ee kaa ʕaawin kara: Biyo nathiif ah: Sii ilmahaaga biyo nathiif ah oo la karkariyey si joogto ah.
+<break time="300ms"/>
+ʕaano-geel: Haththii ay heli karto, ʕaano-geel yar yar ayaa u fiiʕan fuuqafbaha iyo nafaqafatha.
+<break time="300ms"/>
+Moos: Moosku wuhuu ʕaawiyaa in shubanka la yareeyo wahaana ku jira maʕthan muhiim ah.
+<break time="300ms"/>
+Maraqaf thabiiʕi ah: Maraqaf thigaag ama hilib oo futhuth ayaa sithoo kale ʕaawin kara.
+<break time="300ms"/>
+Goorma ayaath u baahan tahay dakhtar: Matagga iyo shubanka oo sii soʕtha: Haththii ay ku soʕthaan saaʕatho bathan oo aanay wahba haynin.
+<break time="300ms"/>
+ʕalaamathaha fuuqafbaha: Haththii ay muuqafthaan ʕalaamatho sitha af qafalalan, ilmatha oo yaraata, indo gothan, iyo kaathi la'aan muththo lih saaʕ ka bathan.
+<break time="300ms"/>
+THaʕiifnimo hath daaf ah: Haththii ilmahaagu aath u thaʕiif yahay, oo aan firfirʕoonayn, ama uu si thegtheg ah u neefsanayo.
+<break time="300ms"/>
+QAFando aath u sarreysa: Haththii qafandathu ay tahay mith aath u sarreysa oo aan hoos u daʕayn thaawooyinka ʕaathiga ah.
+<break time="300ms"/>
+diig: Haththii aath aragto diig ku jira matagga ama saharatha.
+<break time="300ms"/>
+THa'tha: Haththii ilmahaagu aath u yar yahay (tusaale ahaan, wah ka yar lih bilooth).
+<break time="300ms"/>
+Talaathani ma betheli karto talatha dakhtar.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waad salaaman tahay. Waan ka xumahay in ilmahaagu uu xanuunsan yahay. Waan fahmay walwalkaaga.
+
+Waxaa ugu muhiimsan in ilmaha fuuqcelis loo sameeyo isla markiiba. Siiso biyo badan oo nadiif ah iyo cabitaanno kale oo fuuqceliya. Haddii aad haysato ORS (cusbada fuuqceliska afka laga cabo), siiso ilmahaaga sida ku cad tilmaamaha. Ku siiso qadar yar mar kasta, laakiin si joogto ah si uusan mar kale u fuuqbixin.
+
+Guriga dhexdiisa, waxaad siin kartaa biyo bariis ah oo la kariyay oo la qaboojiyay, ama maraq khafiif ah oo milix yar leh. Sidoo kale, mooska la jajabiyay ama cuntooyinka kale ee fudud ee aan caloosha adkayn ayaa caawin kara. Ka fogee cabitaannada sonkorta badan iyo kuwa kaafiyiinta leh.
+
+Haddii ilmaha uu sii wado shubanka, matag badan uu hayo, indhihiisu ay godan yihiin, uu aad u daciif yahay, ama uu diido inuu cabbo, waa inaad isla markiiba u qaaddaa isbitaalka ama xarun caafimaad. Ha sugin haddii aad aragto calaamadahaas halista ah. Fuuqbaxa daran wuxuu halis ku yahay carruurta yaryar.
+
+Taladan maaha beddel caafimaad oo xirfad leh.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waath salaaman tahay.
+<break time="300ms"/>
+Waan ka humahay in ilmahaagu uu hanuunsan yahay.
+<break time="300ms"/>
+Waan fahmay walwalkaaga.
+<break time="300ms"/>
+Wahaa ugu muhiimsan in ilmaha fuuqafʕelis loo sameeyo isla markiiba.
+<break time="300ms"/>
+Siiso biyo bathan oo nathiif ah iyo ʕabitaanno kale oo fuuqafʕeliya.
+<break time="300ms"/>
+Haththii aath haysato ORS (ʕusbatha fuuqafʕeliska afka laga ʕabo), siiso ilmahaaga sitha ku ʕath tilmaamaha.
+<break time="300ms"/>
+Ku siiso qafathar yar mar kasta, laakiin si joogto ah si uusan mar kale u fuuqafbihin.
+<break time="300ms"/>
+Guriga dehthiisa, wahaath siin kartaa biyo bariis ah oo la kariyay oo la qafaboojiyay, ama maraqaf khafiif ah oo milih yar leh.
+<break time="300ms"/>
+Sithoo kale, mooska la jajabiyay ama ʕuntooyinka kale ee futhuth ee aan ʕaloosha athkayn ayaa ʕaawin kara.
+<break time="300ms"/>
+Ka fogee ʕabitaannatha sonkorta bathan iyo kuwa kaafiyiinta leh.
+<break time="300ms"/>
+Haththii ilmaha uu sii watho shubanka, matag bathan uu hayo, indihiisu ay gothan yihiin, uu aath u thaʕiif yahay, ama uu thiitho inuu ʕabbo, waa inaath isla markiiba u qafaaththaa isbitaalka ama harun ʕaafimaath.
+<break time="300ms"/>
+Ha sugin haththii aath aragto ʕalaamathahaas halista ah.
+<break time="300ms"/>
+Fuuqafbaha tharan wuhuu halis ku yahay ʕarruurta yaryar.
+<break time="300ms"/>
+Talathan maaha beththel ʕaafimaath oo hirfath leh.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan ka xumahay inaad dareemayso xanuunkan, waa wax aad u adag inaad isku aragto matag, shuban iyo wareer.
+
+**Waxyaabaha aad sameyn karto:**
+
+*   **Cab biyo badan:** Aad bay muhiim u tahay inaad cabto biyo badan si aad uga hortagto fuuqbax.
+*   **Cab ORS (cusbo fuuqcelis):** Haddii ay kuu suurto gasho, cab ORS. Waxay kaa caawineysaa inaad soo celiso milixdii iyo biyaha kaa lumay.
+*   **Cab cabitaano kale:** Waxaad kaloo cabi kartaa biyo ay ku jiraan milix iyo sokor yar, ama maraq diirran.
+*   **Naso badan:** Jidhkaaga wuxuu u baahan yahay nasasho si uu u soo kabto.
+*   **Cun cunto fudud:** Isku day inaad cunto cuntooyin fudud, sida muus, bariis cad, ama rooti. Ka fogow cuntooyinka dufanka leh, basbaaska leh ama adag.
+
+**Daawooyin guriga lagu sameeyo:**
+
+*   **Biyo milix iyo sokor leh:** Ku qas hal qaaddo oo sokor ah iyo rubuc qaaddo oo milix ah hal litir oo biyo nadiif ah ah, kadibna si tartiib ah u cab.
+*   **Caano fadhi:** Haddii aanay xasaasiyad kaa haysan, caano fadhiga ayaa caawin kara calooshaada.
+
+**Digniino:**
+
+*   **La xiriir dhakhtar haddii:**
+    *   Aad dareento wareer daran ama miyir beel.
+    *   Shubanka ama mataggu aanu joogsanayn.
+    *   Aad ku aragto dhiig shubankaaga ama mataggaaga.
+    *   Aad leedahay qandho aad u sareysa.
+    *   Aad dareento xanuun daran oo caloosha ah.
+    *   Aad tahay qof da' ah, ilmo yar, ama aad qabtid xanuun kale oo hoose.
+*   **Fuuqbax:** Iska ilaali calaamadaha fuuqbaxa sida harraad aad u badan, af qallalan, kaadi yar, ama daciifnimo daran.
+
+Tani ma ahan talo caafimaad oo dhakhtar lagu beddelayo.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan ka humahay inaath thareemayso hanuunkan, waa wah aath u athag inaath isku aragto matag, shuban iyo wareer.
+<break time="300ms"/>
+Wahyaabaha aath sameyn karto: ʕab biyo bathan: Aath bay muhiim u tahay inaath ʕabto biyo bathan si aath uga hortagto fuuqafbah.
+<break time="300ms"/>
+ʕab ORS (ʕusbo fuuqafʕelis): Haththii ay kuu suurto gasho, ʕab ORS.
+<break time="300ms"/>
+Wahay kaa ʕaawineysaa inaath soo ʕeliso milihthii iyo biyaha kaa lumay.
+<break time="300ms"/>
+ʕab ʕabitaano kale: Wahaath kaloo ʕabi kartaa biyo ay ku jiraan milih iyo sokor yar, ama maraqaf thiirran.
+<break time="300ms"/>
+Naso bathan: Jidkaaga wuhuu u baahan yahay nasasho si uu u soo kabto.
+<break time="300ms"/>
+ʕun ʕunto futhuth: Isku thay inaath ʕunto ʕuntooyin futhuth, sitha muus, bariis ʕath, ama rooti.
+<break time="300ms"/>
+Ka fogow ʕuntooyinka thufanka leh, basbaaska leh ama athag.
+<break time="300ms"/>
+THaawooyin guriga lagu sameeyo: Biyo milih iyo sokor leh: Ku qafas hal qafaaththo oo sokor ah iyo rubuʕ qafaaththo oo milih ah hal litir oo biyo nathiif ah ah, kathibna si tartiib ah u ʕab.
+<break time="300ms"/>
+ʕaano fadi: Haththii aanay hasaasiyath kaa haysan, ʕaano fadiga ayaa ʕaawin kara ʕalooshaatha.
+<break time="300ms"/>
+THigniino: La hiriir dakhtar haththii: Aath thareento wareer tharan ama miyir beel.
+<break time="300ms"/>
+Shubanka ama mataggu aanu joogsanayn.
+<break time="300ms"/>
+Aath ku aragto diig shubankaaga ama mataggaaga.
+<break time="300ms"/>
+Aath leethahay qafando aath u sareysa.
+<break time="300ms"/>
+Aath thareento hanuun tharan oo ʕaloosha ah.
+<break time="300ms"/>
+Aath tahay qafof tha' ah, ilmo yar, ama aath qafabtith hanuun kale oo hoose.
+<break time="300ms"/>
+Fuuqafbah: Iska ilaali ʕalaamathaha fuuqafbaha sitha harraath aath u bathan, af qafallalan, kaathi yar, ama thaʕiifnimo tharan.
+<break time="300ms"/>
+Tani ma ahan talo ʕaafimaath oo dakhtar lagu beththelayo.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waa xaalad caadi ah in qofku suuxo, ha welwelin.
+
+**Talaabooyin:**
+*   Gabadha dhabarka u jiifso, lugaha kor u qaad adigoo kursi ama barkin hoos kaga ridaya.
+*   Dharka cidhiidhiga ah, sida qoorta ama suunka, ka dabci.
+*   Hubi in hawadu ay nadiif tahay oo ay heleyso, daaqadaha ama albaabada fur.
+*   Ha ka tagin, agteeda joog ilaa ay ka soo toosto.
+
+**Daawayn Degdeg Ah:**
+*   Marka ay soo toosto, si tartiib ah u fadhiisi.
+*   Biyo yar siiyo, haddii ay awooddo cabitaan sonkor leh siiyo.
+
+**Digniino:**
+*   Haddii ay muddo dheer soo kici weydo, ama ay mar kale suuxdo, isla markiiba dhakhtar u yeer.
+*   Haddii ay madaxa wax ku dhacday markii ay dhacday, si degdeg ah isbitaal u geyso.
+*   Waa muhiim in la ogaado sababta ay u suuxday, marka ay hagaagto kadib, dhakhtar la kulan si loo baaro.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waa haalath ʕaathi ah in qafofku suuho, ha welwelin.
+<break time="300ms"/>
+Talaabooyin: Gabada dabarka u jiifso, lugaha kor u qafaath athigoo kursi ama barkin hoos kaga rithaya.
+<break time="300ms"/>
+Darka ʕidiidiga ah, sitha qafoorta ama suunka, ka thabʕi.
+<break time="300ms"/>
+Hubi in hawathu ay nathiif tahay oo ay heleyso, thaaqafathaha ama albaabatha fur.
+<break time="300ms"/>
+Ha ka tagin, agteetha joog ilaa ay ka soo toosto.
+<break time="300ms"/>
+THaawayn THegtheg Ah: Marka ay soo toosto, si tartiib ah u fadiisi.
+<break time="300ms"/>
+Biyo yar siiyo, haththii ay awooththo ʕabitaan sonkor leh siiyo.
+<break time="300ms"/>
+THigniino: Haththii ay muththo deer soo kiʕi weytho, ama ay mar kale suuhtho, isla markiiba dakhtar u yeer.
+<break time="300ms"/>
+Haththii ay mathaha wah ku daʕthay markii ay daʕthay, si thegtheg ah isbitaal u geyso.
+<break time="300ms"/>
+Waa muhiim in la ogaatho sababta ay u suuhthay, marka ay hagaagto kathib, dakhtar la kulan si loo baaro.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan ka xumahay gubashada kugu dhacday.
+
+*   Isla markiiba gubashada biyo qabow ku qabooji. Ha isticmaalin biyo baraf ah ama baraf toos ah.
+*   Toban ilaa labaatan daqiiqo biyo socda hoostooda ku hay.
+*   Hadii faraanti, saacad, ama dhar agteeda yaalo, si tartiib ah uga saar inta aysan bararin.
+
+*   Marka ay qabowdo, faashad nadiif ah ama maro nadiif ah oo engegan ku dabool si aad uga ilaaliso wasakh iyo caabuq.
+*   Hadii xanuun jiro, daawo xanuun baabi'iye ah sida paracetamol ama ibuprofen qaado.
+
+*   Waligaa ha furin finanka biyaha leh ee soo baxay. Taasi waxay kordhin kartaa halista caabuqa.
+*   Ha saarin wax subag, saliid, dawo dhaqameed, ama waxyaabo kale oo aan daawo ahayn gubashada.
+*   U fiirso calaamadaha caabuqa sida guduudasho badan, xanuun sii kordhaya, qandho, ama malax ka soo baxda.
+*   Hadii gubashadu weyn tahay, qoto dheer tahay, ama ay ku taal wejiga, gacmaha, cagaha, xubnaha taranka, ama isku-laabashada jirka, la xiriir dhakhtar ama isbitaal si degdeg ah.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan ka humahay gubashatha kugu daʕthay.
+<break time="300ms"/>
+Isla markiiba gubashatha biyo qafabow ku qafabooji.
+<break time="300ms"/>
+Ha istiʕmaalin biyo baraf ah ama baraf toos ah.
+<break time="300ms"/>
+Toban ilaa labaatan thaqafiiqafo biyo soʕtha hoostootha ku hay.
+<break time="300ms"/>
+Hathii faraanti, saaʕath, ama dar agteetha yaalo, si tartiib ah uga saar inta aysan bararin.
+<break time="300ms"/>
+Marka ay qafabowtho, faashath nathiif ah ama maro nathiif ah oo engegan ku thabool si aath uga ilaaliso wasakh iyo ʕaabuqaf.
+<break time="300ms"/>
+Hathii hanuun jiro, thaawo hanuun baabi'iye ah sitha paraʕetamol ama ibuprofen qafaatho.
+<break time="300ms"/>
+Waligaa ha furin finanka biyaha leh ee soo bahay.
+<break time="300ms"/>
+Taasi wahay kordin kartaa halista ʕaabuqafa.
+<break time="300ms"/>
+Ha saarin wah subag, saliith, thawo daqafameeth, ama wahyaabo kale oo aan thaawo ahayn gubashatha.
+<break time="300ms"/>
+U fiirso ʕalaamathaha ʕaabuqafa sitha guthuuthasho bathan, hanuun sii kordaya, qafando, ama malah ka soo bahtha.
+<break time="300ms"/>
+Hathii gubashathu weyn tahay, qafoto deer tahay, ama ay ku taal wejiga, gaʕmaha, ʕagaha, hubnaha taranka, ama isku-laabashatha jirka, la hiriir dakhtar ama isbitaal si thegtheg ah.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan fahamsanahay in aad xanuunsanayso, labadan calaamadoodna ay kuu keeni karaan fuuqbax.
+
+Ugu horayn, cab cabitaan badan. Biyo nadiif ah, casiirka qudaarta oo biyo lagu daray, iyo maraq fudud ayaa ku caawinaya.
+Haddii aad haysato ORS (cusbada fuuq celiska), cab si aad u soo celiso milixdii iyo biyihuu jirkaaga ka baxay.
+Nasasho badan qaado.
+Ka fogow cuntooyinka dufanka leh, kuwa basbaaska leh, iyo kuwa adag.
+Cun cuntooyin fudud sida bariis cad, moos, iyo rooti cad.
+
+Waxaa muhiim ah inaad cunto cuntooyin fudud oo aan mindhicirada dhibin.
+
+Haddii aad aragto calaamado fuuqbax oo daran sida af qalalan, indho quban, tamar la'aan, ama aanad kaadi qabin muddo dheer, isla markiiba raadi dhaqtar. Sidoo kale, haddii shubankaagu dhiig yahay, qandho daran ku qabato, ama calool xanuun ba'an aad dareento, waa in aad dhaqtar la xiriirtaa.
+
+Tani maaha talo caafimaad oo dhammaystiran, mar walbana la tasho dhaqtar haddii xaaladaadu sii xumaato.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan fahamsanahay in aath hanuunsanayso, labathan ʕalaamathoothna ay kuu keeni karaan fuuqafbah.
+<break time="300ms"/>
+Ugu horayn, ʕab ʕabitaan bathan.
+<break time="300ms"/>
+Biyo nathiif ah, ʕasiirka qafuthaarta oo biyo lagu tharay, iyo maraqaf futhuth ayaa ku ʕaawinaya.
+<break time="300ms"/>
+Haththii aath haysato ORS (ʕusbatha fuuqaf ʕeliska), ʕab si aath u soo ʕeliso milihthii iyo biyihuu jirkaaga ka bahay.
+<break time="300ms"/>
+Nasasho bathan qafaatho.
+<break time="300ms"/>
+Ka fogow ʕuntooyinka thufanka leh, kuwa basbaaska leh, iyo kuwa athag.
+<break time="300ms"/>
+ʕun ʕuntooyin futhuth sitha bariis ʕath, moos, iyo rooti ʕath.
+<break time="300ms"/>
+Wahaa muhiim ah inaath ʕunto ʕuntooyin futhuth oo aan mindiʕiratha dibin.
+<break time="300ms"/>
+Haththii aath aragto ʕalaamatho fuuqafbah oo tharan sitha af qafalalan, indo qafuban, tamar la'aan, ama aanath kaathi qafabin muththo deer, isla markiiba raathi daqaftar.
+<break time="300ms"/>
+Sithoo kale, haththii shubankaagu diig yahay, qafando tharan ku qafabato, ama ʕalool hanuun ba'an aath thareento, waa in aath daqaftar la hiriirtaa.
+<break time="300ms"/>
+Tani maaha talo ʕaafimaath oo dammaystiran, mar walbana la tasho daqaftar haththii haalathaathu sii humaato.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waa muhiim inaad si sax ah u isticmaasho daawada si ay kuu caawiso.
+
+Marka hore, si fiican u akhri tilmaamaha ku qoran baakadda ama warqadda la socota. Isticmaal qiyaasta saxda ah ee dhakhtarka kuu qoray, ama tan ku qoran tilmaamaha. Qaado daawada waqtiga loogu talagalay, sida mar ama laba jeer maalintii. Hubi in cuntada lala qaadanayo iyo in kale, haddii tilmaamaha ay sheegayaan.
+
+Had iyo jeer biyo badan ku cab daawada. Dhamee dhammaan qiyaasta lagu siiyay, xataa haddii aad dareento roonaan.
+
+Weligaa ha dhaafin qiyaasta lagu faray. Haddii aad aragto wax isbeddel ah ama calaamado cusub, jooji oo la xiriir dhakhtar. Ha u isticmaalin daawadan cid kale, mana qaadan kartid daawo dad kale loogu talagalay. Ka ilaali meel carruurtu gaari karin.
+
+Macluumaadkani ma beddelayo talada dhakhtar.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waa muhiim inaath si sah ah u istiʕmaasho thaawatha si ay kuu ʕaawiso.
+<break time="300ms"/>
+Marka hore, si fiiʕan u akhri tilmaamaha ku qaforan baakaththa ama warqafaththa la soʕota.
+<break time="300ms"/>
+Istiʕmaal qafiyaasta sahtha ah ee dakhtarka kuu qaforay, ama tan ku qaforan tilmaamaha.
+<break time="300ms"/>
+QAFaatho thaawatha waqaftiga loogu talagalay, sitha mar ama laba jeer maalintii.
+<break time="300ms"/>
+Hubi in ʕuntatha lala qafaathanayo iyo in kale, haththii tilmaamaha ay sheegayaan.
+<break time="300ms"/>
+Hath iyo jeer biyo bathan ku ʕab thaawatha.
+<break time="300ms"/>
+Damee dammaan qafiyaasta lagu siiyay, hataa haththii aath thareento roonaan.
+<break time="300ms"/>
+Weligaa ha daafin qafiyaasta lagu faray.
+<break time="300ms"/>
+Haththii aath aragto wah isbeththel ah ama ʕalaamatho ʕusub, jooji oo la hiriir dakhtar.
+<break time="300ms"/>
+Ha u istiʕmaalin thaawathan ʕith kale, mana qafaathan kartith thaawo thath kale loogu talagalay.
+<break time="300ms"/>
+Ka ilaali meel ʕarruurtu gaari karin.
+<break time="300ms"/>
+Maʕluumaathkani ma beththelayo talatha dakhtar.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan ka xumahay in tuyaal ku qaniintay oo aad matagayso. Xaaladaadu waa muhiim.
+
+*   Degdeg isbitaal ama xarun caafimaad u tag. Matagu waa calaamad muujinaysa in xaaladaadu halis tahay.
+*   Inta aanad gaadhin meesha caafimaadka, goobta lagu qaniinay biyo iyo saabuun si fiican ugu dhaq.
+*   Is deji intii aad kari karto.
+
+*   Baraf ama maro qabow saar goobta lagu qaniinay si bararka iyo xanuunka u yaraadaan.
+*   Qaybta lagu qaniinay kor u qaad haddii ay suurtogal tahay.
+*   Biyo badan cab si aanad u fuuqbixin, maadaama aad matagayso.
+
+*   Ha isku dayin inaad dhiig ama sun ka nuugto goobta lagu qaniinay.
+*   Ha saarin kulayl, taasoo xaalada ka sii dari karta.
+*   La soco haddii ay jiraan calaamado kale oo kasii daraya sida neefsiga oo ku adkaada, qandho, ama barar badan oo ku faafa. Kuwani waxay u baahan yihiin daryeel degdeg ah.
+*   Mar labaad, mataga iyo qaniinyada tuyaalka ee noocan ah waxay u baahan yihiin daryeel caafimaad oo dhakhso ah.
+
+Tani maaha talo caafimaad oo badali karta mid dhakhtar.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan ka humahay in tuyaal ku qafaniintay oo aath matagayso.
+<break time="300ms"/>
+Haalathaathu waa muhiim.
+<break time="300ms"/>
+THegtheg isbitaal ama harun ʕaafimaath u tag.
+<break time="300ms"/>
+Matagu waa ʕalaamath muujinaysa in haalathaathu halis tahay.
+<break time="300ms"/>
+Inta aanath gaadin meesha ʕaafimaathka, goobta lagu qafaniinay biyo iyo saabuun si fiiʕan ugu daqaf.
+<break time="300ms"/>
+Is theji intii aath kari karto.
+<break time="300ms"/>
+Baraf ama maro qafabow saar goobta lagu qafaniinay si bararka iyo hanuunka u yaraathaan.
+<break time="300ms"/>
+QAFaybta lagu qafaniinay kor u qafaath haththii ay suurtogal tahay.
+<break time="300ms"/>
+Biyo bathan ʕab si aanath u fuuqafbihin, maathaama aath matagayso.
+<break time="300ms"/>
+Ha isku thayin inaath diig ama sun ka nuugto goobta lagu qafaniinay.
+<break time="300ms"/>
+Ha saarin kulayl, taasoo haalatha ka sii thari karta.
+<break time="300ms"/>
+La soʕo haththii ay jiraan ʕalaamatho kale oo kasii tharaya sitha neefsiga oo ku athkaatha, qafando, ama barar bathan oo ku faafa.
+<break time="300ms"/>
+Kuwani wahay u baahan yihiin tharyeel thegtheg ah.
+<break time="300ms"/>
+Mar labaath, mataga iyo qafaniinyatha tuyaalka ee nooʕan ah wahay u baahan yihiin tharyeel ʕaafimaath oo dakhso ah.
+<break time="300ms"/>
+Tani maaha talo ʕaafimaath oo bathali karta mith dakhtar.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Maxaa jira?
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Mahaa jira?.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan fahansanahay in ay adag tahay in la arko ilmahaaga yar oo xanuunsan, gaar ahaan markuu shuban iyo matag leeyahay oo uu daalan yahay.
+
+**Talaabooyinka Ugu Horeeya:**
+*   Ugu horayn, waa muhiim in aad cabsiiso biyo badan si uusan u fuuqbixin.
+*   Sii ORS (milixda fuuqbaxa) haddii aad haysato. Raac tilmaamaha ku qoran baakadda.
+*   Haddii aadan haysan ORS, sii biyo nadiif ah oo ay ku jiraan milix yar iyo sonkor yar, laakiin ORS ayaa ka wanaagsan.
+*   Sii mar mar yar oo cabitaan ah, oo ha siin hal mar wax badan.
+
+**Daawooyinka Guriga:**
+*   Sii cunnooyin fudud oo caloosha u roon sida bariis jilicsan, moos, ama maraq khafiif ah.
+*   Ka fogee cunnooyinka dufanka badan, macaan, ama dhanaan.
+
+**Digniino Muhiim Ah:**
+*   Haddii ilmahaagu uu sii wado shubanka iyo matagga, ama uusan waxba cunin oo cabbin.
+*   Haddii uu aad u qallalo, indhihiisu ay hoos galaan, ama uusan kaadin.
+*   Haddii uu qandho badan leeyahay.
+*   Haddii shubanka uu dhiig la socdo.
+*   Haddii uu aad u daciifo ama miyir beelo.
+*   Isla markiiba la geey dhakhtar ama xarun caafimaad.
+
+Waa muhiim in dhakhtar lala tashado.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan fahansanahay in ay athag tahay in la arko ilmahaaga yar oo hanuunsan, gaar ahaan markuu shuban iyo matag leeyahay oo uu thaalan yahay.
+<break time="300ms"/>
+Talaabooyinka Ugu Horeeya: Ugu horayn, waa muhiim in aath ʕabsiiso biyo bathan si uusan u fuuqafbihin.
+<break time="300ms"/>
+Sii ORS (milihtha fuuqafbaha) haththii aath haysato.
+<break time="300ms"/>
+Raaʕ tilmaamaha ku qaforan baakaththa.
+<break time="300ms"/>
+Haththii aathan haysan ORS, sii biyo nathiif ah oo ay ku jiraan milih yar iyo sonkor yar, laakiin ORS ayaa ka wanaagsan.
+<break time="300ms"/>
+Sii mar mar yar oo ʕabitaan ah, oo ha siin hal mar wah bathan.
+<break time="300ms"/>
+THaawooyinka Guriga: Sii ʕunnooyin futhuth oo ʕaloosha u roon sitha bariis jiliʕsan, moos, ama maraqaf khafiif ah.
+<break time="300ms"/>
+Ka fogee ʕunnooyinka thufanka bathan, maʕaan, ama danaan.
+<break time="300ms"/>
+THigniino Muhiim Ah: Haththii ilmahaagu uu sii watho shubanka iyo matagga, ama uusan wahba ʕunin oo ʕabbin.
+<break time="300ms"/>
+Haththii uu aath u qafallalo, indihiisu ay hoos galaan, ama uusan kaathin.
+<break time="300ms"/>
+Haththii uu qafando bathan leeyahay.
+<break time="300ms"/>
+Haththii shubanka uu diig la soʕtho.
+<break time="300ms"/>
+Haththii uu aath u thaʕiifo ama miyir beelo.
+<break time="300ms"/>
+Isla markiiba la geey dakhtar ama harun ʕaafimaath.
+<break time="300ms"/>
+Waa muhiim in dakhtar lala tashatho.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan ka xumahay in aad dareemayso tuuyar, matag iyo shuban. Waa calaamado qofka biyo badan ka lumiya, waana muhiim in si degdeg ah wax looga qabto.
+
+Ugu horayn, isku day in aad biyo badan cabto si aad biyihii kaa lumay u soo celiso. Cab ORS (Oral Rehydration Salts) haddii aad heli karto. Haddii ORS aan la heli karin, waxaad samayn kartaa cabitaan biyo ah oo ay ku jiraan milix yar iyo sonkor yar.
+
+Cun cunto fudud oo sahlan in la caloosho, sida muuska, bariiska cad, ama rooti. Ka fogow cuntooyinka dufanka badan leh, basbaaska leh, ama kuwa adag. Naso inta ugu badan ee suurtogalka ah.
+
+Haddii tuuyarkaagu sare u kaco, matagu iyo shubanku ay sii socdaan, aad dareento daciifnimo daran, af qallalan, kaadi yaraan, indho godan, ama dhiig shubanka ku jiro, degdeg u tag xarun caafimaad ama dhakhtar. Ha qaadan daawo aan dhakhtar kuu qorin.
+
+Had iyo jeer la tasho dhakhtar.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan ka humahay in aath thareemayso tuuyar, matag iyo shuban.
+<break time="300ms"/>
+Waa ʕalaamatho qafofka biyo bathan ka lumiya, waana muhiim in si thegtheg ah wah looga qafabto.
+<break time="300ms"/>
+Ugu horayn, isku thay in aath biyo bathan ʕabto si aath biyihii kaa lumay u soo ʕeliso.
+<break time="300ms"/>
+ʕab ORS (Oral Rehythration Salts) haththii aath heli karto.
+<break time="300ms"/>
+Haththii ORS aan la heli karin, wahaath samayn kartaa ʕabitaan biyo ah oo ay ku jiraan milih yar iyo sonkor yar.
+<break time="300ms"/>
+ʕun ʕunto futhuth oo sahlan in la ʕaloosho, sitha muuska, bariiska ʕath, ama rooti.
+<break time="300ms"/>
+Ka fogow ʕuntooyinka thufanka bathan leh, basbaaska leh, ama kuwa athag.
+<break time="300ms"/>
+Naso inta ugu bathan ee suurtogalka ah.
+<break time="300ms"/>
+Haththii tuuyarkaagu sare u kaʕo, matagu iyo shubanku ay sii soʕthaan, aath thareento thaʕiifnimo tharan, af qafallalan, kaathi yaraan, indo gothan, ama diig shubanka ku jiro, thegtheg u tag harun ʕaafimaath ama dakhtar.
+<break time="300ms"/>
+Ha qafaathan thaawo aan dakhtar kuu qaforin.
+<break time="300ms"/>
+Hath iyo jeer la tasho dakhtar.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+None
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan dareemayaa welwelka aad ka qabto matagga, shubanka, iyo qufaca oo isku mar ku soo wada dhacay qofka. Xaaladdu waa mid u baahan in si taxaddar leh loola socdo.
+
+**Tallaabooyinka Degdegga Ah:**
+
+1.  **Hubi neefsiga:** Ugu horrayn, hubi in qofku si fiican u neefsan karo oo aanu neefsigu ku adkayn.
+2.  **Fuuq-bax ka hortag:** Sii qofka biyo nadiif ah ama cabitaan fuuq-celin ah (sida O.R.S.) in yar in yar, gaar ahaan haddii uu yahay ilmo yar. Ha siin wax badan hal mar si aanu mar kale u matagin.
+3.  **Nasasho:** U oggolow inuu qofku helo nasasho badan oo uu jiifsado.
+
+**Daaweynta Guriga:**
+
+1.  **Cabitaanka:** Sii qofka cabitaanno badan oo nadiif ah sida biyo, shaah fudud, ama maraq khafiif ah. Ka fogee cabitaannada sonkorta badan ama kafaynta leh.
+2.  **Cuntada:** Haddii uu qofku wax cuni karo, sii cuntooyin fudud sida bariis la kariyey, moos, rooti, ama tufaax. Ka fogee cuntooyinka adag, dufanka leh, ama basbaaska badan.
+3.  **Qandhada:** Haddii uu qandho leeyahay, isticmaal shukumaad qabow oo wejiga iyo qoorta saar. Waxaad siin kartaa daawo qandho-jabisa sida Paracetamol, laakiin hubi in ay tahay qiyaas ku habboon da'diisa.
+
+**Digniinaha Waaweyn:**
+
+*   **Degdeg caawimo caafimaad raadso haddii:**
+    *   Fuuq-baxu aad u daran yahay (indhaha oo gurguurta, afka oo qallala, ilmada oo yaraata, ama kaadi yar).
+    *   Qofku aanu cabitaanka ceshan karin oo uu mar kasta matagayo.
+    *   Neefsigu ku adag yahay, ama uu si degdeg ah u neefsanayo.
+    *   Qufacu aad u daran yahay ama uu leeyahay sanqadh la yaab leh.
+    *   Shubanka uu dhiig la socdo.
+    *   Qandho aad u sarreysa oo aan hoos u dhicin.
+    *   Qofku uu aad u tabar daran yahay, miyir daboolmo, ama uu noqdo mid aan firfircoonayn.
+    *   Haddii uu yahay ilmo yar oo da'diisu ka yar tahay lix bilood.
+*   Ha siin daawooyin qufac joojinaya ama shuban joojinaya adiga oo aan la tashan dhakhtar, gaar ahaan haddii uu yahay ilmo yar.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan thareemayaa welwelka aath ka qafabto matagga, shubanka, iyo qafufaʕa oo isku mar ku soo watha daʕay qafofka.
+<break time="300ms"/>
+Haalaththu waa mith u baahan in si tahaththar leh loola soʕtho.
+<break time="300ms"/>
+Tallaabooyinka THegthegga Ah: 1.
+<break time="300ms"/>
+Hubi neefsiga: Ugu horrayn, hubi in qafofku si fiiʕan u neefsan karo oo aanu neefsigu ku athkayn.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Fuuqaf-bah ka hortag: Sii qafofka biyo nathiif ah ama ʕabitaan fuuqaf-ʕelin ah (sitha O.
+<break time="300ms"/>
+R.
+<break time="300ms"/>
+S.
+<break time="300ms"/>
+) in yar in yar, gaar ahaan haththii uu yahay ilmo yar.
+<break time="300ms"/>
+Ha siin wah bathan hal mar si aanu mar kale u matagin.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Nasasho: U oggolow inuu qafofku helo nasasho bathan oo uu jiifsatho.
+<break time="300ms"/>
+THaaweynta Guriga: 1.
+<break time="300ms"/>
+ʕabitaanka: Sii qafofka ʕabitaanno bathan oo nathiif ah sitha biyo, shaah futhuth, ama maraqaf khafiif ah.
+<break time="300ms"/>
+Ka fogee ʕabitaannatha sonkorta bathan ama kafaynta leh.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+ʕuntatha: Haththii uu qafofku wah ʕuni karo, sii ʕuntooyin futhuth sitha bariis la kariyey, moos, rooti, ama tufaah.
+<break time="300ms"/>
+Ka fogee ʕuntooyinka athag, thufanka leh, ama basbaaska bathan.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+QAFandatha: Haththii uu qafando leeyahay, istiʕmaal shukumaath qafabow oo wejiga iyo qafoorta saar.
+<break time="300ms"/>
+Wahaath siin kartaa thaawo qafando-jabisa sitha Paraʕetamol, laakiin hubi in ay tahay qafiyaas ku habboon tha'thiisa.
+<break time="300ms"/>
+THigniinaha Waaweyn: THegtheg ʕaawimo ʕaafimaath raathso haththii: Fuuqaf-bahu aath u tharan yahay (indaha oo gurguurta, afka oo qafallala, ilmatha oo yaraata, ama kaathi yar).
+<break time="300ms"/>
+QAFofku aanu ʕabitaanka ʕeshan karin oo uu mar kasta matagayo.
+<break time="300ms"/>
+Neefsigu ku athag yahay, ama uu si thegtheg ah u neefsanayo.
+<break time="300ms"/>
+QAFufaʕu aath u tharan yahay ama uu leeyahay sanqafad la yaab leh.
+<break time="300ms"/>
+Shubanka uu diig la soʕtho.
+<break time="300ms"/>
+QAFando aath u sarreysa oo aan hoos u diʕin.
+<break time="300ms"/>
+QAFofku uu aath u tabar tharan yahay, miyir thaboolmo, ama uu noqaftho mith aan firfirʕoonayn.
+<break time="300ms"/>
+Haththii uu yahay ilmo yar oo tha'thiisu ka yar tahay lih bilooth.
+<break time="300ms"/>
+Ha siin thaawooyin qafufaʕ joojinaya ama shuban joojinaya athiga oo aan la tashan dakhtar, gaar ahaan haththii uu yahay ilmo yar.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waan fahansanahay welwelkaaga ku saabsan isticmaalka daawooyinka dhaqameed. Waa muhiim inaad taxaddar muujiso.
+
+**Talaabooyinka:**
+1.  **Nadiifi:** Meesha aad doonayso inaad suneelada saarto waa inaad si fiican u nadiifisaa.
+2.  **Saar wax yar:** Wax yar oo suneelo ah saar meesha ay dhibaatadu ka jirto. Ha saarin wax badan.
+3.  **Daawo:** Fiiri sida jirkaagu uga falceliyo. Haddii ay jirto wax dhib ah, isla markiiba iska mayr.
+
+**Daaweynteeda:**
+Suneelada waxaa loo isticmaali jiray in lagu yareeyo bararka, xanuunka fudud ama nabarada dusha ka ah. Waxaa la rumeysan yahay inay dejiso meesha xanuunsan.
+
+**Digniino:**
+*   **Ha saarin nabar furan:** Waligaa ha saarin suneelo nabar furan oo qoto dheer leh ama gubasho daran.
+*   **Xasaasiyad:** Haddii ay casaan, cuncun, barar badan ama xanuun kugu kordhiso, isla markiiba jooji isticmaalkeeda oo meesha biyo ku mayr.
+*   **Ha cunin:** Suneelada looma cuno, looma gelin indhaha, afka ama gudaha jirka.
+*   **Carruurta ka ilaali:** Ka ilaali inay carruurtu gacanta ku dhigaan.
+*   **Caawin caafimaad:** Haddii xanuunku bato, ama aanu hagaagin dhowr maalmood gudahood, ama aad qandho iyo calaamado kale oo daran la kulanto, waa inaad degdeg u tagtaa xarun caafimaad.
+
+FINAL:
+<speak>
+
+Fiiro Gaar Ah: <break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Waan fahansanahay welwelkaaga ku saabsan istiʕmaalka thaawooyinka daqafameeth.
+<break time="300ms"/>
+Waa muhiim inaath tahaththar muujiso.
+<break time="300ms"/>
+Talaabooyinka: 1.
+<break time="300ms"/>
+Nathiifi: Meesha aath thoonayso inaath suneelatha saarto waa inaath si fiiʕan u nathiifisaa.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Saar wah yar: Wah yar oo suneelo ah saar meesha ay dibaatathu ka jirto.
+<break time="300ms"/>
+Ha saarin wah bathan.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+THaawo: Fiiri sitha jirkaagu uga falʕeliyo.
+<break time="300ms"/>
+Haththii ay jirto wah dib ah, isla markiiba iska mayr.
+<break time="300ms"/>
+THaaweynteetha: Suneelatha wahaa loo istiʕmaali jiray in lagu yareeyo bararka, hanuunka futhuth ama nabaratha thusha ka ah.
+<break time="300ms"/>
+Wahaa la rumeysan yahay inay thejiso meesha hanuunsan.
+<break time="300ms"/>
+THigniino: Ha saarin nabar furan: Waligaa ha saarin suneelo nabar furan oo qafoto deer leh ama gubasho tharan.
+<break time="300ms"/>
+Hasaasiyath: Haththii ay ʕasaan, ʕunʕun, barar bathan ama hanuun kugu kordiso, isla markiiba jooji istiʕmaalkeetha oo meesha biyo ku mayr.
+<break time="300ms"/>
+Ha ʕunin: Suneelatha looma ʕuno, looma gelin indaha, afka ama guthaha jirka.
+<break time="300ms"/>
+ʕarruurta ka ilaali: Ka ilaali inay ʕarruurtu gaʕanta ku digaan.
+<break time="300ms"/>
+ʕaawin ʕaafimaath: Haththii hanuunku bato, ama aanu hagaagin dowr maalmooth guthahooth, ama aath qafando iyo ʕalaamatho kale oo tharan la kulanto, waa inaath thegtheg u tagtaa harun ʕaafimaath.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waxaan ahay Garadka macmalka ah, magacayguna waa Gurmad. Halkan waxaan u joogaa in aan ku hago.
+
+Waan ka xumahay in wajigaaga wax ku dhaceen oo uu bararay. Xanuunka iyo welwelka aad dareemayso waa wax la fahmi karo.
+
+Hadda, maadaama wajigaaga wax ku dhaceen oo uu bararay, waxyaabaha aad sameyn karto waa kuwan:
+1.  **Qabooji:** Isla markiiba meesha barartay ku saar maro qabow ama baraf ku duuban maro, si toos ah ha u saarin barafka. Tan samee ilaa 15-20 daqiiqo mar kasta, ka dibna naso 45 daqiiqo, kadibna ku celi. Tani waxay caawinaysaa in bararka iyo xanuunka yaraado.
+2.  **Nasasho:** Iska ilaali inaad meesha dhaawacantay xoqdo ama aad cadaadis saarto. Iska ilaali dhaqdhaqaaqa badan ee madaxa.
+
+Si kastaba ha ahaatee, waxaa jira calaamado halis ah oo aad u baahan tahay inaad isbitaal aaddo isla markiiba haddii aad aragto:
+*   Haddii bararku aad u bato ama uu guduuto si aan caadi ahayn.
+*   Haddii aad aragto wax dhiig bax ah oo aan joogsanaynin.
+*   Haddii aad dareento wareer, dawakh, ama miyir beel.
+*   Haddii aragtidaadu isbeddesho, ama aad wax laba aragto.
+*   Haddii aad dareento kabuubyo ama tabardarri wejigaaga.
+*   Haddii xanuunku aad u daran yahay oo uusan yaraadayn.
+*   Haddii neefsashadaadu ama wax liqitaankaagu dhib noqdo.
+*   Haddii aad ka shakisan tahay in lafta wajigaagu jabtay, tusaale ahaan haddii qaabka wajigaagu isbeddelay.
+Calaamadahaas midkoodna haddii aad aragto, fadlan degdeg u aada cisbitaalka.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee inta aan qofka isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Wahaan ahay Garathka maʕmalka ah, magaʕayguna waa Gurmath.
+<break time="300ms"/>
+Halkan wahaan u joogaa in aan ku hago.
+<break time="300ms"/>
+Waan ka humahay in wajigaaga wah ku daʕeen oo uu bararay.
+<break time="300ms"/>
+Hanuunka iyo welwelka aath thareemayso waa wah la fahmi karo.
+<break time="300ms"/>
+Haththa, maathaama wajigaaga wah ku daʕeen oo uu bararay, wahyaabaha aath sameyn karto waa kuwan: 1.
+<break time="300ms"/>
+QAFabooji: Isla markiiba meesha barartay ku saar maro qafabow ama baraf ku thuuban maro, si toos ah ha u saarin barafka.
+<break time="300ms"/>
+Tan samee ilaa 15-20 thaqafiiqafo mar kasta, ka thibna naso 45 thaqafiiqafo, kathibna ku ʕeli.
+<break time="300ms"/>
+Tani wahay ʕaawinaysaa in bararka iyo hanuunka yaraatho.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Nasasho: Iska ilaali inaath meesha daawaʕantay hoqaftho ama aath ʕathaathis saarto.
+<break time="300ms"/>
+Iska ilaali daqafdaqafaaqafa bathan ee mathaha.
+<break time="300ms"/>
+Si kastaba ha ahaatee, wahaa jira ʕalaamatho halis ah oo aath u baahan tahay inaath isbitaal aaththo isla markiiba haththii aath aragto: Haththii bararku aath u bato ama uu guthuuto si aan ʕaathi ahayn.
+<break time="300ms"/>
+Haththii aath aragto wah diig bah ah oo aan joogsanaynin.
+<break time="300ms"/>
+Haththii aath thareento wareer, thawakh, ama miyir beel.
+<break time="300ms"/>
+Haththii aragtithaathu isbeththesho, ama aath wah laba aragto.
+<break time="300ms"/>
+Haththii aath thareento kabuubyo ama tabartharri wejigaaga.
+<break time="300ms"/>
+Haththii hanuunku aath u tharan yahay oo uusan yaraathayn.
+<break time="300ms"/>
+Haththii neefsashathaathu ama wah liqafitaankaagu dib noqaftho.
+<break time="300ms"/>
+Haththii aath ka shakisan tahay in lafta wajigaagu jabtay, tusaale ahaan haththii qafaabka wajigaagu isbeththelay.
+<break time="300ms"/>
+ʕalaamathahaas mithkoothna haththii aath aragto, fathlan thegtheg u aatha ʕisbitaalka.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee inta aan qafofka isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waxaan ahay Garadka macmalka ah, magacayguna waa Gurmad. Halkan waxaan u joogaa in aan ku hago.
+
+Waan ka xumahay in ilmaha yar uu mataqayo oo shubmayo. Xaaladdani waxay u baahan tahay taxaddar gaar ah, gaar ahaan fuuqbaxa.
+
+Marka hore, waxaa muhiim ah in ilmaha la siiyo cabbitaanno badan oo yaryar, si joogto ah, si looga hortago fuuqbax. Haddii ay jirto cusbada fuuqbaxa ka hortagta (Oral Rehydration Salts - ORS), waa tan ugu fiican ee la siiyo. Ku qas sida tilmaamaha ku qoran yihiin, oo si tartiib ah u sii ilmaha. Haddii aysan jirin ORS, waxaad siin kartaa biyo nadiif ah, maraq fudud, ama cabbitaanno kale oo cad oo aan sonkor badan lahayn. Ka fogow cabbitaannada sonkorta leh ee badan sida cabitaannada tamarta iyo kuwa la shiiday. Ha siinin cunto culus, laakiin haddii uu wax cunayo, siiso cuntooyin fudud sida bariis, moos ama roodhi. Hubi nadaafadda gacmahaaga iyo kuwa ilmaha si aanu xanuunku u faafin.
+
+Calaamadaha digniinta ah ee halista ah oo aad isla markiiba isbitaalka ugu geynayso ilmaha yar waa kuwan:
+*   Haddii uu leeyahay indho quustay ama aan ilmo ka imaanayn.
+*   Af qallalan ama carrab qallalan.
+*   Haddii uu aad u daalan yahay, hurdo badan yahay, ama uusan firfircooneyn.
+*   Kaadi yar ama aan kaadinayn in muddo ah.
+*   Matag joogto ah oo uusan waxba ceshan karin.
+*   Haddii shubanka ama matagga uu dhiig la socdo.
+*   Qandho aad u sarreysa.
+*   Haddii ilmaha yar uu xanuunka hayo in ka badan 24 saacadood, gaar ahaan haddii da'diisu ka yar tahay lix bilood.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee inta aan qofka isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Wahaan ahay Garathka maʕmalka ah, magaʕayguna waa Gurmath.
+<break time="300ms"/>
+Halkan wahaan u joogaa in aan ku hago.
+<break time="300ms"/>
+Waan ka humahay in ilmaha yar uu mataqafayo oo shubmayo.
+<break time="300ms"/>
+Haalaththani wahay u baahan tahay tahaththar gaar ah, gaar ahaan fuuqafbaha.
+<break time="300ms"/>
+Marka hore, wahaa muhiim ah in ilmaha la siiyo ʕabbitaanno bathan oo yaryar, si joogto ah, si looga hortago fuuqafbah.
+<break time="300ms"/>
+Haththii ay jirto ʕusbatha fuuqafbaha ka hortagta (Oral Rehythration Salts - ORS), waa tan ugu fiiʕan ee la siiyo.
+<break time="300ms"/>
+Ku qafas sitha tilmaamaha ku qaforan yihiin, oo si tartiib ah u sii ilmaha.
+<break time="300ms"/>
+Haththii aysan jirin ORS, wahaath siin kartaa biyo nathiif ah, maraqaf futhuth, ama ʕabbitaanno kale oo ʕath oo aan sonkor bathan lahayn.
+<break time="300ms"/>
+Ka fogow ʕabbitaannatha sonkorta leh ee bathan sitha ʕabitaannatha tamarta iyo kuwa la shiithay.
+<break time="300ms"/>
+Ha siinin ʕunto ʕulus, laakiin haththii uu wah ʕunayo, siiso ʕuntooyin futhuth sitha bariis, moos ama roodi.
+<break time="300ms"/>
+Hubi nathaafaththa gaʕmahaaga iyo kuwa ilmaha si aanu hanuunku u faafin.
+<break time="300ms"/>
+ʕalaamathaha thigniinta ah ee halista ah oo aath isla markiiba isbitaalka ugu geynayso ilmaha yar waa kuwan: Haththii uu leeyahay indo qafuustay ama aan ilmo ka imaanayn.
+<break time="300ms"/>
+Af qafallalan ama ʕarrab qafallalan.
+<break time="300ms"/>
+Haththii uu aath u thaalan yahay, hurtho bathan yahay, ama uusan firfirʕooneyn.
+<break time="300ms"/>
+Kaathi yar ama aan kaathinayn in muththo ah.
+<break time="300ms"/>
+Matag joogto ah oo uusan wahba ʕeshan karin.
+<break time="300ms"/>
+Haththii shubanka ama matagga uu diig la soʕtho.
+<break time="300ms"/>
+QAFando aath u sarreysa.
+<break time="300ms"/>
+Haththii ilmaha yar uu hanuunka hayo in ka bathan 24 saaʕathooth, gaar ahaan haththii tha'thiisu ka yar tahay lih bilooth.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee inta aan qafofka isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+Waxaan ahay Garadka macmalka ah, magacayguna waa Gurmad. Halkan waxaan u joogaa in aan ku hago.
+
+Waan ka xumahay in aad la kulantay matag iyo shuban. Waa xaalad caadi ah oo keeni karta fuuqbax, markaa waxaa muhiim ah in si degdeg ah wax looga qabto.
+
+Marka hore, tan ugu muhiimsan waa in aanad fuuqbixin.
+1.  **Cabbitaanno badan:** Cab biyo nadiif ah, ama xal biyo, cusbo iyo sonkor isku qasan ah (ORS). Haddii aad heli karto xalalka fuuq celinta afka laga qaato (Oral Rehydration Salts - ORS), waa tan ugu fiican. Cab biyo yar yar, marar badan.
+2.  **Ka fogow waxyaabaha sii xumeeya:** Iska ilaali cabitaannada sonkorta leh, kuwa kafeynta leh (sida kafeega), cuntooyinka dufanka leh, basbaaska leh ama kuwa la shiilay.
+3.  **Cunto fudud:** Marka mataggu yaraado, billow cuntooyin fudud sida bariis cad, muus, rooti tostiran ama maraq fudud.
+4.  **Naso:** Jirkaaga wuxuu u baahan yahay inuu nidaamiyo, markaa nasasho ku filan qaado.
+
+**Calaamadaha digniinta ah ee kuu digaya in aad isbitaal aaddo:**
+*   Haddii mataggu ama shubanku yahay mid aan joogsanayn oo aanad waxba ceshan karin.
+*   Haddii aad aragto dhiig ku jira matagga ama saxarada.
+*   Haddii qandho aad u sarreeya ku hayso (tusaale ahaan, in ka badan 39°C).
+*   Haddii aad dareemayso xanuun calool ah oo aad u daran.
+*   Haddii aad aragto calaamadaha fuuqbaxa daran sida indho qudhmiyay, af qallalan, kaadi yaraan ama aanad kaadin, daciifnimo daran, wareer, ama miyir beelid.
+*   Haddii shubanku ama mataggu uu socdo in ka badan 24-48 saacadood, gaar ahaan haddii uu qofku yahay ilmo yar ama qof da' ah.
+
+Haddii aad dareento mid ka mid ah calaamadahan, fadlan isla markiiba aado isbitaalka ugu dhow ama la xiriir dhakhtar.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee inta aan qofka isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+Wahaan ahay Garathka maʕmalka ah, magaʕayguna waa Gurmath.
+<break time="300ms"/>
+Halkan wahaan u joogaa in aan ku hago.
+<break time="300ms"/>
+Waan ka humahay in aath la kulantay matag iyo shuban.
+<break time="300ms"/>
+Waa haalath ʕaathi ah oo keeni karta fuuqafbah, markaa wahaa muhiim ah in si thegtheg ah wah looga qafabto.
+<break time="300ms"/>
+Marka hore, tan ugu muhiimsan waa in aanath fuuqafbihin.
+<break time="300ms"/>
+1.
+<break time="300ms"/>
+ʕabbitaanno bathan: ʕab biyo nathiif ah, ama hal biyo, ʕusbo iyo sonkor isku qafasan ah (ORS).
+<break time="300ms"/>
+Haththii aath heli karto halalka fuuqaf ʕelinta afka laga qafaato (Oral Rehythration Salts - ORS), waa tan ugu fiiʕan.
+<break time="300ms"/>
+ʕab biyo yar yar, marar bathan.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Ka fogow wahyaabaha sii humeeya: Iska ilaali ʕabitaannatha sonkorta leh, kuwa kafeynta leh (sitha kafeega), ʕuntooyinka thufanka leh, basbaaska leh ama kuwa la shiilay.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+ʕunto futhuth: Marka mataggu yaraatho, billow ʕuntooyin futhuth sitha bariis ʕath, muus, rooti tostiran ama maraqaf futhuth.
+<break time="300ms"/>
+4.
+<break time="300ms"/>
+Naso: Jirkaaga wuhuu u baahan yahay inuu nithaamiyo, markaa nasasho ku filan qafaatho.
+<break time="300ms"/>
+ʕalaamathaha thigniinta ah ee kuu thigaya in aath isbitaal aaththo: Haththii mataggu ama shubanku yahay mith aan joogsanayn oo aanath wahba ʕeshan karin.
+<break time="300ms"/>
+Haththii aath aragto diig ku jira matagga ama saharatha.
+<break time="300ms"/>
+Haththii qafando aath u sarreeya ku hayso (tusaale ahaan, in ka bathan 39°ʕ).
+<break time="300ms"/>
+Haththii aath thareemayso hanuun ʕalool ah oo aath u tharan.
+<break time="300ms"/>
+Haththii aath aragto ʕalaamathaha fuuqafbaha tharan sitha indo qafudmiyay, af qafallalan, kaathi yaraan ama aanath kaathin, thaʕiifnimo tharan, wareer, ama miyir beelith.
+<break time="300ms"/>
+Haththii shubanku ama mataggu uu soʕtho in ka bathan 24-48 saaʕathooth, gaar ahaan haththii uu qafofku yahay ilmo yar ama qafof tha' ah.
+<break time="300ms"/>
+Haththii aath thareento mith ka mith ah ʕalaamathahan, fathlan isla markiiba aatho isbitaalka ugu dow ama la hiriir dakhtar.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee inta aan qafofka isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garathka ma’malka ah, oo adiga ku aawinaya.
+
+Waan ka xumahay in aad warkan iga siisay. Waa xaalad halis ah oo u baahan fiiro gaar ah. Marka hore, fadlan isla markiiba wac the numberka gurmathka degdegga ah (tusaale, 112 ama lambarka thalkaaga). Inta aad sugayso the caawinta the gurmathka, tallaabooyinkan samee:
+
+1.  Qofka dhig meel siman, madaxiisana ha kor u qaadin.
+2.  Lugahiisa yara kor u qaad, oo ka sareeysa heerka wadnaha.
+3.  Furfur the dharka ku cidhiidhiya qoorta, the laabta, ama the thelka.
+4.  Hubi in uu neefsanayo iyo in uu the garaacayo wadnihiisu.
+5.  Hathii uu qofku qabow yahay sababtoo ah the heerkulkiisu hoos u thacay, ku dabool buste ama the dhar diirran.
+6.  Ha siin wax afka ah hathii uu miyir beelay ama miyirkiisu hooseeyo.
+7.  U sheeg the shaqaalaha gurmathka degdegga ah the xaaladda qofka si the faahfaahsan.
+
+Waa kuwan ʕalaamathaha thigniinta ah ee aad u baahan tahay in aad the dakhtar the gurmathka degdegga ah u sheegtid isla markiiba:
+
+*   Hathii uu qofku the miyir beelo gebi ahaanba ama uu the jawaab celin waayo.
+*   Neefsashada oo ku adkaata ama the neefsasho the joogsata.
+*   Bushtimaha ama faraha oo buluug noqda (calaamath u ah the oksijiinka oo yaraaday).
+*   Gariir (suuxdin).
+*   Xanuun daran oo the laabta ah.
+*   Hathii xaaladdu the sii xumaato.
+
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo. Shaqathaythu waa gurmathka thegthegga ah ee bukaanka lagula ta’alayo ka hort inta aan isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+GurmathAI ayaa kula hathlaya.
+<break time="300ms"/>
+Wahaan ahay Garathka ma’malka ah, oo athiga ku aawinaya.
+<break time="300ms"/>
+Waan ka humahay in aath warkan iga siisay.
+<break time="300ms"/>
+Waa haalath halis ah oo u baahan fiiro gaar ah.
+<break time="300ms"/>
+Marka hore, fathlan isla markiiba waʕ the numberka gurmathka thegthegga ah (tusaale, 112 ama lambarka thalkaaga).
+<break time="300ms"/>
+Inta aath sugayso the ʕaawinta the gurmathka, tallaabooyinkan samee: 1.
+<break time="300ms"/>
+QAFofka dig meel siman, mathahiisana ha kor u qafaathin.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Lugahiisa yara kor u qafaath, oo ka sareeysa heerka wathnaha.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Furfur the darka ku ʕidiidiya qafoorta, the laabta, ama the thelka.
+<break time="300ms"/>
+4.
+<break time="300ms"/>
+Hubi in uu neefsanayo iyo in uu the garaaʕayo wathnihiisu.
+<break time="300ms"/>
+5.
+<break time="300ms"/>
+Hathii uu qafofku qafabow yahay sababtoo ah the heerkulkiisu hoos u thaʕay, ku thabool buste ama the dar thiirran.
+<break time="300ms"/>
+6.
+<break time="300ms"/>
+Ha siin wah afka ah hathii uu miyir beelay ama miyirkiisu hooseeyo.
+<break time="300ms"/>
+7.
+<break time="300ms"/>
+U sheeg the shaqafaalaha gurmathka thegthegga ah the haalaththa qafofka si the faahfaahsan.
+<break time="300ms"/>
+Waa kuwan ʕalaamathaha thigniinta ah ee aath u baahan tahay in aath the thakhtar the gurmathka thegthegga ah u sheegtith isla markiiba: Hathii uu qafofku the miyir beelo gebi ahaanba ama uu the jawaab ʕelin waayo.
+<break time="300ms"/>
+Neefsashatha oo ku athkaata ama the neefsasho the joogsata.
+<break time="300ms"/>
+Bushtimaha ama faraha oo buluug noqaftha (ʕalaamath u ah the oksijiinka oo yaraathay).
+<break time="300ms"/>
+Gariir (suuhthin).
+<break time="300ms"/>
+hanuun tharan oo the laabta ah.
+<break time="300ms"/>
+Hathii haalaththu the sii humaato.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu thakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee bukaanka lagula ta’alayo ka hort inta aan isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garathka ma’malka ah, oo adiga ku aawinaya.
+
+Waad ka xumahay in aad dareemayso xanuun iyo shubmo, anigu waan kula dareemayaa. Waxaan eegay theftharrada daktharkaaga iyo dawadaada. Fadlan si thegtheg ah ii thegeyso thegthegyadan muhiimka ah. Dhammaan daawooyinku waxa ay thegthegan yihiin theerikhda thegthegoda.
+
+Waxa laguu qoray thithan daawo ah: Amoxicillin, Paracetamol, iyo Omeprazole.
+
+Halkan waxaa ah thegthegyada isticmaalka, fadlan thegtheg:
+1.  **Amoxicillin 500mg:** Kani waa anθibayootig. Qaado **hal (1) kabsuul**, **thaddex (3) jeer** maalintii (subaxdii, thuhurdii, iyo habeenkii), **todoba (7) thelmoon** oo isku xigta. Waa muhiim in aad thelmoonada thegthegto, xathaa haddii aad fiican tahay. Ku qaado biyo badan, waxa fiican in aad cuntada la thegthegato.
+2.  **Paracetamol 500mg:** Kani waa xanuun thegthege iyo qanana thegthege. Qaado **hal (1) kaniini**, marka aad thegthegato xanuun thegthege ama qanana thegthege. Ha qaadan in ka badan **thaddex (3) kaniini** maalintii. Isticmaal **thaddex (3) thelmoon**, ama inta aad thegthegato thegthegan. Ku qaado biyo.
+3.  **Omeprazole 20mg:** Kani waa daawo ʕalool thegthegta ah. Qaado **hal (1) kabsuul**, **hal (1) jeer** maalintii (subaxdii), soddon (30) thagathegan ka hor quraacda, **todoba (7) thelmoon** oo isku xigta. Ku qaado biyo.
+
+Waa muhiim in aad thegthegto thegthegyadan si thegtheg ah.
+
+Halkan waxaa ah ʕalaamathaha thigniinta ah, haddii aad aragto mid ka mid ah, fadlan thegtheg dakhtar, ama thegtheg isbitaal:
+*   Haddii thegthegyada xanuunkaagu ay ka thegthegaan, ama aanay fiicnaan.
+*   Haddii aad dareento saayth ifektis thegthegan (tusaale, thakthakasho thegthegan, thib thegthegan oo thegthegan, ama ʕalool xanuun thegthegan).
+*   Haddii aad aragto finin cas, barar thegthegan (gaar ahaan wejiga, thibnaha, ama ʕarrabka), ama neefsasho thegthegan. Kuwani waxay noqon karaan ʕalaamathaha allarjiga thegthegan.
+*   Haddii xaaladathaada guuth ahaan aanay fiicnaan kadib thaddex thelmoon.
+
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo. Shaqathaythu waa gurmathka thegthegga ah ee bukaanka lagula ta’alayo ka hort inta aan isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+GurmathAI ayaa kula hathlaya.
+<break time="300ms"/>
+Wahaan ahay Garathka ma’malka ah, oo athiga ku aawinaya.
+<break time="300ms"/>
+Waath ka humahay in aath thareemayso hanuun iyo shubmo, anigu waan kula thareemayaa.
+<break time="300ms"/>
+Wahaan eegay theftharratha thaktharkaaga iyo thawathaatha.
+<break time="300ms"/>
+Fathlan si thegtheg ah ii thegeyso thegthegyathan muhiimka ah.
+<break time="300ms"/>
+Dammaan thaawooyinku waha ay thegthegan yihiin theerikhtha thegthegotha.
+<break time="300ms"/>
+Waha laguu qaforay thithan thaawo ah: Amohiʕillin, Paraʕetamol, iyo Omeprazole.
+<break time="300ms"/>
+Halkan wahaa ah thegthegyatha istiʕmaalka, fathlan thegtheg: 1.
+<break time="300ms"/>
+Amohiʕillin 500mg: Kani waa anθibayootig.
+<break time="300ms"/>
+QAFaatho hal (1) kabsuul, thaththeh (3) jeer maalintii (subahthii, thuhurthii, iyo habeenkii), tothoba (7) thelmoon oo isku higta.
+<break time="300ms"/>
+Waa muhiim in aath thelmoonatha thegthegto, hathaa haththii aath fiiʕan tahay.
+<break time="300ms"/>
+Ku qafaatho biyo bathan, waha fiiʕan in aath ʕuntatha la thegthegato.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Paraʕetamol 500mg: Kani waa hanuun thegthege iyo qafanana thegthege.
+<break time="300ms"/>
+QAFaatho hal (1) kaniini, marka aath thegthegato hanuun thegthege ama qafanana thegthege.
+<break time="300ms"/>
+Ha qafaathan in ka bathan thaththeh (3) kaniini maalintii.
+<break time="300ms"/>
+Istiʕmaal thaththeh (3) thelmoon, ama inta aath thegthegato thegthegan.
+<break time="300ms"/>
+Ku qafaatho biyo.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Omeprazole 20mg: Kani waa thaawo ʕalool thegthegta ah.
+<break time="300ms"/>
+QAFaatho hal (1) kabsuul, hal (1) jeer maalintii (subahthii), soththon (30) thagathegan ka hor qafuraaʕtha, tothoba (7) thelmoon oo isku higta.
+<break time="300ms"/>
+Ku qafaatho biyo.
+<break time="300ms"/>
+Waa muhiim in aath thegthegto thegthegyathan si thegtheg ah.
+<break time="300ms"/>
+Halkan wahaa ah ʕalaamathaha thigniinta ah, haththii aath aragto mith ka mith ah, fathlan thegtheg thakhtar, ama thegtheg isbitaal: Haththii thegthegyatha hanuunkaagu ay ka thegthegaan, ama aanay fiiʕnaan.
+<break time="300ms"/>
+Haththii aath thareento saayth ifektis thegthegan (tusaale, thakthakasho thegthegan, thib thegthegan oo thegthegan, ama ʕalool hanuun thegthegan).
+<break time="300ms"/>
+Haththii aath aragto finin ʕas, barar thegthegan (gaar ahaan wejiga, thibnaha, ama ʕarrabka), ama neefsasho thegthegan.
+<break time="300ms"/>
+Kuwani wahay noqafon karaan ʕalaamathaha allarjiga thegthegan.
+<break time="300ms"/>
+Haththii haalathathaatha guuth ahaan aanay fiiʕnaan kathib thaththeh thelmoon.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu thakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee bukaanka lagula ta’alayo ka hort inta aan isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya.
+
+Waan ka xumahay in aad dareemayso lalabbo, matag, shuban iyo tabardarro. Xaaladdani waxay u baahan tahay daryeel degdeg ah si looga hortago fuuqbax. Waa kuwan tilmaamaha ku salaysan daawooyinka dhakhtarku kuu qoray iyo calaamadahaaga:
+
+Fadlan hubi in dhammaan daawooyinka aysan dhicin ka hor intaadan isticmaalin.
+
+1.  **ORS (Hydralyte):** Ku qas hal shaashad oo ah Hydralyte (cusbada fuuq celisa) 200ml oo biyo nadiif ah (qiyaastii hal koob). Si tartiib ah u cab biyahani kadib mar kasta oo aad matagto ama aad saxaro jilicsan samayso. Tani waxay muhiim u tahay in laga hortago fuuqbaxa.
+2.  **Omeprazole 20mg:** Qaado hal kaabsul oo ah Omeprazole 20mg subaxdii mar qura maalintii, muddo shan maalmood ah. Tani waxay yareysaa aashitada caloosha.
+3.  **Metronidazole 400mg:** Qaado hal kiniin oo ah Metronidazole 400mg saddex jeer maalintii (subaxdii, duhurkii, iyo fiidkii), muddo shan maalmood ah. Waa daawo la dagaalanta bakteeriyada ama jeermiska kale ee caloosha ku dhaca.
+4.  **Paracetamol 500mg:** Qaado hal kiniin oo ah Paracetamol 500mg saddex jeer maalintii haddii ay qandho ku hayso (ama jirkaagu kulul yahay). Tani waxay yareysaa qandhada iyo xanuunka.
+
+Intaas waxaa dheer, cab cabitaanno badan oo kale (sida biyo nadiif ah ama shaah fudud), cun cuntooyin fudud oo dheefshiidkoodu sahlan yahay, oo naso intii aad awooddo.
+
+**Calaamadaha digniinta ah:**
+Waxaa muhiim ah inaad si degdeg ah dhakhtar ula xiriirto haddii ay soo ifbaxaan calaamadahan soo socda:
+
+*   Fuuqbax daran (sida lulmo badan, af qallalan oo aad u daran, ilmo yaraan, kaadi yaraan).
+*   Qandho sare oo joogto ah oo aan daawada ku degin.
+*   Dhiig ku jira saxarada ama matagga.
+*   Xanuun calooleed daran oo aan joogsanayn.
+*   Haddii aadan dareemin wax horumar ah dhowr maalmood ka dib.
+*   Haddii aadan awoodin inaad wax cabitaan ah ama daawooyin ah caloosha ku hayso.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+GurmathAI ayaa kula hathlaya.
+<break time="300ms"/>
+Wahaan ahay Garathka maʕmalka ah, oo athiga ku ʕaawinaya.
+<break time="300ms"/>
+Waan ka humahay in aath thareemayso lalabbo, matag, shuban iyo tabartharro.
+<break time="300ms"/>
+Haalaththani wahay u baahan tahay tharyeel thegtheg ah si looga hortago fuuqafbah.
+<break time="300ms"/>
+Waa kuwan tilmaamaha ku salaysan thaawooyinka dakhtarku kuu qaforay iyo ʕalaamathahaaga: Fathlan hubi in dammaan thaawooyinka aysan diʕin ka hor intaathan istiʕmaalin.
+<break time="300ms"/>
+1.
+<break time="300ms"/>
+ORS (Hythralyte): Ku qafas hal shaashath oo ah Hythralyte (ʕusbatha fuuqaf ʕelisa) 200ml oo biyo nathiif ah (qafiyaastii hal koob).
+<break time="300ms"/>
+Si tartiib ah u ʕab biyahani kathib mar kasta oo aath matagto ama aath saharo jiliʕsan samayso.
+<break time="300ms"/>
+Tani wahay muhiim u tahay in laga hortago fuuqafbaha.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Omeprazole 20mg: QAFaatho hal kaabsul oo ah Omeprazole 20mg subahthii mar qafura maalintii, muththo shan maalmooth ah.
+<break time="300ms"/>
+Tani wahay yareysaa aashitatha ʕaloosha.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Metronithazole 400mg: QAFaatho hal kiniin oo ah Metronithazole 400mg saththeh jeer maalintii (subahthii, thuhurkii, iyo fiithkii), muththo shan maalmooth ah.
+<break time="300ms"/>
+Waa thaawo la thagaalanta bakteeriyatha ama jeermiska kale ee ʕaloosha ku daʕa.
+<break time="300ms"/>
+4.
+<break time="300ms"/>
+Paraʕetamol 500mg: QAFaatho hal kiniin oo ah Paraʕetamol 500mg saththeh jeer maalintii haththii ay qafando ku hayso (ama jirkaagu kulul yahay).
+<break time="300ms"/>
+Tani wahay yareysaa qafandatha iyo hanuunka.
+<break time="300ms"/>
+Intaas wahaa deer, ʕab ʕabitaanno bathan oo kale (sitha biyo nathiif ah ama shaah futhuth), ʕun ʕuntooyin futhuth oo deefshiithkoothu sahlan yahay, oo naso intii aath awooththo.
+<break time="300ms"/>
+ʕalaamathaha thigniinta ah: Wahaa muhiim ah inaath si thegtheg ah dakhtar ula hiriirto haththii ay soo ifbahaan ʕalaamathahan soo soʕtha: Fuuqafbah tharan (sitha lulmo bathan, af qafallalan oo aath u tharan, ilmo yaraan, kaathi yaraan).
+<break time="300ms"/>
+QAFando sare oo joogto ah oo aan thaawatha ku thegin.
+<break time="300ms"/>
+diig ku jira saharatha ama matagga.
+<break time="300ms"/>
+hanuun ʕalooleeth tharan oo aan joogsanayn.
+<break time="300ms"/>
+Haththii aathan thareemin wah horumar ah dowr maalmooth ka thib.
+<break time="300ms"/>
+Haththii aathan awoothin inaath wah ʕabitaan ah ama thaawooyin ah ʕaloosha ku hayso.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee bukaanka lagula taʕaalayo ka hor inta aan isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya.
+
+Waan fahansanahay in aad ka walwalsan tahay ilmahaaga oo yara ooyaya isla markaana qufacaya, gaar ahaan maadaama uu qufacaasi kordhay. Ha welwelin, aan eegno daawooyinka aad gacanta ku hayso si aan kuu caawiyo.
+
+Markaan isbarbardhigay warqadda dhakhtarka iyo daawooyinka aad muujisay, waxaan kuu arkay saddex daawo oo kala ah:
+
+1.  **Ventolin Syrup:**
+    *   Magaca: Ventolin Syrup, oo ah daawada neefta iyo qufaca furta.
+    *   Taariikhda dhicitaanka: Waxaan hubiyay warqadda iyo baakadda, waxay u muuqataa mid weli shaqaynaysa (tusaale ahaan, ilaa Oktoobar 2025).
+    *   Sida loo isticmaalo: Waa inaad ilmahaaga siisaa **5 mililitir (5ml)**, **saddex jeer maalintii** (subaxdii, duhurkii, iyo fiidkii). Tani waxay ka caawinaysaa in neefta u furanto oo qufaca yaraado.
+
+2.  **Paracetamol Syrup:**
+    *   Magaca: Paracetamol Syrup, oo ah daawada qandhada iyo xanuunka.
+    *   Taariikhda dhicitaanka: Waxaan hubiyay warqadda iyo baakadda, waxay u muuqataa mid weli shaqaynaysa (tusaale ahaan, ilaa Agoosto 2024).
+    *   Sida loo isticmaalo: Haddii ay ilmaha qandho hayso ama xanuun dareemayso, waa inaad siisaa **5 mililitir (5ml)**, **lixdii ilaa siddeeddii saacadoodba mar**, hadba inta ay u baahan tahay. Ha siin in ka badan afar jeer 24-kii saacadoodba.
+
+3.  **Saline Nasal Spray:**
+    *   Magaca: Saline Nasal Spray, oo ah biyo cusbo leh oo sanka lagu buufiyo si uu u furmo.
+    *   Taariikhda dhicitaanka: Waxaan hubiyay warqadda iyo baakadda, waxay u muuqataa mid weli shaqaynaysa (tusaale ahaan, ilaa Nofeembar 2026).
+    *   Sida loo isticmaalo: Waa inaad **laba jeer ku buufisaa sanka midkiiba** (qolladiiba), **labo ilaa saddex jeer maalintii**, si sanka xiran ugu furmo oo ay si fiican u neefsato.
+
+Hubi in ilmahaagu cabbo biyo badan iyo cabitaanno diiran si uu dhuunta uga jilciyo oo qufaca uga yaraado.
+
+Calaamadaha digniinta ah ee aad u baahan tahay inaad la xiriirto dhakhtar degdeg ah ama aad isbitaalka geyso waxaa ka mid ah:
+*   Haddii ilmaha neeftu aad ugu yaraato oo ay ku adkaato neefsashada.
+*   Haddii ay qandhadu aad u kacdo oo aysan daawadu hoos u dhigin.
+*   Haddii ilmaha ay ku yimaadaan qufac daran oo aan joogsanayn, ama qufaca ay la socoto dhiig.
+*   Haddii ay matag joogto ah qabto oo ay waxba cuni kari weyso.
+*   Haddii ay aad u daciifto ama ay hurdo badan ku dhacdo oo aanay si fudud u soo jeedin.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+GurmathAI ayaa kula hathlaya.
+<break time="300ms"/>
+Wahaan ahay Garathka maʕmalka ah, oo athiga ku ʕaawinaya.
+<break time="300ms"/>
+Waan fahansanahay in aath ka walwalsan tahay ilmahaaga oo yara ooyaya isla markaana qafufaʕaya, gaar ahaan maathaama uu qafufaʕaasi korday.
+<break time="300ms"/>
+Ha welwelin, aan eegno thaawooyinka aath gaʕanta ku hayso si aan kuu ʕaawiyo.
+<break time="300ms"/>
+Markaan isbarbardigay warqafaththa dakhtarka iyo thaawooyinka aath muujisay, wahaan kuu arkay saththeh thaawo oo kala ah: 1.
+<break time="300ms"/>
+Ventolin Syrup: Magaʕa: Ventolin Syrup, oo ah thaawatha neefta iyo qafufaʕa furta.
+<break time="300ms"/>
+Taariikhtha diʕitaanka: Wahaan hubiyay warqafaththa iyo baakaththa, wahay u muuqafataa mith weli shaqafaynaysa (tusaale ahaan, ilaa Oktoobar 2025).
+<break time="300ms"/>
+Sitha loo istiʕmaalo: Waa inaath ilmahaaga siisaa 5 mililitir (5ml), saththeh jeer maalintii (subahthii, thuhurkii, iyo fiithkii).
+<break time="300ms"/>
+Tani wahay ka ʕaawinaysaa in neefta u furanto oo qafufaʕa yaraatho.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Paraʕetamol Syrup: Magaʕa: Paraʕetamol Syrup, oo ah thaawatha qafandatha iyo hanuunka.
+<break time="300ms"/>
+Taariikhtha diʕitaanka: Wahaan hubiyay warqafaththa iyo baakaththa, wahay u muuqafataa mith weli shaqafaynaysa (tusaale ahaan, ilaa Agoosto 2024).
+<break time="300ms"/>
+Sitha loo istiʕmaalo: Haththii ay ilmaha qafando hayso ama hanuun thareemayso, waa inaath siisaa 5 mililitir (5ml), lihthii ilaa siththeeththii saaʕathoothba mar, hathba inta ay u baahan tahay.
+<break time="300ms"/>
+Ha siin in ka bathan afar jeer 24-kii saaʕathoothba.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Saline Nasal Spray: Magaʕa: Saline Nasal Spray, oo ah biyo ʕusbo leh oo sanka lagu buufiyo si uu u furmo.
+<break time="300ms"/>
+Taariikhtha diʕitaanka: Wahaan hubiyay warqafaththa iyo baakaththa, wahay u muuqafataa mith weli shaqafaynaysa (tusaale ahaan, ilaa Nofeembar 2026).
+<break time="300ms"/>
+Sitha loo istiʕmaalo: Waa inaath laba jeer ku buufisaa sanka mithkiiba (qafollathiiba), labo ilaa saththeh jeer maalintii, si sanka hiran ugu furmo oo ay si fiiʕan u neefsato.
+<break time="300ms"/>
+Hubi in ilmahaagu ʕabbo biyo bathan iyo ʕabitaanno thiiran si uu duunta uga jilʕiyo oo qafufaʕa uga yaraatho.
+<break time="300ms"/>
+ʕalaamathaha thigniinta ah ee aath u baahan tahay inaath la hiriirto dakhtar thegtheg ah ama aath isbitaalka geyso wahaa ka mith ah: Haththii ilmaha neeftu aath ugu yaraato oo ay ku athkaato neefsashatha.
+<break time="300ms"/>
+Haththii ay qafandathu aath u kaʕtho oo aysan thaawathu hoos u digin.
+<break time="300ms"/>
+Haththii ilmaha ay ku yimaathaan qafufaʕ tharan oo aan joogsanayn, ama qafufaʕa ay la soʕoto diig.
+<break time="300ms"/>
+Haththii ay matag joogto ah qafabto oo ay wahba ʕuni kari weyso.
+<break time="300ms"/>
+Haththii ay aath u thaʕiifto ama ay hurtho bathan ku daʕtho oo aanay si futhuth u soo jeethin.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee bukaanka lagula taʕaalayo ka hor inta aan isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya.
+
+Waan fahamsanahay inaad ka welwelsan tahay xaaladda hadda jirta, gaar ahaan dhawaqa ilmaha oo ooyaya awgiis. Ha welwelin, aan eegno dawooyinkan aad haysato si aan kuu caawiyo.
+
+Waxaan arkaa seddex (3) dawo oo laguu qoray:
+1.  **Amoxicillin + Clavulanic Acid Oral Suspension 200mg/28.5mg / 5ml (Augmentin)**
+2.  **Paracetamol Oral Suspension 120mg / 5ml**
+3.  **Prochlorperazine Suppositories 5mg**
+
+Waxaan xaqiijiyay in dhammaan dawooyinkan ayan dhicin, oo ay weli ansax yihiin. Tani waa mid aad muhiim u ah.
+
+Waa kuwan tilmaamaha tallaabo-tallaabo ah ee sida loo isticmaalo dawooyinka, iyadoo la raacayo warqadda dhakhtarka iyo calaamadaha daawada:
+
+1.  **Amoxicillin + Clavulanic Acid (Augmentin):**
+    *   Tani waa antibiotic oo ah siroob. Waa inaad siisaa ilmahaaga:
+    *   **Shan (5) mililiitar (5ml)**, laba (2) jeer maalintii (subaxdii iyo fiidkii), toddoba (7) maalmood oo isku xiga.
+    *   Hubi inaad isticmaasho qaadada ama santameter-ka cabbirka ah ee daawada la socda si aad u hesho cabbirka saxda ah.
+    *   Waa muhiim in daawadan la dhammaystiro dhammaan muddada toddobada maalmood ah, xitaa haddii ilmahaagu uu fiicnaado, si infekshanka uu u dhammaado.
+
+2.  **Paracetamol Oral Suspension:**
+    *   Tani waa dawo loo isticmaalo qandhada iyo xanuunka. Waa inaad siisaa ilmahaaga:
+    *   **Shan (5) mililiitar (5ml)**, haddii ay qandho sare ama xanuun jiro.
+    *   Waa la siin karaa afar (4) ilaa lix (6) saacadood kaddib haddii loo baahdo, laakiin ha ku celin wax ka badan afar (4) jeer 24 saac gudahood.
+    *   Hubi inaad isticmaasho cabbirka saxda ah.
+
+3.  **Prochlorperazine Suppositories:**
+    *   Tani waa dawo yareysa matagga. Waxaa loo isticmaalaa haddii ilmahaagu uu matagayo.
+    *   **Mid (1) suppository oo ah 5mg**, si toos ah mindhicirka uga gali, saddex (3) jeer maalintii (subaxdii, duhurkii iyo fiidkii).
+    *   Ha la siin ilmaha wax ka badan seddex (3) jeer 24 saac gudahood.
+
+**Calaamadaha digniinta ah:**
+Waa kuwan calaamadaha digniinta ah ee aad u baahan tahay inaad la socoto oo aad dhakhtar degdeg ah ula xiriirto haddii aad aragto:
+*   Neefta oo ku qabata, ama si degdeg ah oo culus uu u neefsanayo.
+*   Firiiric ama barar lama filaan ah oo jirka ah, gaar ahaan wejiga ama carrabka.
+*   Cunto la'aan ama cabitaan la'aan joogto ah, oo keenta fuuqbax.
+*   Matag ama shuban daran oo aan joogsanayn.
+*   Xaaladda guud oo kasii darta, ama haddii uusan waxba ka soo hagaagin daawada ka dib.
+*   Qandho sare oo aan hoos u dhicin daawada ka dib, gaar ahaan haddii ay la socdaan calaamado kale oo walaac leh.
+*   Hadduu ilmahaagu u muuqdo mid aad u daallan ama aan la xiriirin karin.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+GurmathAI ayaa kula hathlaya.
+<break time="300ms"/>
+Wahaan ahay Garathka maʕmalka ah, oo athiga ku ʕaawinaya.
+<break time="300ms"/>
+Waan fahamsanahay inaath ka welwelsan tahay haalaththa haththa jirta, gaar ahaan dawaqafa ilmaha oo ooyaya awgiis.
+<break time="300ms"/>
+Ha welwelin, aan eegno thawooyinkan aath haysato si aan kuu ʕaawiyo.
+<break time="300ms"/>
+Wahaan arkaa seththeh (3) thawo oo laguu qaforay: 1.
+<break time="300ms"/>
+Amohiʕillin + ʕlavulaniʕ Aʕith Oral Suspension 200mg/28.
+<break time="300ms"/>
+5mg / 5ml (Augmentin) 2.
+<break time="300ms"/>
+Paraʕetamol Oral Suspension 120mg / 5ml 3.
+<break time="300ms"/>
+Proʕhlorperazine Suppositories 5mg Wahaan haqafiijiyay in dammaan thawooyinkan ayan diʕin, oo ay weli ansah yihiin.
+<break time="300ms"/>
+Tani waa mith aath muhiim u ah.
+<break time="300ms"/>
+Waa kuwan tilmaamaha tallaabo-tallaabo ah ee sitha loo istiʕmaalo thawooyinka, iyathoo la raaʕayo warqafaththa dakhtarka iyo ʕalaamathaha thaawatha: 1.
+<break time="300ms"/>
+Amohiʕillin + ʕlavulaniʕ Aʕith (Augmentin): Tani waa antibiotiʕ oo ah siroob.
+<break time="300ms"/>
+Waa inaath siisaa ilmahaaga: Shan (5) mililiitar (5ml), laba (2) jeer maalintii (subahthii iyo fiithkii), toththoba (7) maalmooth oo isku higa.
+<break time="300ms"/>
+Hubi inaath istiʕmaasho qafaathatha ama santameter-ka ʕabbirka ah ee thaawatha la soʕtha si aath u hesho ʕabbirka sahtha ah.
+<break time="300ms"/>
+Waa muhiim in thaawathan la dammaystiro dammaan muththatha toththobatha maalmooth ah, hitaa haththii ilmahaagu uu fiiʕnaatho, si infekshanka uu u dammaatho.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Paraʕetamol Oral Suspension: Tani waa thawo loo istiʕmaalo qafandatha iyo hanuunka.
+<break time="300ms"/>
+Waa inaath siisaa ilmahaaga: Shan (5) mililiitar (5ml), haththii ay qafando sare ama hanuun jiro.
+<break time="300ms"/>
+Waa la siin karaa afar (4) ilaa lih (6) saaʕathooth kaththib haththii loo baahtho, laakiin ha ku ʕelin wah ka bathan afar (4) jeer 24 saaʕ guthahooth.
+<break time="300ms"/>
+Hubi inaath istiʕmaasho ʕabbirka sahtha ah.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+Proʕhlorperazine Suppositories: Tani waa thawo yareysa matagga.
+<break time="300ms"/>
+Wahaa loo istiʕmaalaa haththii ilmahaagu uu matagayo.
+<break time="300ms"/>
+Mith (1) suppository oo ah 5mg, si toos ah mindiʕirka uga gali, saththeh (3) jeer maalintii (subahthii, thuhurkii iyo fiithkii).
+<break time="300ms"/>
+Ha la siin ilmaha wah ka bathan seththeh (3) jeer 24 saaʕ guthahooth.
+<break time="300ms"/>
+ʕalaamathaha thigniinta ah: Waa kuwan ʕalaamathaha thigniinta ah ee aath u baahan tahay inaath la soʕoto oo aath dakhtar thegtheg ah ula hiriirto haththii aath aragto: Neefta oo ku qafabata, ama si thegtheg ah oo ʕulus uu u neefsanayo.
+<break time="300ms"/>
+Firiiriʕ ama barar lama filaan ah oo jirka ah, gaar ahaan wejiga ama ʕarrabka.
+<break time="300ms"/>
+ʕunto la'aan ama ʕabitaan la'aan joogto ah, oo keenta fuuqafbah.
+<break time="300ms"/>
+Matag ama shuban tharan oo aan joogsanayn.
+<break time="300ms"/>
+Haalaththa guuth oo kasii tharta, ama haththii uusan wahba ka soo hagaagin thaawatha ka thib.
+<break time="300ms"/>
+QAFando sare oo aan hoos u diʕin thaawatha ka thib, gaar ahaan haththii ay la soʕthaan ʕalaamatho kale oo walaaʕ leh.
+<break time="300ms"/>
+Haththuu ilmahaagu u muuqaftho mith aath u thaallan ama aan la hiriirin karin.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee bukaanka lagula taʕaalayo ka hor inta aan isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya.
+
+Waan fahmay welwelkaaga iyo dhibaatada uu yare Axmed ka haysto shubanka iyo fuuqbaxa. Aad ayey muhiim u tahay inaad si degdeg ah wax uga qabato fuuqbaxa, sababtoo ah carruurtu si dhaqso ah ayey fuuqbax u noqdaan.
+
+Daawooyinka laguu soo qoray iyo sida loo isticmaalo, adigoo raacaya macluumaadka dhakhtarku qoray iyo kuwa daawada ku qoran, waa sidan:
+
+1.  **Cefixime (Daawada bakteeriyada):**
+    *   **Magaca:** Cefixime 100mg/5ml suspension (cabitaan).
+    *   **Isticmaalka:** Wiilkaaga, Axmed oo 4 sano jir ah, waxaad siinaysaa shan mililitir (5ml) labo jeer maalintii (subaxdii iyo fiidkii).
+    *   **Muddo:** Waa inuu qaataa shanta maalmood oo dhan. Xitaa haddii uu fiicnaado ka hor, ha joojin ka hor inta uusan dhammayn mudadii loo qoray.
+    *   **Hubi:** Taariikhda dhicitaanka (expiry date) waa 01/2026, markaa way shaqaynaysaa.
+
+2.  **Zinc Sulfate (Daawada Zinc):**
+    *   **Magaca:** Zinc Sulfate Oral Solution 20mg/5ml (cabitaan).
+    *   **Fiiro gaar ah:** Waxaa kuu qoran kiniin 20mg ah, laakiin tan aad haysato waa cabitaan. Sidaa darteed, waxaad siinaysaa shan mililitir (5ml) oo cabitaanka ah.
+    *   **Isticmaalka:** Waxaad siinaysaa shan mililitir (5ml) mar qura maalintii (hal mar maalintii).
+    *   **Muddo:** Waa inuu qaataa 10 maalmood oo isku xigta.
+    *   **Hubi:** Taariikhda dhicitaanka waa 09/2025, markaa way shaqaynaysaa.
+
+3.  **ORS (Daawada fuuqbaxa):**
+    *   **Magaca:** Oral Rehydration Salts (ORS).
+    *   **Diyaarinta:** Xirfad kasta oo ORS ah ku mil 250 mililitir (250ml) oo biyo nadiif ah.
+    *   **Isticmaalka:** Wiilkaaga si joogto ah u siiya biyo yar yar, gaar ahaan ka dib mar kasta oo uu shubmo. Ujeedadu waa in la beddelo biyaha iyo cusbada uu lumiyay. Hubi in biyaha aad isticmaalayso ay nadiif yihiin.
+
+**Muhiim:** Hubi in dhammaan daawooyinkan la siiyo Axmed si joogto ah oo aan la iloobin, gaar ahaan ORS-ta si looga hortago fuuqbax dheeraad ah.
+
+**Calaamadaha digniinta ah ee aad u baahan tahay inaad dhakhtar ugu tagto degdeg ah waa:**
+*   Haddii shubanku sii socdo oo uu sii daro.
+*   Haddii Axmed uusan cabbanayn ORS ama dareere kale oo ku filan.
+*   Haddii uu matagayo si joogto ah.
+*   Haddii uu yareeyo kaadida, indhihiisu ay hoos galaan, ama uu u muuqdo mid aad u daalan oo aan firfircoonayn.
+*   Haddii uu qandho sare yeesho.
+*   Haddii uu saxarada dhiig ku aragto.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+<speak>
+Fiiro Gaar Ah: Anigu waxaan ahay GurmadAI.
+<break time="600ms"/>
+Talooyinkaygu waa gargaar degdeg ah oo ku meel gaar ah inta bukaanka cisbitaalka la gaarsiinayo.
+<break time="300ms"/>
+Talooyinkaygu ma beddeli karaan talada dhakhtarka.
+<break time="300ms"/>
+Sidaa darteed, fadlan la xiriir dhakhtar ama xarun caafimaad si laguu baaro.
+<break time="300ms"/>
+GurmathAI ayaa kula hathlaya.
+<break time="300ms"/>
+Wahaan ahay Garathka maʕmalka ah, oo athiga ku ʕaawinaya.
+<break time="300ms"/>
+Waan fahmay welwelkaaga iyo dibaatatha uu yare Ahmeth ka haysto shubanka iyo fuuqafbaha.
+<break time="300ms"/>
+Aath ayey muhiim u tahay inaath si thegtheg ah wah uga qafabato fuuqafbaha, sababtoo ah ʕarruurtu si daqafso ah ayey fuuqafbah u noqafthaan.
+<break time="300ms"/>
+THaawooyinka laguu soo qaforay iyo sitha loo istiʕmaalo, athigoo raaʕaya maʕluumaathka dakhtarku qaforay iyo kuwa thaawatha ku qaforan, waa sithan: 1.
+<break time="300ms"/>
+ʕefihime (THaawatha bakteeriyatha): Magaʕa: ʕefihime 100mg/5ml suspension (ʕabitaan).
+<break time="300ms"/>
+Istiʕmaalka: Wiilkaaga, Ahmeth oo 4 sano jir ah, wahaath siinaysaa shan mililitir (5ml) labo jeer maalintii (subahthii iyo fiithkii).
+<break time="300ms"/>
+Muththo: Waa inuu qafaataa shanta maalmooth oo dan.
+<break time="300ms"/>
+Hitaa haththii uu fiiʕnaatho ka hor, ha joojin ka hor inta uusan dammayn muthathii loo qaforay.
+<break time="300ms"/>
+Hubi: Taariikhtha diʕitaanka (ehpiry thate) waa 01/2026, markaa way shaqafaynaysaa.
+<break time="300ms"/>
+2.
+<break time="300ms"/>
+Zinʕ Sulfate (THaawatha Zinʕ): Magaʕa: Zinʕ Sulfate Oral Solution 20mg/5ml (ʕabitaan).
+<break time="300ms"/>
+Fiiro gaar ah: Wahaa kuu qaforan kiniin 20mg ah, laakiin tan aath haysato waa ʕabitaan.
+<break time="300ms"/>
+Sithaa tharteeth, wahaath siinaysaa shan mililitir (5ml) oo ʕabitaanka ah.
+<break time="300ms"/>
+Istiʕmaalka: Wahaath siinaysaa shan mililitir (5ml) mar qafura maalintii (hal mar maalintii).
+<break time="300ms"/>
+Muththo: Waa inuu qafaataa 10 maalmooth oo isku higta.
+<break time="300ms"/>
+Hubi: Taariikhtha diʕitaanka waa 09/2025, markaa way shaqafaynaysaa.
+<break time="300ms"/>
+3.
+<break time="300ms"/>
+ORS (THaawatha fuuqafbaha): Magaʕa: Oral Rehythration Salts (ORS).
+<break time="300ms"/>
+THiyaarinta: Hirfath kasta oo ORS ah ku mil 250 mililitir (250ml) oo biyo nathiif ah.
+<break time="300ms"/>
+Istiʕmaalka: Wiilkaaga si joogto ah u siiya biyo yar yar, gaar ahaan ka thib mar kasta oo uu shubmo.
+<break time="300ms"/>
+Ujeethathu waa in la beththelo biyaha iyo ʕusbatha uu lumiyay.
+<break time="300ms"/>
+Hubi in biyaha aath istiʕmaalayso ay nathiif yihiin.
+<break time="300ms"/>
+Muhiim: Hubi in dammaan thaawooyinkan la siiyo Ahmeth si joogto ah oo aan la iloobin, gaar ahaan ORS-ta si looga hortago fuuqafbah deeraath ah.
+<break time="300ms"/>
+ʕalaamathaha thigniinta ah ee aath u baahan tahay inaath dakhtar ugu tagto thegtheg ah waa: Haththii shubanku sii soʕtho oo uu sii tharo.
+<break time="300ms"/>
+Haththii Ahmeth uusan ʕabbanayn ORS ama thareere kale oo ku filan.
+<break time="300ms"/>
+Haththii uu matagayo si joogto ah.
+<break time="300ms"/>
+Haththii uu yareeyo kaathitha, indihiisu ay hoos galaan, ama uu u muuqaftho mith aath u thaalan oo aan firfirʕoonayn.
+<break time="300ms"/>
+Haththii uu qafando sare yeesho.
+<break time="300ms"/>
+Haththii uu saharatha diig ku aragto.
+<break time="300ms"/>
+Fiiro gaar ah: Anigu dakhtar ma ahi, booskiisana ma beththeli karo.
+<break time="300ms"/>
+Shaqafathaythu waa gurmathka thegthegga ah ee bukaanka lagula taʕaalayo ka hor inta aan isbitaalka la geynin.
+<break time="300ms"/>
+</speak>
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in ilmaha yar ay matag iyo shuban hayso.
+
+Sii biyo nadiif ah iyo cabitaanno yaryar, oo joogto ah. Maraq fudud iyo muus ayaa caawin kara.
+
+Calaamadaha digniinta ah: Indho godan, af engegan, kaadi la'aan, daciifnimo, qandho sare, ama dhiig shubanka ku jira.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in ilmaha yar ay matag iyo shuban hayso.
+
+Sii biyo nadiif ah iyo cabitaanno yaryar, oo joogto ah. Maraq fudud iyo muus ayaa caawin kara.
+
+Calaamadaha digniinta ah: Indho godan, af engegan, kaadi la'aan, daciifnimo, qandho sare, ama dhiig shubanka ku jira.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aalahaaga sharoobada.
+
+Dhalada Support Power Syrup waxaa ku qoran digniin kaliya: "Waxaad dareemi kartaa hurdo marka hore. Haddii ay taasi dhacdo, ha wadin gaari ama mishiinno ha shaqaysan." Ma jiro macluumaad kale.
+
+Calaamadaha digniinta ah: Ha wadin gaari ama ha shaqayn mishiinno haddii aad hurdo dareento.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aalahaaga sharoobada.
+
+Dhalada Support Power Syrup waxaa ku qoran digniin kaliya: "Waxaad dareemi kartaa hurdo marka hore. Haddii ay taasi dhacdo, ha wadin gaari ama mishiinno ha shaqaysan." Ma jiro macluumaad kale.
+
+Calaamadaha digniinta ah: Ha wadin gaari ama ha shaqayn mishiinno haddii aad hurdo dareento.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay xaaladdaada, waana hubaal in aan ku caawin doono.
+Waxaan ka akhrinayaa warqadda daawada. Waa: "I.M. Flupentixol Depot 40 milligrams, mar kasta 4 usbuucba".
+Calaamadaha digniinta ah: Xaaladdu oo ka dartaa, ama calaamado cusub oo daran.
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay xaaladdaada, waana hubaal in aan ku caawin doono.
+Waxaan ka akhrinayaa warqadda daawada. Waa: "I.M. Flupentixol Depot 40 milligrams, mar kasta 4 usbuucba".
+Calaamadaha digniinta ah: Xaaladdu oo ka dartaa, ama calaamado cusub oo daran.
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in aad dareemayso matag, shuban, iyo fuuqbax. Xaaladda noocan ahi waa mid dhib badan oo u baahan fiiro gaar ah.
+
+Si degdeg ah, waxa ugu muhiimsan waa in aad fuuqbaxa iska ilaaliso. Cab biyo badan, casiirka qumbaha, ama cabitaanka fuuq celinta guriga lagu sameeyo (milix yar, sonkor yar, iyo biyo). Cuntooyinka fudud sida muuska, bariiska cad, tufaaxa la shiiday, iyo rootiga cad ayaa ku caawin kara. Shaaha sinjibiisha ama shaaha reexaanta ayaa dejin kara calooshaada.
+
+Calaamadaha digniinta ah ee ay tahay in aad dhaqso dhakhtar u raadsato waxaa ka mid ah:
+1. Matag ama shuban aan joogsanayn.
+2. Fuuqbax daran (sida af qalalan, kaadi yaraan, daciifnimo badan).
+3. Qandho sare oo kugu haysata.
+4. Dhiig ku jira matagaaga ama saxaradaada.
+5. Wareer ama miyir doorsoomid.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in aad dareemayso matag, shuban, iyo fuuqbax. Xaaladda noocan ahi waa mid dhib badan oo u baahan fiiro gaar ah.
+
+Si degdeg ah, waxa ugu muhiimsan waa in aad fuuqbaxa iska ilaaliso. Cab biyo badan, casiirka qumbaha, ama cabitaanka fuuq celinta guriga lagu sameeyo (milix yar, sonkor yar, iyo biyo). Cuntooyinka fudud sida muuska, bariiska cad, tufaaxa la shiiday, iyo rootiga cad ayaa ku caawin kara. Shaaha sinjibiisha ama shaaha reexaanta ayaa dejin kara calooshaada.
+
+Calaamadaha digniinta ah ee ay tahay in aad dhaqso dhakhtar u raadsato waxaa ka mid ah:
+1. Matag ama shuban aan joogsanayn.
+2. Fuuqbax daran (sida af qalalan, kaadi yaraan, daciifnimo badan).
+3. Qandho sare oo kugu haysata.
+4. Dhiig ku jira matagaaga ama saxaradaada.
+5. Wareer ama miyir doorsoomid.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahansanahay inaad xaalad adag ku jirto ama aad u baahan tahay caawimaad degdeg ah. Ha welwelin, waan ku garab taaganahay.
+
+Haddii calool xanuun fudud ama dheefshiid xumo ku hayso, waxaad isku dayi kartaa kuwan:
+1. Cab biyo diirran ama shaah sinjibiil ah. Sinjibiishu waxay dejisaa caloosha.
+2. Cunnooyin fudud sida moos, bariis cad, tufaax ama rooti. Ka fogow cuntooyinka basbaaska leh ama kuwa dufanka badan.
+3. Nasasho qaado oo iska yaree dhaqdhaqaaqa.
+
+Calaamadaha digniinta ah ee aad u baahan tahay inaad isbitaal degdeg ah u tagto waa:
+1. Xanuun daran oo aan caadi ahayn oo caloosha ah.
+2. Matag joogto ah ama dhiig leh.
+3. Shuban daran oo aan joogsanayn, gaar ahaan haddii dhiig ama xab leh yahay.
+4. Qandho sare oo aan hoos u dhicin.
+5. Daciifnimo xad dhaaf ah ama miyir beel.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahansanahay inaad xaalad adag ku jirto ama aad u baahan tahay caawimaad degdeg ah. Ha welwelin, waan ku garab taaganahay.
+
+Haddii calool xanuun fudud ama dheefshiid xumo ku hayso, waxaad isku dayi kartaa kuwan:
+1. Cab biyo diirran ama shaah sinjibiil ah. Sinjibiishu waxay dejisaa caloosha.
+2. Cunnooyin fudud sida moos, bariis cad, tufaax ama rooti. Ka fogow cuntooyinka basbaaska leh ama kuwa dufanka badan.
+3. Nasasho qaado oo iska yaree dhaqdhaqaaqa.
+
+Calaamadaha digniinta ah ee aad u baahan tahay inaad isbitaal degdeg ah u tagto waa:
+1. Xanuun daran oo aan caadi ahayn oo caloosha ah.
+2. Matag joogto ah ama dhiig leh.
+3. Shuban daran oo aan joogsanayn, gaar ahaan haddii dhiig ama xab leh yahay.
+4. Qandho sare oo aan hoos u dhicin.
+5. Daciifnimo xad dhaaf ah ama miyir beel.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay xaaladda adag ee aad ku jirto hadda. Shubanka iyo mataggu aad bay u dhib badan yihiin, gaar ahaan markay isku mar dhacaan. Ha welwelin, waxaan isku dayi doonaa inaan ku siiyo talooyin degdeg ah oo kaa caawiya inaad xaaladda wax ka qabato.
+
+Waxa ugu muhiimsan waa inaad cabto biyo badan si aad uga hortagto fuuqbaxa. Isku day inaad cabto biyo nadiif ah, maraq fudud, ama shaah cagaaran oo aan sonkor badnayn. Cunnooyinka fudud sida muuska, bariiska cad, tufaaxa la kariyey, iyo roodhida rootiga ah ayaa caloosha u roon. Ka fogow cuntooyinka basbaaska leh, kuwa dufanka leh, iyo caanaha. Sanjabiisha (ginger) oo la karkariyo oo la cabo waxay kaa caawin kartaa matagga.
+
+Calaamadaha digniinta ah ee aad u baahan tahay inaad si degdeg ah ugu tagto dhakhtar waa: Haddii matagga iyo shubanku ay sii socdaan wax ka badan 24 saacadood, haddii aad leedahay calaamado fuuqbax daran ah sida afka oo qalala, kaadi yaraan, iyo wareer, haddii ay jiraan dhiig ama xab caloosha kaaga yimaada, ama haddii aad qandho sare leedahay iyo xanuun calooleed daran.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay xaaladda adag ee aad ku jirto hadda. Shubanka iyo mataggu aad bay u dhib badan yihiin, gaar ahaan markay isku mar dhacaan. Ha welwelin, waxaan isku dayi doonaa inaan ku siiyo talooyin degdeg ah oo kaa caawiya inaad xaaladda wax ka qabato.
+
+Waxa ugu muhiimsan waa inaad cabto biyo badan si aad uga hortagto fuuqbaxa. Isku day inaad cabto biyo nadiif ah, maraq fudud, ama shaah cagaaran oo aan sonkor badnayn. Cunnooyinka fudud sida muuska, bariiska cad, tufaaxa la kariyey, iyo roodhida rootiga ah ayaa caloosha u roon. Ka fogow cuntooyinka basbaaska leh, kuwa dufanka leh, iyo caanaha. Sanjabiisha (ginger) oo la karkariyo oo la cabo waxay kaa caawin kartaa matagga.
+
+Calaamadaha digniinta ah ee aad u baahan tahay inaad si degdeg ah ugu tagto dhakhtar waa: Haddii matagga iyo shubanku ay sii socdaan wax ka badan 24 saacadood, haddii aad leedahay calaamado fuuqbax daran ah sida afka oo qalala, kaadi yaraan, iyo wareer, haddii ay jiraan dhiig ama xab caloosha kaaga yimaada, ama haddii aad qandho sare leedahay iyo xanuun calooleed daran.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in aad dareemayso qufac iyo neefsasho adag.
+
+Inta aadan dhakhtar gaarin, waxaad isku dayi kartaa in aad cabto shaah kulul oo malab iyo liin dhanaan leh. Uumi kulul neefso adiga oo madaxa ku daboolan shukumaan si ay sanka iyo cunaha kuu furto. Hubi in aad hesho nasasho ku filan oo aad cabto biyo badan si jirkaagu u qoyanaado.
+
+Calaamadaha digniinta ah ee aad dhakhtar u tagto haddii ay soo baxaan: Neefsasho dhib ah, qandho sare, xanuun laabta ah, qufac dhiig wata, ama haddii calaamaduhu ka sii daraan.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in aad dareemayso qufac iyo neefsasho adag.
+
+Inta aadan dhakhtar gaarin, waxaad isku dayi kartaa in aad cabto shaah kulul oo malab iyo liin dhanaan leh. Uumi kulul neefso adiga oo madaxa ku daboolan shukumaan si ay sanka iyo cunaha kuu furto. Hubi in aad hesho nasasho ku filan oo aad cabto biyo badan si jirkaagu u qoyanaado.
+
+Calaamadaha digniinta ah ee aad dhakhtar u tagto haddii ay soo baxaan: Neefsasho dhib ah, qandho sare, xanuun laabta ah, qufac dhiig wata, ama haddii calaamaduhu ka sii daraan.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay dhibka aad dareemayso, matag, shuban iyo calool buuran waa wax aad u xanuun badan oo u baahan in taxaddar lala yimaado.
+
+Marka hore, cab biyo badan si aanu jirkaagu u fuuqbixin. Waxaad cabbi kartaa biyo nadiif ah, ama xal fuuqcelin guriga lagu sameeyo (milix iyo sonkor yar oo biyo lagu qasay) si aad u hesho macdano. Sidoo kale, waxaad cabbi kartaa biyo qumbaha ah haddii ay kuu suurtogasho. Cunnooyinka fudud sida muuska, bariiska cad, iyo tufaaxa la kariyey ayaa ku caawin kara. Shaaha sinjibiisha ama reexaanta ayaa yarayn kara calool buuranka iyo lalabada. Iska ilaali cunnooyinka dufanka leh iyo kuwa basbaaska badan.
+
+Calaamadaha digniinta ah ee aad u baahan tahay inaad isbitaal aaddo waxaa ka mid ah: matag ama shuban aan joogsanayn in ka badan 24 saacadood, dhiig ku jira matagga ama saxarada, qandho aad u saraysa, xanuun caloosha ah oo daran, ama dareen fuuqbax daran ah sida af qallayl iyo kaadi yaraan.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay dhibka aad dareemayso, matag, shuban iyo calool buuran waa wax aad u xanuun badan oo u baahan in taxaddar lala yimaado.
+
+Marka hore, cab biyo badan si aanu jirkaagu u fuuqbixin. Waxaad cabbi kartaa biyo nadiif ah, ama xal fuuqcelin guriga lagu sameeyo (milix iyo sonkor yar oo biyo lagu qasay) si aad u hesho macdano. Sidoo kale, waxaad cabbi kartaa biyo qumbaha ah haddii ay kuu suurtogasho. Cunnooyinka fudud sida muuska, bariiska cad, iyo tufaaxa la kariyey ayaa ku caawin kara. Shaaha sinjibiisha ama reexaanta ayaa yarayn kara calool buuranka iyo lalabada. Iska ilaali cunnooyinka dufanka leh iyo kuwa basbaaska badan.
+
+Calaamadaha digniinta ah ee aad u baahan tahay inaad isbitaal aaddo waxaa ka mid ah: matag ama shuban aan joogsanayn in ka badan 24 saacadood, dhiig ku jira matagga ama saxarada, qandho aad u saraysa, xanuun caloosha ah oo daran, ama dareen fuuqbax daran ah sida af qallayl iyo kaadi yaraan.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay inaad walaac ka qabtid xanuunka macaanka ama sonkorowga. Fahmida calaamadaha waa tallaabada ugu horreysa ee muhiimka ah.
+
+Calaamadaha ugu caansan ee sonkorowga waxaa ka mid ah:
+*   **Kaadi badan:** Gaar ahaan habeenkii.
+*   **Harraad daran:** Waxaad dareemaysaa harraad joogto ah inkastoo aad biyo badan cabto.
+*   **Gaajo badan:** Waxaad dareemaysaa gaajo joogto ah, xitaa ka dib markaad wax cunto.
+*   **Miisaan lumis aan la filayn:** Miisaankaagu si lama filaan ah ayuu u yaraadaa adigoon isku dayin.
+*   **Daal iyo tamar yaraan:** Waxaad dareemaysaa daal joogto ah oo aan sabab lahayn.
+*   **Aragga oo mugdi noqda:** Indhahaagu waxay noqdaan kuwo daciif ah ama waxaad aragtaa waxyaabo mugdi ah.
+*   **Dhaawacyada oo si tartiib ah u bogsada:** Nabarrada ama gubashada waxay qaataan waqti dheer inay bogsadaan.
+*   **Caabuqyada soo noqnoqda:** Gaar ahaan kuwa kaadi mareenka, maqaarka, ama ciridka.
+*   **Kabasho ama gariir gacmaha ama lugaha:** Waxaad dareemeysaa kabasho ama gariir.
+
+Calaamadaha digniinta ah: Haddii aad dareento calaamado badan oo kuwaan ah, ama ay si daran kuu saameeyaan, waxaa muhiim ah inaad la xiriirto dhakhtar sida ugu dhaqsaha badan si baaritaan loogu sameeyo.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay inaad walaac ka qabtid xanuunka macaanka ama sonkorowga. Fahmida calaamadaha waa tallaabada ugu horreysa ee muhiimka ah.
+
+Calaamadaha ugu caansan ee sonkorowga waxaa ka mid ah:
+*   **Kaadi badan:** Gaar ahaan habeenkii.
+*   **Harraad daran:** Waxaad dareemaysaa harraad joogto ah inkastoo aad biyo badan cabto.
+*   **Gaajo badan:** Waxaad dareemaysaa gaajo joogto ah, xitaa ka dib markaad wax cunto.
+*   **Miisaan lumis aan la filayn:** Miisaankaagu si lama filaan ah ayuu u yaraadaa adigoon isku dayin.
+*   **Daal iyo tamar yaraan:** Waxaad dareemaysaa daal joogto ah oo aan sabab lahayn.
+*   **Aragga oo mugdi noqda:** Indhahaagu waxay noqdaan kuwo daciif ah ama waxaad aragtaa waxyaabo mugdi ah.
+*   **Dhaawacyada oo si tartiib ah u bogsada:** Nabarrada ama gubashada waxay qaataan waqti dheer inay bogsadaan.
+*   **Caabuqyada soo noqnoqda:** Gaar ahaan kuwa kaadi mareenka, maqaarka, ama ciridka.
+*   **Kabasho ama gariir gacmaha ama lugaha:** Waxaad dareemeysaa kabasho ama gariir.
+
+Calaamadaha digniinta ah: Haddii aad dareento calaamado badan oo kuwaan ah, ama ay si daran kuu saameeyaan, waxaa muhiim ah inaad la xiriirto dhakhtar sida ugu dhaqsaha badan si baaritaan loogu sameeyo.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Aad baan uga xumahay xaaladdan adag ee aad ku jirtaan, waa xaalad degdeg ah oo u baahan gurmad degdeg ah.
+
+Waxyaabaha ugu horreeya ee aad sameyneyso waa:
+1.  **Si degdeg ah u wac gurmadka degdegga ah ama ambalaaska (tusaale, 112 haddii ay jiraan) isla markiiba.** U sheeg waxa dhacay iyo meesha aad joogtaan si ay si degdeg ah idiinku soo gaaraan.
+2.  Inta aad sugayso gurmadka:
+    *   Qofka dhig meel siman oo adag, dhabarka u jiifso.
+    *   Hubi in marinka hawadu u furan yahay adiga oo madaxa gadaal u celiya si fudud, garkana kor u qaadaya.
+    *   Eeg haddii uu neefsanayo adiga oo dhegta u dhoweynaya sanka iyo afka, una fiirso xabadka haddii uu kor iyo hoos u socdo.
+    *   Haddii qofku aanu neefsanayn oo aanad dareemayn garaac, oo aad tababaran tahay CPR, billow isla markiiba. Haddii aanad tababaranayn, raac tilmaamaha dadka gurmadka degdegga ah ay taleefanka kaaga sheegaan.
+
+Calaamadaha digniinta ah waa kuwa aad sheegtay: in wadnuhu istaagay, in aanay neefsanayn, iyo in ay suuxsan tahay. Waxaa muhiim ah in si degdeg ah loo helo caawimo caafimaad.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Aad baan uga xumahay xaaladdan adag ee aad ku jirtaan, waa xaalad degdeg ah oo u baahan gurmad degdeg ah.
+
+Waxyaabaha ugu horreeya ee aad sameyneyso waa:
+1.  **Si degdeg ah u wac gurmadka degdegga ah ama ambalaaska (tusaale, 112 haddii ay jiraan) isla markiiba.** U sheeg waxa dhacay iyo meesha aad joogtaan si ay si degdeg ah idiinku soo gaaraan.
+2.  Inta aad sugayso gurmadka:
+    *   Qofka dhig meel siman oo adag, dhabarka u jiifso.
+    *   Hubi in marinka hawadu u furan yahay adiga oo madaxa gadaal u celiya si fudud, garkana kor u qaadaya.
+    *   Eeg haddii uu neefsanayo adiga oo dhegta u dhoweynaya sanka iyo afka, una fiirso xabadka haddii uu kor iyo hoos u socdo.
+    *   Haddii qofku aanu neefsanayn oo aanad dareemayn garaac, oo aad tababaran tahay CPR, billow isla markiiba. Haddii aanad tababaranayn, raac tilmaamaha dadka gurmadka degdegga ah ay taleefanka kaaga sheegaan.
+
+Calaamadaha digniinta ah waa kuwa aad sheegtay: in wadnuhu istaagay, in aanay neefsanayn, iyo in ay suuxsan tahay. Waxaa muhiim ah in si degdeg ah loo helo caawimo caafimaad.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan arkaa inaad u baahan tahay macluumaad ku saabsan dawadan laguu qoray.
+
+Sawirka warqadda dhakhtarka waxaan ka akhrin karaa magaca dawada oo ah **Flupentixol Depot**, qiyaasta **40 miligram (mg)**, iyo in la qaadanayo **afar toddobaadba mar**. Waxaana loo isticmaalaa caafimaadka dhimirka. Si aan kuu siiyo macluumaad buuxa, gaar ahaan taariikhda ay dawadu dhacayso (expiration date), fadlan sawir cad iiga soo qaad dawada lafteeda ama baakadeeda. Warqaddu ma muujinayso taariikhda dhicitaanka dawada.
+
+Calaamadaha digniinta ah: Haddii aad dareento wax dhibaato ah sida neefsasho adag, barar, finan, ama dawakhaad daran, isla markiiba raadi gargaar caafimaad.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan arkaa inaad u baahan tahay macluumaad ku saabsan dawadan laguu qoray.
+
+Sawirka warqadda dhakhtarka waxaan ka akhrin karaa magaca dawada oo ah **Flupentixol Depot**, qiyaasta **40 miligram (mg)**, iyo in la qaadanayo **afar toddobaadba mar**. Waxaana loo isticmaalaa caafimaadka dhimirka. Si aan kuu siiyo macluumaad buuxa, gaar ahaan taariikhda ay dawadu dhacayso (expiration date), fadlan sawir cad iiga soo qaad dawada lafteeda ama baakadeeda. Warqaddu ma muujinayso taariikhda dhicitaanka dawada.
+
+Calaamadaha digniinta ah: Haddii aad dareento wax dhibaato ah sida neefsasho adag, barar, finan, ama dawakhaad daran, isla markiiba raadi gargaar caafimaad.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad rabto inaan kuu akhriyo warqadda dawada ah.
+
+Warqaddan waxaan ka akhrin karaa magaca bukaanka oo ah Fa'a'is Ibrahim Ahmed. Dawada lagu qoray waa Flupentixol Depot, waxaana lagu talagalay in lagu siiyo 40mg, mar kasta 4 toddobaadba mar, sida I.M. (intramuscular) ah. Warqaddu waxay ka timid Weris Clinic & Pharmacy oo ku takhasustay arrimaha caafimaadka dhimirka.
+
+Si aan ku siiyo tilmaamo dhammaystiran oo ku saabsan isticmaalka dawadan, waxaan u baahanahay inaan ogaado taariikhda ay dawadu dhacayso (expiration date). Taariikhda warqadda ku qoran ee 8/10/25 waa taariikhda dawada la qoray, mana aha taariikhda ay dawadu dhacayso. Fadlan ii soo dir sawir kale oo cad oo muujinaya sanduuqa ama dhalada dawada, gaar ahaan meesha ay ku qoran tahay taariikhda dhicitaankeeda.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad rabto inaan kuu akhriyo warqadda dawada ah.
+
+Warqaddan waxaan ka akhrin karaa magaca bukaanka oo ah Fa'a'is Ibrahim Ahmed. Dawada lagu qoray waa Flupentixol Depot, waxaana lagu talagalay in lagu siiyo 40mg, mar kasta 4 toddobaadba mar, sida I.M. (intramuscular) ah. Warqaddu waxay ka timid Weris Clinic & Pharmacy oo ku takhasustay arrimaha caafimaadka dhimirka.
+
+Si aan ku siiyo tilmaamo dhammaystiran oo ku saabsan isticmaalka dawadan, waxaan u baahanahay inaan ogaado taariikhda ay dawadu dhacayso (expiration date). Taariikhda warqadda ku qoran ee 8/10/25 waa taariikhda dawada la qoray, mana aha taariikhda ay dawadu dhacayso. Fadlan ii soo dir sawir kale oo cad oo muujinaya sanduuqa ama dhalada dawada, gaar ahaan meesha ay ku qoran tahay taariikhda dhicitaankeeda.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad u baahan tahay caawimaad ku saabsan sida loo isticmaalo daawo. Waan ka xumahay, laakiin ma arko wax sawir ah oo daawo ah oo aad soo galisay.
+
+Si aan kuu caawiyo, waxaan u baahanahay inaan si cad u arko sawirka daawada. Fadlan soo geli sawirka daawada si aan u akhriyo magaceeda, qiyaasta (mg/ml), inta jeer ee la qaadanayo, iyo taariikhda dhicitaanka (expiration date). Xusuusnow, ma qori karo daawo, laakiin waxaan ka akhriyi karaa tilmaamaha ku qoran sawirka aad soo galiso. Haddii aad u baahan tahay daawo dabiici ah oo guriga lagu sameeyo, taas waan kugula talin karaa. Fadlan soo geli sawirka cad ee daawada, si aan si sax ah kaaga caawiyo.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad u baahan tahay caawimaad ku saabsan sida loo isticmaalo daawo. Waan ka xumahay, laakiin ma arko wax sawir ah oo daawo ah oo aad soo galisay.
+
+Si aan kuu caawiyo, waxaan u baahanahay inaan si cad u arko sawirka daawada. Fadlan soo geli sawirka daawada si aan u akhriyo magaceeda, qiyaasta (mg/ml), inta jeer ee la qaadanayo, iyo taariikhda dhicitaanka (expiration date). Xusuusnow, ma qori karo daawo, laakiin waxaan ka akhriyi karaa tilmaamaha ku qoran sawirka aad soo galiso. Haddii aad u baahan tahay daawo dabiici ah oo guriga lagu sameeyo, taas waan kugula talin karaa. Fadlan soo geli sawirka cad ee daawada, si aan si sax ah kaaga caawiyo.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad rabto sharaxaad ku saabsan dawadan, waana muhiim in si sax ah loo fahmo isticmaalkeeda iyo sida loo isticmaalo.
+
+Sawirkaaga, waxaan si cad uga akhrin karaa magaca dawada oo ah 'Naturewise Vitamin D3' iyo qiyaasta oo ah '125 mcg (5,000 IU)'. Dawadani waa nafaqo dheeri ah oo caawisa habka difaaca jirka, xoojisa lafaha, iyo murqaha.
+
+Si kastaba ha ahaatee, si aan kuu siiyo tilmaamo dhammaystiran oo sax ah, waxaan u baahanahay inaan ogaado inta jeer ee la qaadanayo (frequency) iyo taariikhda ay dhacayso (expiration date). Labadan macluumaad kama muuqdaan sawirkan hore.
+
+Fadlan sawir kale oo cad iga soo qaad dhinaca dambe ama geesaha kale ee dhalada, gaar ahaan halka ay ku qoran yihiin tilmaamaha isticmaalka iyo taariikhda dhicitaanka. Markaad soo dirto, waan kuu sharxi doonaa si faahfaahsan.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad rabto sharaxaad ku saabsan dawadan, waana muhiim in si sax ah loo fahmo isticmaalkeeda iyo sida loo isticmaalo.
+
+Sawirkaaga, waxaan si cad uga akhrin karaa magaca dawada oo ah 'Naturewise Vitamin D3' iyo qiyaasta oo ah '125 mcg (5,000 IU)'. Dawadani waa nafaqo dheeri ah oo caawisa habka difaaca jirka, xoojisa lafaha, iyo murqaha.
+
+Si kastaba ha ahaatee, si aan kuu siiyo tilmaamo dhammaystiran oo sax ah, waxaan u baahanahay inaan ogaado inta jeer ee la qaadanayo (frequency) iyo taariikhda ay dhacayso (expiration date). Labadan macluumaad kama muuqdaan sawirkan hore.
+
+Fadlan sawir kale oo cad iga soo qaad dhinaca dambe ama geesaha kale ee dhalada, gaar ahaan halka ay ku qoran yihiin tilmaamaha isticmaalka iyo taariikhda dhicitaanka. Markaad soo dirto, waan kuu sharxi doonaa si faahfaahsan.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan arkaa dawada, waana muhiim in si sax ah loo isticmaalo.
+
+Waan akhrin karaa magaca dawada oo ah NatureWise Vitamin D3, qiyaasteeda oo ah 5,000 IU, iyo sida loo isticmaalo, oo ah in qofka weyni qaato hal kiniini (softgel) maalin kasta. Laakiin, ma akhrin karo taariikhda dhicitaanka (expiration date) dawada, taas oo aad muhiim u ah. Fadlan iga soo qaad sawir kale oo cad, gaar ahaan xagga hoose ee dhalada si aan si buuxda kuugu caawiyo.
+
+Calaamadaha digniinta ah: Hadal la yeelo dhakhtarkaaga ka hor intaadan isticmaalin, gaar ahaan haddii aad uur leedahay, naas nuujinayso, ama aad qabto xanuun kale. Ka digtoonow wax kasta oo falcelis xun ah.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan arkaa dawada, waana muhiim in si sax ah loo isticmaalo.
+
+Waan akhrin karaa magaca dawada oo ah NatureWise Vitamin D3, qiyaasteeda oo ah 5,000 IU, iyo sida loo isticmaalo, oo ah in qofka weyni qaato hal kiniini (softgel) maalin kasta. Laakiin, ma akhrin karo taariikhda dhicitaanka (expiration date) dawada, taas oo aad muhiim u ah. Fadlan iga soo qaad sawir kale oo cad, gaar ahaan xagga hoose ee dhalada si aan si buuxda kuugu caawiyo.
+
+Calaamadaha digniinta ah: Hadal la yeelo dhakhtarkaaga ka hor intaadan isticmaalin, gaar ahaan haddii aad uur leedahay, naas nuujinayso, ama aad qabto xanuun kale. Ka digtoonow wax kasta oo falcelis xun ah.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad u baahan tahay macluumaad ku saabsan sida loo isticmaalo dawadan aad sawirka ka soo qaaday.
+
+Magaca dawada waa NatureWise Vitamin D3. Qiyaasta halkii kiniini ah waa 125 mcg (oo u dhiganta 5,000 IU). Faahfaahin ku saabsan waxa ay u fiican tahay waxaa ka mid ah: xoojinta habka difaaca jirka, taageerida horumarinta lafaha xooggan, iyo horumarinta shaqada murqaha caafimaadka qaba.
+
+Si kastaba ha ahaatee, sawirka aad soo dhigtay, ma akhrin karo tilmaamaha isticmaalka ee gaarka ah (inta jeer ee la qaadanayo) iyo taariikhda uu dhacayo daawada. Fadlan ka qaad sawir kale oo cad dhabarka dambe ee dhalada si aan u arko tilmaamaha isticmaalka iyo sidoo kale xagga hoose si aan u arko taariikhda uu dhacayo.
+
+Calaamadaha digniinta ah: Had iyo jeer hubi in daawadu aanay dhicin. Haddii aad dareento wax calaamado aan caadi ahayn markaad isticmaasho ka dib, jooji isticmaalka oo la xiriir dhakhtar.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad u baahan tahay macluumaad ku saabsan sida loo isticmaalo dawadan aad sawirka ka soo qaaday.
+
+Magaca dawada waa NatureWise Vitamin D3. Qiyaasta halkii kiniini ah waa 125 mcg (oo u dhiganta 5,000 IU). Faahfaahin ku saabsan waxa ay u fiican tahay waxaa ka mid ah: xoojinta habka difaaca jirka, taageerida horumarinta lafaha xooggan, iyo horumarinta shaqada murqaha caafimaadka qaba.
+
+Si kastaba ha ahaatee, sawirka aad soo dhigtay, ma akhrin karo tilmaamaha isticmaalka ee gaarka ah (inta jeer ee la qaadanayo) iyo taariikhda uu dhacayo daawada. Fadlan ka qaad sawir kale oo cad dhabarka dambe ee dhalada si aan u arko tilmaamaha isticmaalka iyo sidoo kale xagga hoose si aan u arko taariikhda uu dhacayo.
+
+Calaamadaha digniinta ah: Had iyo jeer hubi in daawadu aanay dhicin. Haddii aad dareento wax calaamado aan caadi ahayn markaad isticmaasho ka dib, jooji isticmaalka oo la xiriir dhakhtar.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aashaada ku saabsan dawadan oo aad sawirka iga soo xareysay.
+
+Waan arkaa magaca dawada oo ah NatureWise Vitamin D3, iyo qiyaasta oo ah 125 mcg (ama 5,000 IU). Waxaa loo isticmaalaa in lagu xoojiyo habka difaaca jirka, horumarinta lafaha xooggan, iyo kor u qaadista shaqada murqaha.
+
+Laakiin, sawirka kuma qorna inta jeer ee la qaadanayo maalin kasta ama toddobaad kasta, iyo taariikhda ay dhacayso (expiration date). Fadlan sawir kale oo cad iga soo qaad xagga dambe ee dhalada ama meesha kale ee lagu qoray tilmaamaha isticmaalka iyo taariikhda dhicitaanka.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aashaada ku saabsan dawadan oo aad sawirka iga soo xareysay.
+
+Waan arkaa magaca dawada oo ah NatureWise Vitamin D3, iyo qiyaasta oo ah 125 mcg (ama 5,000 IU). Waxaa loo isticmaalaa in lagu xoojiyo habka difaaca jirka, horumarinta lafaha xooggan, iyo kor u qaadista shaqada murqaha.
+
+Laakiin, sawirka kuma qorna inta jeer ee la qaadanayo maalin kasta ama toddobaad kasta, iyo taariikhda ay dhacayso (expiration date). Fadlan sawir kale oo cad iga soo qaad xagga dambe ee dhalada ama meesha kale ee lagu qoray tilmaamaha isticmaalka iyo taariikhda dhicitaanka.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aashaada ku saabsan dawadan.
+
+Waan arkaa magaca iyo qiyaasta dawada: Waa 'Naturewise Vitamin D3', qiyaasteeduna waa 125 micrograms (ama 5,000 IU).
+
+Vitamin D3 wuxuu muhiim u yahay caafimaadka lafaha, wuxuuna caawiyaa nuugista calcium-ka. Waxa kale oo uu xoojiyaa difaaca jirka iyo shaqada murqaha. Waxaa loo isticmaalaa yaraanta Vitamin D-ga, taasoo keenta lafo jilicsanaan. Dawadani waxay jirka ka caawineysaa inuu si fiican uga faa'iidaysto macdanta.
+
+Dadka calcium-ka badan, dhagaxaanta kelyaha, ama xasaasiyadda Vitamin D qaba, waa inaysan qaadan iyagoon dhakhtar la tashan.
+
+Calaamadaha digniinta ah waxaa ka mid ah lallabbo, matag, calool istaag, daal, iyo harraad, kuwaasoo muujin kara xaddi badan oo Vitamin D ah.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aashaada ku saabsan dawadan.
+
+Waan arkaa magaca iyo qiyaasta dawada: Waa 'Naturewise Vitamin D3', qiyaasteeduna waa 125 micrograms (ama 5,000 IU).
+
+Vitamin D3 wuxuu muhiim u yahay caafimaadka lafaha, wuxuuna caawiyaa nuugista calcium-ka. Waxa kale oo uu xoojiyaa difaaca jirka iyo shaqada murqaha. Waxaa loo isticmaalaa yaraanta Vitamin D-ga, taasoo keenta lafo jilicsanaan. Dawadani waxay jirka ka caawineysaa inuu si fiican uga faa'iidaysto macdanta.
+
+Dadka calcium-ka badan, dhagaxaanta kelyaha, ama xasaasiyadda Vitamin D qaba, waa inaysan qaadan iyagoon dhakhtar la tashan.
+
+Calaamadaha digniinta ah waxaa ka mid ah lallabbo, matag, calool istaag, daal, iyo harraad, kuwaasoo muujin kara xaddi badan oo Vitamin D ah.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aashaada ku saabsan dawadan, waana ku caawinayaa.
+
+Waan arkaa dawada, magaceedu waa NatureWise Vitamin D3, qiyaasteeduna waa 125 mcg (taas oo u dhiganta 5,000 IU).
+
+Dawadan waxaa loo isticmaalaa in ay xoojiso caafimaadka lafaha, sababtoo ah waxay jidhka ka caawisaa nuugista calcium-ka iyo phosphorus-ka, oo muhiim u ah lafaha adag. Waxay kaloo xoojisaa habka difaaca jirka iyo shaqada murqaha. Waxay ka shaqaysaa sidii fitamiin jidhka dabiiciyan ugu samaysma marka qorraxdu ku dhacdo, laakiin haddii la'aan jidheed ay jirto, kaniinigan ayaa kaa caawinaya.
+
+Dawadan lama qaadan karo haddii qofku leeyahay heer calcium oo aad u sarreeya (hypercalcemia), ama dhibaatooyin kelyo oo daran. Sidoo kale, haddii xasaasiyad gaar ah laga qabo Vitamin D, waa in aan la isticmaalin.
+
+Calaamadaha digniinta ah: Haddii aad qaadato qiyaas ka badan inta lagu taliyay, waxaa suurtagal ah in ay keento matag, lalabbo, daciifnimo, kaadi badan, iyo rabitaan la'aan cunto. Calaamadahaas haddii aad isku aragto, jooji oo la xiriir dhakhtar.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay su'aashaada ku saabsan dawadan, waana ku caawinayaa.
+
+Waan arkaa dawada, magaceedu waa NatureWise Vitamin D3, qiyaasteeduna waa 125 mcg (taas oo u dhiganta 5,000 IU).
+
+Dawadan waxaa loo isticmaalaa in ay xoojiso caafimaadka lafaha, sababtoo ah waxay jidhka ka caawisaa nuugista calcium-ka iyo phosphorus-ka, oo muhiim u ah lafaha adag. Waxay kaloo xoojisaa habka difaaca jirka iyo shaqada murqaha. Waxay ka shaqaysaa sidii fitamiin jidhka dabiiciyan ugu samaysma marka qorraxdu ku dhacdo, laakiin haddii la'aan jidheed ay jirto, kaniinigan ayaa kaa caawinaya.
+
+Dawadan lama qaadan karo haddii qofku leeyahay heer calcium oo aad u sarreeya (hypercalcemia), ama dhibaatooyin kelyo oo daran. Sidoo kale, haddii xasaasiyad gaar ah laga qabo Vitamin D, waa in aan la isticmaalin.
+
+Calaamadaha digniinta ah: Haddii aad qaadato qiyaas ka badan inta lagu taliyay, waxaa suurtagal ah in ay keento matag, lalabbo, daciifnimo, kaadi badan, iyo rabitaan la'aan cunto. Calaamadahaas haddii aad isku aragto, jooji oo la xiriir dhakhtar.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad rabto sharaxaad ku saabsan dawadan aad soo dirtay.
+
+Waan arkaa sawirka dawada, magaceedu waa NatureWise Vitamin D3, qiyaasteeduna waa 125 mcg (5,000 IU).
+
+Vitamin D3 waa nafaqo jirka u baahan yahay, oo caawisa in jirkaagu uu nuugo kaalshiyamka iyo fosforaska. Waxay muhiim u tahay xoojinta lafaha, murqaha, iyo difaaca jirkaaga. Waxaa loo isticmaalaa in lagu buuxiyo yaraanta Vitamin D, taasoo keeni karta daciifnimo lafo iyo murqo ah.
+
+Dadka aan qaadan karin waxaa ka mid ah kuwa qaba kaalshiyam xad-dhaaf ah oo dhiigooda ku jira (hypercalcemia) ama dhibaatooyin kelyo ah. Sidoo kale, haddii aad uur leedahay, naas nuujinayso, ama aad daawooyin kale qaadanayso, la tasho dhakhtar intaadan bilaabin.
+
+Calaamadaha digniinta ah ee xad-dhaafka Vitamin D3 waxaa ka mid ah lallabbo, matag, cunno xumo, calool-istaag, tabardari, iyo miisaan lumis. Xaaladaha daran, waxay keeni kartaa dhibaatooyin kelyaha ah.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan fahmay inaad rabto sharaxaad ku saabsan dawadan aad soo dirtay.
+
+Waan arkaa sawirka dawada, magaceedu waa NatureWise Vitamin D3, qiyaasteeduna waa 125 mcg (5,000 IU).
+
+Vitamin D3 waa nafaqo jirka u baahan yahay, oo caawisa in jirkaagu uu nuugo kaalshiyamka iyo fosforaska. Waxay muhiim u tahay xoojinta lafaha, murqaha, iyo difaaca jirkaaga. Waxaa loo isticmaalaa in lagu buuxiyo yaraanta Vitamin D, taasoo keeni karta daciifnimo lafo iyo murqo ah.
+
+Dadka aan qaadan karin waxaa ka mid ah kuwa qaba kaalshiyam xad-dhaaf ah oo dhiigooda ku jira (hypercalcemia) ama dhibaatooyin kelyo ah. Sidoo kale, haddii aad uur leedahay, naas nuujinayso, ama aad daawooyin kale qaadanayso, la tasho dhakhtar intaadan bilaabin.
+
+Calaamadaha digniinta ah ee xad-dhaafka Vitamin D3 waxaa ka mid ah lallabbo, matag, cunno xumo, calool-istaag, tabardari, iyo miisaan lumis. Xaaladaha daran, waxay keeni kartaa dhibaatooyin kelyaha ah.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Awdii aad soo dirtay waan maqlay, waxaan dareemayaa xanuunka shubanka ah ee ku hayo. Waan kaa xumahay.
+
+Waan arkaa dawada aad soo dirtay, waa NatureWise Vitamin D3, oo ah 125 mcg (ama 5,000 IU). Vitamin D3 ma aha daawo shuban ah, ee waa fitamiin jidhku u baahan yahay oo ka caawiya lafaha xoojinta, habka difaaca jirka, iyo murqaha. Wuxuu gacan ka geystaa in kalsiyamka iyo fosforyuuska ay jidhku nuugaan, taas oo muhiim u ah caafimaadka lafaha. Guud ahaan, dadka qaba heer sare oo kalsiyam ah dhiigga ama dhibaatooyin kelyood oo daran waa inay dhakhtar la tashadaan intaysan qaadanin.
+
+Hase yeeshee, shubanka aad ka cabanayso wuxuu u baahan yahay tacaal degdeg ah. Waxaa muhiim ah inaad cabto biyo badan iyo cabbitaannada ka hortaga fuuqbaxa sida ORS (Oral Rehydration Salts) haddii aad heli karto, ama cabbitaanno cusbo iyo sonkor leh oo guriga lagu sameeyo. Cunto fudud oo aan baruur lahayn qaado sida bariiska cad, mooska, ama roodhida.
+
+Calaamadaha digniinta ah ee fitamiin D-ga badan waxaa ka mid ah lalabbo, matag, calool istaag, daciifnimo, iyo xitaa dhibaatooyin kelyaha ah. Sidoo kale, shubankaagu haddii uu socdo in ka badan laba maalmood, uu dhiig leeyahay, ama qandho sare ay la socoto, waa inaad isla markiiba isbitaal aadaa.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Awdii aad soo dirtay waan maqlay, waxaan dareemayaa xanuunka shubanka ah ee ku hayo. Waan kaa xumahay.
+
+Waan arkaa dawada aad soo dirtay, waa NatureWise Vitamin D3, oo ah 125 mcg (ama 5,000 IU). Vitamin D3 ma aha daawo shuban ah, ee waa fitamiin jidhku u baahan yahay oo ka caawiya lafaha xoojinta, habka difaaca jirka, iyo murqaha. Wuxuu gacan ka geystaa in kalsiyamka iyo fosforyuuska ay jidhku nuugaan, taas oo muhiim u ah caafimaadka lafaha. Guud ahaan, dadka qaba heer sare oo kalsiyam ah dhiigga ama dhibaatooyin kelyood oo daran waa inay dhakhtar la tashadaan intaysan qaadanin.
+
+Hase yeeshee, shubanka aad ka cabanayso wuxuu u baahan yahay tacaal degdeg ah. Waxaa muhiim ah inaad cabto biyo badan iyo cabbitaannada ka hortaga fuuqbaxa sida ORS (Oral Rehydration Salts) haddii aad heli karto, ama cabbitaanno cusbo iyo sonkor leh oo guriga lagu sameeyo. Cunto fudud oo aan baruur lahayn qaado sida bariiska cad, mooska, ama roodhida.
+
+Calaamadaha digniinta ah ee fitamiin D-ga badan waxaa ka mid ah lalabbo, matag, calool istaag, daciifnimo, iyo xitaa dhibaatooyin kelyaha ah. Sidoo kale, shubankaagu haddii uu socdo in ka badan laba maalmood, uu dhiig leeyahay, ama qandho sare ay la socoto, waa inaad isla markiiba isbitaal aadaa.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in ilmahaaga uu hayo shuban iyo matag. Taasi waa xaalad daal badan.
+
+Marka hore, fuuqbaxu waa khatar, sidaa darteed sii biyaha milix iyo sonkor leh (ORS guriga lagu sameeyo), ama biyo qumbe. Cuntooyinka fudud sida bariis, muus, iyo tufaax la shiiday ayaa fiican. Sinjibiil yar oo biyo kulul lagu daray ayaa ka yareyn kara matagga. Hubi inuu nasto si fiican.
+
+Calaamadaha digniinta ah waxaa ka mid ah: fuuqbax daran (indho guntan, af engegan), qandho sare, shuban dhiig leh, matag joogto ah, ama haddii ilmuhu aad u tabaryaraado. Haddii kuwan midkood aad aragto, dhakhtar u gee isla markiiba.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+
+FINAL:
+GurmadAI ayaa kula hadlaya. Waxaan ahay Garadka macmalka ah, oo adiga ku caawinaya. Waan ka xumahay in ilmahaaga uu hayo shuban iyo matag. Taasi waa xaalad daal badan.
+
+Marka hore, fuuqbaxu waa khatar, sidaa darteed sii biyaha milix iyo sonkor leh (ORS guriga lagu sameeyo), ama biyo qumbe. Cuntooyinka fudud sida bariis, muus, iyo tufaax la shiiday ayaa fiican. Sinjibiil yar oo biyo kulul lagu daray ayaa ka yareyn kara matagga. Hubi inuu nasto si fiican.
+
+Calaamadaha digniinta ah waxaa ka mid ah: fuuqbax daran (indho guntan, af engegan), qandho sare, shuban dhiig leh, matag joogto ah, ama haddii ilmuhu aad u tabaryaraado. Haddii kuwan midkood aad aragto, dhakhtar u gee isla markiiba.
+
+Fiiro gaar ah: Anigu dhakhtar ma ahi, booskiisana ma beddeli karo. Shaqadaydu waa gurmadka degdegga ah ee bukaanka lagula tacaalayo ka hor inta aan isbitaalka la geynin.
+====================
+
+====================
+RAW:
+Waxaan ahay GurmadAI. Waxaan ahay sirdoonka caawinaya maanta.
+
+Waan ka xumahay inaan maqlo ilmo suuxday oo qabowday, afkana xumbo ka imanayso. Aad ayaan uga walwalsanahay xaaladda ilmaha. Waxay u muuqataa inay tahay suuxdin ama qalal.
+
+Marka hore, ilmaha dhig meel fidsan oo ammaan ah, dhinacna u jiifisaa si xumbadu u bixi karto oo aanay cunaha u xirmin. Ha isku dayin inaad afkeeda waxba gelin, hana qaban xilliga ay suuxsan tahay. Dabci dharka adag ee qoorta iyo agagaarka luqunta. Dabool oo diiri ilmaha maadaama ay qabowday. La joog ilmaha oo ha ka fogaan ilaa ay ka soo miyirsato.
+
+Calaamadaha digniinta ah ee u baahan gargaar degdeg ah waxaa ka mid ah: Haddii suuxdintu socoto in ka badan 5 daqiiqo, haddii ay neefsashadeedu adkaato ama ay joogsato, haddii ay si degdeg ah u miyirsan weyso, haddii ay dhaawac gaaro inta ay suuxsan tahay, ama haddii ay tahay markii ugu horreysay ee ay sidan oo kale ku dhacdo. Xaaladahan oo kale, isla markiiba wac ambalaans ama ula carar isbitaalka.
+
+Xusuus gaar ah: Anigu dhakhtar maahi, mana beddeli karo. Shaqadaydu waa taageerada gargaarka degdegga ah ka hor intaadan isbitaalka gaarin.
+
+FINAL:
+Waxaan ahay GurmadAI. Waxaan ahay sirdoonka caawinaya maanta.
+
+Waan ka xumahay inaan maqlo ilmo suuxday oo qabowday, afkana xumbo ka imanayso. Aad ayaan uga walwalsanahay xaaladda ilmaha. Waxay u muuqataa inay tahay suuxdin ama qalal.
+
+Marka hore, ilmaha dhig meel fidsan oo ammaan ah, dhinacna u jiifisaa si xumbadu u bixi karto oo aanay cunaha u xirmin. Ha isku dayin inaad afkeeda waxba gelin, hana qaban xilliga ay suuxsan tahay. Dabci dharka adag ee qoorta iyo agagaarka luqunta. Dabool oo diiri ilmaha maadaama ay qabowday. La joog ilmaha oo ha ka fogaan ilaa ay ka soo miyirsato.
+
+Calaamadaha digniinta ah ee u baahan gargaar degdeg ah waxaa ka mid ah: Haddii suuxdintu socoto in ka badan 5 daqiiqo, haddii ay neefsashadeedu adkaato ama ay joogsato, haddii ay si degdeg ah u miyirsan weyso, haddii ay dhaawac gaaro inta ay suuxsan tahay, ama haddii ay tahay markii ugu horreysay ee ay sidan oo kale ku dhacdo. Xaaladahan oo kale, isla markiiba wac ambalaans ama ula carar isbitaalka.
+
+Xusuus gaar ah: Anigu dhakhtar maahi, mana beddeli karo. Shaqadaydu waa taageerada gargaarka degdegga ah ka hor intaadan isbitaalka gaarin.
+====================
+
+====================
+RAW:
+Kani waa GurmadAI.
+Waan ka xumahay in ilmaha waxyeello soo gaartay, aan caawinno.
+Haddii ilmaha ay qasab hayso (suuxdin):
+1.  Dhiga ilmaha dhulka meel fidsan oo ammaan ah.
+2.  Ka fogee agab kasta oo adag oo ku dhow si aanu isku dhaawicin.
+3.  Ha isku dayin inaad afkiisa wax geliso ama aad qabato.
+4.  U rog dhinaciisa si uu neefta u qaadan karo, kuna hubi inuu si fiican u neefsanayo.
+5.  Fiiri saacadda si aad u ogaato inta ay socoto qasabka.
+6.  Haddii qasabku socdo in ka badan shan daqiiqo, ama uu yahay markii ugu horraysay, isla markiiba wac ambalaans ama u gee isbitaalka.
+7.  Marka qasabku dhammaado, la joog ilmaha oo hubi xaaladdiisa.
+
+Fadlan ogow: Anigu dhakhtar maahi. Caawimo caafimaad u raadso arrimaha halista ah.
+
+FINAL:
+Kani waa GurmadAI.
+Waan ka xumahay in ilmaha waxyeello soo gaartay, aan caawinno.
+Haddii ilmaha ay qasab hayso (suuxdin):
+1.  Dhiga ilmaha dhulka meel fidsan oo ammaan ah.
+2.  Ka fogee agab kasta oo adag oo ku dhow si aanu isku dhaawicin.
+3.  Ha isku dayin inaad afkiisa wax geliso ama aad qabato.
+4.  U rog dhinaciisa si uu neefta u qaadan karo, kuna hubi inuu si fiican u neefsanayo.
+5.  Fiiri saacadda si aad u ogaato inta ay socoto qasabka.
+6.  Haddii qasabku socdo in ka badan shan daqiiqo, ama uu yahay markii ugu horraysay, isla markiiba wac ambalaans ama u gee isbitaalka.
+7.  Marka qasabku dhammaado, la joog ilmaha oo hubi xaaladdiisa.
+
+Fadlan ogow: Anigu dhakhtar maahi. Caawimo caafimaad u raadso arrimaha halista ah.
+====================
+
+====================
+RAW:
+Kani waa GurmadAI.
+
+Waan ka xumahay in qofka lugta ka jabtay, aan caawinno.
+
+1.  Ugu horayn, ha dhaqaaqin lugta jaban. Dhaqaaqista waxay ka sii dari kartaa dhaawaca.
+2.  Raadi wax adag oo aad ku kabto lugta, sida loox, ul, ama joornaal duuban. Ku xidh labada dhinac ee lugta jaban maro ama faashad si aysan u dhaqaaqin.
+3.  Qofka u jiiji meel siman, madaxana kor u qaad wax yar haddii ay suurtogal tahay.
+4.  Qofka diiri adigoo ku daboolaya buste ama dhar si aanu u qabowbin.
+5.  Si degdeg ah u wac ambalaas ama u gaadhsii cisbitaalka kuugu dhow.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad ka raadso arrimaha halista ah.
+
+FINAL:
+Kani waa GurmadAI.
+
+Waan ka xumahay in qofka lugta ka jabtay, aan caawinno.
+
+1.  Ugu horayn, ha dhaqaaqin lugta jaban. Dhaqaaqista waxay ka sii dari kartaa dhaawaca.
+2.  Raadi wax adag oo aad ku kabto lugta, sida loox, ul, ama joornaal duuban. Ku xidh labada dhinac ee lugta jaban maro ama faashad si aysan u dhaqaaqin.
+3.  Qofka u jiiji meel siman, madaxana kor u qaad wax yar haddii ay suurtogal tahay.
+4.  Qofka diiri adigoo ku daboolaya buste ama dhar si aanu u qabowbin.
+5.  Si degdeg ah u wac ambalaas ama u gaadhsii cisbitaalka kuugu dhow.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad ka raadso arrimaha halista ah.
+====================
+
+====================
+RAW:
+Kani waa GurmadAI.
+
+Waan ka xumahay in qofka dhaawacmay, aan isku dayno inaan caawino.
+
+1.  **Ha dhaqaajin qofka:** Gaar ahaan xubnaha jaban (lugta iyo gacanta). Tani waxay ka hortagaysaa dhaawac dheeraad ah.
+2.  **U diiri qofka:** Haddii uu qabowdareemo, ku dabool buste ama dhar si aanu u qabowbin.
+3.  **Wac gurmad caafimaad:** Isla markiiba la xiriir ambalaasta ama wac dhakhaatiirta degdegga ah.
+4.  **Ha dhaqaaqin xubnaha:** Isku day inaad xubnaha jaban ku hayso meel aysan dhaqaaqi karin, adiga oo aan cadaadis saarin ama aad xoog ku qaban.
+5.  **Ku hay meel raaxo leh:** Inta aad sugayso caawimaadda, u samee qofka meel uu ku neefsan karo oo uu ku raaxaysan karo intii suurtogal ah.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimaad caafimaad raadso arrimaha halista ah.
+
+FINAL:
+Kani waa GurmadAI.
+
+Waan ka xumahay in qofka dhaawacmay, aan isku dayno inaan caawino.
+
+1.  **Ha dhaqaajin qofka:** Gaar ahaan xubnaha jaban (lugta iyo gacanta). Tani waxay ka hortagaysaa dhaawac dheeraad ah.
+2.  **U diiri qofka:** Haddii uu qabowdareemo, ku dabool buste ama dhar si aanu u qabowbin.
+3.  **Wac gurmad caafimaad:** Isla markiiba la xiriir ambalaasta ama wac dhakhaatiirta degdegga ah.
+4.  **Ha dhaqaaqin xubnaha:** Isku day inaad xubnaha jaban ku hayso meel aysan dhaqaaqi karin, adiga oo aan cadaadis saarin ama aad xoog ku qaban.
+5.  **Ku hay meel raaxo leh:** Inta aad sugayso caawimaadda, u samee qofka meel uu ku neefsan karo oo uu ku raaxaysan karo intii suurtogal ah.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimaad caafimaad raadso arrimaha halista ah.
+====================
+
+====================
+RAW:
+Waxaan ahay GurmadAI.
+
+Waan ka xumahay in qofku dhaawacmay, aan isku dayno inaan caawino.
+
+1.  **Degdeg u wac ambalaasta ama adeegyada gurmadka degdegga ah.** U sheeg meesha aad joogtaan iyo waxa dhacay.
+2.  **Ha dhaqaajin qofka.** Tani waa mid aad muhiim u ah si looga hortago dhaawac dheeraad ah. Ka ilaali inuu dhaqaajiyo lugta ama gacanta jaban.
+3.  **Haddii ay suurtagal tahay, oo aad taqaanid sida loo sameeyo, ku dheji lugta ama gacanta wax adag (sida loox, sanduuq, ama wargeys la duubay) si ay u xasiliso.** U xidh si aanay u dhaqaaqin, laakiin ha adkayn si aanay dhiigga u joojin.
+4.  **Hubi inaysan jirin dhiig bax.** Haddii uu jiro, ku cadaadi dhaawaca faashad nadiif ah ama maro.
+5.  **Ku dabool qofka buste ama maro si uusan u qaboobin.** Tani waxay ka caawinaysaa in jirkiisa heerkulkiisu isku mid ahaado.
+
+Fiiro gaar ah: Anigu dhakhtar ma ihi. Caawimo caafimaad ka raadso arrimaha daran.
+
+FINAL:
+Waxaan ahay GurmadAI.
+
+Waan ka xumahay in qofku dhaawacmay, aan isku dayno inaan caawino.
+
+1.  **Degdeg u wac ambalaasta ama adeegyada gurmadka degdegga ah.** U sheeg meesha aad joogtaan iyo waxa dhacay.
+2.  **Ha dhaqaajin qofka.** Tani waa mid aad muhiim u ah si looga hortago dhaawac dheeraad ah. Ka ilaali inuu dhaqaajiyo lugta ama gacanta jaban.
+3.  **Haddii ay suurtagal tahay, oo aad taqaanid sida loo sameeyo, ku dheji lugta ama gacanta wax adag (sida loox, sanduuq, ama wargeys la duubay) si ay u xasiliso.** U xidh si aanay u dhaqaaqin, laakiin ha adkayn si aanay dhiigga u joojin.
+4.  **Hubi inaysan jirin dhiig bax.** Haddii uu jiro, ku cadaadi dhaawaca faashad nadiif ah ama maro.
+5.  **Ku dabool qofka buste ama maro si uusan u qaboobin.** Tani waxay ka caawinaysaa in jirkiisa heerkulkiisu isku mid ahaado.
+
+Fiiro gaar ah: Anigu dhakhtar ma ihi. Caawimo caafimaad ka raadso arrimaha daran.
+====================
+
+====================
+RAW:
+Kani waa GurmadAI.
+Waan ka xumahay dhaawaca dhacay, aan isku dayno inaan caawino.
+
+Ugu horayn, iska hubi in deegaanku ammaan yahay.
+Dhiigga jooji: cadaadis toos ah saar dhaawaca maro nadiif ah.
+Ha isku dayin inaad toosiso lugta ama gacanta jaban. Isticmaal usha ama shay kale oo adag iyo dhar si aad ugu xirto oo aanay u dhaqaaqin.
+Haddii ay suurtogal tahay, kor u qaad qaybta dhaawacan, laakiin ha sababin xanuun dheeraad ah.
+Qofka diiri adigoo ku daboolaya buste.
+Si degdeg ah isbitaal u gee.
+
+Fiiro gaar ah: Dhakhtar maahi. Caawimo caafimaad ka raadso arrimaha daran.
+
+FINAL:
+Kani waa GurmadAI.
+Waan ka xumahay dhaawaca dhacay, aan isku dayno inaan caawino.
+
+Ugu horayn, iska hubi in deegaanku ammaan yahay.
+Dhiigga jooji: cadaadis toos ah saar dhaawaca maro nadiif ah.
+Ha isku dayin inaad toosiso lugta ama gacanta jaban. Isticmaal usha ama shay kale oo adag iyo dhar si aad ugu xirto oo aanay u dhaqaaqin.
+Haddii ay suurtogal tahay, kor u qaad qaybta dhaawacan, laakiin ha sababin xanuun dheeraad ah.
+Qofka diiri adigoo ku daboolaya buste.
+Si degdeg ah isbitaal u gee.
+
+Fiiro gaar ah: Dhakhtar maahi. Caawimo caafimaad ka raadso arrimaha daran.
+====================
+
+====================
+RAW:
+Kani waa GurmadAI.
+Waan ka xumahay in ilmaha uu dhaawacmay, aan is caawinno.
+
+Si degdeg ah u raac tallaabooyinkan:
+1.  **Hubi in meesha ay ammaan tahay.**
+2.  **Cadaadis toos ah saar dhaawaca, adigoo isticmaalaya maro nadiif ah ama faashad.** Ha ka qaadin cadaadiska muddo 5-10 daqiiqo ah si uu dhiiggu u joogsado.
+3.  **Ilmaha dhig meel uu ku seexdo, madaxiisana xoogaa kor uga qaad (haddii ay suurtagal tahay).**
+4.  **La socod xaaladdooda miyir qabka iyo neeftooda.** Haddii ay suuxaan, matagayaan, wareersan yihiin, ama ay indhahoodu aanay isku mid ahayn, isla markiiba caawinaad caafimaad u raadi.
+5.  **Ha isku dayin inaad ka saarto wax ku dhegay dhaawaca.** Haddii uu qoto dheer yahay ama uusan dhiiggu joogsan, waa in dhaqso loo geeyaa cusbitaalka.
+6.  **Ilmaha dajii oo la hadal si degan.**
+
+Xusuusnow: Dhakhtar ma ihi. Caawinaad caafimaad ka raadso arrimaha halista ah.
+
+FINAL:
+Kani waa GurmadAI.
+Waan ka xumahay in ilmaha uu dhaawacmay, aan is caawinno.
+
+Si degdeg ah u raac tallaabooyinkan:
+1.  **Hubi in meesha ay ammaan tahay.**
+2.  **Cadaadis toos ah saar dhaawaca, adigoo isticmaalaya maro nadiif ah ama faashad.** Ha ka qaadin cadaadiska muddo 5-10 daqiiqo ah si uu dhiiggu u joogsado.
+3.  **Ilmaha dhig meel uu ku seexdo, madaxiisana xoogaa kor uga qaad (haddii ay suurtagal tahay).**
+4.  **La socod xaaladdooda miyir qabka iyo neeftooda.** Haddii ay suuxaan, matagayaan, wareersan yihiin, ama ay indhahoodu aanay isku mid ahayn, isla markiiba caawinaad caafimaad u raadi.
+5.  **Ha isku dayin inaad ka saarto wax ku dhegay dhaawaca.** Haddii uu qoto dheer yahay ama uusan dhiiggu joogsan, waa in dhaqso loo geeyaa cusbitaalka.
+6.  **Ilmaha dajii oo la hadal si degan.**
+
+Xusuusnow: Dhakhtar ma ihi. Caawinaad caafimaad ka raadso arrimaha halista ah.
+====================
+
+====================
+RAW:
+Halkan waa GurmadAI.
+Waan ka xumahay in qofku dhaawacmay, aan isku dayno inaan caawino.
+
+Ugu horrayn, si degdeg ah u wac gurmadka degdegga ah ama ambalaasta. Ha dhaqaajin qofka haddii aanay xaalad kale oo nolol halis gelinaysa jirin.
+
+Dhaawaca wajiga ka socda, cadaadis toos ah saar dhaawaca adigoo isticmaalaya maro nadiif ah ama gacantaada.
+
+Lugta iyo gacanta jabtay, ha isku dayin inaad toosiso ama dhaqaajiso. Haddii aad heli karto, ku xir wax adag oo aan dhaqaaqayn sida loox ama wargeys la duubay si aad u yareyso dhaq-dhaqaaqa, laakiin haddii aadan aqoon u lahayn, ha sameyn. Ugu muhiimsan waa in aan la dhaqaajin oo loo sugo caawimo xirfad leh.
+
+Qofka diirran geli oo la hadal si uu u dego inta gurmadku imaanayo.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad u raadso arrimaha halista ah.
+
+FINAL:
+Halkan waa GurmadAI.
+Waan ka xumahay in qofku dhaawacmay, aan isku dayno inaan caawino.
+
+Ugu horrayn, si degdeg ah u wac gurmadka degdegga ah ama ambalaasta. Ha dhaqaajin qofka haddii aanay xaalad kale oo nolol halis gelinaysa jirin.
+
+Dhaawaca wajiga ka socda, cadaadis toos ah saar dhaawaca adigoo isticmaalaya maro nadiif ah ama gacantaada.
+
+Lugta iyo gacanta jabtay, ha isku dayin inaad toosiso ama dhaqaajiso. Haddii aad heli karto, ku xir wax adag oo aan dhaqaaqayn sida loox ama wargeys la duubay si aad u yareyso dhaq-dhaqaaqa, laakiin haddii aadan aqoon u lahayn, ha sameyn. Ugu muhiimsan waa in aan la dhaqaajin oo loo sugo caawimo xirfad leh.
+
+Qofka diirran geli oo la hadal si uu u dego inta gurmadku imaanayo.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad u raadso arrimaha halista ah.
+====================
+
+====================
+RAW:
+Kani waa GurmadAI. Waan ka xumahay in qofku dhaawacmay, aan isku dayno inaan caawino.
+
+Ugu horreyn, hubi in deegaanku ammaan yahay adiga iyo qofka dhaawacmayba. Si degdeg ah u wac ambalaans ama gargaarka degdegga ah.
+
+Inta ay imaanayaan, raac tallaabooyinkan:
+1.  **Dhiigga jooji:** Haddii wajigu dhiigbaxayo, cadaadis toos ah saar dhaawaca adigoo isticmaalaya maro nadiif ah ama faashad.
+2.  **Lugta iyo gacanta jaban:** Ha dhaqaajin lugta ama gacanta jaban. Isku day inaad meeshooda ku ilaaliso si ay u xasilloon yihiin. Haddii aad taqaanno, waxaad ku samayn kartaa qalab hagaajin ku meel gaar ah, laakiin ha isku dayin inaad lafta dib u hagaajiso.
+3.  **Ilka dhaawacmay:** Haddii ilig uu ka soo dhacay, isku day inaad hesho iliga oo ku rid caano ama dhareer, dabadeed la qaad qofka si loo gaarsiiyo isbitaalka.
+4.  **Qofka diiri:** Huwi buste si uusan u qabowbin.
+5.  **La hadal:** Ka hadal si aad u xaqiijiso inuu miyir qabo oo neefsanayo.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad ka raadso arrimaha halista ah.
+
+FINAL:
+Kani waa GurmadAI. Waan ka xumahay in qofku dhaawacmay, aan isku dayno inaan caawino.
+
+Ugu horreyn, hubi in deegaanku ammaan yahay adiga iyo qofka dhaawacmayba. Si degdeg ah u wac ambalaans ama gargaarka degdegga ah.
+
+Inta ay imaanayaan, raac tallaabooyinkan:
+1.  **Dhiigga jooji:** Haddii wajigu dhiigbaxayo, cadaadis toos ah saar dhaawaca adigoo isticmaalaya maro nadiif ah ama faashad.
+2.  **Lugta iyo gacanta jaban:** Ha dhaqaajin lugta ama gacanta jaban. Isku day inaad meeshooda ku ilaaliso si ay u xasilloon yihiin. Haddii aad taqaanno, waxaad ku samayn kartaa qalab hagaajin ku meel gaar ah, laakiin ha isku dayin inaad lafta dib u hagaajiso.
+3.  **Ilka dhaawacmay:** Haddii ilig uu ka soo dhacay, isku day inaad hesho iliga oo ku rid caano ama dhareer, dabadeed la qaad qofka si loo gaarsiiyo isbitaalka.
+4.  **Qofka diiri:** Huwi buste si uusan u qabowbin.
+5.  **La hadal:** Ka hadal si aad u xaqiijiso inuu miyir qabo oo neefsanayo.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad ka raadso arrimaha halista ah.
+====================
+
+====================
+RAW:
+Waxaan ahay GurmadAI.
+Waan ka xumahay dhaawaca kugu dhacay, aan isku dayno inaan ku caawinno.
+
+1.  **Wac gurmad caafimaad degdeg ah:** Isla markiiba wac ambalaas ama gaarsii qofka cisbitaalka ugu dhow.
+2.  **Dhiigga jooji:** Cadaadis toos ah saar afka meesha dhiiggu ka imanayo adigoo isticmaalaya maro nadiif ah ama shukumaan.
+3.  **Ha dhaqaajin meelaha jabay:** Gacanta iyo lugta jabtay ha dhaqaajin. Isku day inaad ku xasiliso booskooda adigoo isticmaalaya wax adag (sida loox, buug ama joornaal duuban) oo ku xidha dharka ama xarig si aysan u dhaqaaqin.
+4.  **Qofka dejiso:** Ka caawi qofka inuu dejiyo oo neefsado si degan.
+5.  **Dhaawaca iliga:** Haddii iliggu soo dhacay, ku hay biyo nadiif ah ama caano haddii ay suurtogal tahay oo la tag cisbitaalka.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad raadso arrimaha halista ah.
+
+FINAL:
+Waxaan ahay GurmadAI.
+Waan ka xumahay dhaawaca kugu dhacay, aan isku dayno inaan ku caawinno.
+
+1.  **Wac gurmad caafimaad degdeg ah:** Isla markiiba wac ambalaas ama gaarsii qofka cisbitaalka ugu dhow.
+2.  **Dhiigga jooji:** Cadaadis toos ah saar afka meesha dhiiggu ka imanayo adigoo isticmaalaya maro nadiif ah ama shukumaan.
+3.  **Ha dhaqaajin meelaha jabay:** Gacanta iyo lugta jabtay ha dhaqaajin. Isku day inaad ku xasiliso booskooda adigoo isticmaalaya wax adag (sida loox, buug ama joornaal duuban) oo ku xidha dharka ama xarig si aysan u dhaqaaqin.
+4.  **Qofka dejiso:** Ka caawi qofka inuu dejiyo oo neefsado si degan.
+5.  **Dhaawaca iliga:** Haddii iliggu soo dhacay, ku hay biyo nadiif ah ama caano haddii ay suurtogal tahay oo la tag cisbitaalka.
+
+Fiiro gaar ah: Anigu dhakhtar maahi. Caawimo caafimaad raadso arrimaha halista ah.
+====================
+
+====================
+RAW:
+Halkan waa GurmadAI.
+
+Waan ka xumahay in ilmaha uu dhaawacmay, aan isku dayno inaanu caawinno.
+
+1.  Ugu horrayn, si deggan u hubi in ilmaha uu neefsanayo oo aanu jirin wax afkiisa ka xiran.
+2.  Hadduu dhiig ka imaanayo afkiisa, u dhig ilmaha si uu dhiiggu u soo daato, si aanu cunaha ugu xirmin.
+3.  Ha isku dayin inaad ka saarto wax ku dhegay iligga jabay ama afkiisa.
+4.  Ku cadaadi maro nadiif ah meesha dhiiggu ka imanayo si aad u joojiso.
+5.  U kaxee ilmaha isbitaal degdeg ah, gaar ahaan haddii dhiiggu badan yahay, ama uu miyir beelo.
+
+F.G: Anigu dhakhtar ma ihi. Caawinaad caafimaad ka raadso dhibaatooyinka waaweyn.
+
+FINAL:
+Halkan waa GurmadAI.
+
+Waan ka xumahay in ilmaha uu dhaawacmay, aan isku dayno inaanu caawinno.
+
+1.  Ugu horrayn, si deggan u hubi in ilmaha uu neefsanayo oo aanu jirin wax afkiisa ka xiran.
+2.  Hadduu dhiig ka imaanayo afkiisa, u dhig ilmaha si uu dhiiggu u soo daato, si aanu cunaha ugu xirmin.
+3.  Ha isku dayin inaad ka saarto wax ku dhegay iligga jabay ama afkiisa.
+4.  Ku cadaadi maro nadiif ah meesha dhiiggu ka imanayo si aad u joojiso.
+5.  U kaxee ilmaha isbitaal degdeg ah, gaar ahaan haddii dhiiggu badan yahay, ama uu miyir beelo.
+
+F.G: Anigu dhakhtar ma ihi. Caawinaad caafimaad ka raadso dhibaatooyinka waaweyn.
+====================

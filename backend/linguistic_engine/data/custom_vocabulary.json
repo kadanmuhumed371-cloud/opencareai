@@ -1,0 +1,56 @@
+[
+  {
+    "original": "dhaawac",
+    "tts_version": "daawac",
+    "category": "medical",
+    "enabled": true
+  },
+  {
+    "original": "dhiig",
+    "tts_version": "diig",
+    "category": "medical",
+    "enabled": true
+  },
+  {
+    "original": "dhakhtar",
+    "tts_version": "dakhtar",
+    "category": "medical",
+    "enabled": true
+  },
+  {
+    "original": "xanuun",
+    "tts_version": "hanuun",
+    "category": "medical",
+    "enabled": true
+  },
+  {
+    "original": "cisbitaal",
+    "tts_version": "sisbitaal",
+    "category": "medical",
+    "enabled": true
+  },
+  {
+    "original": "gargaar",
+    "tts_version": "gargar",
+    "category": "medical",
+    "enabled": true
+  },
+  {
+    "original": "hiisad",
+    "tts_version": "xiisad",
+    "category": "mapping",
+    "enabled": true
+  },
+  {
+    "original": "adaadis",
+    "tts_version": "cadaadis",
+    "category": "mapping",
+    "enabled": true
+  },
+  {
+    "original": "aalami",
+    "tts_version": "caalami",
+    "category": "mapping",
+    "enabled": true
+  }
+]

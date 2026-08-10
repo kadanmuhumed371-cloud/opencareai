@@ -1,0 +1,6 @@
+torch
+transformers
+gradio
+huggingface_hub
+sentencepiece
+scipy
