@@ -1635,7 +1635,9 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         print("🛑 [CLEANUP COMPLETE] Audio paths disconnected.")
 
 # Mount the static site folder safely
-app.mount("/static", StaticFiles(directory="../public", html=True), name="public")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PUBLIC_DIR = os.path.join(BASE_DIR, "public")
+app.mount("/static", StaticFiles(directory=PUBLIC_DIR, html=True), name="public")
 
 if __name__ == "__main__":
     import uvicorn
