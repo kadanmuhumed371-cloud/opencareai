@@ -412,7 +412,8 @@
 
         function connectWebSocket() {
             if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) {
-                return; // Already connecting or connected
+                console.warn("WebSocket already connecting or active. Skipping duplicate connection.");
+                return;
             }
 
             // Ensure language parameter is appended dynamically

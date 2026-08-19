@@ -1355,6 +1355,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     }
 
     selected_lang_rule = LANG_MAP.get(lang, LANG_MAP["Af-Soomaali"]) if lang else LANG_MAP["Af-Soomaali"]
+    selected_lang_rule += f"\nDO NOT SPEAK OR GREET IN ENGLISH under any circumstances. You must welcome and greet the user exclusively in the language: {lang}. Avoid any fallback English welcome strings."
 
     system_instruction_text = f"""{selected_lang_rule}
 
@@ -1525,12 +1526,14 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
         async with session_client.aio.live.connect(model=model_to_use, config=config) as google_session:
             print(f"🧠 [GEMINI LIVE CONNECTED] Modality: AUDIO + Real-time Transcription with model {model_to_use}")
             
-            greeting_trigger = (
-                f"Please greet the user warmly by saying exactly the following greeting for {lang} and then stop to wait for their response:\n"
-                f"For Somali: 'Ku soo dhawaada, waxaan ahay OpenCareAI, oo ah kaaliyahaaga caafimaadka ee AI. Sideen kuu caawin karaa?'\n"
-                f"For Afaan Oromo: 'Baga nagaan dhuftan, ani OpenCareAI, gargaara kee fayyaa AI ti. Akkamitti si gargaaruu danda'a?'\n"
-                f"For Amharic: 'እንኳን ደህና መጡ፣ እኔ ኦፕንኬርኤአይ (OpenCareAI) የጤና ረዳትዎ ነኝ። እንዴት ልረዳዎት እችላለሁ?'\n"
-            )
+            greetings_by_lang = {
+                "Af-Soomaali": "Ku soo dhawaada, waxaan ahay OpenCareAI, oo ah kaaliyahaaga caafimaadka ee AI. Sideen kuu caawin karaa?",
+                "Afaan-Oromo": "Baga nagaan dhuftan, ani OpenCareAI, gargaara kee fayyaa AI ti. Akkamitti si gargaaruu danda'a?",
+                "Afaan Oromo": "Baga nagaan dhuftan, ani OpenCareAI, gargaara kee fayyaa AI ti. Akkamitti si gargaaruu danda'a?",
+                "Amharic": "እንኳን ደህና መጡ፣ እኔ ኦፕንኬርኤአይ (OpenCareAI) የጤና ረዳትዎ ነኝ። እንዴት ልረዳዎት እችላለሁ?"
+            }
+            greeting_text = greetings_by_lang.get(lang, greetings_by_lang["Af-Soomaali"])
+            greeting_trigger = f"Say exactly: '{greeting_text}'"
             await google_session.send_realtime_input(text=greeting_trigger)
             await google_session.send_client_content(turn_complete=True)
             
