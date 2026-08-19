@@ -74,6 +74,12 @@ sys.stdout.reconfigure(encoding='utf-8')
 # Registry for active background tasks per connection to ensure single-session isolation
 active_session_tasks = {}
 
+ws_write_lock = asyncio.Lock()
+
+async def send_audio_chunk(websocket: WebSocket, data: bytes):
+    async with ws_write_lock:
+        await websocket.send_bytes(data)
+
 app = FastAPI(title="OpenCareAI Production Multi-Modal Engine")
 
 ALLOWED_ORIGINS = [
@@ -1239,6 +1245,8 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     }
     
     connection_alive = True
+    active_turn_id = 0
+    ai_is_active = False
     user_audio_buffer = bytearray()
     ai_audio_buffer = bytearray()
     session_audio_timeline = []
@@ -1526,22 +1534,17 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
         async with session_client.aio.live.connect(model=model_to_use, config=config) as google_session:
             print(f"🧠 [GEMINI LIVE CONNECTED] Modality: AUDIO + Real-time Transcription with model {model_to_use}")
             
-            greetings_by_lang = {
-                "Af-Soomaali": "Ku soo dhawaada, waxaan ahay OpenCareAI, oo ah kaaliyahaaga caafimaadka ee AI. Sideen kuu caawin karaa?",
-                "Afaan-Oromo": "Baga nagaan dhuftan, ani OpenCareAI, gargaara kee fayyaa AI ti. Akkamitti si gargaaruu danda'a?",
-                "Afaan Oromo": "Baga nagaan dhuftan, ani OpenCareAI, gargaara kee fayyaa AI ti. Akkamitti si gargaaruu danda'a?",
-                "Amharic": "እንኳን ደህና መጡ፣ እኔ ኦፕንኬርኤአይ (OpenCareAI) የጤና ረዳትዎ ነኝ። እንዴት ልረዳዎት እችላለሁ?"
-            }
-            greeting_text = greetings_by_lang.get(lang, greetings_by_lang["Af-Soomaali"])
-            greeting_trigger = f"Say exactly: '{greeting_text}'"
-            await google_session.send_realtime_input(text=greeting_trigger)
-            await google_session.send_client_content(turn_complete=True)
-            
             session_alive = True
             last_sent_ai_text = ""
             
             async def handle_msg(m):
-                nonlocal user_audio_buffer, conversation_history, session_metadata, session_audio_timeline, current_turn_input_type
+                nonlocal user_audio_buffer, conversation_history, session_metadata, session_audio_timeline, current_turn_input_type, active_turn_id, ai_is_active
+                
+                # Rotate turn ID if AI is currently outputting a turn
+                if ai_is_active:
+                    active_turn_id += 1
+                    ai_is_active = False
+                    print(f"🔄 [TURN ROTATION] New turn initialized (ID: {active_turn_id}) due to user activity.")
                 try:
                     if m.get("text") is not None:
                         text_payload = m["text"]
@@ -1560,6 +1563,10 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                             await google_session.send_client_content(turn_complete=True)
                         elif client_text_data == "AI was interrupted":
                             print("🎙️ [INTERRUPT] Received 'AI was interrupted' signal from client. Cancelling other sessions' tasks.")
+                            # Force rotate turn ID if not already done
+                            if not ai_is_active:
+                                active_turn_id += 1
+                            ai_is_active = False
                             global active_session_tasks
                             for old_sess_id, tasks in list(active_session_tasks.items()):
                                 if old_sess_id != anonymous_session_id:
@@ -1577,7 +1584,7 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                                 current_turn_input_type = "text"
                                 conversation_history.append(f"User: {client_text_data}")
                                 session_metadata.append({
-                                    "timestamp": str(datetime.now()),
+                                    "timestamp": str(datetime.now()), # datetime will be evaluated below
                                     "speaker": "User",
                                     "modality": "text",
                                     "content": client_text_data
@@ -1627,12 +1634,15 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                         traceback.print_exc()
 
             async def downstream():
-                nonlocal session_alive, connection_alive, last_sent_ai_text
+                nonlocal session_alive, connection_alive, last_sent_ai_text, active_turn_id, ai_is_active
                 try:
                     while session_alive and connection_alive:
                         async for response in google_session.receive():
                             if not session_alive or not connection_alive:
                                 break
+                            
+                            # Capture active_turn_id for this response chunk
+                            response_turn_id = active_turn_id
                             
                             # Handle tool calls
                             tool_call = getattr(response, 'tool_call', None) if hasattr(response, 'tool_call') else response.get('tool_call') if isinstance(response, dict) else None
@@ -1680,12 +1690,14 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                                                 )
                                             ]
                                         )
-
+ 
                             server_content = response.server_content
                             if server_content is not None:
                                 # 0. Handle model interruption
                                 if server_content.interrupted:
                                     print("🧠 [GEMINI LIVE INTERRUPTED] Model output turn was interrupted by user.")
+                                    active_turn_id += 1 # Force rotate turn ID to discard subsequent model chunks
+                                    ai_is_active = False
                                     await websocket.send_text(json.dumps({
                                         "type": "interrupted"
                                     }))
@@ -1700,7 +1712,7 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                                             "text": input_tx,
                                             "finished": is_finished
                                         }))
-
+ 
                                 # 2. Handle model's output transcription
                                 if server_content.output_transcription is not None:
                                     output_tx = server_content.output_transcription.text
@@ -1715,21 +1727,26 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                                                 "type": "ai_text_delta",
                                                 "text": delta
                                             }))
-
+ 
                                 # 3. Handle model audio output (Binary Passthrough)
                                 model_turn = server_content.model_turn
                                 if model_turn is not None:
+                                    ai_is_active = True
                                     for part in model_turn.parts:
                                         if part.inline_data and part.inline_data.data:
-                                            await websocket.send_bytes(part.inline_data.data)
+                                            # Check turn ID to discard stale chunks
+                                            if response_turn_id != active_turn_id:
+                                                print(f"🗑️ [STALE CHUNK] Discarding stale audio chunk (Response Turn: {response_turn_id}, Active Turn: {active_turn_id})")
+                                                continue
+                                            await send_audio_chunk(websocket, part.inline_data.data)
                                             session_audio_timeline.append((asyncio.get_event_loop().time(), "AI", part.inline_data.data))
-
+ 
                                 # 4. Handle turn complete marker
                                 if server_content.turn_complete:
+                                    ai_is_active = False
                                     await websocket.send_text(json.dumps({
                                         "type": "turn_complete"
                                     }))
-
                 except (websockets.exceptions.ConnectionClosedError, google.genai.errors.APIError) as e:
                     print(f"⚠️ Google Live session ended: {e}")
                 except Exception as e:

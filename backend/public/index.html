@@ -656,6 +656,21 @@
             if (isRecording) return; // Prevent double trigger
             
             stopAudioPlayback();
+            
+            // Clean up any existing instances/nodes first to prevent duplicate streams
+            if (processorNode) {
+                try { processorNode.disconnect(); } catch (e) {}
+                processorNode = null;
+            }
+            if (mediaStreamSource) {
+                try { mediaStreamSource.disconnect(); } catch (e) {}
+                mediaStreamSource = null;
+            }
+            if (liveStreamTrack) {
+                try { liveStreamTrack.getTracks().forEach(t => t.stop()); } catch (e) {}
+                liveStreamTrack = null;
+            }
+
             isRecording = true;
             nextStartTime = 0;
             createVoiceLogBlock();
@@ -667,15 +682,21 @@
                 if (audioContext.state === 'suspended') await audioContext.resume();
                 if (playbackContext.state === 'suspended') await playbackContext.resume();
 
-                liveStreamTrack = await navigator.mediaDevices.getUserMedia({
-                    audio: {
-                        echoCancellation: true,
-                        noiseSuppression: true,
-                        autoGainControl: true,
-                        channelCount: 1,
-                        sampleRate: 16000
-                    }
-                });
+                try {
+                    liveStreamTrack = await navigator.mediaDevices.getUserMedia({
+                        audio: {
+                            echoCancellation: true,
+                            noiseSuppression: true,
+                            autoGainControl: true,
+                            channelCount: 1,
+                            sampleRate: 16000
+                        }
+                    });
+                    console.log("🎙️ Microphone stream acquired.");
+                } catch (micErr) {
+                    console.error("⚠️ Failed to acquire microphone stream:", micErr);
+                    throw micErr;
+                }
                 mediaStreamSource = audioContext.createMediaStreamSource(liveStreamTrack);
                 
                 // Dynamically resolve processor path relative to public root
@@ -685,8 +706,19 @@
                 }
                 console.log("🎙️ Loading AudioWorklet module from:", processorUrl);
                 
-                await audioContext.audioWorklet.addModule(processorUrl);
-                processorNode = new AudioWorkletNode(audioContext, 'audio-processor');
+                try {
+                    await audioContext.audioWorklet.addModule(processorUrl);
+                    console.log("🎙️ AudioWorklet loaded successfully.");
+                } catch (workletErr) {
+                    console.warn("⚠️ AudioWorklet module addModule failed, checking if already registered:", workletErr);
+                }
+                
+                try {
+                    processorNode = new AudioWorkletNode(audioContext, 'audio-processor');
+                } catch (nodeErr) {
+                    console.error("⚠️ Failed to create AudioWorkletNode 'audio-processor':", nodeErr);
+                    throw nodeErr;
+                }
                 
                 mediaStreamSource.connect(processorNode);
               
