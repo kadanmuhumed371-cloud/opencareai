@@ -71,6 +71,9 @@ LIVE_MODEL_ID = "gemini-3.1-flash-live-preview"
 # Force standard UTF-8 terminal mapping for Windows systems
 sys.stdout.reconfigure(encoding='utf-8')
 
+# Registry for active background tasks per connection to ensure single-session isolation
+active_session_tasks = {}
+
 app = FastAPI(title="OpenCareAI Production Multi-Modal Engine")
 
 ALLOWED_ORIGINS = [
@@ -1213,6 +1216,28 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     anonymous_session_id = f"session_{int(asyncio.get_event_loop().time() * 1000)}"
     print(f"\n🌐 [WEBSOCKET CONNECTED] Open. Anonymous Token Assigned: {anonymous_session_id}, Language: {lang}")
     
+    # 1. Single-Session Isolation: Cancel any existing sessions' tasks
+    global active_session_tasks
+    for old_sess_id, tasks in list(active_session_tasks.items()):
+        print(f"🧹 [SESSION ISOLATION] Cancelling tasks for old session {old_sess_id}...")
+        for task_name, task in list(tasks.items()):
+            if task and not task.done():
+                task.cancel()
+                try:
+                    await task
+                except asyncio.CancelledError:
+                    pass
+                except Exception as e:
+                    print(f"⚠️ Error awaiting cancelled task: {e}")
+        active_session_tasks.pop(old_sess_id, None)
+        
+    # Initialize task storage for this connection
+    active_session_tasks[anonymous_session_id] = {
+        "ws_receiver_task": None,
+        "audio_stream_task": None,
+        "gemini_receive_task": None
+    }
+    
     connection_alive = True
     user_audio_buffer = bytearray()
     ai_audio_buffer = bytearray()
@@ -1264,6 +1289,8 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                     traceback.print_exc()
             
     receiver_task = asyncio.create_task(ws_receiver())
+    if anonymous_session_id in active_session_tasks:
+        active_session_tasks[anonymous_session_id]["ws_receiver_task"] = receiver_task
     
     conversation_history = []
 
@@ -1528,6 +1555,20 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                         if client_text_data == "END_":
                             print(f"🚀 [DEBUG] Sending END_ signal to Gemini (end_of_turn=True)")
                             await google_session.send_client_content(turn_complete=True)
+                        elif client_text_data == "AI was interrupted":
+                            print("🎙️ [INTERRUPT] Received 'AI was interrupted' signal from client. Cancelling other sessions' tasks.")
+                            global active_session_tasks
+                            for old_sess_id, tasks in list(active_session_tasks.items()):
+                                if old_sess_id != anonymous_session_id:
+                                    print(f"🧹 [SESSION ISOLATION] Cancelling tasks for old session {old_sess_id} on interrupt...")
+                                    for task_name, task in list(tasks.items()):
+                                        if task and not task.done():
+                                            task.cancel()
+                                            try:
+                                                await task
+                                            except asyncio.CancelledError:
+                                                pass
+                                    active_session_tasks.pop(old_sess_id, None)
                         elif client_text_data:
                             if client_text_data.strip():
                                 current_turn_input_type = "text"
@@ -1694,8 +1735,14 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
                     session_alive = False
                     print("🛑 Downstream loop exited.")
 
-            u_task = asyncio.create_task(upstream())
-            d_task = asyncio.create_task(downstream())
+            audio_stream_task = asyncio.create_task(upstream())
+            gemini_receive_task = asyncio.create_task(downstream())
+            if anonymous_session_id in active_session_tasks:
+                active_session_tasks[anonymous_session_id]["audio_stream_task"] = audio_stream_task
+                active_session_tasks[anonymous_session_id]["gemini_receive_task"] = gemini_receive_task
+            
+            u_task = audio_stream_task
+            d_task = gemini_receive_task
             
             await asyncio.wait(
                 [u_task, d_task],
@@ -1703,8 +1750,21 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
             )
             
             session_alive = False
-            u_task.cancel()
-            d_task.cancel()
+            
+            # Cancel current tasks cleanly using the requested cancellation pattern
+            if u_task and not u_task.done():
+                u_task.cancel()
+                try:
+                    await u_task
+                except asyncio.CancelledError:
+                    pass
+            
+            if d_task and not d_task.done():
+                d_task.cancel()
+                try:
+                    await d_task
+                except asyncio.CancelledError:
+                    pass
 
     except Exception as e:
         error_msg = str(e)
@@ -1729,8 +1789,34 @@ SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
             print(f"⚠️ Failed to send error message to client: {send_err}")
     finally:
         connection_alive = False
-        if not receiver_task.done():
+        
+        # Safe cancellation of receiver_task
+        if 'receiver_task' in locals() and receiver_task and not receiver_task.done():
             receiver_task.cancel()
+            try:
+                await receiver_task
+            except asyncio.CancelledError:
+                pass
+                
+        # Safe cancellation of audio_stream_task (u_task)
+        if 'u_task' in locals() and u_task and not u_task.done():
+            u_task.cancel()
+            try:
+                await u_task
+            except asyncio.CancelledError:
+                pass
+                
+        # Safe cancellation of gemini_receive_task (d_task)
+        if 'd_task' in locals() and d_task and not d_task.done():
+            d_task.cancel()
+            try:
+                await d_task
+            except asyncio.CancelledError:
+                pass
+                
+        # Remove from session registry
+        if 'anonymous_session_id' in locals():
+            active_session_tasks.pop(anonymous_session_id, None)
         
         # Ensure target logging directories exist
         os.makedirs("recordings", exist_ok=True)

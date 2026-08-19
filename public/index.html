@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>OpenCareAI Live</title>
     <link href="./output.css" rel="stylesheet">
+    <link rel="icon" href="data:,">
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -140,10 +141,12 @@
         let cameraStream = null;
         let selectedLanguage = "Af-Soomaali";
         let scheduledSources = [];
+        let isAiOutputtingAudio = false;
 
         // Auto-wake & connection state machine tracking
         let pendingCall = false;
         let reconnectTimeout = null;
+        let consecutiveHighEnergyFrames = 0;
 
         function stopAudioPlayback() {
             scheduledSources.forEach(source => {
@@ -154,11 +157,16 @@
                 }
             });
             scheduledSources = [];
+            isAiOutputtingAudio = false;
             if (playbackContext) {
                 nextStartTime = playbackContext.currentTime;
             } else {
                 nextStartTime = 0;
             }
+        }
+
+        function flushPlaybackQueue() {
+            stopAudioPlayback();
         }
 
         // DOM Elements
@@ -209,6 +217,12 @@
             callBtn.classList.remove('bg-red-600', 'bg-yellow-600', 'text-white', 'border-red-500', 'border-yellow-500', 'animate-pulse');
             callBtn.classList.add('text-[#00A884]');
             waveContainer.classList.add('hidden');
+            if (waveContainer) {
+                waveContainer.classList.remove('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
+                waveContainer.classList.add('border-[#00A884]');
+                const waveText = waveContainer.querySelector('span');
+                if (waveText) waveText.textContent = "In Call...";
+            }
         }
 
         
@@ -652,7 +666,15 @@
                 if (audioContext.state === 'suspended') await audioContext.resume();
                 if (playbackContext.state === 'suspended') await playbackContext.resume();
 
-                liveStreamTrack = await navigator.mediaDevices.getUserMedia({ audio: true });
+                liveStreamTrack = await navigator.mediaDevices.getUserMedia({
+                    audio: {
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        autoGainControl: true,
+                        channelCount: 1,
+                        sampleRate: 16000
+                    }
+                });
                 mediaStreamSource = audioContext.createMediaStreamSource(liveStreamTrack);
                 
                 // Dynamically resolve processor path relative to public root
@@ -669,13 +691,64 @@
               
                 processorNode.port.onmessage = (event) => {
                     if (ws && ws.readyState === WebSocket.OPEN && isRecording) {
-                        // If user starts speaking (audio data flows from worklet), interrupt any active AI speech
-                        if (scheduledSources.length > 0) {
-                            console.log("🎙️ User started speaking. Flushing playback queue.");
-                            stopAudioPlayback();
-                        }
                         const pcm16Buffer = event.data;
-                        ws.send(pcm16Buffer);
+                        
+                        // Calculate RMS (Root Mean Square) energy of the audio frame to avoid false interruptions
+                        const pcmData = new Int16Array(pcm16Buffer);
+                        let sum = 0;
+                        for (let i = 0; i < pcmData.length; i++) {
+                            sum += pcmData[i] * pcmData[i];
+                        }
+                        const rms = Math.sqrt(sum / pcmData.length);
+                        
+                        if (isAiOutputtingAudio) {
+                            // Case 2: AI is SPEAKING - raise the barge-in gate significantly (RMS: 3500, sustained >300ms)
+                            const bargeInThreshold = 3500;
+                            if (rms > bargeInThreshold) {
+                                consecutiveHighEnergyFrames++;
+                            } else {
+                                consecutiveHighEnergyFrames = 0;
+                            }
+                            
+                            // 300ms is ~3 frames at 16kHz / 2048 sample size (128ms per frame)
+                            if (consecutiveHighEnergyFrames >= 3) {
+                                console.log(`🎙️ User barge-in confirmed (RMS: ${rms.toFixed(1)} > ${bargeInThreshold} sustained for >300ms).`);
+                                
+                                // Guard the Interruption Trigger: Only call flushPlaybackQueue() and send "AI was interrupted" if isAiOutputtingAudio is true
+                                flushPlaybackQueue();
+                                if (ws && ws.readyState === WebSocket.OPEN) {
+                                    ws.send("AI was interrupted");
+                                }
+                                
+                                consecutiveHighEnergyFrames = 0;
+                                ws.send(pcm16Buffer);
+                            }
+                            // Do NOT send microphone chunks to the backend while AI is speaking unless barge-in is confirmed
+                        } else {
+                            // Case 1: AI is SILENT - reset high-energy tracking and use high sensitivity (RMS > 1200) to capture user speech
+                            consecutiveHighEnergyFrames = 0;
+                            const normalThreshold = 1200;
+                            
+                            if (rms > normalThreshold) {
+                                ws.send(pcm16Buffer);
+                                
+                                // Show visual active state
+                                if (waveContainer) {
+                                    waveContainer.classList.add('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
+                                    waveContainer.classList.remove('border-[#00A884]');
+                                    const waveText = waveContainer.querySelector('span');
+                                    if (waveText) waveText.textContent = "Listening...";
+                                }
+                            } else {
+                                // Revert visual active state when quiet
+                                if (waveContainer) {
+                                    waveContainer.classList.remove('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
+                                    waveContainer.classList.add('border-[#00A884]');
+                                    const waveText = waveContainer.querySelector('span');
+                                    if (waveText) waveText.textContent = "In Call...";
+                                }
+                            }
+                        }
                     }
                 };
 
@@ -821,12 +894,16 @@
                     nextStartTime = currentTime + 0.02;
                 }
                 
+                isAiOutputtingAudio = true;
                 source.start(nextStartTime);
                 nextStartTime += buffer.duration; 
 
                 scheduledSources.push(source);
                 source.onended = () => {
                     scheduledSources = scheduledSources.filter(s => s !== source);
+                    if (scheduledSources.length === 0) {
+                        isAiOutputtingAudio = false;
+                    }
                 };
             } catch (err) { console.error("Playback error:", err); }
         }
