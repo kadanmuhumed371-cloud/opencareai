@@ -126,8 +126,8 @@
     </div>
 
     <script>
-        const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
-        const apiBaseUrl = isLocal ? (window.location.port === '8000' ? `${window.location.protocol}//${window.location.host}` : 'http://localhost:8000') : 'https://opencareai.onrender.com';
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const apiBaseUrl = isLocal ? (window.location.port === '8001' ? `${window.location.protocol}//${window.location.host}` : 'http://localhost:8001') : 'https://opencareai.onrender.com';
 
         let ws;
         let audioContext;
@@ -404,14 +404,12 @@
             // Ensure language parameter is appended dynamically
             const selectedLang = document.getElementById('langSelect')?.value || 'Af-Soomaali';
             
-            let wsUrl;
-            if (isLocal) {
-                const host = window.location.port === '8000' ? window.location.host : 'localhost:8000';
-                wsUrl = `ws://${host}/ws?lang=${encodeURIComponent(selectedLang)}`;
-            } else {
-                wsUrl = `wss://opencareai.onrender.com/ws?lang=${encodeURIComponent(selectedLang)}`;
-            }
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const wsBaseUrl = isLocal 
+                ? `ws://${window.location.hostname}:8001/ws` 
+                : 'wss://opencareai.onrender.com/ws';
 
+            const wsUrl = `${wsBaseUrl}?lang=${encodeURIComponent(selectedLang)}`;
             console.log("Connecting to WebSocket:", wsUrl);
             updateConnectionStatusUI('connecting');
             

@@ -76,8 +76,10 @@ app = FastAPI(title="OpenCareAI Production Multi-Modal Engine")
 ALLOWED_ORIGINS = [
     "http://localhost",
     "http://localhost:8000",
+    "http://localhost:8001",
     "http://localhost:3000",
     "http://localhost:5000",
+    "http://127.0.0.1:8001",
     "https://gurmad-bb73d.web.app",
     "https://opencareai.org",
     "https://opencareai.onrender.com",
@@ -1857,4 +1859,4 @@ app.mount("/static", StaticFiles(directory=str(PUBLIC_DIR), html=True), name="st
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=False)
+    uvicorn.run("main:app", host="127.0.0.1", port=8001, reload=False)
