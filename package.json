@@ -1,0 +1,14 @@
+{
+  "name": "gurmad-ai",
+  "version": "1.0.0",
+ "scripts": {
+  "build": "tailwindcss -i ./src/input.css -o ./public/output.css",
+  "watch": "tailwindcss -i ./src/input.css -o ./public/output.css --watch"
+},
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "autoprefixer": "^10.5.4",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^4.3.3"
+  }
+}

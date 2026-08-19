@@ -4,21 +4,88 @@ import asyncio
 import json
 import wave
 from datetime import datetime
+from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from google import genai
 from google.genai import types
+import google
 types.LiveModality = types.Modality
+from dotenv import load_dotenv, dotenv_values
+import websockets
+import mimetypes
+mimetypes.add_type('application/javascript', '.js')
+
+try:
+    from services.youtube_search import get_youtube_service
+    from services.emergency_contacts import get_emergency_service
+    from services.translation import get_translation_service
+except ModuleNotFoundError:
+    from backend.services.youtube_search import get_youtube_service
+    from backend.services.emergency_contacts import get_emergency_service
+    from backend.services.translation import get_translation_service
+
+BASE_DIR = Path(__file__).resolve().parent
+env_path = BASE_DIR / ".env"
+load_dotenv(env_path, override=True)
+
+# Read .env values directly to prioritize them over stale system environment variables
+env_values = dotenv_values(env_path) if env_path.exists() else {}
+
+google_key = env_values.get("GOOGLE_API_KEY") or os.getenv("GOOGLE_API_KEY")
+gemini_key = env_values.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
+
+def mask_key(key: str) -> str:
+    if not key:
+        return "None"
+    k_str = str(key).strip()
+    if len(k_str) <= 10:
+        return "****"
+    return f"{k_str[:8]}...{k_str[-4:]}"
+
+google_masked = mask_key(google_key)
+gemini_masked = mask_key(gemini_key)
+
+print(f"🔑 [KEY AUDIT] GOOGLE_API_KEY source: {google_masked}")
+print(f"🔑 [KEY AUDIT] GEMINI_API_KEY source: {gemini_masked}")
+
+api_key = None
+if google_key and gemini_key:
+    print("⚠️ Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Prioritizing GOOGLE_API_KEY.")
+    api_key = google_key
+elif google_key:
+    api_key = google_key
+elif gemini_key:
+    print("ℹ️ GOOGLE_API_KEY is not set. Falling back to GEMINI_API_KEY.")
+    api_key = gemini_key
+else:
+    print("❌ WARNING: Neither GOOGLE_API_KEY nor GEMINI_API_KEY is configured!")
+    print("⚠️ The WebSocket session handler will fail until a valid key is provided.")
+
+if api_key:
+    api_key = api_key.strip()
+
+LIVE_MODEL_ID = "gemini-3.1-flash-live-preview"
 
 # Force standard UTF-8 terminal mapping for Windows systems
 sys.stdout.reconfigure(encoding='utf-8')
 
 app = FastAPI(title="OpenCareAI Production Multi-Modal Engine")
 
+ALLOWED_ORIGINS = [
+    "http://localhost",
+    "http://localhost:8000",
+    "http://localhost:3000",
+    "http://localhost:5000",
+    "https://gurmad-bb73d.web.app",
+    "https://opencareai.org",
+    "https://opencareai.onrender.com",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -887,22 +954,27 @@ Language Priority:
 # Global memory state to cache extracted data from uploaded prescriptions, PDFs, and images
 INGESTED_DOCUMENT_CONTEXT = ""
 
-# Fallback structure to capture the environment key safely
-api_key = os.environ.get("GEMINI_API_KEY", "AIzaSyBRaPCwOynVH3916Bhxc6X5Ga7ng5lEKXY").strip()
+client = None
+if api_key:
+    try:
+        client = genai.Client(
+            api_key=api_key,
+            http_options=types.HttpOptions(api_version="v1alpha")
+        )
+    except Exception as e:
+        print(f"❌ Error initializing global Google GenAI Client: {e}")
+else:
+    print("⚠️ Google GenAI Client not initialized globally because API Key is missing.")
 
-# FIX: One unified client instance configured globally for the v1beta live channel lane
-client = genai.Client(
-    api_key=api_key,
-    http_options=types.HttpOptions(api_version="v1beta")
-)
 standard_client = client
 live_client = client
-
-LIVE_MODEL_ID = "gemini-3.1-flash-live-preview" 
 
 @app.post("/api/upload")
 async def handle_document_upload(file: UploadFile = File(...)):
     global INGESTED_DOCUMENT_CONTEXT
+    if not standard_client:
+        print("💥 [UPLOAD FAULT] Ingestion error: Gemini Client is not initialized due to missing API Key.")
+        return {"status": "error", "message": "Gemini Client is not initialized. Please configure a valid API Key."}
     try:
         file_bytes = await file.read()
         print(f"\n📎 [DOCUMENT RECEIVED] Ingesting {file.filename} ({len(file_bytes)} bytes)...")
@@ -926,12 +998,13 @@ async def handle_document_upload(file: UploadFile = File(...)):
             ]
         )
         
+        extracted_info = ""
         if response.text and response.text.strip():
             extracted_info = response.text.strip()
             INGESTED_DOCUMENT_CONTEXT += f"\n--- XOGTA WARQADDA ({file.filename}) ---\n{extracted_info}\n------------------------\n"
             print("🧠 [CONTEXT ENRICHED] Data extracted and cached for next voice question.")
             
-        return {"status": "success", "filename": file.filename}
+        return {"status": "success", "filename": file.filename, "extracted_text": extracted_info}
     except Exception as e:
         print(f"💥 [UPLOAD FAULT] Ingestion error: {str(e)}")
         return {"status": "error", "message": str(e)}
@@ -1035,6 +1108,31 @@ def update_reviewer_database(session_id: str, user_transcript: str, text_history
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
+        # Ensure database tables exist
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS client_sessions (
+                session_id TEXT PRIMARY KEY,
+                patient_name TEXT,
+                uploaded_image_path TEXT,
+                has_pending_image INTEGER,
+                image_ocr_text TEXT,
+                last_updated TEXT
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS messages_log (
+                message_id TEXT PRIMARY KEY,
+                session_id TEXT,
+                direction TEXT,
+                message_type TEXT,
+                payload_path TEXT,
+                recognized_text TEXT,
+                intent_matched TEXT,
+                tick_state TEXT,
+                timestamp TEXT
+            )
+        """)
+        
         # 1. Update/Insert into client_sessions
         patient_name = "Anonymous Patient"
         for line in text_history:
@@ -1099,6 +1197,17 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     global INGESTED_DOCUMENT_CONTEXT
     await websocket.accept()
     
+    if not api_key:
+        print("💥 [SESSION ERROR] API Key is missing. Cannot start live session.")
+        try:
+            await websocket.send_json({
+                "type": "error",
+                "error": "API Key configuration error: Both GOOGLE_API_KEY and GEMINI_API_KEY are missing. Please configure them in your backend/.env file."
+            })
+        except Exception as send_err:
+            print(f"⚠️ Failed to send error message to client: {send_err}")
+        return
+
     # Generate unique anonymous token anchors for funder asset storage rules
     anonymous_session_id = f"session_{int(asyncio.get_event_loop().time() * 1000)}"
     print(f"\n🌐 [WEBSOCKET CONNECTED] Open. Anonymous Token Assigned: {anonymous_session_id}, Language: {lang}")
@@ -1210,30 +1319,192 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         )
     ]
 
-    # Setup the Live Connect Config to keep AUDIO modality with transcription enabled
+    LANG_MAP = {
+        "Af-Soomaali": "YOU MUST SPEAK AND RESPOND EXCLUSIVELY IN SOMALI (Af-Soomaali).",
+        "Afaan-Oromo": "YOU MUST SPEAK AND RESPOND EXCLUSIVELY IN AFAAN OROMO.",
+        "Afaan Oromo": "YOU MUST SPEAK AND RESPOND EXCLUSIVELY IN AFAAN OROMO.",
+        "Amharic": "YOU MUST SPEAK AND RESPOND EXCLUSIVELY IN AMHARIC (አማርኛ)."
+    }
+
+    selected_lang_rule = LANG_MAP.get(lang, LANG_MAP["Af-Soomaali"]) if lang else LANG_MAP["Af-Soomaali"]
+
+    system_instruction_text = f"""{selected_lang_rule}
+
+# IDENTITY & CORE MISSION
+You are OpenCareAI, a warm, patient, empathetic, and professional AI health assistant. You are primarily designed for low-literacy and illiterate communities and for people who may have limited access to healthcare information or professional interpretation. You communicate naturally and clearly in Af-Soomaali, Afaan Oromoo, Amharic, and English when English is specifically required for translation. You are not a doctor, but you provide deep, practical support instead of immediately telling users to see a doctor.
+
+# VOICE DELIVERY & ARTICULATION RULES (Kore Persona)
+1. Speak slowly, calmly, clearly, and distinctly.
+2. Use natural brief pauses between ideas (especially between numbered items: 1... 2... 3... 4... 5...). Do not rush.
+3. Tone & Character: Warm, reassuring, respectful, patient, and professional (matching the Kore persona).
+4. Low-Literacy Design: Make your speech easy to understand for people with low literacy. Do not use unnecessarily complicated medical terminology. Simple language must still provide meaningful and sufficiently detailed information.
+5. Active Listening: Accurately process regional accents, symptoms, and colloquial phrases before providing guidance. Keep answers concise and easy to follow over voice.
+
+# REGIONAL LANGUAGE QUALITY
+- Af-Soomaali: Use clear, standard Somali with natural cadence, respectful phrasing, and correct grammar.
+- Afaan Oromoo: Use natural, standard Oromo terminology with clear pronunciation and understandable phrasing.
+- Amharic: Use clear, polite, articulate, natural Amharic.
+- English: Use only when appropriate, especially for supported translation scenarios.
+
+# CORE SERVICES & EXPLANATION RULES (CRITICAL)
+You provide FIVE core services:
+1. First-aid guidance.
+2. Visual assistance that reads and explains prescriptions, medicines, laboratory reports, medical documents, and health information, especially for people who cannot read or have difficulty reading.
+3. Mother and child consultation.
+4. Disease prevention and symptom/health assessment.
+5. Real-time interpretation between patients/caregivers and healthcare professionals.
+
+IMPORTANT: When the user asks what you do, what services you provide, or how you can help (or equivalent questions in Somali, Oromo, Amharic, or English), you MUST ALWAYS explain all FIVE core services individually. Never shorten the answer by omitting services or combining them into an unclear summary.
+Use the following translations for this list:
+- Somali:
+  1. Waxaan bixiyaa tilmaamaha gargaarka degdega ah.
+  2. Waxaan dadka aan waxba akhrin ama akhriskoodu yar yahay u akhriyaa oo u sharxaa waraaqaha dhakhtarka, daawooyinka iyo macluumaadka caafimaadka.
+  3. Waxaan la taliyaa hooyooyinka iyo carruurta.
+  4. Waxaan ka caawiyaa ka hortagga cudurrada iyo qiimaynta calaamadaha caafimaadka.
+  5. Waxaan ahay turjumaan u kala turjuma bukaanka ama daryeelaha iyo xirfadlaha caafimaadka.
+- Afaan Oromoo:
+  1. Gargaarsa jalqabaa (First-aid) irratti qajeelfama gargaaraa nan kenna.
+  2. Namoota dubbisuu hin dandeenyeef ykn rakkina dubbisuu qabaniif qorichaa fi barruu hakiimii akkasumas odeeffannoo fayyaa nan dubbisa, nan ibsa.
+  3. Haadholii fi daa'imman nan gorsa.
+  4. Of-eeggannoo dhibeewwanii fi calaqa fayyaa gamaaggamuu irratti nan gargaara.
+  5. Bukaanii fi hakiimota afaan adda addaa dubbatan gidduutti hiikaa afaanii (turjumaana) ta'ee nan tajaajila.
+- Amharic:
+  1. የመጀመሪያ እርዳታ መመሪያዎችን እሰጣለሁ።
+  2. ማንበብ ለማይችሉ ወይም ለማንበብ ለሚቸገሩ ሰዎች የዶክተር ማዘዣዎችን (ሪሲፖችን)፣ መድኃኒቶችን እና የሕክምና ሰነዶችን አነባለሁ እንዲሁም አስረዳለሁ።
+  3. እናቶችን እና ሕፃናትን እመክራለሁ።
+  4. የበሽታ መከላከያ እና የሕመም ምልክቶች ግምገማ ላይ እረዳለሁ።
+  5. በሕመምተኞች/ተንከባካቢዎች እና በሕክምና ባለሙያዎች መካከል የእውነተኛ ጊዜ የሕክምና ትርጉም አገልግሎት እሰጣለሁ።
+
+# CORE RULES & RESPONSE FORMAT
+
+1. LANGUAGE PURITY & ENTRANCE LOCK:
+   - The selected primary language is {lang}.
+   - You MUST speak and respond 100% purely in {lang}. Never mix English, Somali, Oromo, or Amharic together in your responses.
+   - Do not output side-by-side translations (e.g. Somali sentence + English sentence) unless the user explicitly requests it.
+   - Ensure the response flows naturally for a voice caller.
+
+2. VOICE-FIRST & LOW-LITERACY ACCESSIBILITY:
+   - Use simple words, short paragraphs, and everyday analogies. Avoid complex medical jargon.
+   - Speak clearly and at a pace suitable for people who may have limited literacy.
+   - Do not request typing when voice is active.
+
+3. CONVERSATIONAL TURN-TAKING (ONE QUESTION AT A TIME):
+   - You MUST ask ONLY ONE important question at a time.
+   - Do not ask multiple questions in a single turn. Wait for the user's short voice response before continuing.
+
+4. HEALTH-ONLY SCOPE (CRITICAL):
+   - You must stay strictly within your health-assistance purpose.
+   - If the user asks about any non-health topics (e.g., politics, "Who is the president?", writing a business plan, weather, sports, general trivia, coding), you MUST NOT answer the question.
+   - Instead, respond briefly in {lang} with the equivalent of: "I am OpenCareAI, an AI health assistant. I can help you with health-related questions."
+     * Somali: "Waxaan ahay OpenCareAI, oo ah kaaliyahaaga caafimaadka ee AI. Waxaan kaa caawin karaa su'aalaha la xiriira caafimaadka."
+     * Afaan Oromo: "Ani OpenCareAI, gargaara kee fayyaa AI ti. Gaaffilee fayyaa waliin wal qabatan irratti si gargaaruu danda'a."
+     * Amharic: "እኔ ኦፕንኬርኤአይ (OpenCareAI) የጤና ረዳትዎ ነኝ። ከጤና ጋር በተያያዙ ጥያቄዎች ላይ ልረዳዎት እችላለሁ።"
+   - Never enter general-purpose chatbot mode.
+
+5. UNSUPPORTED LANGUAGES:
+   - If the user speaks a language that OpenCareAI does not support, you must NOT pretend to understand it. Do not hallucinate a translation, guess, or translate an unsupported language as if it were a supported one.
+   - Respond in the selected language ({lang}) with the equivalent of: "Sorry, I currently support Af-Soomaali, Afaan Oromo, and Amharic. I cannot understand or translate this language."
+     * Somali: "Waan ka xumahay, hadda waxaan taageeraa Af-Soomaali, Afaan Oromo, iyo Amharic. Ma fahmi karo mana turjumi karo luuqaddan."
+     * Afaan Oromo: "Dhiifama, ani amma Af-Soomaali, Afaan Oromo, fi Amharic qofan deeggara. Hojii kana ykn afaan kana hiikuu hin danda'u."
+     * Amharic: "ይቅርታ፣ እኔ በአሁኑ ጊዜ አፋን ሶማሊኛ፣ አፋን ኦሮሞኛ እና አማርኛን ብቻ ነው የምደግፈው። ይህንን ቋንቋ መረዳት ወይም መተርጎም አልችልም።"
+
+6. ENGLISH EXCEPTION:
+   - English is allowed ONLY for language recognition/translation purposes where explicitly required by the system (Service 5).
+   - English should NOT become a fourth general conversation language for the platform. Keep all other conversations strictly in {lang}.
+
+7. SHORT DISCLAIMER SUPPORT (NOT HIDING):
+   - Always prioritize giving useful guidance first. At the end of relevant turns, add a short, simple disclaimer in {lang}:
+     * Somali: "OpenCareAI waxay bixisaa macluumaad iyo tilmaamo caafimaad. Bedel uma ahan dhakhtar ama daryeel caafimaad oo degdeg ah."
+     * Afaan Oromo: "OpenCareAI odeeffannoo fi qajeelfama fayyaa kenna. Inni qoricha ykn gargaarsa fayyaa ariifachiisaa hin bakka bu'u."
+     * Amharic: "ኦፕንኬርኤአይ (OpenCareAI) የጤና መረጃዎችን እና መመሪያዎችን ይሰጣል። ይህ ዶክተርን ወይም የአደጋ ጊዜ የህክምና እንክብካቤን አይተካም።"
+   - Do not repeat this disclaimer after every single sentence.
+
+8. INITIAL WARM GREETING:
+   - Greet the user in {lang} exactly as follows and wait for their response:
+     * Somali: "Ku soo dhawaada, waxaan ahay OpenCareAI, oo ah kaaliyahaaga caafimaadka ee AI. Sideen kuu caawin karaa?"
+     * Afaan Oromo: "Baga nagaan dhuftan, ani OpenCareAI, gargaara kee fayyaa AI ti. Akkamitti si gargaaruu danda'a?"
+     * Amharic: "እንኳን ደህና መጡ፣ እኔ ኦፕንኬርኤአይ (OpenCareAI) የጤና ረዳትዎ ነኝ። እንዴት ልረዳዎት እችላለሁ?"
+
+# INTELLIGENT SERVICE DETECTION & ROUTING
+Automatically route conversations based on user inputs without presenting raw menus:
+- Cough, pain, fever -> Service 4 / Service 1
+- Prescription photo / med package / lab sheet -> Service 2 (Request upload if not provided)
+- Baby symptoms / pregnancy -> Service 3
+- "Translate/interpret for me" -> Service 5
+
+# THE 5 CORE SERVICES WORKFLOWS
+
+SERVICE 1 — FIRST AID GUIDANCE
+- Assess immediate danger signs first (breathing difficulty, unconsciousness, heavy bleeding).
+- Provide step-by-step first-response instructions (cuts, burns, choking, insect/animal bites, vomiting, nosebleeds).
+- Explain what NOT to do.
+- Tell them what to monitor, warning signs, and when to seek emergency clinic care.
+
+SERVICE 2 — VISUAL HEALTH ASSISTANCE
+- Carefully explain the facts visible in the image:
+  * Prescriptions: Medicine name, dosage, frequency, duration, written instructions, and explicitly call out any unreadable parts.
+  * Medicine Packages: Active ingredient, general usage, precautions, and missing details.
+  * Laboratory Reports: What each test measures, meaning of results in simple language, reference ranges comparison (within, above, below), and common associations.
+- Do not prescribe or alter doses. Help the user understand what they are looking at.
+
+SERVICE 3 — MOTHER & CHILD CONSULTATION
+- Determine the child's age first (pediatric baseline).
+- Assess hydration/feeding, breathing, behavior/alertness, and postpartum concerns.
+- Avoid generic advice. Tailor guidance specifically to newborns, infants, toddlers, or pregnant mothers.
+
+SERVICE 4 — DISEASE PREVENTION & SYMPTOM ASSESSMENT
+- Help users evaluate symptoms (duration, severity, associations) one question at a time.
+- Categorize potential general causes in simple language without giving a definitive diagnosis.
+- Explain what to monitor and help them prepare a summary of what to tell their doctor.
+
+SERVICE 5 — REAL-TIME HEALTHCARE TRANSLATOR (INTERPRETER MODE)
+- Configure the setup state:
+  1. Determine the user's role (patient/caregiver vs. health professional).
+  2. Ask (in Language A): "What language would you like me to translate into?" (Language B).
+  3. Ask (in Language A): "What would you like me to tell him/her?"
+- Continuous Interpreter Loop:
+  - Automatically identify who is speaking. Translate Language A -> Language B, and Language B -> Language A.
+  - Prefix translation direction clearly (e.g. "Translating Somali -> Amharic..." / "Waxaa loo turjumayaa Af-Soomaali -> Amharic...").
+  - Prompt the listener immediately after speaking (e.g. if translating to Amharic, say "የእርስዎ ምላሽ ምንድነው?").
+  - Do not repeat setup questions. Preserve exact medical details and numbers.
+"""
+
+    if INGESTED_DOCUMENT_CONTEXT:
+        system_instruction_text += f"\n\nIMPORTANT: You have the following ingested medical document/data from the user: {INGESTED_DOCUMENT_CONTEXT}"
+
     config = types.LiveConnectConfig(
-        response_modalities=["AUDIO"],
+        response_modalities=[types.LiveModality.AUDIO],
         speech_config=types.SpeechConfig(
             voice_config=types.VoiceConfig(
-                prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                    voice_name="Aoede"
-                )
+                prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name="Aoede")
             )
         ),
-        input_audio_transcription=types.AudioTranscriptionConfig(),
-        output_audio_transcription=types.AudioTranscriptionConfig(),
-        system_instruction=types.Content(parts=[types.Part.from_text(text=combined_instruction)]),
-        tools=live_tools,
-        generation_config=types.GenerationConfig(
-            temperature=0.4,
-            max_output_tokens=8192  
-        )
+        system_instruction=types.Content(
+            parts=[types.Part.from_text(text=system_instruction_text)]
+        ),
+        tools=live_tools
     )
     
+    model_to_use = LIVE_MODEL_ID
+
     try:
+        # Create session-specific client bound to current event loop
+        session_client = genai.Client(
+            api_key=api_key,
+            http_options=types.HttpOptions(api_version="v1alpha")
+        )
         # Establish the Google Gemini Live Session
-        async with live_client.aio.live.connect(model=LIVE_MODEL_ID, config=config) as google_session:
-            print(f"🧠 [GEMINI LIVE CONNECTED] Modality: AUDIO + Real-time Transcription")
+        async with session_client.aio.live.connect(model=model_to_use, config=config) as google_session:
+            print(f"🧠 [GEMINI LIVE CONNECTED] Modality: AUDIO + Real-time Transcription with model {model_to_use}")
+            
+            greeting_trigger = (
+                f"Please greet the user warmly by saying exactly the following greeting for {lang} and then stop to wait for their response:\n"
+                f"For Somali: 'Ku soo dhawaada, waxaan ahay OpenCareAI, oo ah kaaliyahaaga caafimaadka ee AI. Sideen kuu caawin karaa?'\n"
+                f"For Afaan Oromo: 'Baga nagaan dhuftan, ani OpenCareAI, gargaara kee fayyaa AI ti. Akkamitti si gargaaruu danda'a?'\n"
+                f"For Amharic: 'እንኳን ደህና መጡ፣ እኔ ኦፕንኬርኤአይ (OpenCareAI) የጤና ረዳትዎ ነኝ። እንዴት ልረዳዎት እችላለሁ?'\n"
+            )
+            await google_session.send_realtime_input(text=greeting_trigger)
+            await google_session.send_client_content(turn_complete=True)
             
             session_alive = True
             last_sent_ai_text = ""
@@ -1255,7 +1526,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                             
                         if client_text_data == "END_":
                             print(f"🚀 [DEBUG] Sending END_ signal to Gemini (end_of_turn=True)")
-                            await google_session.send(end_of_turn=True)
+                            await google_session.send_client_content(turn_complete=True)
                         elif client_text_data:
                             if client_text_data.strip():
                                 current_turn_input_type = "text"
@@ -1268,7 +1539,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                 })
                                 print(f"🚀 [DEBUG] Sending text payload to Gemini via send_realtime_input: {client_text_data}")
                                 await google_session.send_realtime_input(text=client_text_data)
-                                await google_session.send(end_of_turn=True)
+                                await google_session.send_client_content(turn_complete=True)
                             else:
                                 print(f"🚀 [DEBUG] Skipping empty text payload.")
                                 
@@ -1276,14 +1547,20 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                         raw_bytes = m["bytes"]
                         if raw_bytes == b"END_":
                             print(f"🚀 [DEBUG] Sending END_ signal to Gemini for audio (end_of_turn=True)")
-                            await google_session.send(end_of_turn=True)
+                            await google_session.send_client_content(turn_complete=True)
                         else:
                             if len(raw_bytes) > 0:
                                 current_turn_input_type = "audio"
                                 user_audio_buffer.extend(raw_bytes)
                                 session_audio_timeline.append((asyncio.get_event_loop().time(), "User", raw_bytes))
-                                print(f"🚀 [DEBUG] Sending audio payload to Gemini (length: {len(raw_bytes)} bytes)")
-                                await google_session.send_realtime_input(audio=types.Blob(data=bytes(raw_bytes), mime_type="audio/pcm;rate=16000"))
+                                data = bytes(raw_bytes)
+                                if isinstance(data, bytes):
+                                    await google_session.send_realtime_input(
+                                        audio=types.Blob(
+                                            data=data,
+                                            mime_type="audio/pcm;rate=16000"
+                                        )
+                                    )
                             else:
                                 print(f"🚀 [DEBUG] Skipping empty audio payload.")
                 except Exception as e:
@@ -1305,205 +1582,116 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                         traceback.print_exc()
 
             async def downstream():
-                nonlocal session_alive, connection_alive, ai_audio_buffer, conversation_history, session_metadata, session_audio_timeline, last_sent_ai_text, current_turn_input_type
-                accumulated_ai_text = ""
-                sent_youtube_urls = set()
-
-                async def extract_and_send_realtime_links():
-                    import re
-                    # 1. Parse standard markdown YouTube links
-                    yt_regex = r'\[([^\]]+)\]\((https?://[^\s)]*(?:youtube\.cn|youtube\.com|youtu\.be)[^\s)]*)\)'
-                    matches = re.findall(yt_regex, accumulated_ai_text)
-                    for title, url in matches:
-                        if url not in sent_youtube_urls:
-                            sent_youtube_urls.add(url)
-                            print(f"\n📺 [REALTIME YOUTUBE LINK DETECTED] Title: {title}, URL: {url}")
-                            await websocket.send_text(json.dumps({
-                                "type": "youtube_card",
-                                "title": title,
-                                "url": url
-                            }))
-                    # 2. Parse explicit JSON YouTube links
-                    json_matches = re.findall(r'(\{[^}]*"type"\s*:\s*"youtube_card"[^}]*\})', accumulated_ai_text)
-                    for j_str in json_matches:
-                        try:
-                            data = json.loads(j_str)
-                            url = data.get("url")
-                            title = data.get("title", "▶️ Click here to watch the demonstration video on YouTube")
-                            if url and url not in sent_youtube_urls:
-                                sent_youtube_urls.add(url)
-                                print(f"\n📺 [REALTIME YOUTUBE JSON DETECTED] Title: {title}, URL: {url}")
-                                await websocket.send_text(json.dumps({
-                                    "type": "youtube_card",
-                                    "title": title,
-                                    "url": url
-                                }))
-                        except Exception:
-                            pass
+                nonlocal session_alive, connection_alive, last_sent_ai_text
                 try:
                     while session_alive and connection_alive:
-                        try:
-                            async for response in google_session.receive():
-                                if not session_alive or not connection_alive:
-                                    break
+                        async for response in google_session.receive():
+                            if not session_alive or not connection_alive:
+                                break
+                            
+                            # Handle tool calls
+                            tool_call = getattr(response, 'tool_call', None) if hasattr(response, 'tool_call') else response.get('tool_call') if isinstance(response, dict) else None
+                            if tool_call:
+                                function_calls = getattr(tool_call, 'function_calls', None) if hasattr(tool_call, 'function_calls') else tool_call.get('function_calls') if isinstance(tool_call, dict) else None
+                                if function_calls:
+                                    for call in function_calls:
+                                        name = getattr(call, 'name', None) if hasattr(call, 'name') else call.get('name') if isinstance(call, dict) else None
+                                        call_id = getattr(call, 'id', None) if hasattr(call, 'id') else call.get('id') if isinstance(call, dict) else None
+                                        args = getattr(call, 'args', None) if hasattr(call, 'args') else call.get('args') if isinstance(call, dict) else None
+                                        print(f"🛠️ [GEMINI TOOL CALL] Executing function {name} with args: {args}")
+                                        
+                                        result = None
+                                        try:
+                                            if name == "lookup_emergency_contacts":
+                                                location = args.get("location")
+                                                facility_type = args.get("facility_type")
+                                                service = get_emergency_service()
+                                                result = service.lookup_contact(location=location, facility_type=facility_type)
+                                            elif name == "search_youtube":
+                                                topic = args.get("topic")
+                                                language = args.get("language")
+                                                service = get_youtube_service()
+                                                result = service.search_videos(topic=topic, language=language)
+                                            elif name == "translate_medical_text":
+                                                text = args.get("text")
+                                                source_lang = args.get("source_language")
+                                                target_lang = args.get("target_language")
+                                                service = get_translation_service()
+                                                result = service.translate_medical_text(text=text, source_language=source_lang, target_language=target_lang)
+                                            else:
+                                                result = f"Unknown tool: {name}"
+                                        except Exception as exec_err:
+                                            result = f"Tool execution failed: {exec_err}"
+                                            print(f"⚠️ Tool execution failed: {exec_err}")
+                                        
+                                        # Send tool response back to the session
+                                        print(f"📤 [GEMINI TOOL RESPONSE] Sending result back for {name}: {result}")
+                                        await google_session.send_tool_response(
+                                            function_responses=[
+                                                types.FunctionResponse(
+                                                    name=name,
+                                                    id=call_id,
+                                                    response={"result": result}
+                                                )
+                                            ]
+                                        )
+
                             server_content = response.server_content
                             if server_content is not None:
+                                # 0. Handle model interruption
+                                if server_content.interrupted:
+                                    print("🧠 [GEMINI LIVE INTERRUPTED] Model output turn was interrupted by user.")
+                                    await websocket.send_text(json.dumps({
+                                        "type": "interrupted"
+                                    }))
                                 # 1. Handle user's real-time input transcription
                                 if server_content.input_transcription is not None:
                                     input_tx = server_content.input_transcription.text
                                     if input_tx:
                                         is_finished = server_content.input_transcription.finished
                                         print(f"🎤 [USER TRANSCRIPTION] {input_tx} (finished: {is_finished})")
-                                        # Forward transcript payload to the client UI
                                         await websocket.send_text(json.dumps({
                                             "type": "input_transcription",
                                             "text": input_tx,
                                             "finished": is_finished
                                         }))
-                                        
+
                                 # 2. Handle model's output transcription
                                 if server_content.output_transcription is not None:
                                     output_tx = server_content.output_transcription.text
                                     if output_tx:
-                                        # Compute delta of output transcription
                                         if output_tx.startswith(last_sent_ai_text):
                                             delta = output_tx[len(last_sent_ai_text):]
                                         else:
                                             delta = output_tx
-                                        last_sent_ai_text = output_tx
-                                        
                                         if delta:
-                                            print(delta, end="", flush=True)
-                                            accumulated_ai_text += delta
-                                            await extract_and_send_realtime_links()
-                                            
-                                            # ONLY forward transcript to client UI if current turn is text
-                                            if current_turn_input_type == "text":
-                                                await websocket.send_text(json.dumps({
-                                                    "type": "output_transcription",
-                                                    "text": delta
-                                                }))
-                                            conversation_history.append(f"OpenCareAI: {delta}")
-                                            session_metadata.append({
-                                                "timestamp": str(datetime.now()),
-                                                "speaker": "OpenCareAI",
-                                                "modality": "text",
-                                                "content": delta
-                                            })
-                                            
-                                # 3. Handle incoming spoken audio parts and function calls
+                                            last_sent_ai_text = output_tx
+                                            await websocket.send_text(json.dumps({
+                                                "type": "ai_text_delta",
+                                                "text": delta
+                                            }))
+
+                                # 3. Handle model audio output (Binary Passthrough)
                                 model_turn = server_content.model_turn
                                 if model_turn is not None:
                                     for part in model_turn.parts:
-                                        if part.text:
-                                            # Fallback if text parts are sent directly
-                                            print(part.text, end="", flush=True)
-                                            accumulated_ai_text += part.text
-                                            await extract_and_send_realtime_links()
-                                            
-                                            if current_turn_input_type == "text":
-                                                await websocket.send_text(json.dumps({
-                                                    "type": "output_transcription",
-                                                    "text": part.text
-                                                }))
-                                            conversation_history.append(f"OpenCareAI: {part.text}")
-                                            session_metadata.append({
-                                                "timestamp": str(datetime.now()),
-                                                "speaker": "OpenCareAI",
-                                                "modality": "text",
-                                                "content": part.text
-                                            })
                                         if part.inline_data and part.inline_data.data:
-                                            print("🔊", end="", flush=True)
-                                            raw_ai_bytes = part.inline_data.data
-                                            ai_audio_buffer.extend(raw_ai_bytes)
-                                            session_audio_timeline.append((asyncio.get_event_loop().time(), "OpenCareAI", raw_ai_bytes))
-                                            await websocket.send_bytes(raw_ai_bytes)
-                                        if part.function_call:
-                                            fc = part.function_call
-                                            print(f"\n🔧 [TOOL CALL] {fc.name}")
-                                            result = {"error": "Tool not found"}
-                                            try:
-                                                async def execute_tool(func, *args, max_retries=1, timeout=5.0):
-                                                    for attempt in range(max_retries + 1):
-                                                        try:
-                                                            return await asyncio.wait_for(asyncio.to_thread(func, *args), timeout=timeout)
-                                                        except asyncio.TimeoutError:
-                                                            if attempt == max_retries:
-                                                                raise Exception("Tool execution timed out")
-                                                        except Exception as exc:
-                                                            if attempt == max_retries:
-                                                                raise exc
-                                                            await asyncio.sleep(1)
-                                                    return None
+                                            await websocket.send_bytes(part.inline_data.data)
+                                            session_audio_timeline.append((asyncio.get_event_loop().time(), "AI", part.inline_data.data))
 
-                                                if fc.name == "lookup_emergency_contacts":
-                                                    loc = fc.args.get("location", "")
-                                                    ftype = fc.args.get("facility_type", "")
-                                                    from services.emergency_contacts import get_emergency_service
-                                                    try:
-                                                        res = await execute_tool(get_emergency_service().lookup_contact, loc, ftype)
-                                                        result = {"results": res}
-                                                    except Exception as e:
-                                                        print(f"⚠️ Emergency lookup failed: {e}")
-                                                        result = {"error": "Emergency lookup failed. Advise the user to contact the nearest health facility or emergency services immediately."}
-                                                elif fc.name == "search_youtube_tutorials":
-                                                    query = fc.args.get("query", "")
-                                                    from services.youtube_search import get_youtube_service
-                                                    try:
-                                                        res = await execute_tool(get_youtube_service().search_youtube_tutorials, query)
-                                                        result = {"results": res}
-                                                    except Exception as e:
-                                                        print(f"⚠️ YouTube search failed: {e}")
-                                                        result = {"error": "YouTube search failed. Continue conversation without recommending a video."}
-                                                elif fc.name == "translate_medical_text":
-                                                    text = fc.args.get("text", "")
-                                                    slang = fc.args.get("source_language", "")
-                                                    tlang = fc.args.get("target_language", "")
-                                                    from services.translation import get_translation_service
-                                                    try:
-                                                        res = await execute_tool(get_translation_service().translate_medical_text, text, slang, tlang)
-                                                        result = {"translation": res}
-                                                    except Exception as e:
-                                                        print(f"⚠️ Translation failed: {e}")
-                                                        result = {"error": "Translation is temporarily unavailable. Tell the user you cannot translate right now but will continue in the current language."}
-                                            except Exception as e:
-                                                print(f"⚠️ General tool execution failure: {e}")
-                                                result = {"error": f"General tool failure: {str(e)}"}
-                                            
-                                            print(f"🚀 [DEBUG] Tool {fc.name} completed. Payload is empty? {not result}")
-                                            if result:
-                                                print(f"🚀 [DEBUG] Sending function_response for {fc.name} to Gemini")
-                                                try:
-                                                    await google_session.send(
-                                                        input=[types.Part.from_function_response(
-                                                            name=fc.name,
-                                                            response=result
-                                                        )]
-                                                    )
-                                                except Exception as send_err:
-                                                    print(f"⚠️ Failed to send tool response to Gemini: {send_err}")
-                                            else:
-                                                print(f"🚀 [DEBUG] Skipping empty function_response for {fc.name}")
-                                            
+                                # 4. Handle turn complete marker
                                 if server_content.turn_complete:
-                                    print("\n🔄 [TURN COMPLETE] Model finished responding downstream.")
-                                    await extract_and_send_realtime_links()
-                                    if current_turn_input_type == "text":
-                                        await websocket.send_text(json.dumps({"type": "turn_complete"}))
-                                        await websocket.send_text("__TURN_COMPLETE__")
-                                    last_sent_ai_text = ""
-                                    accumulated_ai_text = ""
-                                    sent_youtube_urls.clear()
-                        except Exception as loop_err:
-                            import traceback
-                            print(f"⚠️ Exception inside downstream loop (continuing): {loop_err}")
-                            traceback.print_exc()
-                            await asyncio.sleep(1)
+                                    await websocket.send_text(json.dumps({
+                                        "type": "turn_complete"
+                                    }))
+
+                except (websockets.exceptions.ConnectionClosedError, google.genai.errors.APIError) as e:
+                    print(f"⚠️ Google Live session ended: {e}")
                 except Exception as e:
-                    if "1008" not in str(e) and "GoAway" not in str(e):
-                        print(f"\n⚠️ Downstream streaming exception: {str(e)}")
+                    print(f"⚠️ Exception inside downstream loop: {e}")
+                finally:
                     session_alive = False
+                    print("🛑 Downstream loop exited.")
 
             u_task = asyncio.create_task(upstream())
             d_task = asyncio.create_task(downstream())
@@ -1518,7 +1706,26 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             d_task.cancel()
 
     except Exception as e:
-        print(f"💥 [SESSION ERROR] Error: {str(e)}")
+        error_msg = str(e)
+        print(f"💥 [SESSION ERROR] Error: {error_msg}")
+        
+        user_friendly_error = "An unexpected session error occurred. Please try again."
+        if "prepayment credits are depleted" in error_msg.lower() or "1011" in error_msg or "credits" in error_msg.lower() or "billing" in error_msg.lower():
+            user_friendly_error = "Your Gemini API prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing."
+        elif "api_key_invalid" in error_msg.lower() or "invalid api key" in error_msg.lower() or "api key not valid" in error_msg.lower() or "auth" in error_msg.lower() or "key" in error_msg.lower():
+            user_friendly_error = "The configured API key is invalid or unauthorized. Please check your backend/.env file."
+        elif "quota" in error_msg.lower() or "rate limit" in error_msg.lower():
+            user_friendly_error = "Gemini API rate limit or quota exceeded. Please try again in a few moments."
+        else:
+            user_friendly_error = f"Gemini Live connection failed: {error_msg}"
+            
+        try:
+            await websocket.send_json({
+                "type": "error",
+                "error": user_friendly_error
+            })
+        except Exception as send_err:
+            print(f"⚠️ Failed to send error message to client: {send_err}")
     finally:
         connection_alive = False
         if not receiver_task.done():
@@ -1547,7 +1754,16 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                     local_wav_path = f"recordings/{anonymous_session_id}_full_conversation.wav"
                     if os.path.exists(local_wav_path):
                         try:
-                            from storage import upload_session_audio
+                            try:
+                                from storage import upload_session_audio
+                            except ModuleNotFoundError:
+                                try:
+                                    from backend.storage import upload_session_audio
+                                except ModuleNotFoundError:
+                                    import sys
+                                    from pathlib import Path
+                                    sys.path.append(str(Path(__file__).parent))
+                                    from storage import upload_session_audio
                             destination_name = f"recordings/{anonymous_session_id}_full_conversation.wav"
                             uploaded_url = upload_session_audio(local_wav_path, destination_name)
                             if uploaded_url and uploaded_url != local_wav_path:
@@ -1563,7 +1779,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             try:
                 print("📝 Transcribing user speech buffer in-memory...")
                 wav_bytes = pcm_to_wav_bytes(bytes(user_audio_buffer), channels=1, sampwidth=2, framerate=16000)
-                if len(wav_bytes) > 0:
+                if len(wav_bytes) > 0 and standard_client:
                     response = standard_client.models.generate_content(
                         model="gemini-2.5-flash",
                         contents=[
@@ -1635,10 +1851,10 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         print("🛑 [CLEANUP COMPLETE] Audio paths disconnected.")
 
 # Mount the static site folder safely
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PUBLIC_DIR = os.path.join(BASE_DIR, "public")
-app.mount("/static", StaticFiles(directory=PUBLIC_DIR, html=True), name="public")
+BASE_DIR = Path(__file__).resolve().parent
+PUBLIC_DIR = BASE_DIR / "public"
+app.mount("/static", StaticFiles(directory=str(PUBLIC_DIR), html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8005, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=False)
