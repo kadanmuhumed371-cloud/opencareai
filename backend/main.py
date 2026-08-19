@@ -1193,7 +1193,6 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
         print(f"⚠️ Error creating in-memory WAV: {e}")
         return b""
 
-@app.websocket("/api/stream")
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     global INGESTED_DOCUMENT_CONTEXT
