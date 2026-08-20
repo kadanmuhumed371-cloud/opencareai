@@ -67,7 +67,7 @@ else:
 if api_key:
     api_key = api_key.strip()
 
-LIVE_MODEL = "gemini-2.0-flash-exp"
+LIVE_MODEL = "gemini-3.1-flash-live-preview"
 
 # Force standard UTF-8 terminal mapping for Windows systems
 sys.stdout.reconfigure(encoding='utf-8')
@@ -1206,16 +1206,16 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     await websocket.accept()
-    print(f"🔌 [CONNECTED] Client connected with lang={lang}")
+    print(f"🔌 [WS CONNECTED] Client connected with lang={lang}")
 
     config = types.LiveConnectConfig(
         response_modalities=["AUDIO"],
         system_instruction=types.Content(
-            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely and strictly in {lang}.")]
+            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely and strictly in {lang}. Respond promptly as soon as the user speaks.")]
         )
     )
 
-    LIVE_MODEL = "gemini-2.0-flash-exp"
+    LIVE_MODEL = "gemini-3.1-flash-live-preview"
     
     session_client = client
     if not session_client:
@@ -1226,54 +1226,67 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
 
     try:
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
-            print("🚀 [GEMINI LIVE CONNECTED] Live session established successfully.")
+            print(f"🚀 [GEMINI LIVE CONNECTED] Using {LIVE_MODEL}")
 
             async def client_to_gemini():
-                try:
-                    while True:
+                while True:
+                    try:
                         msg = await websocket.receive()
                         if "bytes" in msg and msg["bytes"]:
                             pcm_data = msg["bytes"]
                             if len(pcm_data) > 0:
                                 await session.send(
-                                    input=types.LiveClientRealtimeInput(
-                                        media_chunks=[
-                                            types.Blob(
-                                                data=pcm_data,
-                                                mime_type="audio/pcm;rate=16000"
-                                            )
-                                        ]
-                                    )
+                                    input={
+                                        "realtime_input": {
+                                            "media_chunks": [
+                                                {
+                                                    "data": pcm_data,
+                                                    "mime_type": "audio/pcm;rate=16000"
+                                                }
+                                            ]
+                                        }
+                                    }
                                 )
                         elif "text" in msg:
                             pass
-                except WebSocketDisconnect:
-                    pass
-                except Exception as e:
-                    print(f"⚠️ client_to_gemini error: {e}")
+                    except WebSocketDisconnect:
+                        break
+                    except Exception as e:
+                        print(f"⚠️ client_to_gemini send warning: {e}")
+                        await asyncio.sleep(0.01)
 
             async def gemini_to_client():
-                try:
-                    async for response in session.receive():
-                        server_content = response.server_content
-                        if server_content is not None and server_content.model_turn is not None:
-                            for part in server_content.model_turn.parts:
-                                if part.inline_data and part.inline_data.data:
-                                    await websocket.send_bytes(part.inline_data.data)
-                except WebSocketDisconnect:
-                    pass
-                except Exception as e:
-                    print(f"⚠️ gemini_to_client error: {e}")
+                while True:
+                    try:
+                        async for response in session.receive():
+                            server_content = response.server_content
+                            if server_content is not None and server_content.model_turn is not None:
+                                for part in server_content.model_turn.parts:
+                                    if part.inline_data and part.inline_data.data:
+                                        await websocket.send_bytes(part.inline_data.data)
+                    except WebSocketDisconnect:
+                        break
+                    except Exception as e:
+                        print(f"⚠️ gemini_to_client receive warning: {e}")
+                        await asyncio.sleep(0.05)
 
-            await asyncio.gather(client_to_gemini(), gemini_to_client())
+            c2g = asyncio.create_task(client_to_gemini())
+            g2c = asyncio.create_task(gemini_to_client())
+
+            done, pending = await asyncio.wait(
+                [c2g, g2c],
+                return_when=asyncio.FIRST_COMPLETED
+            )
+            for t in pending:
+                t.cancel()
 
     except WebSocketDisconnect:
         print("🔌 WebSocket disconnected cleanly.")
     except Exception as e:
-        print(f"💥 Fatal Live Session Error: {e}")
+        print(f"💥 Live Session Error: {e}")
         traceback.print_exc()
     finally:
-        print("🔒 Session closed cleanly.")
+        print("🔒 Session closed.")
 
 # Mount the static site folder safely
 BASE_DIR = Path(__file__).resolve().parent
