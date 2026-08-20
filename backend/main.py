@@ -1433,6 +1433,17 @@ MANDATORY RULES:
                     )
                 else:
                     await google_session.send(input=input, **kwargs)
+
+            # Patch send on google_session to support the flat dict input format requested
+            orig_send = google_session.send
+            async def patched_send(input=None, **send_kwargs):
+                if isinstance(input, dict) and "data" in input and "mime_type" in input:
+                    await google_session.send_realtime_input(
+                        audio=types.Blob(data=input["data"], mime_type=input["mime_type"])
+                    )
+                else:
+                    await orig_send(input=input, **send_kwargs)
+            google_session.send = patched_send
             
             async def handle_msg(m):
                 nonlocal user_audio_buffer, conversation_history, session_metadata, session_audio_timeline, current_turn_input_type, active_turn_id, ai_is_active
@@ -1501,7 +1512,7 @@ MANDATORY RULES:
                                 current_turn_input_type = "audio"
                                 data = bytes(raw_bytes)
                                 if isinstance(data, bytes):
-                                    await session_send(input=data, mime_type="audio/pcm")
+                                    await google_session.send(input={"data": data, "mime_type": "audio/pcm"})
                             else:
                                 print(f"🚀 [DEBUG] Skipping empty audio payload.")
                 except Exception as e:

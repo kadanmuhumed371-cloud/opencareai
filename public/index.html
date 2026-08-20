@@ -137,16 +137,19 @@
         let processorNode;
         let mediaStream = null;
         let isCallActive = false;
-        let nextPlayTime = 0;
         let cameraStream = null;
         let selectedLanguage = "Af-Soomaali";
-        let scheduledSources = [];
         let isAiOutputtingAudio = false;
 
         // Auto-wake & connection state machine tracking
         let pendingCall = false;
         let reconnectTimeout = null;
         let consecutiveHighEnergyFrames = 0;
+
+        // --- STRICT SINGLE-TRACK SEQUENTIAL AUDIO ENGINE ---
+        let audioPlaybackQueue = [];
+        let isPlayingAudioChunk = false;
+        let currentActiveSource = null;
 
         function updateUIState(state) {
             if (!connectionStatus || !statusDot) return;
@@ -194,31 +197,32 @@
             }
         }
 
-        function stopAudioPlayback() {
-            scheduledSources.forEach(source => {
-                try {
-                    source.stop();
-                } catch (e) {
-                    // Ignore errors if already stopped/not started
-                }
-            });
-            scheduledSources = [];
+        function stopAndClearAllAudio() {
+            audioPlaybackQueue = [];
+            isPlayingAudioChunk = false;
             isAiOutputtingAudio = false;
-            if (playbackAudioContext) {
-                nextPlayTime = playbackAudioContext.currentTime;
-            } else {
-                nextPlayTime = 0;
+            if (currentActiveSource) {
+                try {
+                    currentActiveSource.stop();
+                    currentActiveSource.disconnect();
+                } catch (e) {}
+                currentActiveSource = null;
             }
         }
 
+        function stopAudioPlayback() {
+            stopAndClearAllAudio();
+        }
+
         function flushPlaybackQueue() {
-            stopAudioPlayback();
+            stopAndClearAllAudio();
         }
 
         function terminateCallCompletely() {
             isCallActive = false;
             isAiOutputtingAudio = false;
             pendingCall = false;
+            stopAndClearAllAudio();
             if (ws) {
                 ws.onclose = null;
                 ws.onerror = null;
@@ -234,7 +238,6 @@
                 try { playbackAudioContext.close(); } catch (e) {}
                 playbackAudioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
             }
-            nextPlayTime = 0;
             updateUIState("Ready");
             resetCallButtonUI();
         }
@@ -775,55 +778,56 @@
                 }
                 
                 mediaStreamSource.connect(processorNode);
+                
+                // Chrome AudioWorklet process() lifesaver GAIN node
+                const muteNode = audioContext.createGain();
+                muteNode.gain.value = 0;
+                processorNode.connect(muteNode);
+                muteNode.connect(audioContext.destination);
               
+                let lastLogTime = 0;
                 processorNode.port.onmessage = (event) => {
-                    if (ws && ws.readyState === WebSocket.OPEN && isCallActive) {
-                        const pcm16Buffer = event.data;
-                        
-                        // Calculate RMS (Root Mean Square) energy of the audio frame to avoid false interruptions
-                        const pcmData = new Int16Array(pcm16Buffer);
-                        let sum = 0;
-                        for (let i = 0; i < pcmData.length; i++) {
-                            sum += pcmData[i] * pcmData[i];
-                        }
-                        const rms = Math.sqrt(sum / pcmData.length);
-                        
-                        if (isAiOutputtingAudio) {
-                            // Case 2: AI is SPEAKING - raise the barge-in gate significantly (RMS: 3500, sustained >300ms)
-                            const bargeInThreshold = 3500;
-                            if (rms > bargeInThreshold) {
-                                consecutiveHighEnergyFrames++;
-                            } else {
-                                consecutiveHighEnergyFrames = 0;
-                            }
-                            
-                            // 300ms is ~3 frames at 16kHz / 2048 sample size (128ms per frame)
-                            if (consecutiveHighEnergyFrames >= 3) {
-                                console.log(`🎙️ User barge-in confirmed (RMS: ${rms.toFixed(1)} > ${bargeInThreshold} sustained for >300ms).`);
-                                
-                                // Guard the Interruption Trigger: Only call flushPlaybackQueue() and send "AI was interrupted" if isAiOutputtingAudio is true
-                                flushPlaybackQueue();
-                                if (ws && ws.readyState === WebSocket.OPEN) {
-                                    ws.send("AI was interrupted");
-                                }
-                                
-                                consecutiveHighEnergyFrames = 0;
-                                ws.send(pcm16Buffer);
-                                updateUIState("Listening...");
-                            }
-                            // Do NOT send microphone chunks to the backend while AI is speaking unless barge-in is confirmed
+                    if (!isCallActive || !ws || ws.readyState !== WebSocket.OPEN) return;
+                    const pcmData = event.data; // Int16Array or ArrayBuffer
+                    
+                    // Simple VAD & barge-in energy tracking
+                    const pcm16 = new Int16Array(pcmData);
+                    let sum = 0;
+                    for (let i = 0; i < pcm16.length; i++) {
+                        sum += pcm16[i] * pcm16[i];
+                    }
+                    const rms = Math.sqrt(sum / pcm16.length);
+
+                    if (isAiOutputtingAudio) {
+                        const bargeInThreshold = 3500;
+                        if (rms > bargeInThreshold) {
+                            consecutiveHighEnergyFrames++;
                         } else {
-                            // Case 1: AI is SILENT - reset high-energy tracking and use high sensitivity (RMS > 1200) to capture user speech
                             consecutiveHighEnergyFrames = 0;
-                            const normalThreshold = 1200;
-                            
-                            if (rms > normalThreshold) {
-                                ws.send(pcm16Buffer);
-                                updateUIState("Listening...");
-                            } else {
-                                updateUIState("In Call...");
-                            }
                         }
+                        if (consecutiveHighEnergyFrames >= 3) {
+                            console.log(`🎙️ User barge-in confirmed (RMS: ${rms.toFixed(1)} > ${bargeInThreshold}).`);
+                            flushPlaybackQueue();
+                            ws.send("AI was interrupted");
+                            consecutiveHighEnergyFrames = 0;
+                            ws.send(pcmData);
+                            updateUIState("Listening...");
+                        }
+                    } else {
+                        consecutiveHighEnergyFrames = 0;
+                        const normalThreshold = 1200;
+                        if (rms > normalThreshold) {
+                            ws.send(pcmData);
+                            updateUIState("Listening...");
+                        } else {
+                            updateUIState("In Call...");
+                        }
+                    }
+
+                    const now = Date.now();
+                    if (now - lastLogTime > 1000) {
+                        console.log("🎙️ Streaming mic PCM chunks...");
+                        lastLogTime = now;
                     }
                 };
 
@@ -903,53 +907,51 @@
                 const pcm16Data = new Int16Array(arrayBuffer);
                 if (pcm16Data.length === 0) return;
                 
-                const SAMPLE_RATE = 24000;
-                const buffer = playbackAudioContext.createBuffer(1, pcm16Data.length, SAMPLE_RATE);
-                const channelData = buffer.getChannelData(0);
+                const float32Array = new Float32Array(pcm16Data.length);
                 for (let i = 0; i < pcm16Data.length; i++) {
-                    channelData[i] = pcm16Data[i] / 32768.0;
+                    float32Array[i] = pcm16Data[i] / 32768.0;
                 }
-                
-                const currentTime = playbackAudioContext.currentTime;
 
-                // Backlog check: if nextPlayTime is more than 3 seconds ahead of currentTime, we have a backlog.
-                const backlog = nextPlayTime - currentTime;
-                if (backlog > 3.0) {
-                    console.warn(`⚠️ Audio queue backlog exceeded limit (${backlog.toFixed(2)}s). Flushing older chunks.`);
-                    // Stop older scheduled sources that haven't played yet
-                    scheduledSources.forEach(source => {
-                        try {
-                            source.stop();
-                        } catch (e) {}
-                    });
-                    scheduledSources = [];
-                    // Reset start time to current time with a tiny buffer to avoid latency
-                    nextPlayTime = currentTime + 0.05;
-                }
-                
-                const source = playbackAudioContext.createBufferSource();
-                source.buffer = buffer;
-                source.connect(playbackAudioContext.destination);
-                
-                // Dynamic scheduling: adjust nextPlayTime if it is in the past or drifted too far
-                if (nextPlayTime < currentTime || nextPlayTime > currentTime + 1.0) {
-                    nextPlayTime = currentTime + 0.02;
-                }
-                
-                isAiOutputtingAudio = true;
-                updateUIState("Speaking...");
-                source.start(nextPlayTime);
-                nextPlayTime += buffer.duration; 
+                // Push Float32 chunk to FIFO queue
+                audioPlaybackQueue.push(float32Array);
 
-                scheduledSources.push(source);
-                source.onended = () => {
-                    scheduledSources = scheduledSources.filter(s => s !== source);
-                    if (scheduledSources.length === 0) {
-                        isAiOutputtingAudio = false;
-                        updateUIState(isCallActive ? "In Call..." : "Ready");
-                    }
-                };
-            } catch (err) { console.error("Playback error:", err); }
+                // Process queue if not already playing
+                if (!isPlayingAudioChunk) {
+                    playNextQueueChunk();
+                }
+            } catch (err) {
+                console.error("Playback error:", err);
+            }
+        }
+
+        function playNextQueueChunk() {
+            if (!isCallActive || audioPlaybackQueue.length === 0) {
+                isPlayingAudioChunk = false;
+                isAiOutputtingAudio = false;
+                updateUIState(isCallActive ? "In Call..." : "Ready");
+                return;
+            }
+
+            isPlayingAudioChunk = true;
+            isAiOutputtingAudio = true;
+            updateUIState("Speaking...");
+            const chunkData = audioPlaybackQueue.shift();
+
+            const audioBuffer = playbackAudioContext.createBuffer(1, chunkData.length, 24000);
+            audioBuffer.getChannelData(0).set(chunkData);
+
+            const source = playbackAudioContext.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(playbackAudioContext.destination);
+
+            currentActiveSource = source;
+
+            source.onended = () => {
+                currentActiveSource = null;
+                playNextQueueChunk(); // Strictly play the next chunk ONLY after the previous chunk finishes
+            };
+
+            source.start();
         }
 
         function scrollChatToBottom() { 
