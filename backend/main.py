@@ -1236,8 +1236,8 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             print(f"🚀 [GEMINI LIVE CONNECTED] Active session using {LIVE_MODEL}")
 
             async def client_to_gemini():
-                while True:
-                    try:
+                try:
+                    while True:
                         msg = await websocket.receive()
                         if msg.get("type") == "websocket.disconnect":
                             break
@@ -1256,11 +1256,10 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                         }
                                     }
                                 )
-                    except (WebSocketDisconnect, RuntimeError, asyncio.CancelledError):
-                        break
-                    except Exception as e:
-                        print(f"⚠️ client_to_gemini warning: {e}")
-                        break
+                except (WebSocketDisconnect, RuntimeError, asyncio.CancelledError):
+                    pass
+                except Exception as e:
+                    print(f"⚠️ client_to_gemini error: {e}")
 
             async def gemini_to_client():
                 try:
@@ -1272,11 +1271,11 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                     print(f"🔊 Returning {len(part.inline_data.data)} audio bytes to client")
                                     await websocket.send_bytes(part.inline_data.data)
                                 elif part.text:
-                                    print(f"💬 Text response: {part.text}")
+                                    print(f"💬 Text output: {part.text}")
                 except (WebSocketDisconnect, RuntimeError, asyncio.CancelledError):
                     pass
                 except Exception as e:
-                    print(f"⚠️ gemini_to_client warning: {e}")
+                    print(f"⚠️ gemini_to_client error: {e}")
 
             c2g = asyncio.create_task(client_to_gemini())
             g2c = asyncio.create_task(gemini_to_client())
