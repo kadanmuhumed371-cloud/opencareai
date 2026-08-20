@@ -67,7 +67,7 @@ else:
 if api_key:
     api_key = api_key.strip()
 
-LIVE_MODEL = "gemini-3.1-flash-live-preview"
+LIVE_MODEL = "gemini-2.5-flash"
 
 # Force standard UTF-8 terminal mapping for Windows systems
 sys.stdout.reconfigure(encoding='utf-8')
@@ -969,10 +969,7 @@ INGESTED_DOCUMENT_CONTEXT = ""
 client = None
 if api_key:
     try:
-        client = genai.Client(
-            api_key=api_key,
-            http_options={"api_version": "v1alpha"}
-        )
+        client = genai.Client(api_key=api_key)
     except Exception as e:
         print(f"❌ Error initializing global Google GenAI Client: {e}")
 else:
@@ -1215,14 +1212,11 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         )
     )
 
-    LIVE_MODEL = "gemini-3.1-flash-live-preview"
+    LIVE_MODEL = "gemini-2.5-flash"
     
     session_client = client
     if not session_client:
-        session_client = genai.Client(
-            api_key=api_key,
-            http_options={"api_version": "v1alpha"}
-        )
+        session_client = genai.Client(api_key=api_key)
 
     try:
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
