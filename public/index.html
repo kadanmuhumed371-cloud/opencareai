@@ -148,6 +148,66 @@
         let reconnectTimeout = null;
         let consecutiveHighEnergyFrames = 0;
 
+        const UI_TRANSLATIONS = {
+            "Af-Soomaali": {
+                "welcome_desc": "Kaaliyahaaga Caafimaadka ee AI",
+                "select_lang": "Dooro Luuqadda (Ikhtiyaari)",
+                "get_started": "Bilow",
+                "secure_space": "Kani waa meel ammaan ah. Dheh \"Haye\" ama taabo astaanta wicitaanka si aad u bilowdo.",
+                "connecting": "Waa la xiriirinayaa...",
+                "online": "Online",
+                "disconnected": "Waa laga go'ay (dib u xiriirinaya...)",
+                "waking_up": "Kicinaya server-ka...",
+                "in_call": "Waa lagu jiraa wicitaanka...",
+                "listening": "Dhegeysanaya..."
+            },
+            "Afaan Oromo": {
+                "welcome_desc": "Gargaara Kee Fayyaa AI",
+                "select_lang": "Afaan Filadhu (Filannoo)",
+                "get_started": "Eegali",
+                "secure_space": "Kun iddoo tasgabbaa'aadha. Bilow weyntuuf \"Akam\" jedhi ykn mallattoo bilbilaa cuqaasi.",
+                "connecting": "Gara sarvariitti siquu...",
+                "online": "Online",
+                "disconnected": "Addaan citeera (Irra deebi'amee qunnama...)",
+                "waking_up": "Sarvarii dammaqsua jira...",
+                "in_call": "Bilbila irratti...",
+                "listening": "Dhaggeeffachaa..."
+            },
+            "Amharic": {
+                "welcome_desc": "የእርስዎ የጤና ረዳት",
+                "select_lang": "ቋንቋ ይምረጡ (አማራጭ)",
+                "get_started": "ጀምር",
+                "secure_space": "ይህ ደህንነቱ የተጠበቀ ቦታ ነው። ለመጀመር \"ሰላም\" ይበሉ ወይም የጥሪ ምልክቱን ይጫኑ።",
+                "connecting": "በማገናኘት ላይ...",
+                "online": "ከመስመር ላይ",
+                "disconnected": "ተቋርጧል (እንደገና በመገናኘት ላይ...)",
+                "waking_up": "አገልጋዩን በማንቃት ላይ...",
+                "in_call": "በጥሪ ላይ...",
+                "listening": "በማዳመጥ ላይ..."
+            }
+        };
+
+        function updateUILanguage(lang) {
+            const trans = UI_TRANSLATIONS[lang] || UI_TRANSLATIONS["Af-Soomaali"];
+            
+            const welcomeDesc = document.querySelector('#welcomeScreen p');
+            if (welcomeDesc) welcomeDesc.textContent = trans.welcome_desc;
+            
+            const selectLangLabel = document.querySelector('#welcomeScreen label');
+            if (selectLangLabel) selectLangLabel.textContent = trans.select_lang;
+            
+            const getStartedBtnEl = document.getElementById('getStartedBtn');
+            if (getStartedBtnEl) getStartedBtnEl.textContent = trans.get_started;
+            
+            const welcomeBanner = document.querySelector('#chatViewport span');
+            if (welcomeBanner) welcomeBanner.textContent = trans.secure_space;
+            
+            if (waveContainer) {
+                const waveText = waveContainer.querySelector('span');
+                if (waveText) waveText.textContent = trans.in_call;
+            }
+        }
+
         function stopAudioPlayback() {
             scheduledSources.forEach(source => {
                 try {
@@ -185,6 +245,8 @@
         function updateConnectionStatusUI(state) {
             if (!connectionStatus || !statusDot) return;
             
+            const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
+            
             // Remove previous color classes
             statusDot.className = "absolute bottom-0 right-0 w-3 h-3 border-2 border-[#202C33] rounded-full";
             connectionStatus.className = "text-xs";
@@ -192,7 +254,7 @@
             if (state === 'connected') {
                 statusDot.classList.add('bg-green-500');
                 connectionStatus.classList.add('text-[#00A884]');
-                connectionStatus.textContent = "Online";
+                connectionStatus.textContent = trans.online;
                 // If a call was pending, trigger it now!
                 if (pendingCall) {
                     console.log("☎️ WebSocket opened. Resolving pending call request.");
@@ -202,18 +264,19 @@
                 statusDot.classList.add('bg-yellow-500');
                 connectionStatus.classList.add('text-yellow-500');
                 if (pendingCall) {
-                    connectionStatus.textContent = "Waking up server for call...";
+                    connectionStatus.textContent = trans.waking_up;
                 } else {
-                    connectionStatus.textContent = "Connecting (waking up server)...";
+                    connectionStatus.textContent = trans.connecting;
                 }
             } else if (state === 'disconnected') {
                 statusDot.classList.add('bg-red-500');
                 connectionStatus.classList.add('text-red-500');
-                connectionStatus.textContent = "Disconnected (reconnecting...)";
+                connectionStatus.textContent = trans.disconnected;
             }
         }
 
         function resetCallButtonUI() {
+            const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
             callBtn.classList.remove('bg-red-600', 'bg-yellow-600', 'text-white', 'border-red-500', 'border-yellow-500', 'animate-pulse');
             callBtn.classList.add('text-[#00A884]');
             waveContainer.classList.add('hidden');
@@ -221,7 +284,7 @@
                 waveContainer.classList.remove('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
                 waveContainer.classList.add('border-[#00A884]');
                 const waveText = waveContainer.querySelector('span');
-                if (waveText) waveText.textContent = "In Call...";
+                if (waveText) waveText.textContent = trans.in_call;
             }
         }
 
@@ -262,6 +325,7 @@
         getStartedBtn.addEventListener('click', () => {
             initializeAudioContexts();
             selectedLanguage = langSelect.value;
+            updateUILanguage(selectedLanguage);
             welcomeScreen.classList.add('hidden');
             chatScreen.classList.remove('hidden');
             connectWebSocket();
@@ -770,7 +834,8 @@
                                     waveContainer.classList.add('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
                                     waveContainer.classList.remove('border-[#00A884]');
                                     const waveText = waveContainer.querySelector('span');
-                                    if (waveText) waveText.textContent = "Listening...";
+                                    const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
+                                    if (waveText) waveText.textContent = trans.listening;
                                 }
                             } else {
                                 // Revert visual active state when quiet
@@ -778,7 +843,8 @@
                                     waveContainer.classList.remove('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
                                     waveContainer.classList.add('border-[#00A884]');
                                     const waveText = waveContainer.querySelector('span');
-                                    if (waveText) waveText.textContent = "In Call...";
+                                    const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
+                                    if (waveText) waveText.textContent = trans.in_call;
                                 }
                             }
                         }
@@ -800,6 +866,7 @@
         function stopStreaming() {
             isRecording = false;
             pendingCall = false;
+            stopAudioPlayback();
 
             if (processorNode) {
                 try { processorNode.disconnect(); } catch (e) {}
@@ -889,17 +956,15 @@
                 if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
                 if (playbackContext.state === 'suspended') await playbackContext.resume();
                 
-                const dataView = new DataView(arrayBuffer);
-                const sampleCount = Math.floor(arrayBuffer.byteLength / 2);
-                if (sampleCount === 0) return;
-
-                const float32Array = new Float32Array(sampleCount);
-                for (let i = 0; i < sampleCount; i++) {
-                    float32Array[i] = dataView.getInt16(i * 2, true) / 32768.0;
-                }
+                const pcm16Data = new Int16Array(arrayBuffer);
+                if (pcm16Data.length === 0) return;
                 
-                const buffer = playbackContext.createBuffer(1, float32Array.length, 24000);
-                buffer.getChannelData(0).set(float32Array);
+                const SAMPLE_RATE = 24000;
+                const buffer = playbackContext.createBuffer(1, pcm16Data.length, SAMPLE_RATE);
+                const channelData = buffer.getChannelData(0);
+                for (let i = 0; i < pcm16Data.length; i++) {
+                    channelData[i] = pcm16Data[i] / 32768.0;
+                }
                 
                 const currentTime = playbackContext.currentTime;
 
