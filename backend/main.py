@@ -68,7 +68,7 @@ else:
 if api_key:
     api_key = api_key.strip()
 
-LIVE_MODEL = "gemini-3.1-flash-live-preview"
+LIVE_MODEL = "gemini-2.0-flash-exp"
 
 # Force standard UTF-8 terminal mapping for Windows systems
 sys.stdout.reconfigure(encoding='utf-8')
@@ -1227,7 +1227,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         )
     )
 
-    LIVE_MODEL = "gemini-3.1-flash-live-preview"
+    LIVE_MODEL = "gemini-2.0-flash-exp"
     
     session_client = client
     if not session_client:
@@ -1237,7 +1237,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         )
 
     try:
-        print(f"🔄 Connecting to Gemini Live ({LIVE_MODEL})...")
+        print(f"🔄 Connecting to Gemini Live with model: {LIVE_MODEL}...")
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
             print("🚀 [GEMINI LIVE CONNECTED] Active session established.")
 
@@ -1250,12 +1250,13 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                         if "bytes" in msg and msg["bytes"]:
                             pcm_data = msg["bytes"]
                             if 0 < len(pcm_data) < 65536:
-                                # Official SDK method for real-time audio chunks
-                                await session.send_realtime_input(
-                                    audio=types.Blob(
+                                # Send direct PCM audio blob
+                                await session.send(
+                                    input=types.Blob(
                                         data=pcm_data,
                                         mime_type="audio/pcm;rate=16000"
-                                    )
+                                    ),
+                                    end_of_turn=False
                                 )
                 except (WebSocketDisconnect, asyncio.CancelledError):
                     pass
