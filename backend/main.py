@@ -1206,17 +1206,10 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     await websocket.accept()
     
-    # 1. Simple Minimal Instruction (No complex multi-rule constraints)
-    prompt_text = "You are OpenCareAI, a helpful emergency health voice assistant. Respond concisely and speak naturally in Somali (Af-Soomaali)."
-    if lang == "Afaan Oromo":
-        prompt_text = "You are OpenCareAI, a helpful emergency health voice assistant. Respond concisely and speak naturally in Oromo (Afaan Oromo)."
-    elif lang == "Amharic":
-        prompt_text = "You are OpenCareAI, a helpful emergency health voice assistant. Respond concisely and speak naturally in Amharic (አማርኛ)."
-
     config = types.LiveConnectConfig(
         response_modalities=[types.LiveServerContentModality.AUDIO],
         system_instruction=types.Content(
-            parts=[types.Part.from_text(text=prompt_text)]
+            parts=[types.Part.from_text(text=f"You are OpenCareAI, a helpful emergency health voice assistant. Respond concisely and speak naturally in {lang}.")]
         )
     )
 
@@ -1229,10 +1222,9 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     try:
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
             
-            # Task 1: Client -> Gemini
             async def client_to_gemini():
-                try:
-                    while True:
+                while True:
+                    try:
                         msg = await websocket.receive()
                         if "bytes" in msg and msg["bytes"]:
                             await session.send(
@@ -1240,27 +1232,33 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                     media_chunks=[types.Blob(data=msg["bytes"], mime_type="audio/pcm")]
                                 )
                             )
-                except Exception:
-                    pass
+                    except WebSocketDisconnect:
+                        break
+                    except Exception as e:
+                        print(f"Client stream error: {e}")
+                        break
 
-            # Task 2: Gemini -> Client
             async def gemini_to_client():
-                try:
-                    async for response in session.receive():
-                        server_content = response.server_content
-                        if server_content and server_content.model_turn:
-                            for part in server_content.model_turn.parts:
-                                if part.inline_data and part.inline_data.data:
-                                    await websocket.send_bytes(part.inline_data.data)
-                except Exception:
-                    pass
+                while True:
+                    try:
+                        async for response in session.receive():
+                            server_content = response.server_content
+                            if server_content and server_content.model_turn:
+                                for part in server_content.model_turn.parts:
+                                    if part.inline_data and part.inline_data.data:
+                                        await websocket.send_bytes(part.inline_data.data)
+                    except Exception as e:
+                        print(f"Gemini receive loop error: {e}")
+                        # Do not break out of call unless disconnected
+                        await asyncio.sleep(0.1)
 
-            await asyncio.gather(client_to_gemini(), gemini_to_client())
+            # Keep both tasks alive indefinitely until client disconnects
+            await asyncio.gather(client_to_gemini(), gemini_to_client(), return_exceptions=True)
 
     except WebSocketDisconnect:
-        pass
+        print("Call terminated by user.")
     except Exception as e:
-        print(f"Session Error: {e}")
+        print(f"Live session error: {e}")
 
 # Mount the static site folder safely
 BASE_DIR = Path(__file__).resolve().parent
