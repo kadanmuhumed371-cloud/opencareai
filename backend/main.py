@@ -1215,7 +1215,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         )
     )
 
-    LIVE_MODEL = "gemini-2.0-flash-exp"
+    LIVE_MODEL = "gemini-2.0-flash-realtime-exp"
     
     session_client = client
     if not session_client:
