@@ -969,7 +969,10 @@ INGESTED_DOCUMENT_CONTEXT = ""
 client = None
 if api_key:
     try:
-        client = genai.Client(api_key=api_key)
+        client = genai.Client(
+            api_key=api_key,
+            http_options={"api_version": "v1alpha"}
+        )
     except Exception as e:
         print(f"❌ Error initializing global Google GenAI Client: {e}")
 else:
@@ -1203,12 +1206,19 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     await websocket.accept()
-    print(f"🔌 [WS CONNECTED] Client connected with lang={lang}")
+    print(f"🔌 [CONNECTED] Client connected with lang={lang}")
 
     config = types.LiveConnectConfig(
         response_modalities=["AUDIO"],
+        speech_config=types.SpeechConfig(
+            voice_config=types.VoiceConfig(
+                prebuilt_voice_config=types.PrebuiltVoiceConfig(
+                    voice_name="Puck"
+                )
+            )
+        ),
         system_instruction=types.Content(
-            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely and strictly in {lang}. Respond promptly as soon as the user speaks.")]
+            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely, clearly, and strictly in {lang}. Respond immediately after the user speaks.")]
         )
     )
 
@@ -1216,16 +1226,21 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     
     session_client = client
     if not session_client:
-        session_client = genai.Client(api_key=api_key)
+        session_client = genai.Client(
+            api_key=api_key,
+            http_options={"api_version": "v1alpha"}
+        )
 
     try:
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
-            print(f"🚀 [GEMINI LIVE CONNECTED] Using {LIVE_MODEL}")
+            print(f"🚀 [GEMINI LIVE CONNECTED] Active session using {LIVE_MODEL}")
 
             async def client_to_gemini():
                 while True:
                     try:
                         msg = await websocket.receive()
+                        if msg.get("type") == "websocket.disconnect":
+                            break
                         if "bytes" in msg and msg["bytes"]:
                             pcm_data = msg["bytes"]
                             if len(pcm_data) > 0:
@@ -1241,32 +1256,27 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                         }
                                     }
                                 )
-                        elif "text" in msg:
-                            pass
-                    except WebSocketDisconnect:
-                        break
-                    except asyncio.CancelledError:
+                    except (WebSocketDisconnect, RuntimeError, asyncio.CancelledError):
                         break
                     except Exception as e:
-                        print(f"⚠️ client_to_gemini send warning: {e}")
-                        await asyncio.sleep(0.01)
+                        print(f"⚠️ client_to_gemini warning: {e}")
+                        break
 
             async def gemini_to_client():
-                while True:
-                    try:
-                        async for response in session.receive():
-                            server_content = response.server_content
-                            if server_content is not None and server_content.model_turn is not None:
-                                for part in server_content.model_turn.parts:
-                                    if part.inline_data and part.inline_data.data:
-                                        await websocket.send_bytes(part.inline_data.data)
-                    except WebSocketDisconnect:
-                        break
-                    except asyncio.CancelledError:
-                        break
-                    except Exception as e:
-                        print(f"⚠️ gemini_to_client receive warning: {e}")
-                        await asyncio.sleep(0.05)
+                try:
+                    async for response in session.receive():
+                        server_content = response.server_content
+                        if server_content is not None and server_content.model_turn is not None:
+                            for part in server_content.model_turn.parts:
+                                if part.inline_data and part.inline_data.data:
+                                    print(f"🔊 Returning {len(part.inline_data.data)} audio bytes to client")
+                                    await websocket.send_bytes(part.inline_data.data)
+                                elif part.text:
+                                    print(f"💬 Text response: {part.text}")
+                except (WebSocketDisconnect, RuntimeError, asyncio.CancelledError):
+                    pass
+                except Exception as e:
+                    print(f"⚠️ gemini_to_client warning: {e}")
 
             c2g = asyncio.create_task(client_to_gemini())
             g2c = asyncio.create_task(gemini_to_client())
@@ -1277,16 +1287,15 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             )
             for t in pending:
                 t.cancel()
-            if pending:
-                await asyncio.gather(*pending, return_exceptions=True)
+            await asyncio.gather(*pending, return_exceptions=True)
 
     except WebSocketDisconnect:
         print("🔌 WebSocket disconnected cleanly.")
     except Exception as e:
-        print(f"💥 Live Session Error: {e}")
+        print(f"💥 Live Session Fatal Error: {e}")
         traceback.print_exc()
     finally:
-        print("🔒 Session closed.")
+        print("🔒 Session closed cleanly.")
 
 # Mount the static site folder safely
 BASE_DIR = Path(__file__).resolve().parent
