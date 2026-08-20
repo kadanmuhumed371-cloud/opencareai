@@ -1,5 +1,6 @@
 import os
 import sys
+import traceback
 import asyncio
 import json
 import wave
@@ -970,7 +971,7 @@ if api_key:
     try:
         client = genai.Client(
             api_key=api_key,
-            http_options=types.HttpOptions(api_version="v1alpha")
+            http_options={"api_version": "v1alpha"}
         )
     except Exception as e:
         print(f"❌ Error initializing global Google GenAI Client: {e}")
@@ -1218,7 +1219,10 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     
     session_client = client
     if not session_client:
-        session_client = genai.Client(http_options=types.HttpOptions(api_version="v1alpha"))
+        session_client = genai.Client(
+            api_key=api_key,
+            http_options={"api_version": "v1alpha"}
+        )
 
     try:
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
