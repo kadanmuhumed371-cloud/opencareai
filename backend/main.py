@@ -1210,7 +1210,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     lang_prompt = f"You are OpenCareAI, an emergency healthcare voice assistant. You MUST speak and respond ONLY in {lang}. Be concise, calm, and speak in continuous natural sentences."
     
     config = types.LiveConnectConfig(
-        response_modalities=[types.LiveServerContentModality.AUDIO],
+        response_modalities=["AUDIO"],
         system_instruction=types.Content(
             parts=[types.Part.from_text(text=lang_prompt)]
         )
