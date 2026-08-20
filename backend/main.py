@@ -1250,14 +1250,11 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                         if "bytes" in msg and msg["bytes"]:
                             pcm_data = msg["bytes"]
                             if 0 < len(pcm_data) < 65536:
+                                # Direct Blob input (replaces deprecated media_chunks)
                                 await session.send(
-                                    input=types.LiveClientRealtimeInput(
-                                        media_chunks=[
-                                            types.Blob(
-                                                data=pcm_data,
-                                                mime_type="audio/pcm;rate=16000"
-                                            )
-                                        ]
+                                    input=types.Blob(
+                                        data=pcm_data,
+                                        mime_type="audio/pcm;rate=16000"
                                     )
                                 )
                 except (WebSocketDisconnect, asyncio.CancelledError):
