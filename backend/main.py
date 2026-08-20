@@ -1,4 +1,5 @@
 import os
+import gc
 import sys
 import traceback
 import asyncio
@@ -1206,7 +1207,7 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     await websocket.accept()
-    print(f"🔌 [CONNECTED] Client connected with lang={lang}")
+    print(f"🔌 [WS CONNECTED] Client connected with lang={lang}")
 
     config = types.LiveConnectConfig(
         response_modalities=["AUDIO"],
@@ -1218,7 +1219,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             )
         ),
         system_instruction=types.Content(
-            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely, clearly, and strictly in {lang}. Respond immediately after the user speaks.")]
+            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely and strictly in {lang}.")]
         )
     )
 
@@ -1232,8 +1233,9 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         )
 
     try:
+        print(f"🔄 Connecting to Gemini Live with model: {LIVE_MODEL}...")
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
-            print(f"🚀 [GEMINI LIVE CONNECTED] Active session using {LIVE_MODEL}")
+            print("🚀 [GEMINI LIVE CONNECTED] Ready to stream.")
 
             async def client_to_gemini():
                 try:
@@ -1243,7 +1245,8 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                             break
                         if "bytes" in msg and msg["bytes"]:
                             pcm_data = msg["bytes"]
-                            if len(pcm_data) > 0:
+                            if 0 < len(pcm_data) < 65536:
+                                # Use send_realtime_input directly
                                 await session.send(
                                     input={
                                         "realtime_input": {
@@ -1256,10 +1259,11 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                         }
                                     }
                                 )
-                except (WebSocketDisconnect, RuntimeError, asyncio.CancelledError):
+                except (WebSocketDisconnect, asyncio.CancelledError):
                     pass
                 except Exception as e:
-                    print(f"⚠️ client_to_gemini error: {e}")
+                    print(f"❌ Error in client_to_gemini: {e}")
+                    traceback.print_exc()
 
             async def gemini_to_client():
                 try:
@@ -1268,14 +1272,15 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                         if server_content is not None and server_content.model_turn is not None:
                             for part in server_content.model_turn.parts:
                                 if part.inline_data and part.inline_data.data:
-                                    print(f"🔊 Returning {len(part.inline_data.data)} audio bytes to client")
+                                    print(f"🔊 Sending {len(part.inline_data.data)} bytes back to frontend")
                                     await websocket.send_bytes(part.inline_data.data)
                                 elif part.text:
-                                    print(f"💬 Text output: {part.text}")
-                except (WebSocketDisconnect, RuntimeError, asyncio.CancelledError):
+                                    print(f"💬 Model text: {part.text}")
+                except (WebSocketDisconnect, asyncio.CancelledError):
                     pass
                 except Exception as e:
-                    print(f"⚠️ gemini_to_client error: {e}")
+                    print(f"❌ Error in gemini_to_client: {e}")
+                    traceback.print_exc()
 
             c2g = asyncio.create_task(client_to_gemini())
             g2c = asyncio.create_task(gemini_to_client())
@@ -1289,12 +1294,13 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
             await asyncio.gather(*pending, return_exceptions=True)
 
     except WebSocketDisconnect:
-        print("🔌 WebSocket disconnected cleanly.")
+        print("🔌 WebSocket disconnected cleanly by client.")
     except Exception as e:
-        print(f"💥 Live Session Fatal Error: {e}")
+        print(f"💥 LIVE SESSION CRASH: {e}")
         traceback.print_exc()
     finally:
-        print("🔒 Session closed cleanly.")
+        gc.collect()
+        print("🔒 Session cleanup complete.")
 
 # Mount the static site folder safely
 BASE_DIR = Path(__file__).resolve().parent
