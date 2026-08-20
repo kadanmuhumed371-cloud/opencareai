@@ -1221,7 +1221,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         system_instruction=types.Content(
             parts=[
                 types.Part.from_text(
-                    text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely, clearly, and strictly in {lang}. Respond promptly as soon as the user speaks."
+                    text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely, clearly, and strictly in {lang}."
                 )
             ]
         )
@@ -1250,12 +1250,16 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                         if "bytes" in msg and msg["bytes"]:
                             pcm_data = msg["bytes"]
                             if 0 < len(pcm_data) < 65536:
-                                # Direct Blob input (replaces deprecated media_chunks)
                                 await session.send(
-                                    input=types.Blob(
-                                        data=pcm_data,
-                                        mime_type="audio/pcm;rate=16000"
-                                    )
+                                    input=types.Content(
+                                        parts=[
+                                            types.Part.from_bytes(
+                                                data=pcm_data,
+                                                mime_type="audio/pcm;rate=16000"
+                                            )
+                                        ]
+                                    ),
+                                    end_of_turn=False
                                 )
                 except (WebSocketDisconnect, asyncio.CancelledError):
                     pass
