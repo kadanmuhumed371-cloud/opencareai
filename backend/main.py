@@ -1424,6 +1424,15 @@ MANDATORY RULES:
             
             session_alive = True
             last_sent_ai_text = ""
+
+            # Define wrapper as requested to support low-latency pass-through format
+            async def session_send(input, mime_type=None, **kwargs):
+                if mime_type:
+                    await google_session.send_realtime_input(
+                        audio=types.Blob(data=input, mime_type=mime_type)
+                    )
+                else:
+                    await google_session.send(input=input, **kwargs)
             
             async def handle_msg(m):
                 nonlocal user_audio_buffer, conversation_history, session_metadata, session_audio_timeline, current_turn_input_type, active_turn_id, ai_is_active
@@ -1451,9 +1460,8 @@ MANDATORY RULES:
                             await google_session.send_client_content(turn_complete=True)
                         elif client_text_data == "AI was interrupted":
                             print("🎙️ [INTERRUPT] Received 'AI was interrupted' signal from client. Cancelling other sessions' tasks.")
-                            # Force rotate turn ID if not already done
-                            if not ai_is_active:
-                                active_turn_id += 1
+                            # Force rotate turn ID
+                            active_turn_id += 1
                             ai_is_active = False
                             global active_session_tasks
                             for old_sess_id, tasks in list(active_session_tasks.items()):
@@ -1493,12 +1501,7 @@ MANDATORY RULES:
                                 current_turn_input_type = "audio"
                                 data = bytes(raw_bytes)
                                 if isinstance(data, bytes):
-                                    await google_session.send_realtime_input(
-                                        audio=types.Blob(
-                                            data=data,
-                                            mime_type="audio/pcm;rate=16000"
-                                        )
-                                    )
+                                    await session_send(input=data, mime_type="audio/pcm")
                             else:
                                 print(f"🚀 [DEBUG] Skipping empty audio payload.")
                 except Exception as e:
@@ -1626,7 +1629,7 @@ MANDATORY RULES:
                                             if response_turn_id != active_turn_id:
                                                 print(f"🗑️ [STALE CHUNK] Discarding stale audio chunk (Response Turn: {response_turn_id}, Active Turn: {active_turn_id})")
                                                 continue
-                                            await send_audio_chunk(websocket, part.inline_data.data)
+                                            await websocket.send_bytes(part.inline_data.data)
  
                                 # 4. Handle turn complete marker
                                 if server_content.turn_complete:

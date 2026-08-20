@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body class="bg-[#0B141A] text-white font-sans h-screen flex flex-col justify-between overflow-hidden select-none">
+<body class="bg-[#0B141A] text-white font-sans h-[100dvh] flex flex-col justify-between overflow-hidden select-none">
 
     <!-- SCREEN 1: Welcome Screen -->
     <div id="welcomeScreen" class="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#0B141A] p-6 text-center">
@@ -52,7 +52,7 @@
     </div>
 
     <!-- SCREEN 2: Main Chat Screen -->
-    <div id="chatScreen" class="hidden flex flex-col h-full w-full">
+    <div id="chatScreen" class="hidden flex flex-col h-[100dvh] w-full">
         <!-- Header -->
         <header class="bg-[#202C33] px-4 py-3 flex items-center justify-between border-b border-[#2A3942] shadow-md z-10 flex-shrink-0">
             <div class="flex items-center space-x-3">
@@ -96,7 +96,7 @@
         </main>
 
         <!-- Footer Input Area -->
-        <footer class="bg-[#202C33] px-4 py-4 flex items-center justify-center space-x-6 border-t border-[#2A3942] flex-shrink-0 z-10">
+        <footer class="bg-[#202C33] px-4 py-4 pb-8 md:pb-4 flex items-center justify-center space-x-6 border-t border-[#2A3942] flex-shrink-0 z-10">
             <!-- Upload Button -->
             <label class="bg-[#111B21] hover:bg-[#182229] active:scale-95 transition-all p-4 rounded-full cursor-pointer shadow-md border border-[#2A3942] flex items-center justify-center flex-shrink-0">
                 <svg class="w-6 h-6 text-[#8696A0]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -132,12 +132,12 @@
 
         let ws;
         let audioContext;
-        let playbackContext;
+        let playbackAudioContext = null;
         let mediaStreamSource;
         let processorNode;
-        let liveStreamTrack = null;
-        let isRecording = false;
-        let nextStartTime = 0;
+        let mediaStream = null;
+        let isCallActive = false;
+        let nextPlayTime = 0;
         let cameraStream = null;
         let selectedLanguage = "Af-Soomaali";
         let scheduledSources = [];
@@ -148,63 +148,49 @@
         let reconnectTimeout = null;
         let consecutiveHighEnergyFrames = 0;
 
-        const UI_TRANSLATIONS = {
-            "Af-Soomaali": {
-                "welcome_desc": "Kaaliyahaaga Caafimaadka ee AI",
-                "select_lang": "Dooro Luuqadda (Ikhtiyaari)",
-                "get_started": "Bilow",
-                "secure_space": "Kani waa meel ammaan ah. Dheh \"Haye\" ama taabo astaanta wicitaanka si aad u bilowdo.",
-                "connecting": "Waa la xiriirinayaa...",
-                "online": "Online",
-                "disconnected": "Waa laga go'ay (dib u xiriirinaya...)",
-                "waking_up": "Kicinaya server-ka...",
-                "in_call": "Waa lagu jiraa wicitaanka...",
-                "listening": "Dhegeysanaya..."
-            },
-            "Afaan Oromo": {
-                "welcome_desc": "Gargaara Kee Fayyaa AI",
-                "select_lang": "Afaan Filadhu (Filannoo)",
-                "get_started": "Eegali",
-                "secure_space": "Kun iddoo tasgabbaa'aadha. Bilow weyntuuf \"Akam\" jedhi ykn mallattoo bilbilaa cuqaasi.",
-                "connecting": "Gara sarvariitti siquu...",
-                "online": "Online",
-                "disconnected": "Addaan citeera (Irra deebi'amee qunnama...)",
-                "waking_up": "Sarvarii dammaqsua jira...",
-                "in_call": "Bilbila irratti...",
-                "listening": "Dhaggeeffachaa..."
-            },
-            "Amharic": {
-                "welcome_desc": "የእርስዎ የጤና ረዳት",
-                "select_lang": "ቋንቋ ይምረጡ (አማራጭ)",
-                "get_started": "ጀምር",
-                "secure_space": "ይህ ደህንነቱ የተጠበቀ ቦታ ነው። ለመጀመር \"ሰላም\" ይበሉ ወይም የጥሪ ምልክቱን ይጫኑ።",
-                "connecting": "በማገናኘት ላይ...",
-                "online": "ከመስመር ላይ",
-                "disconnected": "ተቋርጧል (እንደገና በመገናኘት ላይ...)",
-                "waking_up": "አገልጋዩን በማንቃት ላይ...",
-                "in_call": "በጥሪ ላይ...",
-                "listening": "በማዳመጥ ላይ..."
-            }
-        };
-
-        function updateUILanguage(lang) {
-            const trans = UI_TRANSLATIONS[lang] || UI_TRANSLATIONS["Af-Soomaali"];
+        function updateUIState(state) {
+            if (!connectionStatus || !statusDot) return;
             
-            const welcomeDesc = document.querySelector('#welcomeScreen p');
-            if (welcomeDesc) welcomeDesc.textContent = trans.welcome_desc;
+            // Remove previous classes
+            statusDot.className = "absolute bottom-0 right-0 w-3 h-3 border-2 border-[#202C33] rounded-full";
+            connectionStatus.className = "text-xs";
             
-            const selectLangLabel = document.querySelector('#welcomeScreen label');
-            if (selectLangLabel) selectLangLabel.textContent = trans.select_lang;
-            
-            const getStartedBtnEl = document.getElementById('getStartedBtn');
-            if (getStartedBtnEl) getStartedBtnEl.textContent = trans.get_started;
-            
-            const welcomeBanner = document.querySelector('#chatViewport span');
-            if (welcomeBanner) welcomeBanner.textContent = trans.secure_space;
-            
-            if (waveContainer) {
-                const waveText = waveContainer.querySelector('span');
-                if (waveText) waveText.textContent = trans.in_call;
+            if (state === "Ready") {
+                statusDot.classList.add('bg-green-500');
+                connectionStatus.classList.add('text-[#00A884]');
+                connectionStatus.textContent = "Ready";
+            } else if (state === "Connecting...") {
+                statusDot.classList.add('bg-yellow-500');
+                connectionStatus.classList.add('text-yellow-500');
+                connectionStatus.textContent = "Connecting...";
+            } else if (state === "In Call...") {
+                statusDot.classList.add('bg-green-500');
+                connectionStatus.classList.add('text-[#00A884]');
+                connectionStatus.textContent = "In Call...";
+                if (waveContainer) {
+                    const waveText = waveContainer.querySelector('span');
+                    if (waveText) waveText.textContent = "In Call...";
+                }
+            } else if (state === "Listening...") {
+                statusDot.classList.add('bg-green-500');
+                connectionStatus.classList.add('text-[#00A884]');
+                connectionStatus.textContent = "Listening...";
+                if (waveContainer) {
+                    const waveText = waveContainer.querySelector('span');
+                    if (waveText) waveText.textContent = "Listening...";
+                }
+            } else if (state === "Speaking...") {
+                statusDot.classList.add('bg-green-500');
+                connectionStatus.classList.add('text-[#00A884]');
+                connectionStatus.textContent = "Speaking...";
+                if (waveContainer) {
+                    const waveText = waveContainer.querySelector('span');
+                    if (waveText) waveText.textContent = "Speaking...";
+                }
+            } else if (state === "Call Ended" || state === "Disconnected") {
+                statusDot.classList.add('bg-red-500');
+                connectionStatus.classList.add('text-red-500');
+                connectionStatus.textContent = "Call Ended";
             }
         }
 
@@ -218,15 +204,39 @@
             });
             scheduledSources = [];
             isAiOutputtingAudio = false;
-            if (playbackContext) {
-                nextStartTime = playbackContext.currentTime;
+            if (playbackAudioContext) {
+                nextPlayTime = playbackAudioContext.currentTime;
             } else {
-                nextStartTime = 0;
+                nextPlayTime = 0;
             }
         }
 
         function flushPlaybackQueue() {
             stopAudioPlayback();
+        }
+
+        function terminateCallCompletely() {
+            isCallActive = false;
+            isAiOutputtingAudio = false;
+            pendingCall = false;
+            if (ws) {
+                ws.onclose = null;
+                ws.onerror = null;
+                ws.onmessage = null;
+                try { ws.close(); } catch (e) {}
+                ws = null;
+            }
+            if (mediaStream) {
+                try { mediaStream.getTracks().forEach(track => track.stop()); } catch (e) {}
+                mediaStream = null;
+            }
+            if (playbackAudioContext) {
+                try { playbackAudioContext.close(); } catch (e) {}
+                playbackAudioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+            }
+            nextPlayTime = 0;
+            updateUIState("Ready");
+            resetCallButtonUI();
         }
 
         // DOM Elements
@@ -243,40 +253,21 @@
         const connectionStatus = document.getElementById('connectionStatus');
 
         function updateConnectionStatusUI(state) {
-            if (!connectionStatus || !statusDot) return;
-            
-            const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
-            
-            // Remove previous color classes
-            statusDot.className = "absolute bottom-0 right-0 w-3 h-3 border-2 border-[#202C33] rounded-full";
-            connectionStatus.className = "text-xs";
-            
             if (state === 'connected') {
-                statusDot.classList.add('bg-green-500');
-                connectionStatus.classList.add('text-[#00A884]');
-                connectionStatus.textContent = trans.online;
+                updateUIState('Ready');
                 // If a call was pending, trigger it now!
                 if (pendingCall) {
                     console.log("☎️ WebSocket opened. Resolving pending call request.");
                     startStreaming();
                 }
             } else if (state === 'connecting') {
-                statusDot.classList.add('bg-yellow-500');
-                connectionStatus.classList.add('text-yellow-500');
-                if (pendingCall) {
-                    connectionStatus.textContent = trans.waking_up;
-                } else {
-                    connectionStatus.textContent = trans.connecting;
-                }
+                updateUIState('Connecting...');
             } else if (state === 'disconnected') {
-                statusDot.classList.add('bg-red-500');
-                connectionStatus.classList.add('text-red-500');
-                connectionStatus.textContent = trans.disconnected;
+                updateUIState('Call Ended');
             }
         }
 
         function resetCallButtonUI() {
-            const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
             callBtn.classList.remove('bg-red-600', 'bg-yellow-600', 'text-white', 'border-red-500', 'border-yellow-500', 'animate-pulse');
             callBtn.classList.add('text-[#00A884]');
             waveContainer.classList.add('hidden');
@@ -284,7 +275,7 @@
                 waveContainer.classList.remove('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
                 waveContainer.classList.add('border-[#00A884]');
                 const waveText = waveContainer.querySelector('span');
-                if (waveText) waveText.textContent = trans.in_call;
+                if (waveText) waveText.textContent = "In Call...";
             }
         }
 
@@ -306,16 +297,16 @@
                 if (!audioContext) {
                     audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
                 }
-                if (!playbackContext) {
-                    playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                if (!playbackAudioContext) {
+                    playbackAudioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
                 }
                 if (audioContext.state === 'suspended') {
                     audioContext.resume();
                 }
-                if (playbackContext.state === 'suspended') {
-                    playbackContext.resume();
+                if (playbackAudioContext.state === 'suspended') {
+                    playbackAudioContext.resume();
                 }
-                console.log("🔊 [AUDIO GESTURE] Contexts pre-initialized/resumed. States - Audio:", audioContext.state, "Playback:", playbackContext.state);
+                console.log("🔊 [AUDIO GESTURE] Contexts pre-initialized/resumed. States - Audio:", audioContext.state, "Playback:", playbackAudioContext.state);
             } catch (e) {
                 console.warn("Could not pre-initialize audio contexts:", e);
             }
@@ -323,12 +314,10 @@
 
         // --- Screen Transition ---
         getStartedBtn.addEventListener('click', () => {
-            initializeAudioContexts();
             selectedLanguage = langSelect.value;
-            updateUILanguage(selectedLanguage);
             welcomeScreen.classList.add('hidden');
             chatScreen.classList.remove('hidden');
-            connectWebSocket();
+            updateUIState("Ready");
         });
 
 
@@ -505,6 +494,7 @@
             };
             
             ws.onmessage = async (event) => { 
+                if (!isCallActive) return; // Drop any stray audio packets immediately if the user hung up
                 if (typeof event.data === 'string') {
                     if (event.data.startsWith('{')) {
                         try {
@@ -574,13 +564,13 @@
                 updateConnectionStatusUI('disconnected');
                 
                 // If call was active, stop it cleanly
-                if (isRecording) {
+                if (isCallActive) {
                     console.log("🔌 WebSocket disconnected during active call. Stopping stream.");
-                    stopStreaming();
+                    terminateCallCompletely();
                 }
                 
-                // Reconnect if chat is active (welcome screen hidden)
-                if (welcomeScreen.classList.contains('hidden')) {
+                // Reconnect ONLY if call is active (welcome screen hidden and isCallActive is true)
+                if (welcomeScreen.classList.contains('hidden') && isCallActive) {
                     if (!reconnectTimeout) {
                         reconnectTimeout = setTimeout(() => {
                             reconnectTimeout = null;
@@ -717,7 +707,7 @@
 
         // --- FULL-DUPLEX DYNAMIC TOGGLE STREAM ENGINE ---
         async function startStreaming() {
-            if (isRecording) return; // Prevent double trigger
+            if (isCallActive) return; // Prevent double trigger
             
             stopAudioPlayback();
             
@@ -730,24 +720,24 @@
                 try { mediaStreamSource.disconnect(); } catch (e) {}
                 mediaStreamSource = null;
             }
-            if (liveStreamTrack) {
-                try { liveStreamTrack.getTracks().forEach(t => t.stop()); } catch (e) {}
-                liveStreamTrack = null;
+            if (mediaStream) {
+                try { mediaStream.getTracks().forEach(t => t.stop()); } catch (e) {}
+                mediaStream = null;
             }
 
-            isRecording = true;
-            nextStartTime = 0;
+            isCallActive = true;
+            nextPlayTime = 0;
             createVoiceLogBlock();
 
             try {
                 if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
-                if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                if (!playbackAudioContext) playbackAudioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
                 
                 if (audioContext.state === 'suspended') await audioContext.resume();
-                if (playbackContext.state === 'suspended') await playbackContext.resume();
+                if (playbackAudioContext.state === 'suspended') await playbackAudioContext.resume();
 
                 try {
-                    liveStreamTrack = await navigator.mediaDevices.getUserMedia({
+                    mediaStream = await navigator.mediaDevices.getUserMedia({
                         audio: {
                             echoCancellation: true,
                             noiseSuppression: true,
@@ -761,7 +751,7 @@
                     console.error("⚠️ Failed to acquire microphone stream:", micErr);
                     throw micErr;
                 }
-                mediaStreamSource = audioContext.createMediaStreamSource(liveStreamTrack);
+                mediaStreamSource = audioContext.createMediaStreamSource(mediaStream);
                 
                 // Dynamically resolve processor path relative to public root
                 let processorUrl = '/processor.js';
@@ -787,7 +777,7 @@
                 mediaStreamSource.connect(processorNode);
               
                 processorNode.port.onmessage = (event) => {
-                    if (ws && ws.readyState === WebSocket.OPEN && isRecording) {
+                    if (ws && ws.readyState === WebSocket.OPEN && isCallActive) {
                         const pcm16Buffer = event.data;
                         
                         // Calculate RMS (Root Mean Square) energy of the audio frame to avoid false interruptions
@@ -819,6 +809,7 @@
                                 
                                 consecutiveHighEnergyFrames = 0;
                                 ws.send(pcm16Buffer);
+                                updateUIState("Listening...");
                             }
                             // Do NOT send microphone chunks to the backend while AI is speaking unless barge-in is confirmed
                         } else {
@@ -828,24 +819,9 @@
                             
                             if (rms > normalThreshold) {
                                 ws.send(pcm16Buffer);
-                                
-                                // Show visual active state
-                                if (waveContainer) {
-                                    waveContainer.classList.add('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
-                                    waveContainer.classList.remove('border-[#00A884]');
-                                    const waveText = waveContainer.querySelector('span');
-                                    const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
-                                    if (waveText) waveText.textContent = trans.listening;
-                                }
+                                updateUIState("Listening...");
                             } else {
-                                // Revert visual active state when quiet
-                                if (waveContainer) {
-                                    waveContainer.classList.remove('border-green-400', 'shadow-[0_0_15px_rgba(74,222,128,0.5)]');
-                                    waveContainer.classList.add('border-[#00A884]');
-                                    const waveText = waveContainer.querySelector('span');
-                                    const trans = UI_TRANSLATIONS[selectedLanguage] || UI_TRANSLATIONS["Af-Soomaali"];
-                                    if (waveText) waveText.textContent = trans.in_call;
-                                }
+                                updateUIState("In Call...");
                             }
                         }
                     }
@@ -855,37 +831,11 @@
                 callBtn.classList.remove('bg-yellow-600', 'animate-pulse', 'text-[#00A884]');
                 callBtn.classList.add('bg-red-600', 'text-white', 'border-red-500');
                 waveContainer.classList.remove('hidden');
+                updateUIState("In Call...");
             } catch (err) { 
                 console.error("Worklet pipeline error:", err); 
-                isRecording = false; 
-                pendingCall = false;
-                resetCallButtonUI();
+                terminateCallCompletely();
             }
-        }
-
-        function stopStreaming() {
-            isRecording = false;
-            pendingCall = false;
-            stopAudioPlayback();
-
-            if (processorNode) {
-                try { processorNode.disconnect(); } catch (e) {}
-                processorNode = null;
-            }
-            if (mediaStreamSource) {
-                try { mediaStreamSource.disconnect(); } catch (e) {}
-                mediaStreamSource = null;
-            }
-            if (liveStreamTrack) { 
-                try { liveStreamTrack.getTracks().forEach(t => t.stop()); } catch (e) {}
-                liveStreamTrack = null; 
-            }
-            
-            if (ws && ws.readyState === WebSocket.OPEN) {
-                try { ws.send(new TextEncoder().encode("END_")); } catch (e) {}
-            }
-            
-            resetCallButtonUI();
         }
 
         // CONTROL ROUTER CLICK LEVER: Bypasses erratic pointer release events entirely
@@ -894,9 +844,9 @@
             initializeAudioContexts();
             
             // Check if call is already in progress
-            if (isRecording) {
+            if (isCallActive) {
                 console.log("📞 Hanging up call.");
-                stopStreaming();
+                terminateCallCompletely();
                 return;
             }
             
@@ -905,27 +855,20 @@
                 console.log("📞 Canceling pending call.");
                 pendingCall = false;
                 resetCallButtonUI();
-                updateConnectionStatusUI(ws && ws.readyState === WebSocket.OPEN ? 'connected' : (ws && ws.readyState === WebSocket.CONNECTING ? 'connecting' : 'disconnected'));
+                updateUIState("Ready");
                 return;
             }
             
             // Initiate Call
-            if (ws && ws.readyState === WebSocket.OPEN) {
-                startStreaming();
-            } else {
-                console.log("🔌 WebSocket is not connected. Setting call as pending.");
-                pendingCall = true;
-                
-                // Show connecting/pulsating state on Call Button
-                callBtn.classList.add('bg-yellow-600', 'text-white', 'border-yellow-500', 'animate-pulse');
-                callBtn.classList.remove('text-[#00A884]');
-                
-                // Update header status
-                updateConnectionStatusUI('connecting');
-                
-                // Ensure WebSocket connection is actively triggered
-                connectWebSocket();
-            }
+            console.log("🔌 Initiating call connection.");
+            pendingCall = true;
+            updateUIState("Connecting...");
+            
+            // Apply connecting/pulsating state on Call Button
+            callBtn.classList.add('bg-yellow-600', 'text-white', 'border-yellow-500', 'animate-pulse');
+            callBtn.classList.remove('text-[#00A884]');
+            
+            connectWebSocket();
         });
 
         function createVoiceLogBlock() {
@@ -941,6 +884,7 @@
         }
 
         async function playIncomingAudioChunk(data) {
+            if (!isCallActive) return; // Drop audio immediately if call is ended
             // Ignore incoming frames if WebSocket is not open
             if (!ws || ws.readyState !== WebSocket.OPEN) {
                 return;
@@ -953,23 +897,23 @@
                 } else {
                     arrayBuffer = data;
                 }
-                if (!playbackContext) playbackContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
-                if (playbackContext.state === 'suspended') await playbackContext.resume();
+                if (!playbackAudioContext) playbackAudioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                if (playbackAudioContext.state === 'suspended') await playbackAudioContext.resume();
                 
                 const pcm16Data = new Int16Array(arrayBuffer);
                 if (pcm16Data.length === 0) return;
                 
                 const SAMPLE_RATE = 24000;
-                const buffer = playbackContext.createBuffer(1, pcm16Data.length, SAMPLE_RATE);
+                const buffer = playbackAudioContext.createBuffer(1, pcm16Data.length, SAMPLE_RATE);
                 const channelData = buffer.getChannelData(0);
                 for (let i = 0; i < pcm16Data.length; i++) {
                     channelData[i] = pcm16Data[i] / 32768.0;
                 }
                 
-                const currentTime = playbackContext.currentTime;
+                const currentTime = playbackAudioContext.currentTime;
 
-                // Backlog check: if nextStartTime is more than 3 seconds ahead of currentTime, we have a backlog.
-                const backlog = nextStartTime - currentTime;
+                // Backlog check: if nextPlayTime is more than 3 seconds ahead of currentTime, we have a backlog.
+                const backlog = nextPlayTime - currentTime;
                 if (backlog > 3.0) {
                     console.warn(`⚠️ Audio queue backlog exceeded limit (${backlog.toFixed(2)}s). Flushing older chunks.`);
                     // Stop older scheduled sources that haven't played yet
@@ -980,27 +924,29 @@
                     });
                     scheduledSources = [];
                     // Reset start time to current time with a tiny buffer to avoid latency
-                    nextStartTime = currentTime + 0.05;
+                    nextPlayTime = currentTime + 0.05;
                 }
                 
-                const source = playbackContext.createBufferSource();
+                const source = playbackAudioContext.createBufferSource();
                 source.buffer = buffer;
-                source.connect(playbackContext.destination);
+                source.connect(playbackAudioContext.destination);
                 
-                // Dynamic scheduling: adjust nextStartTime if it is in the past or drifted too far
-                if (nextStartTime < currentTime || nextStartTime > currentTime + 1.0) {
-                    nextStartTime = currentTime + 0.02;
+                // Dynamic scheduling: adjust nextPlayTime if it is in the past or drifted too far
+                if (nextPlayTime < currentTime || nextPlayTime > currentTime + 1.0) {
+                    nextPlayTime = currentTime + 0.02;
                 }
                 
                 isAiOutputtingAudio = true;
-                source.start(nextStartTime);
-                nextStartTime += buffer.duration; 
+                updateUIState("Speaking...");
+                source.start(nextPlayTime);
+                nextPlayTime += buffer.duration; 
 
                 scheduledSources.push(source);
                 source.onended = () => {
                     scheduledSources = scheduledSources.filter(s => s !== source);
                     if (scheduledSources.length === 0) {
                         isAiOutputtingAudio = false;
+                        updateUIState(isCallActive ? "In Call..." : "Ready");
                     }
                 };
             } catch (err) { console.error("Playback error:", err); }
