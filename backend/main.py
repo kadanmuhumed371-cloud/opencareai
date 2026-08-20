@@ -1205,14 +1205,12 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     await websocket.accept()
-    
-    # Explicit language instruction
-    lang_prompt = f"You are OpenCareAI, an emergency healthcare voice assistant. You MUST speak and respond ONLY in {lang}. Be concise, calm, and speak in continuous natural sentences."
+    print(f"🔌 [WS CONNECTED] Client joined with language: {lang}")
     
     config = types.LiveConnectConfig(
         response_modalities=["AUDIO"],
         system_instruction=types.Content(
-            parts=[types.Part.from_text(text=lang_prompt)]
+            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice assistant. Speak concisely and strictly in {lang}.")]
         )
     )
 
@@ -1224,14 +1222,14 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
 
     try:
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
-            
+            print("🚀 [GEMINI LIVE CONNECTED] Live session established successfully.")
+
             async def client_to_gemini():
                 try:
                     while True:
-                        data = await websocket.receive()
-                        if "bytes" in data and data["bytes"]:
-                            pcm_data = data["bytes"]
-                            # Only forward non-empty PCM buffers
+                        msg = await websocket.receive()
+                        if "bytes" in msg and msg["bytes"]:
+                            pcm_data = msg["bytes"]
                             if len(pcm_data) > 0:
                                 await session.send(
                                     input=types.LiveClientRealtimeInput(
@@ -1243,12 +1241,13 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                         ]
                                     )
                                 )
-                        elif "text" in data:
+                        elif "text" in msg:
                             pass
                 except WebSocketDisconnect:
-                    pass
+                    print("ℹ️ Client disconnected WebSocket.")
                 except Exception as e:
-                    print(f"Error in client_to_gemini: {e}")
+                    print("❌ Error in client_to_gemini:")
+                    traceback.print_exc()
 
             async def gemini_to_client():
                 try:
@@ -1257,19 +1256,23 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                         if server_content is not None and server_content.model_turn is not None:
                             for part in server_content.model_turn.parts:
                                 if part.inline_data and part.inline_data.data:
-                                    # part.inline_data.data is raw 24kHz PCM bytes
                                     await websocket.send_bytes(part.inline_data.data)
                 except WebSocketDisconnect:
                     pass
                 except Exception as e:
-                    print(f"Error in gemini_to_client: {e}")
+                    print("❌ Error in gemini_to_client:")
+                    traceback.print_exc()
 
-            await asyncio.gather(client_to_gemini(), gemini_to_client(), return_exceptions=True)
+            # Run tasks concurrently; do not exit unless client disconnects
+            await asyncio.gather(client_to_gemini(), gemini_to_client())
 
     except WebSocketDisconnect:
-        print("WebSocket closed by client.")
+        print("🔌 WebSocket disconnected cleanly.")
     except Exception as e:
-        print(f"Gemini Live connection exception: {e}")
+        print("💥 Fatal Live Session Error:")
+        traceback.print_exc()
+    finally:
+        print("🔒 Session closed.")
 
 # Mount the static site folder safely
 BASE_DIR = Path(__file__).resolve().parent
