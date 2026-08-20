@@ -1512,7 +1512,16 @@ MANDATORY RULES:
                                 current_turn_input_type = "audio"
                                 data = bytes(raw_bytes)
                                 if isinstance(data, bytes):
-                                    await google_session.send(input={"data": data, "mime_type": "audio/pcm"})
+                                    await google_session.send(
+                                        input=types.LiveClientRealtimeInput(
+                                            media_chunks=[
+                                                types.Blob(
+                                                    data=data,
+                                                    mime_type="audio/pcm"
+                                                )
+                                            ]
+                                        )
+                                    )
                             else:
                                 print(f"🚀 [DEBUG] Skipping empty audio payload.")
                 except Exception as e:
