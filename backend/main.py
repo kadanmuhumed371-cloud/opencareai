@@ -67,7 +67,7 @@ else:
 if api_key:
     api_key = api_key.strip()
 
-LIVE_MODEL = "gemini-3.1-flash-live-preview"
+LIVE_MODEL = "gemini-2.0-flash-exp"
 
 # Force standard UTF-8 terminal mapping for Windows systems
 sys.stdout.reconfigure(encoding='utf-8')
@@ -1206,16 +1206,16 @@ def pcm_to_wav_bytes(pcm_data: bytes, channels: int = 1, sampwidth: int = 2, fra
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
     await websocket.accept()
-    print(f"🔌 [CONNECTED] WebSocket accepted with lang={lang}")
+    print(f"🔌 [CONNECTED] Client connected with lang={lang}")
 
     config = types.LiveConnectConfig(
         response_modalities=["AUDIO"],
         system_instruction=types.Content(
-            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency healthcare voice assistant. Respond concisely and strictly in {lang}.")]
+            parts=[types.Part.from_text(text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely and strictly in {lang}.")]
         )
     )
 
-    LIVE_MODEL = "gemini-3.1-flash-live-preview"
+    LIVE_MODEL = "gemini-2.0-flash-exp"
     
     session_client = client
     if not session_client:
@@ -1226,7 +1226,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
 
     try:
         async with session_client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
-            print("🚀 [GEMINI LIVE CONNECTED] Live session active.")
+            print("🚀 [GEMINI LIVE CONNECTED] Live session established successfully.")
 
             async def client_to_gemini():
                 try:
@@ -1256,7 +1256,7 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                 try:
                     async for response in session.receive():
                         server_content = response.server_content
-                        if server_content and server_content.model_turn:
+                        if server_content is not None and server_content.model_turn is not None:
                             for part in server_content.model_turn.parts:
                                 if part.inline_data and part.inline_data.data:
                                     await websocket.send_bytes(part.inline_data.data)
@@ -1265,21 +1265,12 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                 except Exception as e:
                     print(f"⚠️ gemini_to_client error: {e}")
 
-            # Keep both background tasks running concurrently
-            c2g_task = asyncio.create_task(client_to_gemini())
-            g2c_task = asyncio.create_task(gemini_to_client())
-
-            done, pending = await asyncio.wait(
-                [c2g_task, g2c_task],
-                return_when=asyncio.FIRST_EXCEPTION
-            )
-            for t in pending:
-                t.cancel()
+            await asyncio.gather(client_to_gemini(), gemini_to_client())
 
     except WebSocketDisconnect:
         print("🔌 WebSocket disconnected cleanly.")
     except Exception as e:
-        print(f"💥 Live Session Fatal Error: {e}")
+        print(f"💥 Fatal Live Session Error: {e}")
         traceback.print_exc()
     finally:
         print("🔒 Session closed cleanly.")
