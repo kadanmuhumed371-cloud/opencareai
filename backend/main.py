@@ -1258,20 +1258,50 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
 
             async def gemini_to_client():
                 try:
-                    async for response in session.receive():
-                        server_content = getattr(response, "server_content", None)
-                        if server_content and server_content.model_turn:
-                            for part in server_content.model_turn.parts:
-                                if hasattr(part, "inline_data") and part.inline_data and part.inline_data.data:
-                                    print(f"🔊 Sending {len(part.inline_data.data)} bytes audio")
-                                    await websocket.send_bytes(part.inline_data.data)
-                                elif hasattr(part, "text") and part.text:
-                                    print(f"💬 Gemini: {part.text}")
+                    while True:
+                        try:
+                            async for response in session.receive():
+                                server_content = getattr(response, "server_content", None)
+                                if server_content:
+                                    # Check for interruption flag to log cleanly and notify client
+                                    if getattr(server_content, "interrupted", False):
+                                        print("⚡ [USER INTERRUPTED] Model stopped speaking.")
+                                        try:
+                                            await websocket.send_json({"type": "interrupted"})
+                                        except Exception as ws_err:
+                                            print(f"⚠️ Failed to send interruption signal to client: {ws_err}")
+                                        continue
+                                    
+                                    model_turn = getattr(server_content, "model_turn", None)
+                                    if model_turn and hasattr(model_turn, "parts"):
+                                        for part in model_turn.parts:
+                                            inline_data = getattr(part, "inline_data", None)
+                                            if inline_data and getattr(inline_data, "data", None):
+                                                # Stream PCM chunk to client
+                                                audio_bytes = inline_data.data
+                                                print(f"🔊 [AUDIO OUT] Streaming {len(audio_bytes)} bytes to client")
+                                                await websocket.send_bytes(audio_bytes)
+                                            elif getattr(part, "text", None):
+                                                print(f"💬 [TRANSCRIPT]: {part.text}")
+                                                try:
+                                                    await websocket.send_json({
+                                                        "type": "output_transcription",
+                                                        "text": part.text
+                                                    })
+                                                except Exception as ws_err:
+                                                    print(f"⚠️ Failed to send transcription to client: {ws_err}")
+                                    
+                                    # If a turn completes, keep the loop alive for subsequent turns
+                                    if getattr(server_content, "turn_complete", False):
+                                        print("🔄 [TURN COMPLETED] Ready for caller's next input.")
+                                        continue
+                        except Exception as inner_err:
+                            print(f"⚠️ [receive iteration note]: {inner_err}")
+                            await asyncio.sleep(0.05)
                 except (WebSocketDisconnect, asyncio.CancelledError):
                     pass
                 except Exception as e:
-                    print(f"❌ [gemini_to_client error]: {e}")
-                    traceback.print_exc()
+                    print(f"❌ [gemini_to_client fatal error]: {e}")
 
             c2g = asyncio.create_task(client_to_gemini())
             g2c = asyncio.create_task(gemini_to_client())
