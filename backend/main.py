@@ -1231,6 +1231,10 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         async with client.aio.live.connect(model=LIVE_MODEL, config=config) as session:
             print("🚀 [GEMINI LIVE CONNECTED] Active session established.")
 
+            # Trigger the initial verbal greeting immediately
+            greeting_prompt = f"Greet the caller immediately and concisely in {lang} (1 short sentence) and ask how you can assist."
+            await session.send_realtime_input(text=greeting_prompt)
+
             async def client_to_gemini():
                 try:
                     while True:
