@@ -2,7 +2,7 @@ class AudioProcessor extends AudioWorkletProcessor {
     constructor() {
         super();
         this.buffer = [];
-        this.chunkSize = 2048; // Accumulate ~128ms of audio at 16kHz
+        this.chunkSize = 1024; // Accumulate ~64ms of audio at 16kHz
     }
 
     process(inputs, outputs, parameters) {

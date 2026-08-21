@@ -1220,7 +1220,14 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         system_instruction=types.Content(
             parts=[
                 types.Part.from_text(
-                    text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely (1-2 sentences per turn), clearly, and strictly in {lang}."
+                    text=(
+                        f"You are OpenCareAI, a real-time emergency triage assistant. You communicate strictly in natural {lang}. "
+                        "CRITICAL CONVERSATIONAL RULES:\n"
+                        "1. Keep responses extremely brief: 1 single short sentence per turn.\n"
+                        "2. Speak immediately without hesitation or introductory filler words.\n"
+                        "3. When triaging, give 1 direct action or ask 1 specific question at a time.\n"
+                        "4. If severe red flags are mentioned, provide immediate emergency instruction."
+                    )
                 )
             ]
         )
@@ -1279,7 +1286,6 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                                             if inline_data and getattr(inline_data, "data", None):
                                                 # Stream PCM chunk to client
                                                 audio_bytes = inline_data.data
-                                                print(f"🔊 [AUDIO OUT] Streaming {len(audio_bytes)} bytes to client")
                                                 await websocket.send_bytes(audio_bytes)
                                             elif getattr(part, "text", None):
                                                 print(f"💬 [TRANSCRIPT]: {part.text}")

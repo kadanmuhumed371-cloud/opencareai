@@ -150,6 +150,7 @@
         let audioPlaybackQueue = [];
         let isPlayingAudioChunk = false;
         let currentActiveSource = null;
+        let nextStartTime = 0;
 
         function updateUIState(state) {
             if (!connectionStatus || !statusDot) return;
@@ -204,6 +205,11 @@
                     currentActiveSource.disconnect();
                 } catch (e) {}
                 currentActiveSource = null;
+            }
+            if (playbackAudioContext) {
+                nextStartTime = playbackAudioContext.currentTime;
+            } else {
+                nextStartTime = 0;
             }
         }
 
@@ -964,13 +970,13 @@
             if (!isCallActive || audioPlaybackQueue.length === 0) {
                 isPlayingAudioChunk = false;
                 isAiOutputtingAudio = false;
-                updateUIState(isCallActive ? "In Call..." : "Ready");
+                updateUIState(isCallActive ? "Listening" : "Disconnected");
                 return;
             }
 
             isPlayingAudioChunk = true;
             isAiOutputtingAudio = true;
-            updateUIState("Speaking...");
+            updateUIState("Speaking");
             const chunkData = audioPlaybackQueue.shift();
 
             const audioBuffer = playbackAudioContext.createBuffer(1, chunkData.length, 24000);
@@ -982,12 +988,29 @@
 
             currentActiveSource = source;
 
+            // Precise Web Audio scheduling to avoid gaps and compounding drift
+            const currentTime = playbackAudioContext.currentTime;
+            if (nextStartTime < currentTime) {
+                nextStartTime = currentTime + 0.02; // 20ms lookahead jitter buffer
+            }
+
+            source.start(nextStartTime);
+            
+            const chunkDuration = chunkData.length / 24000;
+            nextStartTime += chunkDuration;
+
             source.onended = () => {
-                currentActiveSource = null;
-                playNextQueueChunk(); // Strictly play the next chunk ONLY after the previous chunk finishes
+                if (currentActiveSource === source) {
+                    currentActiveSource = null;
+                }
             };
 
-            source.start();
+            // Recursively process the rest of the queue to schedule all available chunks back-to-back
+            setTimeout(() => {
+                if (isCallActive) {
+                    playNextQueueChunk();
+                }
+            }, 0);
         }
 
         function scrollChatToBottom() { 
