@@ -158,42 +158,39 @@
             statusDot.className = "absolute bottom-0 right-0 w-3 h-3 border-2 border-[#202C33] rounded-full";
             connectionStatus.className = "text-xs";
             
-            if (state === "Ready") {
-                statusDot.classList.add('bg-green-500');
-                connectionStatus.classList.add('text-[#00A884]');
-                connectionStatus.textContent = "Ready";
-            } else if (state === "Connecting...") {
+            if (state === "Connecting...") {
                 statusDot.classList.add('bg-yellow-500');
                 connectionStatus.classList.add('text-yellow-500');
                 connectionStatus.textContent = "Connecting...";
-            } else if (state === "In Call...") {
-                statusDot.classList.add('bg-green-500');
-                connectionStatus.classList.add('text-[#00A884]');
-                connectionStatus.textContent = "In Call...";
                 if (waveContainer) {
                     const waveText = waveContainer.querySelector('span');
-                    if (waveText) waveText.textContent = "In Call...";
+                    if (waveText) waveText.textContent = "Connecting...";
                 }
-            } else if (state === "Listening...") {
+            } else if (state === "Listening") {
                 statusDot.classList.add('bg-green-500');
                 connectionStatus.classList.add('text-[#00A884]');
-                connectionStatus.textContent = "Listening...";
+                connectionStatus.textContent = "Listening";
                 if (waveContainer) {
                     const waveText = waveContainer.querySelector('span');
-                    if (waveText) waveText.textContent = "Listening...";
+                    if (waveText) waveText.textContent = "Listening";
                 }
-            } else if (state === "Speaking...") {
+            } else if (state === "Speaking") {
                 statusDot.classList.add('bg-green-500');
                 connectionStatus.classList.add('text-[#00A884]');
-                connectionStatus.textContent = "Speaking...";
+                connectionStatus.textContent = "Speaking";
                 if (waveContainer) {
                     const waveText = waveContainer.querySelector('span');
-                    if (waveText) waveText.textContent = "Speaking...";
+                    if (waveText) waveText.textContent = "Speaking";
                 }
-            } else if (state === "Call Ended" || state === "Disconnected") {
+            } else {
+                // Default to Disconnected
                 statusDot.classList.add('bg-red-500');
                 connectionStatus.classList.add('text-red-500');
-                connectionStatus.textContent = "Call Ended";
+                connectionStatus.textContent = "Disconnected";
+                if (waveContainer) {
+                    const waveText = waveContainer.querySelector('span');
+                    if (waveText) waveText.textContent = "Disconnected";
+                }
             }
         }
 
@@ -236,9 +233,21 @@
             }
             if (playbackAudioContext) {
                 try { playbackAudioContext.close(); } catch (e) {}
-                playbackAudioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+                playbackAudioContext = null;
             }
-            updateUIState("Ready");
+            if (audioContext) {
+                try { audioContext.close(); } catch (e) {}
+                audioContext = null;
+            }
+            if (processorNode) {
+                try { processorNode.disconnect(); } catch (e) {}
+                processorNode = null;
+            }
+            if (mediaStreamSource) {
+                try { mediaStreamSource.disconnect(); } catch (e) {}
+                mediaStreamSource = null;
+            }
+            updateUIState("Disconnected");
             resetCallButtonUI();
         }
 
@@ -257,7 +266,7 @@
 
         function updateConnectionStatusUI(state) {
             if (state === 'connected') {
-                updateUIState('Ready');
+                updateUIState('Listening');
                 // If a call was pending, trigger it now!
                 if (pendingCall) {
                     console.log("☎️ WebSocket opened. Resolving pending call request.");
@@ -266,7 +275,7 @@
             } else if (state === 'connecting') {
                 updateUIState('Connecting...');
             } else if (state === 'disconnected') {
-                updateUIState('Call Ended');
+                updateUIState('Disconnected');
             }
         }
 
@@ -566,17 +575,20 @@
                 console.log(`🔌 [WEBSOCKET CLOSED] Code: ${event.code}, Reason: ${event.reason}`);
                 updateConnectionStatusUI('disconnected');
                 
-                // If call was active, stop it cleanly
+                const wasCallActive = isCallActive;
                 if (isCallActive) {
                     console.log("🔌 WebSocket disconnected during active call. Stopping stream.");
                     terminateCallCompletely();
                 }
                 
-                // Reconnect ONLY if call is active (welcome screen hidden and isCallActive is true)
-                if (welcomeScreen.classList.contains('hidden') && isCallActive) {
+                // Auto-reconnect if the call was active and welcome screen is hidden
+                if (welcomeScreen.classList.contains('hidden') && wasCallActive) {
+                    updateUIState("Connecting...");
+                    pendingCall = true; // Wait for websocket to open before streaming
                     if (!reconnectTimeout) {
                         reconnectTimeout = setTimeout(() => {
                             reconnectTimeout = null;
+                            console.log("🔄 Attempting auto-reconnection...");
                             connectWebSocket();
                         }, 2000);
                     }
@@ -783,12 +795,17 @@
                 const muteNode = audioContext.createGain();
                 muteNode.gain.value = 0;
                 processorNode.connect(muteNode);
-                muteNode.connect(audioContext.destination);
-              
-                let lastLogTime = 0;
+                          let lastLogTime = 0;
                 processorNode.port.onmessage = (event) => {
                     if (!isCallActive || !ws || ws.readyState !== WebSocket.OPEN) return;
                     const pcmData = event.data; // Int16Array or ArrayBuffer
+                    
+                    // Send all microphone PCM audio chunks continuously to the server
+                    try {
+                        ws.send(pcmData);
+                    } catch (sendErr) {
+                        console.warn("⚠️ Failed to stream audio frame:", sendErr);
+                    }
                     
                     // Simple VAD & barge-in energy tracking
                     const pcm16 = new Int16Array(pcmData);
@@ -797,31 +814,25 @@
                         sum += pcm16[i] * pcm16[i];
                     }
                     const rms = Math.sqrt(sum / pcm16.length);
-
+ 
                     if (isAiOutputtingAudio) {
-                        const bargeInThreshold = 3500;
+                        const bargeInThreshold = 2500;
                         if (rms > bargeInThreshold) {
                             consecutiveHighEnergyFrames++;
                         } else {
                             consecutiveHighEnergyFrames = 0;
                         }
-                        if (consecutiveHighEnergyFrames >= 3) {
-                            console.log(`🎙️ User barge-in confirmed (RMS: ${rms.toFixed(1)} > ${bargeInThreshold}).`);
+                        if (consecutiveHighEnergyFrames >= 2) {
+                            console.log(`🎙️ User barge-in confirmed (RMS: ${rms.toFixed(1)} > ${bargeInThreshold}). Stopping AI playback.`);
                             flushPlaybackQueue();
-                            ws.send("AI was interrupted");
                             consecutiveHighEnergyFrames = 0;
-                            ws.send(pcmData);
-                            updateUIState("Listening...");
+                            updateUIState("Listening");
+                        } else {
+                            updateUIState("Speaking");
                         }
                     } else {
                         consecutiveHighEnergyFrames = 0;
-                        const normalThreshold = 1200;
-                        if (rms > normalThreshold) {
-                            ws.send(pcmData);
-                            updateUIState("Listening...");
-                        } else {
-                            updateUIState("In Call...");
-                        }
+                        updateUIState("Listening");
                     }
 
                     const now = Date.now();
@@ -835,7 +846,7 @@
                 callBtn.classList.remove('bg-yellow-600', 'animate-pulse', 'text-[#00A884]');
                 callBtn.classList.add('bg-red-600', 'text-white', 'border-red-500');
                 waveContainer.classList.remove('hidden');
-                updateUIState("In Call...");
+                updateUIState("Listening");
             } catch (err) { 
                 console.error("Worklet pipeline error:", err); 
                 terminateCallCompletely();
