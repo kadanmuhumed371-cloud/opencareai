@@ -1,6 +1,8 @@
 import os
 import gc
 import sys
+# Force standard UTF-8 terminal mapping for Windows systems
+sys.stdout.reconfigure(encoding='utf-8')
 import traceback
 import asyncio
 import json
@@ -68,10 +70,7 @@ else:
 if api_key:
     api_key = api_key.strip()
 
-LIVE_MODEL = "gemini-2.0-flash-exp"
-
-# Force standard UTF-8 terminal mapping for Windows systems
-sys.stdout.reconfigure(encoding='utf-8')
+LIVE_MODEL = "gemini-3.1-flash-live-preview"
 
 # Registry for active background tasks per connection to ensure single-session isolation
 active_session_tasks = {}
@@ -1221,13 +1220,21 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
         system_instruction=types.Content(
             parts=[
                 types.Part.from_text(
-                    text=f"You are OpenCareAI, an emergency voice health assistant. Speak concisely, clearly, and strictly in {lang}."
+                    text=(
+                        "You are OpenCareAI, an intelligent voice-first emergency health and wellness triage assistant. "
+                        f"You communicate strictly in natural, empathetic, and clear {lang}. "
+                        "RULES:\n"
+                        "1. Respond concisely (1 to 2 short sentences per turn) so the caller is never overwhelmed.\n"
+                        "2. Immediately detect red-flag symptoms (severe chest pain, difficulty breathing, heavy bleeding, loss of consciousness). If present, urgently instruct the caller to seek emergency medical services while providing immediate stabilization guidance.\n"
+                        "3. Focus on first aid, immediate physical stabilization, disease prevention, and general health awareness. Never prescribe exact prescription medications or speculative drug dosages.\n"
+                        "4. Ask exactly one clarifying diagnostic question at a time to keep the triage flow structured."
+                    )
                 )
             ]
         )
     )
 
-    LIVE_MODEL = "gemini-2.0-flash-exp"
+    LIVE_MODEL = "gemini-3.1-flash-live-preview"
     
     session_client = client
     if not session_client:
@@ -1268,13 +1275,31 @@ async def websocket_endpoint(websocket: WebSocket, lang: str = "Af-Soomaali"):
                 try:
                     async for response in session.receive():
                         server_content = response.server_content
-                        if server_content is not None and server_content.model_turn is not None:
-                            for part in server_content.model_turn.parts:
-                                if part.inline_data and part.inline_data.data:
-                                    print(f"🔊 Sending {len(part.inline_data.data)} bytes audio")
-                                    await websocket.send_bytes(part.inline_data.data)
-                                elif part.text:
-                                    print(f"💬 Gemini: {part.text}")
+                        if server_content is not None:
+                            # Handle server side interruption detection
+                            if server_content.interrupted:
+                                print("🔊 [INTERRUPTED] Gemini detected user barge-in.")
+                                try:
+                                    await websocket.send_json({"type": "interrupted"})
+                                except Exception as ws_err:
+                                    print(f"⚠️ Failed to send interruption signal to client: {ws_err}")
+                                continue
+                            
+                            # Handle model content
+                            if server_content.model_turn is not None:
+                                for part in server_content.model_turn.parts:
+                                    if part.inline_data and part.inline_data.data:
+                                        print(f"🔊 Sending {len(part.inline_data.data)} bytes audio")
+                                        await websocket.send_bytes(part.inline_data.data)
+                                    elif part.text:
+                                        print(f"💬 Gemini: {part.text}")
+                                        try:
+                                            await websocket.send_json({
+                                                "type": "output_transcription",
+                                                "text": part.text
+                                            })
+                                        except Exception as ws_err:
+                                            print(f"⚠️ Failed to send transcription to client: {ws_err}")
                 except (WebSocketDisconnect, asyncio.CancelledError):
                     pass
                 except Exception as e:
