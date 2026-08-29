@@ -1,0 +1,553 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>OpenCareAI — Multimodal Clinical Consultation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* WhatsApp-Style Medical Pattern Background */
+    .medical-doodle-bg {
+      background-color: #0b141a;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160' opacity='0.05'%3E%3Cg fill='%23ffffff'%3E%3C!-- Heart --%3E%3Cpath d='M30 18 C24 10, 10 16, 14 28 C18 36, 30 46, 30 46 C30 46, 42 36, 46 28 C50 16, 36 10, 30 18 Z'/%3E%3C!-- Ambulance --%3E%3Cpath d='M100 20 h25 l8 10 v12 h-5 a5 5 0 0 1 -10 0 h-12 a5 5 0 0 1 -10 0 h-6 v-22 z M110 24 v6 h6 v-6 z'/%3E%3C!-- Kidney --%3E%3Cpath d='M25 95 C15 95, 12 110, 18 125 C24 138, 38 135, 40 120 C42 105, 35 95, 25 95 Z'/%3E%3C!-- Emergency Phone --%3E%3Cpath d='M105 95 c-2 -2 -5 -2 -7 0 l-3 3 c-1 1 -3 3 -4 2 c-4 -2 -9 -7 -11 -11 c-1 -1 1 -3 2 -4 l3 -3 c2 -2 2 -5 0 -7 l-5 -5 c-2 -2 -5 -2 -7 0 l-2 2 c-3 3 -3 8 0 14 c5 9 12 16 21 21 c6 3 11 3 14 0 l2 -2 c2 -2 2 -5 0 -7 z'/%3E%3C!-- AI Node --%3E%3Ccircle cx='80' cy='75' r='5'/%3E%3Ccircle cx='65' cy='65' r='3'/%3E%3Ccircle cx='95' cy='65' r='3'/%3E%3Ccircle cx='80' cy='90' r='3'/%3E%3Cline x1='80' y1='75' x2='65' y2='65' stroke='%23ffffff' stroke-width='1.5'/%3E%3Cline x1='80' y1='75' x2='95' y2='65' stroke='%23ffffff' stroke-width='1.5'/%3E%3Cline x1='80' y1='75' x2='80' y2='90' stroke='%23ffffff' stroke-width='1.5'/%3E%3C!-- Cross --%3E%3Cpath d='M140 135 h6 v-6 h6 v6 h6 v6 h-6 v6 h-6 v-6 h-6 z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .pulse-online {
+      box-shadow: 0 0 0 0 rgba(0, 168, 132, 0.7);
+      animation: onlinePulse 2s infinite;
+    }
+    @keyframes onlinePulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 168, 132, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 168, 132, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 168, 132, 0); }
+    }
+
+    .wave-bar { transition: height 0.08s ease, background-color 0.15s ease; }
+  </style>
+</head>
+<body class="flex flex-col text-gray-100 select-none overflow-hidden safe-area-inset justify-between h-full bg-[#080e11] font-sans">
+
+  <!-- TOP HEADER -->
+  <header class="px-5 py-3 flex items-center justify-between border-b border-[#202c33] bg-[#111b21] z-30 shadow-md">
+    <div class="flex items-center space-x-3">
+      <div class="relative">
+        <div class="w-10 h-10 rounded-full bg-[#00a884] flex items-center justify-center font-bold text-white text-base shadow">OC</div>
+        <span id="statusDot" class="absolute bottom-0 right-0 w-3 h-3 bg-gray-500 rounded-full border-2 border-[#111b21]"></span>
+      </div>
+      <div>
+        <h1 class="font-semibold text-sm text-gray-100 leading-tight">OpenCareAI</h1>
+        <p id="connectionStatus" class="text-xs text-gray-400 font-medium">Offline</p>
+      </div>
+    </div>
+
+    <!-- Right Controls: Language Selector -->
+    <div class="flex items-center space-x-3">
+      <div class="relative">
+        <select id="langSelect" class="bg-[#202c33] text-xs text-emerald-400 font-semibold pl-3 pr-7 py-1.5 rounded-lg border border-[#2a3942] focus:outline-none appearance-none cursor-pointer shadow">
+          <option value="Af-Soomaali" selected>so Af-Soomaali</option>
+          <option value="Afaan Oromoo">om Afaan Oromoo</option>
+          <option value="Amharic">am Amharic</option>
+          <option value="English">en English</option>
+        </select>
+        <i class="fa-solid fa-chevron-down absolute right-2.5 top-2.5 text-[9px] text-gray-400 pointer-events-none"></i>
+      </div>
+      <div class="w-8 h-8 rounded-full bg-[#202c33] flex items-center justify-center text-gray-300">
+        <i class="fa-solid fa-user-doctor text-xs"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOP STATUS & CALL TIMER BAR -->
+  <div id="liveCallBar" class="hidden px-6 py-2.5 bg-[#182229] border-b border-[#222e35] flex items-center justify-between text-xs transition-all z-20">
+    <div class="flex items-center space-x-2">
+      <span id="stateBadge" class="px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/50 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase shadow-sm">
+        LISTENING
+      </span>
+    </div>
+    <div id="callTimer" class="font-mono text-gray-300 font-medium text-xs">00:00</div>
+  </div>
+
+  <!-- SCREEN 1: PRE-CALL ORB SCREEN (Initial State) -->
+  <main id="screenPreCall" class="flex-1 flex flex-col items-center justify-center px-4 relative transition-all duration-300">
+    <div class="relative flex items-center justify-center mb-8">
+      <div class="w-52 h-52 sm:w-60 sm:h-60 rounded-full bg-[#182229]/50 flex items-center justify-center border border-[#2a3942]/40">
+        <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#182229] border border-[#2a3942] flex flex-col items-center justify-center shadow-2xl">
+          <i class="fa-solid fa-microphone text-4xl text-gray-400"></i>
+        </div>
+      </div>
+    </div>
+    <div class="px-6 py-2 rounded-full bg-[#111b21] border border-[#202c33] text-xs font-semibold tracking-wider text-emerald-400 uppercase shadow">
+      TAP START VOICE CALL TO BEGIN
+    </div>
+  </main>
+
+  <!-- SCREEN 2: ACTIVE CONSULTATION & LOGS SCREEN (WhatsApp Clinical View) -->
+  <main id="screenConsultation" class="hidden flex-1 overflow-y-auto no-scrollbar medical-doodle-bg p-4 relative cursor-grab active:cursor-grabbing flex flex-col justify-between">
+    
+    <!-- Watermark Logo & Text in Background -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-[0.035] select-none">
+      <i class="fa-solid fa-staff-snake text-9xl text-white mb-2"></i>
+      <span class="text-4xl font-extrabold tracking-widest text-white uppercase">OpenCareAI</span>
+    </div>
+
+    <!-- Messages & Call Logs Stream -->
+    <div class="space-y-3 relative z-10">
+      <!-- Welcome Greeting Bubble -->
+      <div class="flex flex-col items-start max-w-[88%] sm:max-w-[70%]">
+        <div class="bg-[#1f2c34] border border-[#2a3942]/60 rounded-2xl rounded-tl-none p-3.5 text-xs text-gray-200 shadow-md">
+          <p class="font-semibold text-emerald-400 mb-1 text-[11px] flex items-center space-x-1.5">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span>OpenCareAI Assistant</span>
+          </p>
+          <p id="welcomeText" class="leading-relaxed text-gray-300">
+            Ku soo dhawoow OpenCareAI. Taabo badhanka si aad u bilowdo. Toos ula hadal adiga oo sharxaya xanuunka ku haya.
+          </p>
+          <div class="flex justify-end mt-1.5 text-[10px] text-gray-400 font-mono" id="welcomeTime">00:00</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Chat & Call Log Feed -->
+      <div id="chatFeed" class="space-y-3"></div>
+    </div>
+
+    <!-- CENTER FLOATING LIVE AUDIO WAVES (Centered in Chat Area) -->
+    <div id="centerWaveContainer" class="relative z-10 flex flex-col items-center justify-center my-6">
+      <div class="px-6 py-2.5 rounded-full bg-[#111b21]/90 backdrop-blur border border-[#202c33] flex items-center space-x-1.5 shadow-xl">
+        <div id="w1" class="wave-bar w-1.5 bg-emerald-400 rounded h-2"></div>
+        <div id="w2" class="wave-bar w-1.5 bg-emerald-400 rounded h-4"></div>
+        <div id="w3" class="wave-bar w-1.5 bg-emerald-400 rounded h-7"></div>
+        <div id="w4" class="wave-bar w-1.5 bg-emerald-400 rounded h-10"></div>
+        <div id="w5" class="wave-bar w-1.5 bg-emerald-400 rounded h-7"></div>
+        <div id="w6" class="wave-bar w-1.5 bg-emerald-400 rounded h-4"></div>
+        <div id="w7" class="wave-bar w-1.5 bg-emerald-400 rounded h-2"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- BOTTOM CONTROL DOCK -->
+  <footer class="bg-[#111b21] px-6 py-4 border-t border-[#202c33] flex items-center justify-between z-30 shadow-lg">
+    <!-- Camera Prescription Scan -->
+    <label for="cameraInput" class="w-12 h-12 rounded-full bg-[#202c33] hover:bg-[#2a3942] active:scale-90 text-gray-300 hover:text-emerald-400 flex items-center justify-center cursor-pointer transition border border-[#2a3942] shadow">
+      <i class="fa-solid fa-camera text-lg"></i>
+    </label>
+    <input type="file" id="cameraInput" accept="image/*" capture="environment" class="hidden" />
+
+    <!-- File Attachment -->
+    <label for="fileInput" class="w-12 h-12 rounded-full bg-[#202c33] hover:bg-[#2a3942] active:scale-90 text-gray-300 hover:text-emerald-400 flex items-center justify-center cursor-pointer transition border border-[#2a3942] shadow">
+      <i class="fa-solid fa-paperclip text-lg"></i>
+    </label>
+    <input type="file" id="fileInput" accept="image/*" class="hidden" />
+
+    <!-- Main Call Button (Dynamic: Start Call / End Voice Call) -->
+    <button id="callActionBtn" class="flex-1 ml-4 h-12 rounded-full bg-[#00a884] hover:bg-[#06cf9c] active:scale-98 text-white font-semibold text-xs tracking-wider shadow-lg flex items-center justify-center space-x-2 transition-all">
+      <i id="callBtnIcon" class="fa-solid fa-phone text-sm"></i>
+      <span id="callBtnText">START VOICE CALL</span>
+    </button>
+  </footer>
+
+  <script>
+    let ws = null;
+    let inputAudioCtx = null;
+    let outputAudioCtx = null;
+    let micStream = null;
+    let micSource = null;
+    let gainNode = null;
+    let workletNode = null;
+    let isLiveActive = false;
+    let isAiSpeaking = false;
+    let nextPlayTime = 0;
+    let callStartTime = 0;
+    let timerInterval = null;
+
+    const screenPreCall = document.getElementById('screenPreCall');
+    const screenConsultation = document.getElementById('screenConsultation');
+    const statusDot = document.getElementById('statusDot');
+    const connectionStatus = document.getElementById('connectionStatus');
+    const liveCallBar = document.getElementById('liveCallBar');
+    const stateBadge = document.getElementById('stateBadge');
+    const callTimer = document.getElementById('callTimer');
+    const callActionBtn = document.getElementById('callActionBtn');
+    const callBtnIcon = document.getElementById('callBtnIcon');
+    const callBtnText = document.getElementById('callBtnText');
+    const langSelect = document.getElementById('langSelect');
+    const chatFeed = document.getElementById('chatFeed');
+    const cameraInput = document.getElementById('cameraInput');
+    const fileInput = document.getElementById('fileInput');
+    const welcomeTime = document.getElementById('welcomeTime');
+
+    welcomeTime.innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    // Enable Smooth Drag-to-Pan on Consultation Feed
+    let isDown = false;
+    let startY, scrollTop;
+    screenConsultation.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startY = e.pageY - screenConsultation.offsetTop;
+      scrollTop = screenConsultation.scrollTop;
+    });
+    screenConsultation.addEventListener('mouseleave', () => isDown = false);
+    screenConsultation.addEventListener('mouseup', () => isDown = false);
+    screenConsultation.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const y = e.pageY - screenConsultation.offsetTop;
+      const walk = (y - startY) * 1.5;
+      screenConsultation.scrollTop = scrollTop - walk;
+    });
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      callStartTime = Date.now();
+      timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - callStartTime) / 1000);
+        callTimer.innerText = formatTime(elapsed);
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      const elapsed = Math.floor((Date.now() - callStartTime) / 1000);
+      return formatTime(elapsed);
+    }
+
+    // Call Log Card positioned strictly on the LEFT side
+    function appendCallLogCard(type, duration = "") {
+      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const card = document.createElement('div');
+      card.className = "flex justify-start my-2";
+
+      if (type === 'ended') {
+        card.innerHTML = `
+          <div class="bg-[#182229] border border-[#2a3942]/80 rounded-xl px-4 py-2.5 text-xs flex items-center space-x-3 shadow-md">
+            <div class="w-7 h-7 rounded-full bg-red-900/40 text-red-400 flex items-center justify-center">
+              <i class="fa-solid fa-phone-slash text-[11px]"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-200 text-xs">Voice Call Ended</p>
+              <p class="text-[10px] text-gray-400">Duration: <span class="font-mono text-emerald-400">${duration}</span></p>
+            </div>
+            <span class="text-[10px] text-gray-500 ml-3 font-mono">${now}</span>
+          </div>
+        `;
+      }
+      chatFeed.appendChild(card);
+      screenConsultation.scrollTop = screenConsultation.scrollHeight;
+    }
+
+    // Click-to-Call Emergency Card
+    function appendEmergencyCard(contact) {
+      const card = document.createElement('div');
+      card.className = "flex justify-start my-2";
+      card.innerHTML = `
+        <div class="bg-red-950/60 border border-red-500/50 rounded-2xl p-3.5 text-xs text-red-200 shadow-lg max-w-[85%]">
+          <p class="font-bold text-red-300 mb-1 flex items-center space-x-2 text-[11px]">
+            <i class="fa-solid fa-truck-medical text-red-400"></i>
+            <span>${contact.name}</span>
+          </p>
+          <p class="text-[11px] text-gray-300 mb-2">Verified Emergency Contact Available</p>
+          <a href="tel:${contact.phone}" class="inline-flex items-center space-x-2 px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white rounded-lg font-bold text-xs shadow transition">
+            <i class="fa-solid fa-phone"></i>
+            <span>Call ${contact.phone}</span>
+          </a>
+        </div>
+      `;
+      chatFeed.appendChild(card);
+      screenConsultation.scrollTop = screenConsultation.scrollHeight;
+    }
+
+    function appendImageCard(dataUrl, mime) {
+      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const card = document.createElement('div');
+      card.className = "flex flex-col items-end my-2";
+      card.innerHTML = `
+        <div class="bg-[#005c4b] border border-emerald-600/40 rounded-2xl rounded-tr-none p-2 text-xs text-white shadow max-w-[75%] sm:max-w-[50%]">
+          <img src="${dataUrl}" class="rounded-xl w-full max-h-56 object-cover mb-1.5 border border-black/20" />
+          <div class="flex items-center justify-between text-[10px] text-emerald-200">
+            <span class="flex items-center space-x-1"><i class="fa-solid fa-file-prescription"></i> <span>Prescription Attached</span></span>
+            <span class="font-mono ml-3">${now}</span>
+          </div>
+        </div>
+      `;
+      chatFeed.appendChild(card);
+      screenConsultation.scrollTop = screenConsultation.scrollHeight;
+    }
+
+    function updateVisuals(state) {
+      const waveBars = [
+        document.getElementById('w1'), document.getElementById('w2'),
+        document.getElementById('w3'), document.getElementById('w4'),
+        document.getElementById('w5'), document.getElementById('w6'),
+        document.getElementById('w7')
+      ];
+
+      if (state === 'speaking') {
+        stateBadge.innerText = "SPEAKING";
+        stateBadge.className = "px-3 py-1 rounded-full bg-indigo-950/80 border border-indigo-500/50 text-[10px] font-semibold tracking-wider text-indigo-300 uppercase shadow-sm";
+        waveBars.forEach(bar => bar.className = "wave-bar bg-indigo-400 rounded w-1.5");
+      } else if (state === 'listening') {
+        stateBadge.innerText = "LISTENING";
+        stateBadge.className = "px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/50 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase shadow-sm";
+        waveBars.forEach(bar => bar.className = "wave-bar bg-emerald-400 rounded w-1.5");
+      } else if (state === 'reading') {
+        stateBadge.innerText = "READING PRESCRIPTION";
+        stateBadge.className = "px-3 py-1 rounded-full bg-blue-950/80 border border-blue-500/50 text-[10px] font-semibold tracking-wider text-blue-300 uppercase shadow-sm";
+        waveBars.forEach(bar => bar.className = "wave-bar bg-cyan-400 rounded w-1.5");
+      }
+    }
+
+    function animateWaves(level) {
+      document.getElementById('w1').style.height = (Math.max(3, level * 16)) + 'px';
+      document.getElementById('w2').style.height = (Math.max(5, level * 26)) + 'px';
+      document.getElementById('w3').style.height = (Math.max(8, level * 38)) + 'px';
+      document.getElementById('w4').style.height = (Math.max(12, level * 52)) + 'px';
+      document.getElementById('w5').style.height = (Math.max(8, level * 38)) + 'px';
+      document.getElementById('w6').style.height = (Math.max(5, level * 26)) + 'px';
+      document.getElementById('w7').style.height = (Math.max(3, level * 16)) + 'px';
+    }
+
+    function playLivePcmChunk(arrayBuffer) {
+      if (!outputAudioCtx) outputAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+      if (outputAudioCtx.state === "suspended") outputAudioCtx.resume();
+
+      const int16 = new Int16Array(arrayBuffer);
+      const float32 = new Float32Array(int16.length);
+      for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768.0;
+
+      const buffer = outputAudioCtx.createBuffer(1, float32.length, 24000);
+      buffer.getChannelData(0).set(float32);
+
+      const source = outputAudioCtx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(outputAudioCtx.destination);
+
+      const now = outputAudioCtx.currentTime;
+      if (nextPlayTime < now) nextPlayTime = now;
+
+      source.start(nextPlayTime);
+      nextPlayTime += buffer.duration;
+
+      isAiSpeaking = true;
+      updateVisuals('speaking');
+      animateWaves(0.85);
+
+      source.onended = () => {
+        if (outputAudioCtx && outputAudioCtx.currentTime >= nextPlayTime - 0.08) {
+          isAiSpeaking = false;
+          nextPlayTime = outputAudioCtx.currentTime;
+          if (isLiveActive) {
+            updateVisuals('listening');
+            animateWaves(0.12);
+          }
+        }
+      };
+    }
+
+    async function startLiveSession() {
+      if (isLiveActive) return;
+      isLiveActive = true;
+      isAiSpeaking = false;
+
+      screenPreCall.classList.add('hidden');
+      screenConsultation.classList.remove('hidden');
+      liveCallBar.classList.remove('hidden');
+
+      statusDot.className = "absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#111b21] pulse-online";
+      connectionStatus.innerText = "Online";
+      connectionStatus.className = "text-xs text-emerald-400 font-medium";
+
+      callActionBtn.className = "flex-1 ml-4 h-12 rounded-full bg-red-600 hover:bg-red-500 active:scale-98 text-white font-semibold text-xs tracking-wider shadow-lg flex items-center justify-center space-x-2 transition-all";
+      callBtnIcon.className = "fa-solid fa-phone-slash text-sm";
+      callBtnText.innerText = "END VOICE CALL";
+
+      startTimer();
+      updateVisuals('listening');
+
+      outputAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+      if (outputAudioCtx.state === "suspended") await outputAudioCtx.resume();
+      nextPlayTime = outputAudioCtx.currentTime;
+
+      inputAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+      if (inputAudioCtx.state === "suspended") await inputAudioCtx.resume();
+
+      micStream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          channelCount: 1,
+          sampleRate: 16000,
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        }
+      });
+
+      const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      ws = new WebSocket(`${proto}//${window.location.host}/ws?lang=${encodeURIComponent(langSelect.value)}`);
+      ws.binaryType = 'arraybuffer';
+
+      ws.onmessage = (event) => {
+        if (typeof event.data === 'string') {
+          const payload = JSON.parse(event.data);
+          if (payload.type === 'turn_complete' || payload.type === 'interrupted') {
+            isAiSpeaking = false;
+            nextPlayTime = outputAudioCtx ? outputAudioCtx.currentTime : 0;
+            if (isLiveActive) {
+              updateVisuals('listening');
+              animateWaves(0.12);
+            }
+          } else if (payload.type === 'emergency_contact') {
+            appendEmergencyCard(payload.contact);
+          }
+        } else if (event.data instanceof ArrayBuffer) {
+          playLivePcmChunk(event.data);
+        }
+      };
+
+      ws.onclose = () => {
+        if (isLiveActive) stopLiveSession();
+      };
+
+      const workletCode = `
+        class LiveStreamProcessor extends AudioWorkletProcessor {
+          constructor() {
+            super();
+            this.bufferSize = 2048;
+            this.buffer = new Int16Array(this.bufferSize);
+            this.bufferIndex = 0;
+          }
+          process(inputs) {
+            const input = inputs[0];
+            if (input && input[0]) {
+              const float32 = input[0];
+              for (let i = 0; i < float32.length; i++) {
+                const s = Math.max(-1, Math.min(1, float32[i]));
+                this.buffer[this.bufferIndex++] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+
+                if (this.bufferIndex >= this.bufferSize) {
+                  let sumSquares = 0;
+                  for (let j = 0; j < this.bufferSize; j++) {
+                    const norm = this.buffer[j] / 32768.0;
+                    sumSquares += norm * norm;
+                  }
+                  const rms = Math.sqrt(sumSquares / this.bufferSize);
+                  const chunk = this.buffer.slice(0);
+                  this.port.postMessage({ pcm: chunk.buffer, rms: rms }, [chunk.buffer]);
+                  this.bufferIndex = 0;
+                }
+              }
+            }
+            return true;
+          }
+        }
+        registerProcessor('live-stream-processor', LiveStreamProcessor);
+      `;
+
+      const workletBlob = new Blob([workletCode], { type: 'application/javascript' });
+      const workletUrl = URL.createObjectURL(workletBlob);
+      await inputAudioCtx.audioWorklet.addModule(workletUrl);
+
+      micSource = inputAudioCtx.createMediaStreamSource(micStream);
+      gainNode = inputAudioCtx.createGain();
+      gainNode.gain.value = 5.0;
+
+      workletNode = new AudioWorkletNode(inputAudioCtx, 'live-stream-processor');
+      workletNode.port.onmessage = (e) => {
+        if (!isLiveActive || !ws || ws.readyState !== WebSocket.OPEN) return;
+        if (isAiSpeaking) return;
+
+        const { pcm, rms } = e.data;
+        if (rms > 0.007) {
+          animateWaves(Math.min(1, rms * 35));
+        } else {
+          animateWaves(0.08);
+        }
+
+        ws.send(pcm);
+      };
+
+      micSource.connect(gainNode);
+      gainNode.connect(workletNode);
+      workletNode.connect(inputAudioCtx.destination);
+    }
+
+    function stopLiveSession() {
+      if (!isLiveActive) return;
+      isLiveActive = false;
+      isAiSpeaking = false;
+
+      const finalDuration = stopTimer();
+      appendCallLogCard('ended', finalDuration);
+
+      statusDot.className = "absolute bottom-0 right-0 w-3 h-3 bg-gray-500 rounded-full border-2 border-[#111b21]";
+      connectionStatus.innerText = "Offline";
+      connectionStatus.className = "text-xs text-gray-400 font-medium";
+
+      liveCallBar.classList.add('hidden');
+
+      callActionBtn.className = "flex-1 ml-4 h-12 rounded-full bg-[#00a884] hover:bg-[#06cf9c] active:scale-98 text-white font-semibold text-xs tracking-wider shadow-lg flex items-center justify-center space-x-2 transition-all";
+      callBtnIcon.className = "fa-solid fa-phone text-sm";
+      callBtnText.innerText = "START VOICE CALL";
+
+      if (workletNode) { workletNode.disconnect(); workletNode = null; }
+      if (gainNode) { gainNode.disconnect(); gainNode = null; }
+      if (micSource) { micSource.disconnect(); micSource = null; }
+      if (inputAudioCtx) { inputAudioCtx.close(); inputAudioCtx = null; }
+      if (outputAudioCtx) { outputAudioCtx.close(); outputAudioCtx = null; }
+      if (ws) { try { ws.close(); } catch(e) {} ws = null; }
+      if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
+    }
+
+    callActionBtn.addEventListener('click', () => isLiveActive ? stopLiveSession() : startLiveSession());
+
+    langSelect.addEventListener('change', () => {
+      if (isLiveActive) {
+        stopLiveSession();
+        setTimeout(startLiveSession, 300);
+      }
+    });
+
+    async function handleVisualFile(file) {
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const dataUrl = reader.result;
+        const mime = file.type || "image/jpeg";
+        const base64Data = dataUrl.split(',')[1];
+
+        if (!isLiveActive) {
+          await startLiveSession();
+        }
+
+        appendImageCard(dataUrl, mime);
+
+        const sendPayload = () => {
+          if (ws && ws.readyState === WebSocket.OPEN) {
+            updateVisuals('reading');
+            ws.send(JSON.stringify({
+              type: 'image',
+              mime: mime,
+              data: base64Data
+            }));
+          } else {
+            setTimeout(sendPayload, 150);
+          }
+        };
+
+        sendPayload();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    cameraInput.addEventListener('change', (e) => handleVisualFile(e.target.files[0]));
+    fileInput.addEventListener('change', (e) => handleVisualFile(e.target.files[0]));
+  </script>
+</body>
+</html>
